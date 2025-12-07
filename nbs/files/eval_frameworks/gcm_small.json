@@ -1,0 +1,533 @@
+[
+    {
+        "id": "1",
+        "title": "Collect and utilize accurate and disaggregated data as a basis for evidence-based policies",
+        "core_theme": "Strengthen global evidence base on migration through improved data collection, analysis and dissemination",
+        "key_principles": [
+            "Evidence-based policymaking",
+            "Data harmonization",
+            "Statistical standards",
+            "Privacy protection"
+        ],
+        "target_groups": [
+            "National statistical offices",
+            "Researchers",
+            "Policymakers",
+            "International organizations"
+        ],
+        "main_activities": [
+            "Data collection methodologies",
+            "Migration statistics",
+            "Research capacity building",
+            "Data sharing platforms"
+        ]
+    },
+    {
+        "id": "2",
+        "title": "Minimize the adverse drivers and structural factors that compel people to leave their country of origin",
+        "core_theme": "Address root causes of migration through sustainable development and crisis prevention",
+        "key_principles": [
+            "Sustainable development",
+            "Poverty eradication",
+            "Disaster risk reduction",
+            "Climate adaptation"
+        ],
+        "target_groups": [
+            "Communities at risk",
+            "Governments",
+            "Development actors",
+            "Crisis-affected populations"
+        ],
+        "main_activities": [
+            "Development programmes",
+            "Early warning systems",
+            "Resilience building",
+            "Emergency preparedness"
+        ]
+    },
+    {
+        "id": "3",
+        "title": "Provide accurate and timely information at all stages of migration",
+        "core_theme": "Ensure migrants have access to reliable information for informed decision-making",
+        "key_principles": [
+            "Information accessibility",
+            "Transparency",
+            "Multilingual communication",
+            "Gender-responsive information"
+        ],
+        "target_groups": [
+            "Prospective migrants",
+            "Migrants in transit",
+            "Destination communities",
+            "Consular services"
+        ],
+        "main_activities": [
+            "Information campaigns",
+            "Pre-departure orientation",
+            "Information points",
+            "Digital platforms"
+        ]
+    },
+    {
+        "id": "4",
+        "title": "Ensure that all migrants have proof of legal identity and adequate documentation",
+        "core_theme": "Strengthen civil registry systems and ensure migrants have necessary identity documents",
+        "key_principles": [
+            "Legal identity",
+            "Civil registration",
+            "Document security",
+            "Consular services"
+        ],
+        "target_groups": [
+            "Migrants",
+            "Stateless persons",
+            "Children",
+            "Consular authorities"
+        ],
+        "main_activities": [
+            "Civil registry improvement",
+            "Document issuance",
+            "Biometric systems",
+            "Consular documentation"
+        ]
+    },
+    {
+        "id": "5",
+        "title": "Enhance availability and flexibility of pathways for regular migration",
+        "core_theme": "Expand and diversify safe, orderly and regular migration pathways",
+        "key_principles": [
+            "Labour mobility",
+            "Skills matching",
+            "Family reunification",
+            "Humanitarian pathways"
+        ],
+        "target_groups": [
+            "Labour migrants",
+            "Students",
+            "Families",
+            "Climate migrants"
+        ],
+        "main_activities": [
+            "Bilateral agreements",
+            "Visa facilitation",
+            "Skills partnerships",
+            "Mobility schemes"
+        ]
+    },
+    {
+        "id": "6",
+        "title": "Facilitate fair and ethical recruitment and safeguard conditions that ensure decent work",
+        "core_theme": "Protect migrant workers from exploitation through ethical recruitment and decent work standards",
+        "key_principles": [
+            "Ethical recruitment",
+            "Decent work",
+            "Labour rights",
+            "Supply chain transparency"
+        ],
+        "target_groups": [
+            "Migrant workers",
+            "Employers",
+            "Recruitment agencies",
+            "Trade unions"
+        ],
+        "main_activities": [
+            "Recruitment regulation",
+            "Labour inspection",
+            "Grievance mechanisms",
+            "Private sector engagement"
+        ]
+    },
+    {
+        "id": "7",
+        "title": "Address and reduce vulnerabilities in migration",
+        "core_theme": "Protect migrants in vulnerable situations through comprehensive support and rights-based approaches",
+        "key_principles": [
+            "Human rights-based approach",
+            "Best interests of the child",
+            "Gender-responsive policies",
+            "Non-discrimination"
+        ],
+        "target_groups": [
+            "Unaccompanied children",
+            "Women at risk",
+            "Trafficking victims",
+            "Workers facing exploitation",
+            "Persons with disabilities"
+        ],
+        "main_activities": [
+            "Identification and assistance",
+            "Legal protection and remedies",
+            "Child protection systems",
+            "Status regularization procedures",
+            "Crisis response"
+        ]
+    },
+    {
+        "id": "8",
+        "title": "Save lives and establish coordinated international efforts on missing migrants",
+        "core_theme": "Prevent migrant deaths and establish systems to identify and assist missing migrants",
+        "key_principles": [
+            "Right to life",
+            "Search and rescue",
+            "International cooperation",
+            "Family communication"
+        ],
+        "target_groups": [
+            "Migrants in distress",
+            "Missing migrants",
+            "Families of missing migrants",
+            "Search and rescue teams"
+        ],
+        "main_activities": [
+            "Search and rescue operations",
+            "Data collection on deaths",
+            "Identification procedures",
+            "Family communication"
+        ]
+    },
+    {
+        "id": "9",
+        "title": "Strengthen the transnational response to smuggling of migrants",
+        "core_theme": "Combat migrant smuggling networks while protecting smuggled migrants",
+        "key_principles": [
+            "Transnational cooperation",
+            "Criminal justice",
+            "Victim protection",
+            "Intelligence sharing"
+        ],
+        "target_groups": [
+            "Smuggled migrants",
+            "Law enforcement",
+            "Criminal networks",
+            "Border officials"
+        ],
+        "main_activities": [
+            "Law enforcement cooperation",
+            "Intelligence sharing",
+            "Prosecution of smugglers",
+            "Victim identification"
+        ]
+    },
+    {
+        "id": "10",
+        "title": "Prevent, combat and eradicate trafficking in persons in the context of international migration",
+        "core_theme": "Strengthen efforts to prevent trafficking and protect victims in migration contexts",
+        "key_principles": [
+            "Victim-centered approach",
+            "Prevention",
+            "Prosecution",
+            "International cooperation"
+        ],
+        "target_groups": [
+            "Trafficking victims",
+            "At-risk migrants",
+            "Law enforcement",
+            "Service providers"
+        ],
+        "main_activities": [
+            "Victim identification",
+            "Prosecution of traffickers",
+            "Prevention campaigns",
+            "Protection services"
+        ]
+    },
+    {
+        "id": "11",
+        "title": "Manage borders in an integrated, secure and coordinated manner",
+        "core_theme": "Implement coordinated border management that ensures security while respecting human rights",
+        "key_principles": [
+            "Integrated border management",
+            "Human rights compliance",
+            "Non-discrimination",
+            "Child protection"
+        ],
+        "target_groups": [
+            "Border officials",
+            "Migrants at borders",
+            "Unaccompanied children",
+            "Vulnerable migrants"
+        ],
+        "main_activities": [
+            "Border management cooperation",
+            "Screening procedures",
+            "Training programmes",
+            "Technology systems"
+        ]
+    },
+    {
+        "id": "12",
+        "title": "Strengthen certainty and predictability in migration procedures for appropriate screening, assessment and referral",
+        "core_theme": "Establish clear, efficient migration procedures with proper screening and referral mechanisms",
+        "key_principles": [
+            "Legal certainty",
+            "Due process",
+            "Individual assessment",
+            "Referral mechanisms"
+        ],
+        "target_groups": [
+            "Migrants in mixed movements",
+            "Vulnerable migrants",
+            "Government officials",
+            "Service providers"
+        ],
+        "main_activities": [
+            "Screening procedures",
+            "Assessment mechanisms",
+            "Referral systems",
+            "Training programmes"
+        ]
+    },
+    {
+        "id": "13",
+        "title": "Use immigration detention only as a measure of last resort and work towards alternatives",
+        "core_theme": "Minimize immigration detention and promote community-based alternatives",
+        "key_principles": [
+            "Last resort principle",
+            "Human rights compliance",
+            "Alternatives to detention",
+            "Child protection"
+        ],
+        "target_groups": [
+            "Detained migrants",
+            "Families with children",
+            "Vulnerable migrants",
+            "Detention authorities"
+        ],
+        "main_activities": [
+            "Alternative measures",
+            "Detention monitoring",
+            "Legal assistance",
+            "Community-based care"
+        ]
+    },
+    {
+        "id": "14",
+        "title": "Enhance consular protection, assistance and cooperation throughout the migration cycle",
+        "core_theme": "Strengthen consular services and cooperation to protect nationals abroad",
+        "key_principles": [
+            "Consular protection",
+            "International cooperation",
+            "Capacity building",
+            "Emergency assistance"
+        ],
+        "target_groups": [
+            "Nationals abroad",
+            "Consular officers",
+            "Vulnerable migrants",
+            "Governments"
+        ],
+        "main_activities": [
+            "Consular capacity building",
+            "Bilateral agreements",
+            "Emergency assistance",
+            "Registration systems"
+        ]
+    },
+    {
+        "id": "15",
+        "title": "Provide access to basic services for migrants",
+        "core_theme": "Ensure migrants can access essential services regardless of status",
+        "key_principles": [
+            "Non-discrimination",
+            "Universal access",
+            "Service inclusion",
+            "Human rights"
+        ],
+        "target_groups": [
+            "All migrants",
+            "Service providers",
+            "Local authorities",
+            "Healthcare workers"
+        ],
+        "main_activities": [
+            "Service delivery systems",
+            "Healthcare access",
+            "Education provision",
+            "Non-discrimination policies"
+        ]
+    },
+    {
+        "id": "16",
+        "title": "Empower migrants and societies to realize full inclusion and social cohesion",
+        "core_theme": "Promote migrant integration and social cohesion in destination communities",
+        "key_principles": [
+            "Social inclusion",
+            "Integration",
+            "Community engagement",
+            "Mutual respect"
+        ],
+        "target_groups": [
+            "Migrants",
+            "Host communities",
+            "Local authorities",
+            "Civil society"
+        ],
+        "main_activities": [
+            "Integration programmes",
+            "Community centres",
+            "Cultural activities",
+            "Civic participation"
+        ]
+    },
+    {
+        "id": "17",
+        "title": "Eliminate all forms of discrimination and promote evidence-based public discourse to shape perceptions of migration",
+        "core_theme": "Combat discrimination and xenophobia while promoting balanced migration narratives",
+        "key_principles": [
+            "Non-discrimination",
+            "Evidence-based discourse",
+            "Media responsibility",
+            "Hate crime prevention"
+        ],
+        "target_groups": [
+            "Migrants",
+            "Media",
+            "Communities",
+            "Civil society"
+        ],
+        "main_activities": [
+            "Anti-discrimination legislation",
+            "Media training",
+            "Awareness campaigns",
+            "Complaint mechanisms"
+        ]
+    },
+    {
+        "id": "18",
+        "title": "Invest in skills development and facilitate mutual recognition of skills, qualifications and competences",
+        "core_theme": "Optimize migrant contributions through skills development and recognition",
+        "key_principles": [
+            "Skills recognition",
+            "Mutual recognition agreements",
+            "Skills development",
+            "Labour market integration"
+        ],
+        "target_groups": [
+            "Migrant workers",
+            "Employers",
+            "Educational institutions",
+            "Professional bodies"
+        ],
+        "main_activities": [
+            "Recognition systems",
+            "Skills partnerships",
+            "Training programmes",
+            "Certification mechanisms"
+        ]
+    },
+    {
+        "id": "19",
+        "title": "Create conditions for migrants and diasporas to fully contribute to sustainable development in all countries",
+        "core_theme": "Harness migrant and diaspora contributions to sustainable development",
+        "key_principles": [
+            "Development contribution",
+            "Diaspora engagement",
+            "Knowledge transfer",
+            "Investment facilitation"
+        ],
+        "target_groups": [
+            "Migrants",
+            "Diasporas",
+            "Origin communities",
+            "Governments"
+        ],
+        "main_activities": [
+            "Diaspora policies",
+            "Investment facilitation",
+            "Knowledge networks",
+            "Development programmes"
+        ]
+    },
+    {
+        "id": "20",
+        "title": "Promote faster, safer and cheaper transfer of remittances and foster financial inclusion of migrants",
+        "core_theme": "Reduce remittance costs and enhance financial inclusion for migrants",
+        "key_principles": [
+            "Financial inclusion",
+            "Remittance facilitation",
+            "Cost reduction",
+            "Digital innovation"
+        ],
+        "target_groups": [
+            "Remittance senders",
+            "Recipients",
+            "Financial institutions",
+            "Fintech companies"
+        ],
+        "main_activities": [
+            "Regulatory frameworks",
+            "Digital solutions",
+            "Financial literacy",
+            "Market competition"
+        ]
+    },
+    {
+        "id": "21",
+        "title": "Cooperate in facilitating safe and dignified return and readmission, as well as sustainable reintegration",
+        "core_theme": "Safe and dignified return, readmission, and sustainable reintegration of migrants",
+        "key_principles": [
+            "Due process and individual assessment",
+            "Prohibition of collective expulsion",
+            "Non-refoulement",
+            "Human right to return"
+        ],
+        "target_groups": [
+            "Returning migrants",
+            "Children in return processes",
+            "Communities of origin"
+        ],
+        "main_activities": [
+            "Cooperation frameworks",
+            "Travel documents and identification",
+            "Consular assistance",
+            "Reintegration support",
+            "Monitoring mechanisms"
+        ]
+    },
+    {
+        "id": "22",
+        "title": "Establish mechanisms for the portability of social security entitlements and earned benefits",
+        "core_theme": "Ensure migrants can access and transfer social protection benefits across borders",
+        "key_principles": [
+            "Social protection",
+            "Benefit portability",
+            "Non-discrimination",
+            "Bilateral agreements"
+        ],
+        "target_groups": [
+            "Migrant workers",
+            "Social security institutions",
+            "Governments",
+            "Beneficiaries"
+        ],
+        "main_activities": [
+            "Bilateral agreements",
+            "Social security systems",
+            "Portability mechanisms",
+            "Benefit transfer"
+        ]
+    },
+    {
+        "id": "23",
+        "title": "Strengthen international cooperation and global partnerships for safe, orderly and regular migration",
+        "core_theme": "Enhance international cooperation and partnerships for effective migration governance",
+        "key_principles": [
+            "International cooperation",
+            "Global partnerships",
+            "Capacity building",
+            "Whole-of-government approach"
+        ],
+        "target_groups": [
+            "Governments",
+            "International organizations",
+            "Civil society",
+            "Private sector"
+        ],
+        "main_activities": [
+            "Cooperation frameworks",
+            "Capacity building",
+            "Technical assistance",
+            "Partnership mechanisms"
+        ]
+    }
+]

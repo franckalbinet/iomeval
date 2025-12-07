@@ -1,0 +1,2642 @@
+[
+  {
+    "id": "1",
+    "title": "Saving lives and protecting people on the move",
+    "description": "",
+    "long_term_outcomes": [
+      {
+        "id": "1a",
+        "title": "Human suffering is alleviated while the dignity and rights of people affected by crises are upheld.",
+        "description": "",
+        "short_term_outcomes": [
+          {
+            "id": "1a1",
+            "title": "Crisis-affected populations have their basic needs met and have minimum living conditions with reduced barriers to access for marginalized and vulnerable individuals.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "1a1a",
+                "title": "# and % of beneficiaries reporting that humanitarian assistance is delivered in a safe, accessible, accountable and participatory manner (disaggregation by sex and age & type of assistance: shelter & settlement support, MPCA, WASH, healthcare, MHPSS, movement assistance",
+                "description": ""
+              },
+              {
+                "id": "1a1b",
+                "title": "# of persons assisted indirectly by crisis programming",
+                "description": ""
+              },
+              {
+                "id": "1a1c",
+                "title": "# and % of persons who report being satisfied with the health care services received",
+                "description": ""
+              },
+              {
+                "id": "1a1d",
+                "title": "# of individuals in sites or other accommodation facilities benefiting from improvements",
+                "description": ""
+              },
+              {
+                "id": "1a1e",
+                "title": "# of people supported in site closures",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "1a11",
+                "title": "Crisis-affected populations in-need receive dignified shelter and settlement support.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1a11a",
+                    "title": "# individuals who have been reached with shelter or settlements support in crisis settings",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a11b",
+                    "title": "# of temporary displacement settlements planned, developed or improved",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a11c",
+                    "title": "# of individuals with increased access to safe and dignified rental accommodation in crisis settings",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a11d",
+                    "title": "# of individuals supported with access to fuel or energy in crisis settings",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a11e",
+                    "title": "# of new permanent settlements planned, expanded, improved, or developed by IOM in crisis settings",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1a12",
+                "title": "Government and local actors have resources, skills and tools to ensure assistance is delivered in an equitable manner.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1a12a",
+                    "title": "#  of individuals trained in CCCM",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a12b",
+                    "title": "% of funding transferred to local and national actors (LNAs) in humanitarian programme delivery",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a12c",
+                    "title": "# of partnerships agreements or MoUs established with local or national actors (LNAs) to deliver relevant, timely and effective humanitarian response",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1a13",
+                "title": "Crisis-affected populations have access to cash and market-based interventions, whenever appropriate.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1a13a",
+                    "title": "# of crisis-affected persons who have been reached with multi-purpose cash assistance (MPCA)",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1a14",
+                "title": "Crisis-affected populations receive quality, comprehensive WASH programming at scale, ensuring the human right to water and sanitation and empowering them to meet their needs.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1a14a",
+                    "title": "# of crisis-affected persons who have been reached with WASH support",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a14b",
+                    "title": "# of individuals that have received capacity building to manage and operate WASH services",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a14c",
+                    "title": "# of individuals that have been trained, mobilized and equipped as members of an established community-based WASH committee",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a14d",
+                    "title": "# of individuals that are benefited from WASH services that operate on clean and sustainable energy solutions.",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a14e",
+                    "title": "# of existing WASH facilities that have been rehabilitated, upgraded, or newly constructed to enhance their resilience against various types of disasters, including but not limited to flooding.",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a14f",
+                    "title": "# of individuals benefiting from water supply systems constructed, upgraded or managed that have a functional solar power system",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a14g",
+                    "title": "# and % of WASH Pipeline partners surveyed they are satisfied with overall Pipeline Management",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a14h",
+                    "title": "# of individuals provided with sufficient and safe water for domestic use (drinking, cooking and personal hygiene)",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a14i",
+                    "title": "# and % of households whose drinking water contains 0 faecal coliforms per 100 ml sample",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a14j",
+                    "title": "# of individuals with access to dignified, safe, clean and functional excreta disposal facilities",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a14k",
+                    "title": "# of persons with access to functioning handwashing facilities (and soap)",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a14l",
+                    "title": "# of individuals benefiting from community-tailored gender- and age-sensitive hygiene messages aiming at hygienic behaviour and practices.",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a14m",
+                    "title": "# of households where women and girls of menstruating age have access to appropriate MHM materials",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a14n",
+                    "title": "# of individuals receiving WASH NFIs assistance through all modalities (without double-counting)",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a14o",
+                    "title": "# of individuals living in settlements with a functional solid waste management system",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1a15",
+                "title": "Crisis-affected populations receive quality health and mental health and psychosocial support (MHPSS) services in a timely manner.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1a15a",
+                    "title": "\n# of health care consultations in crisis settings",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a15b",
+                    "title": "# of MHPSS services provided in crisis settings",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1a16",
+                "title": "Crisis-affected populations in-need receive movement assistance.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1a16a",
+                    "title": "# of people provided with in-country movement assistance in emergency or crisis contexts",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a16b",
+                    "title": "# of people provided with movement assistance across international borders in emergency or crisis contexts",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1a17",
+                "title": "Crisis-affected populations in camps and camp-like settings have equitable access to assistance, protection, and services in displacement sites, [to improve their quality of life and dignity during displacement while seeking and advocating for durable solutions.]",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1a17a",
+                    "title": "\n# of sites managed by IOM",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a17b",
+                    "title": "# of sites with supported site closure",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a17c",
+                    "title": "# and % of total Complaints & Feedback Mechanism (CFM) tickets referred or resolved",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1a18",
+                "title": "Health service providers and systems have the knowledge, skills and resources to continue to provide essential health services in crisis-affected settings.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1a18a",
+                    "title": "# of health facilities supported to provide health care services in crisis-affected settings",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a18b",
+                    "title": "# of health workers trained to provide health care services in crisis-affected settings",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1a19",
+                "title": "Victims of human rights violations in the context of reparations and restitution mechanisms have improved living conditions and wellbeing.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1a19a",
+                    "title": "# of beneficiaries who have received reparations",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "1a2",
+            "title": "Humanitarian assistance is provided in a manner that actively contributes to immediate and longer-term needs of affected populations.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "1a2a",
+                "title": "# and % of beneficiaries satisfied with the appropriateness of humanitarian assistance.",
+                "description": ""
+              },
+              {
+                "id": "1a2b",
+                "title": "# of inter-agency and government response plans",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "1a21",
+                "title": "Humanitarian actors at all levels have knowledge and tools to formulate interventions that address both the immediate and longer-term needs of affected populations, including climate-sensitive considerations.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1a21a",
+                    "title": "# of people who participate in capacity development activities to formulate integrated humanitarian, recovery, peace and development interventions",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a21b",
+                    "title": "# of guidance tools developed to incorporate MHPSS in humanitarian, recovery, peace and development interventions",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1a22",
+                "title": "Local stakeholders have capacity to actively contribute to the immediate and longer-term response.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1a22a",
+                    "title": "# of local stakeholders who have participated in capacity development activities to formulate interventions on the immediate and longer-term needs of people affected by crises",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "1a3",
+            "title": "Decision makers and responders responsibly use data and its analysis to inform the delivery of assistance to crisis-affected populations",
+            "description": "",
+            "indicators": [
+              {
+                "id": "1a3a",
+                "title": "# of Humanitarian Need Overviews or Humanitarian Response Plans using IOM displacement data and analysis",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "1a31",
+                "title": "Guidelines on data and information collection, sharing and management are in place that adhere to data protection standards, principles of confidentiality and a defined purpose, to protect the individuals and groups providing information from harm.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1a31a",
+                    "title": "# of guidelines on data and information collection, sharing and management are in place that adhere to international do-no harm standards",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1a32",
+                "title": "Robust data on mobility and displacement is available, using appropriate methodologies",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1a32a",
+                    "title": "# of operations where Displacement Tracking Matrix (DTM) is active",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a32b",
+                    "title": "# of people tracked by DTM",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a32c",
+                    "title": "# of government officials or humanitarian partners trained on DTM, data collection, sharing and management",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a32d",
+                    "title": "# of migration operation situations where data on mobility and displacement is available",
+                    "description": ""
+                  },
+                  {
+                    "id": "1a32e",
+                    "title": "# of health-related publications on displaced persons, other migrant populations, and human mobility",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "1b",
+        "title": "Threats and vulnerabilities are reduced or mitigated through humanitarian protection.",
+        "description": "",
+        "short_term_outcomes": [
+          {
+            "id": "1b1",
+            "title": "Governments and humanitarian actors work with crisis-affected populations to identify and respond to their vulnerabilities and needs.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "1b1a",
+                "title": "# and % of new or revised programmes based on consultations with crisis-affected populations",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "1b11",
+                "title": "Governments and humanitarian actors have improved access to timely disaggregated data on the specific vulnerabilities and needs of all crisis-affected populations to inform evidence-based response.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1b11a",
+                    "title": "# of countries with strengthened evidence-based response programming",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1b12",
+                "title": "Crisis-affected populations participate in decision-making for the design, planning and implementation of humanitarian programming.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1b12a",
+                    "title": "# and % of crisis-affected persons, including members of community-based committees ; who participated in decision-making for the design, planning and implementation of humanitarian programming",
+                    "description": ""
+                  },
+                  {
+                    "id": "1b12b",
+                    "title": "# of humanitarian programmes revised or designed to reflect consultations with the participation of crisis-affected populations",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "1b2",
+            "title": "Governments and humanitarian actors at all levels design and implement activities that reduce risks and threats associated with humanitarian crises.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "1b2a",
+                "title": "# of crisis response plans that include preparedness or early/anticipatory action, and disaster risk reduction.",
+                "description": ""
+              },
+              {
+                "id": "1b2b",
+                "title": "# and % of government officials, humanitarian actors or local stakeholders who report using their newly acquired skills to address vulnerabilities and protection needs in crisis situations",
+                "description": ""
+              },
+              {
+                "id": "1b2c",
+                "title": "# of government and humanitarian actors with knowledge and skills related to operating procedures/SoPs to reduce risks and threats associated with humanitarian border management",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "1b21",
+                "title": "Governments and humanitarian actors have knowledge, capacity and tools to effectively mainstream and implement protection in a way that upholds rights and dignity of crisis affected populations.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1b21a",
+                    "title": "# of government and humanitarian partners trained to mainstream protection and implement procedures that promote and uphold human rights",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1b22",
+                "title": "Local actors are trained on how to address the protection needs of the most vulnerable.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1b22a",
+                    "title": "# of individuals trained on protection",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1b23",
+                "title": "Appropriate and safe to access feedback and complaint mechanisms are established.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1b23a",
+                    "title": "# and % of complaints processed in a timely, efficient and safe manner",
+                    "description": ""
+                  },
+                  {
+                    "id": "1b23b",
+                    "title": "% of projects that implement a complaint and feedback mechanism",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1b24",
+                "title": "Immigration and border authorities are trained on gender- and protection-sensitive humanitarian border management to address vulnerabilities and protection needs in crisis affected situations.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1b24a",
+                    "title": "# of immigration or border officials who have capacities on gender- and protection sensitive humanitarian border management",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "1b3",
+            "title": "Governments and humanitarian actors ensure that vulnerable groups who face exacerbated protection risks and threats have meaningful access to humanitarian protection",
+            "description": "",
+            "indicators": [
+              {
+                "id": "1b3a",
+                "title": "# of government-led initiatives aimed at protecting migrants in situations of vulnerability to prevent their exploitation and abuse",
+                "description": ""
+              },
+              {
+                "id": "1b3b",
+                "title": "# of referrals for healthcare services in crisis settings",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "1b31",
+                "title": "Vulnerable groups and persons at risk in a humanitarian context receive quality health care services that respond to their needs.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1b31a",
+                    "title": "# of health care services provided to vulnerable and at-risk persons",
+                    "description": ""
+                  },
+                  {
+                    "id": "1b31b",
+                    "title": "# of eligible personnel of the UN and other humanitarian agencies who received at least one IOM health service",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1b32",
+                "title": "Governments and humanitarian actors have strengthened protection referral pathways to promote and facilitate access to humanitarian services and assistance.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1b32a",
+                    "title": "# of protection referral pathways developed or strengthened",
+                    "description": ""
+                  },
+                  {
+                    "id": "1b32b",
+                    "title": "# of unique beneficiaries assisted with direct protection in humanitarian action services",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1b33",
+                "title": "Vulnerable and at-risk persons are protected through their sustained and meaningful participation within humanitarian protection.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1b33a",
+                    "title": "#  and % of beneficiaries who report sustained and meaningful participation in humanitarian protection interventions",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "1c",
+        "title": "The quality of humanitarian assistance and response is enhanced",
+        "description": "",
+        "short_term_outcomes": [
+          {
+            "id": "1c1",
+            "title": "Humanitarian actors have robust systems in place to effectively support operations and cope with operational needs.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "1c1a",
+                "title": "# of initiatives to strengthen and develop systems supporting humanitarian operations.",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "1c11",
+                "title": "Mechanisms for the procurement and movement of quality and cost-effective supplies are established and maintained",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1c11a",
+                    "title": "Volume of stock received from Global Stocks, Global LTA, or Partner stocks.",
+                    "description": ""
+                  },
+                  {
+                    "id": "1c11b",
+                    "title": "# of active common pipelines being managed by IOM",
+                    "description": ""
+                  },
+                  {
+                    "id": "1c11c",
+                    "title": "Value (USD) of health commodities distributed in crisis settings",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "1c2",
+            "title": "The quality of interagency coordination is enhanced, including IOM Cluster leadership, partnership and participation.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "1c2a",
+                "title": "# of humanitarian interagency partnerships established and standby partnerships formalised.",
+                "description": ""
+              },
+              {
+                "id": "1c2b",
+                "title": "# of countries where IOM is (co-) lead of a cluster or sector or coordination mechanism in countries where the cluster mechanism is activated",
+                "description": ""
+              },
+              {
+                "id": "1c2c",
+                "title": "# of inter-agency coordination structures on protection where IOM is an active member or lead",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "1c21",
+                "title": "Humanitarian coordination mechanisms are established and strengthened to ensure the efficiency and effectiveness of humanitarian response.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1c21a",
+                    "title": "# of IOM country offices actively participating in cash working groups",
+                    "description": ""
+                  },
+                  {
+                    "id": "1c21b",
+                    "title": "# and % of all members who are local and national actors (LNAs) for IOM led clusters",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1c22",
+                "title": "Humanitarian actors have knowledge, capacity, and resources to engage in the IASC system and multi-agency joint initiatives to ensure a holistic response to multifaceted impact of crisis.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1c22a",
+                    "title": "# of humanitarian partners participating in IOM-led coordination mechanisms",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "1c23",
+                "title": "Humanitarian actors are supported to ensure that affected populations and local actors, especially marginalized groups, are fully consulted and can actively participate in humanitarian response.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "1c23a",
+                    "title": "# of humanitarian actors that have been supported to ensure that affected people and local actors are actively consulted in designing and implementing humanitarian response",
+                    "description": ""
+                  },
+                  {
+                    "id": "1c23b",
+                    "title": "# and % of beneficiaries who report being consulted in the design and implementation humanitarian response",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Driving solutions to displacement",
+    "description": "",
+    "long_term_outcomes": [
+      {
+        "id": "2a",
+        "title": "The adverse drivers and structural factors that compel people to leave their homes are minimized.",
+        "description": "",
+        "short_term_outcomes": [
+          {
+            "id": "2a1",
+            "title": "Governments and communities address, adapt and are resilient to climate and environmentally-related, multi-hazard risks and disasters including health emergencies leading to restricted and adverse mobility outcomes.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "2a1a",
+                "title": "# and % of beneficiaries who report improved resilience to adapt to, and capacities to prevent, multi-hazard climate and environmentally induced risks and disasters.",
+                "description": ""
+              },
+              {
+                "id": "2a1b",
+                "title": "# of contingency plans to address multi-hazard risks and incorporating mobility dimensions of disasters and crisis.",
+                "description": ""
+              },
+              {
+                "id": "2a1c",
+                "title": "# of beneficiaries who report improved capacities to recover from multi-hazard climate and environmentally-induced risks and disasters",
+                "description": ""
+              },
+              {
+                "id": "2a1d",
+                "title": "# of disease surveillance systems supported",
+                "description": ""
+              },
+              {
+                "id": "2a1e",
+                "title": "# of countries supported to include migrant and mobile populations in the identification and planning for climate-related health risks",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "2a11",
+                "title": "Output 2a.1.1 Governments and communities have preparedness systems and capacities in place to effectively manage their immediate response to disasters or climate hazards.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2a11a",
+                    "title": "# of communities equipped with preparedness systems to immediately respond to disasters or climate hazards",
+                    "description": ""
+                  },
+                  {
+                    "id": "2a11b",
+                    "title": "# of initiatives supported to improve preparedness for large scale disasters or displacement situations with IOM's emergency and preparedness tools",
+                    "description": ""
+                  },
+                  {
+                    "id": "2a11c",
+                    "title": "# of individuals trained in the integration of MHPSS in transition and recovery, climate change, community development and integration",
+                    "description": ""
+                  },
+                  {
+                    "id": "2a11d",
+                    "title": "# of global, national and local guidance created or co-created for MHPSS in transition and recovery, climate change, community development and integration",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "2a12",
+                "title": "Output 2a.1.2 Governments and communities have systems and capacities, tools and skills in place to foresee migration and displacement patters, prevent and recover from disasters, or adapt to the long-term effects of climate and environmental change.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2a12a",
+                    "title": "#of government officials or community member who demonstrate an improved understanding of disaster prevention and recovery or adaptation to climate and environmental change",
+                    "description": ""
+                  },
+                  {
+                    "id": "2a12b",
+                    "title": "# of early action frameworks developed to prepare for disasters and to leverage opportunities for adaptation",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "2a13",
+                "title": "Output 2a.1.3 Migrants, displacement affected populations and broader communities have access to relevant and critical information about climate, environmental hazard, and health risks",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2a13a",
+                    "title": "# of persons reached by relevant and critical information about climate, environmental hazard, or health risks",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2a2",
+            "title": "Drivers of violence and conflict, and related displacement effects, are sustainably addressed.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "2a2a",
+                "title": "# of government-led or community-driven peacebuilding or conflict resolution initiatives",
+                "description": ""
+              },
+              {
+                "id": "2a2b",
+                "title": "# of government-led initiatives addressing youth unemployment as a driver of conflict and or destitute migration",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "2a21",
+                "title": "Populations at risk of engaging with violent extremist groups are provided with social, political and economic alternatives.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2a21a",
+                    "title": "# of beneficiaries supported to engage in social, political and economic alternatives to prevent conflict and violence",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "2a22",
+                "title": "Governments and civil society have enhanced capacities, tools and systems to identify and address the drivers of conflict.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2a22a",
+                    "title": "# of government officials who have capacities to identify or address drivers of conflict",
+                    "description": ""
+                  },
+                  {
+                    "id": "2a22b",
+                    "title": "# of civil society organizations supported to identify or address drivers of conflict",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "2b",
+        "title": "Displaced people are resilient and self-reliant.",
+        "description": "",
+        "short_term_outcomes": [
+          {
+            "id": "2b1",
+            "title": "Community members affected by crisis are actively engaged in recovery and co-exist peacefully, free from social exclusion or marginalization.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "2b1a",
+                "title": "# and % of targeted community members who report improvements in the relationships between communities and former associates of non-state armed groups.",
+                "description": ""
+              },
+              {
+                "id": "2b1b",
+                "title": "# of government-led initiatives aimed at fully reintegrating associates of armed non-state groups",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "2b11",
+                "title": "Affected populations, including vulnerable or marginalized groups, participate actively in the planning and implementation of recovery, peacebuilding and resilience programmes",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b11a",
+                    "title": "# of beneficiaries actively engaged in the planning and implementation of recovery, peacebuilding or resilience programmes",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b11b",
+                    "title": "# of initiatives supporting the participation of populations in the planning and implementation of recovery, peacebuilding or resilience programmes",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "2b12",
+                "title": "Inclusive systems and structures linking populations and government are established to strengthen social cohesion and resolve conflicts without resorting to violence.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b12a",
+                    "title": "# of initiatives supported that positively link government and populations to resolve conflict and build social cohesion",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "2b13",
+                "title": "Members of armed and violent groups and their associates are socially, economically and culturally reintegrated into the communities.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b13a",
+                    "title": "# of former associates of non-state armed groups that received reintegration assistance",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2b2",
+            "title": "Security and law enforcement mechanisms are strengthened to create a safe, secure living environment for affected communities and respond to their needs, with special attention to vulnerable and marginalized groups.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "2b2a",
+                "title": "# of security and law enforcement initiatives that actively engage with affected communities, with special attention to marginalized and vulnerable groups",
+                "description": ""
+              },
+              {
+                "id": "2b2b",
+                "title": "# and % of community members who report having confidence in security or law enforcement mechanisms",
+                "description": ""
+              },
+              {
+                "id": "2b2c",
+                "title": "# of security or law enforcement mechanisms implemented to create a safe, secure living environment for affected communities",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "2b21",
+                "title": "A collaborative relationship is established between communities and law enforcement entities, with community level accountability and trust building mechanisms in place.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b21a",
+                    "title": "# of accountability or trust building initiatives developed between communities and law enforcement entities",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "2b22",
+                "title": "Law enforcement officials have strengthened knowledge, skills and tools for community engagement in support of community policing, in particular for marginalized or vulnerable groups.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b22a",
+                    "title": "# of capacity development initiatives on community policing that include attention to marginalized and vulnerable groups",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b22b",
+                    "title": "# of law enforcement officials who have capacities for community engagement",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2b3",
+            "title": "Robust mechanisms at all levels for rehabilitation, redress and compensation of victims of crimes and human rights abuses in line with international laws",
+            "description": "",
+            "indicators": [
+              {
+                "id": "2b3a",
+                "title": "# and % of victims of crimes and human rights abuses who report being satisfied with the restitution and reparation mechanisms.",
+                "description": ""
+              },
+              {
+                "id": "2b3b",
+                "title": "# of initiatives developed on human rights and migrant protection in line with international laws",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "2b31",
+                "title": "Populations affected by crises and/or displacement are appropriately compensated for lost housing, land or property.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b31a",
+                    "title": "# of crisis-affected persons receiving compensation for lost housing, land or property",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "2b32",
+                "title": "Victims of human rights violations in the context of restitution and reparations receive material and other forms of compensation.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b32a",
+                    "title": "# of restitution and reparation mechanisms developed or supported",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b32b",
+                    "title": "# of beneficiaries who received materials, other forms of compensation  support from IOM",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b32c",
+                    "title": "# and % of beneficiaries satisfied with compensation services received",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b32d",
+                    "title": "# of individuals who received MHPSS services as part of transition, recovery and development programming",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2b4",
+            "title": "Displaced persons, migrants and communities are included, and have the agency to participate in policy processes for transition, recovery and development.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "2b4a",
+                "title": "# of policy processes for transition, recovery or development promoting social cohesion and prosperity that included participation of migrants, displaced persons and their communities in line with a whole of society approach to policy development.",
+                "description": ""
+              },
+              {
+                "id": "2b4b",
+                "title": "# and % of migrants, displaced persons and community members who are satisfied with the policy processes for transition, recovery and development",
+                "description": ""
+              },
+              {
+                "id": "2b4c",
+                "title": "# of migrants or displaced persons who are eligible to participate in electoral processes, have access to these processes",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "2b41",
+                "title": "All migrants, including diaspora, displaced persons and community members have the knowledge, skills and resources to participate in and contribute to relevant policy making and programming.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b41a",
+                    "title": "# and % of beneficiaries who have capacity to participate in and contribute to relevant policy processes or programming",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "2b42",
+                "title": "All levels of government have the knowledge, skills and tools to include migrants, displaced persons and crisis affected populations in policy processes and programmes.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b42a",
+                    "title": "# of government entities supported to include migrants, displaced persons and crisis affected populations in policy processes or programmes",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "2b43",
+                "title": "Mechanisms are in place for the inclusion of eligible mobile populations in electoral processes.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b43a",
+                    "title": "# of initiatives supported to increase the accessibility of mobile populations, who are eligible to participate, in electoral processes",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2b5",
+            "title": "All migrants, displaced persons and community members access essential services, including housing, health, education, WASH, energy and social security.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "2b5a",
+                "title": "# and % of migrants, displaced persons and other community members who access quality essential services.",
+                "description": ""
+              },
+              {
+                "id": "2b5b",
+                "title": "# of government-led basic service initiatives in which migrants, displaced persons or other community members are included",
+                "description": ""
+              },
+              {
+                "id": "2b5c",
+                "title": "# and % of targeted service providers who ensure the inclusion of migrants, displaced persons and broader community members in the provision of basic services",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "2b51",
+                "title": "Communities restore access to health, WASH, education and other forms of essential public infrastructure to recover sustainably from crisis or other situations of vulnerability.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b51a",
+                    "title": "# of communities supported with access to health care services through the rehabilitation or construction of health facilities",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b51b",
+                    "title": "# of communities with improved access to sustainable WASH, clean water, and sanitation services",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b51c",
+                    "title": "# of communities with improved access to sustainable education",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b51d",
+                    "title": "# of communities with improved access to other forms of essential public infrastructure",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "2b52",
+                "title": "Affected populations have access to sustainable settlement solutions (in the locations that they choose).",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b52a",
+                    "title": "# of beneficiaries directly benefiting from settlement-based approaches",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b52b",
+                    "title": "# of locations or communities where IOM is using a settlement-based approach",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "2b53",
+                "title": "Systems and service providers at national and local levels are equipped with the capacities and infrastructure to ensure the inclusion of migrants, displaced persons and broader communities in the provision of basic services.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b53a",
+                    "title": "# of service providers equipped with infrastructure for the inclusion of migrants, displaced persons and broader communities in the provision of basic services",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b53b",
+                    "title": "# of systems equipped with the requirements to ensure the inclusion of migrants, displace persons and broader communities in the provision of basic services",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "2b54",
+                "title": "National and local governments have access to guidance and tools to ensure legislative and policy frameworks and programming in health care, education, social protection policies (including portability of social rights and benefits), are inclusive of migrants within and across borders.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b54a",
+                    "title": "# of government institutions supported with the development of guidance or other tools for making legislation, policy frameworks, or programming that is inclusive of migrants",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2b6",
+            "title": "Migrants, displaced persons, returnees and transnational community members integrate socially, have sustainable and climate change-adapted livelihoods, and contribute to sustainable development.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "2b6a",
+                "title": "# of individuals who have restored sustainable, climate change adapted, livelihoods.",
+                "description": ""
+              },
+              {
+                "id": "2b6b",
+                "title": "% of returnees with sufficient levels of economic self-sufficiency, social stability, and psychosocial wellbeing in their community of return",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "2b61",
+                "title": "Communities impacted by crisis or situations of vulnerability have the necessary material resources and technical capacities and access to markets to restore sustainable livelihoods.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b61a",
+                    "title": "# of individuals equipped with the technical capacities to restore sustainable livelihoods",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b61b",
+                    "title": "# of individuals who received integrated MHPSS and livelihood services",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "2b62",
+                "title": "Migrants, returnees and communities impacted by crisis or other situations of vulnerability are able to access the labour market and environmentally sustainable livelihood opportunities.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b62a",
+                    "title": "# of migrants, members of communities impacted by crisis or returnees supported by IOM to access labour markets \n(Disaggregated by age, sex, vulnerability)",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b62b",
+                    "title": "# of livelihoods provided that enable adaptation to climate change",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "2b63",
+                "title": "Returning migrants and returning, relocated and locally integrating displaced persons receive reintegration assistance in line with their needs and those of broader community members.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2b63a",
+                    "title": "# of persons supported with reintegration assistance (disaggregate by type of assistance: rental assistance, fuel or energy)",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b63b",
+                    "title": "# individuals who have been reached with shelter, housing or settlements support in transition and recovery, climate change, community development and integration.",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b63c",
+                    "title": "# of individuals supported with sustainable settlement solutions to (re)integrate returning migrants into the communities they choose (disaggregated by type of solution)",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b63d",
+                    "title": "# of new permanent settlements planned, expanded, improved or developed",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b63e",
+                    "title": "# of individuals with increased access to safe and dignified rental accommodation in transition and recovery, climate change, community development and integration",
+                    "description": ""
+                  },
+                  {
+                    "id": "2b63f",
+                    "title": "# of individuals supported with access to fuel or energy in in transition and recovery, climate change, community development and integration",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "2c",
+        "title": "Long-Term Outcome 2c:Displaced people benefit from solutions.",
+        "description": "",
+        "short_term_outcomes": [
+          {
+            "id": "2c1",
+            "title": "Short-Term Outcome 2c.1  Displaced people have access to safe, voluntary, and dignified solutions to their displacement.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "2c1a",
+                "title": "# of displaced people benefiting from movement assistance (disaggregated by type of assistance)",
+                "description": ""
+              },
+              {
+                "id": "2c1b",
+                "title": "# of displaced people who are supported to access safe, voluntary, and dignified solutions (disaggregated by type of assistance:  returns. relocations, local integrations, resettlement, complementary pathways",
+                "description": ""
+              },
+              {
+                "id": "2c1c",
+                "title": "# and % of people satisfied with the movement assistance received (disaggregated by type of assistance): returns, relocations, local integrations, resettlement, complementary pathways)",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "2c11",
+                "title": "Output 2c.1.1:Resettlement Transit Centers and Resettlement Support Centers are managed with availability of appropriate assistance.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2c11a",
+                    "title": " Standards on AGD sensitive manner for IOM facilities supporting resettlement and movement activities are established.",
+                    "description": ""
+                  },
+                  {
+                    "id": "2c11b",
+                    "title": "# of beneficiaries who receive assistance through IOM Resettlement Transit and Resettlement Support Centers in line with IOM standards and guidelines",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "2c12",
+                "title": "Governments have the capacity to implement solutions for persons on the move due to disasters, the adverse effects of climate change, and environmental degradation, crossing or not international borders, in line with human rights standards.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "2c12a",
+                    "title": "# of government officials who have capacity to implement solutions for persons on the move due to disasters, the adverse effects of climate change or environmental degradation in line with human rights standards",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Migrants and societies benefit from safe, orderly and regular human mobility",
+    "description": "",
+    "long_term_outcomes": [
+      {
+        "id": "3a",
+        "title": "Channels for regular migration are sustainable and responsive to current and emerging trends.",
+        "description": "",
+        "short_term_outcomes": [
+          {
+            "id": "3a1",
+            "title": "Governments have innovative, flexible and inclusive cross-border mobility solutions in place to address their current and future skills needs, including bilateral and regional mobility agreements and protocols.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "3a1a",
+                "title": "# of inter-state or multi-country cooperation agreements on labour or skills mobility partnerships",
+                "description": ""
+              },
+              {
+                "id": "3a1b",
+                "title": "# of migrants who accessed regular migration pathways for labour or study purposes.",
+                "description": ""
+              },
+              {
+                "id": "3a1c",
+                "title": "# of skills mobility partnerships with the private sector, education institutes, employment services or other partners",
+                "description": ""
+              },
+              {
+                "id": "3a1d",
+                "title": "# of skills anticipation, matching, development, or transfer mechanisms in place",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "3a11",
+                "title": "Governments and other stakeholders have the knowledge, skills and resources to invest in skills development and facilitate matching of supply and demand, including through skills partnerships with the private sector, education institutes and employment services.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a11a",
+                    "title": "# government officials or other stakeholders who have increased capacity to invest in skills development and facilitate matching of supply and demand",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3a12",
+                "title": "Governments have the knowledge, skills and tools to develop innovative, flexible policies for students and labour migrants, in particular bilateral and regional mobility agreements and protocols.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a12a",
+                    "title": "# of government officials provided with the knowledge, skills and tools to develop innovative, flexible policies for students and migrant workers",
+                    "description": ""
+                  },
+                  {
+                    "id": "3a12b",
+                    "title": "# of bilateral and regional mobility agreements developed",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3a13",
+                "title": "Students and labour migrants of all genders, ages, abilities and other socioeconomic characteristics have access to targeted information to develop their skills and access new employment opportunities abroad, both before departure and upon arrival.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a13a",
+                    "title": "# of students and labour migrants reached with targeted information to develop their skills and access new employment opportunities abroad",
+                    "description": ""
+                  },
+                  {
+                    "id": "3a13b",
+                    "title": "# and % of beneficiaries who report that they are informed about employment opportunities abroad",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3a14",
+                "title": "Governments have the knowledge, skills and tools to develop or maintain well functioning skills recognition systems [, as part of a stronger cooperation between private sectors, training and educational institutions and other stakeholders].",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a14a",
+                    "title": "# of government officials and other stakeholders who have the capacity to develop mechanisms for skills anticipation, matching, development, recognition and transfer",
+                    "description": ""
+                  },
+                  {
+                    "id": "3a14b",
+                    "title": "# of skills recognition systems developed",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3a15",
+                "title": "Policy makers and influencers have access to high-quality labour market research and evidence to effectively respond to anticipated skills needs and changing labour market trends.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a15a",
+                    "title": "# of policy makers and other key stakeholders who have access to high quality labour market research",
+                    "description": ""
+                  },
+                  {
+                    "id": "3a15b",
+                    "title": "# of labour market research and evidence reports produced to effectively respond to anticipated skills needs",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3a2",
+            "title": "Private sector entities respect migrant workers' rights and actively engage in efforts to prevent exploitation and trafficking, and expand and enhance regular pathways for migration.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "3a2a",
+                "title": "# of recruitment agencies or associations that are involved in and support the IRIS Ethical Recruitment Initiative",
+                "description": ""
+              },
+              {
+                "id": "3a2b",
+                "title": "# of private sector entities actively engaging in efforts to prevent trafficking in persons or other forms of exploitation.",
+                "description": ""
+              },
+              {
+                "id": "3a2c",
+                "title": "# of private sector actors engaged in initiatives to expand and enhance regular pathways for migration",
+                "description": ""
+              },
+              {
+                "id": "3a2d",
+                "title": "# and % of migrant workers who have accessed grievance mechanisms that received adequate remediation",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "3a21",
+                "title": "Employers are aware of fair and ethical recruitment standards and have access to the International Recruitment Integrity System (IRIS).",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a21a",
+                    "title": "# of employers or industry groups reached with information on IRIS Ethical Recruitment Initiative and migrant worker protection",
+                    "description": ""
+                  },
+                  {
+                    "id": "3a21b",
+                    "title": "# of employers or industry associations publicly committed to ethical recruitment and migrant worker protection",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3a22",
+                "title": "Employers are informed of migrant workers' rights and have the knowledge and skills to adhere to applicable regulations and international standards.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a22a",
+                    "title": "# of employers or industry association representatives trained on ethical recruitment, the IRIS and migrant worker protection",
+                    "description": ""
+                  },
+                  {
+                    "id": "3a22b",
+                    "title": "# of sensitized individuals who report having the capacities to adhere to applicable regulations and international standards",
+                    "description": ""
+                  },
+                  {
+                    "id": "3a22c",
+                    "title": "# of recruitment agencies with access to guidelines or other tools on ethical recruitment and IRIS standards and requirements",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3a23",
+                "title": "Governments and civil society actors have knowledge, skills and tools to hold the private sector accountable for migrant workers' rights violations.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a23a",
+                    "title": "# of government institutions involved in Global Policy Network on recruitment",
+                    "description": ""
+                  },
+                  {
+                    "id": "3a23b",
+                    "title": "# of multi-stakeholder dialogues or consultations with government and civil society actors on migration, business and human rights",
+                    "description": ""
+                  },
+                  {
+                    "id": "3a23c",
+                    "title": "# of tools or resources developed to support government or civil society actors to promote ethical recruitment, migration, business and human rights or migrant worker protection",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3a3",
+            "title": "Migrants have access to legal identity solutions, and receive relevant support to comply with visa procedures and admission, long-term stay and regularization requirements.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "3a3a",
+                "title": "# of initiatives providing legal identity related capacity development assistance to governments",
+                "description": ""
+              },
+              {
+                "id": "3a3b",
+                "title": "# of migrants who report receiving relevant support to comply with visa procedures, long-term stays or regularization requirements.",
+                "description": ""
+              },
+              {
+                "id": "3a3c",
+                "title": "# of migrants regularized",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "3a31",
+                "title": "Governments have the knowledge, skills and equipment to process immigration and visa applications, including with regard to verifying the integrity of documents.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a31a",
+                    "title": "# of government institutions with enhanced capacity to verify the integrity of documents submitted for immigration and visa purposes",
+                    "description": ""
+                  },
+                  {
+                    "id": "3a31b",
+                    "title": "# of government officials who have increased knowledge, skills and tools to process immigration and visa applications (disaggregated by sex)",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3a32",
+                "title": "Governments in countries of origin and destination have the knowledge, skills and equipment to provide migrants and returnees with civil registration documents and non-discriminatory access to nationality determination services.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a32a",
+                    "title": "# of government officials who have increased capacity related to digitalization, issuance of documentation or registration of vital events (disaggregated by level of government)",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3a33",
+                "title": "Migrants have access to accurate immigration-related information in their local languages, including on admission and stay regulations, immigration and visa procedures and regularization options.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a33a",
+                    "title": "# of migrants reached with information on immigration-related information in their local languages",
+                    "description": ""
+                  },
+                  {
+                    "id": "3a33b",
+                    "title": "# of beneficiaries who report being sufficiently informed on immigration-related information in their local languages",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3a34",
+                "title": "Migrants are aware and informed of how to access consular assistance.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a34a",
+                    "title": "# of initiatives facilitating access to consular assistance",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3a4",
+            "title": "Migrants are able to return to their homes voluntarily, safely and in dignity.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "3a4a",
+                "title": "# and % of migrants who report they understood they could desist at any time, did not feel coerced, and felt they had sufficient time and information during the voluntary return process",
+                "description": ""
+              },
+              {
+                "id": "3a4b",
+                "title": "# of government-led initiatives that are in place that promote the voluntary, safe and dignified return of migrants",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "3a41",
+                "title": "Member states are supported to develop or improve existing evidence-based policy and legal frameworks to facilitate effective and sustainable regular migration channels for voluntary return.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a41a",
+                    "title": "# of rights-based return management and reintegration policies or legal frameworks developed or improved",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3a42",
+                "title": "Migrants have adequate knowledge and tailored information to make an informed and voluntary decision to return to their countries of origin.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a42a",
+                    "title": "# and % of migrants reporting the information about the return process provided during pre-departure counselling was clear, accurate, comprehensive and timely",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3a43",
+                "title": "Migrants are able to cover their immediate needs upon return to their countries of origin.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a43a",
+                    "title": "# of migrants who received immediate post-arrival assistance",
+                    "description": ""
+                  },
+                  {
+                    "id": "3a43b",
+                    "title": "# and % of migrants satisfied with immediate post-arrival assistance",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3a44",
+                "title": "Governments of destination, transit and return countries have the knowledge, skills and resources to facilitate the safe and dignified return of migrants, in an individualised and timely manner.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a44a",
+                    "title": "# of government institutions supported by IOM to enhance capacities for rights-based return, readmission, or sustainable reintegration of migrants.",
+                    "description": ""
+                  },
+                  {
+                    "id": "3a44b",
+                    "title": "# of government officials who received capacity building support from IOM to enhance their knowledge and capacities for safe and dignified return, readmission, or sustainable reintegration",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3a5",
+            "title": "Migrants benefit from safe, dignified and orderly movement assistance to the final destination (incl. during transit), and back to the country of origin in the case of voluntary return.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "3a5a",
+                "title": "# and % of migrants satisfied with the movement assistance received.",
+                "description": ""
+              },
+              {
+                "id": "3a5b",
+                "title": "# of beneficiaries supported with movement assistance (disaggregated by type of assistance: in-kind, cash or vouchers)",
+                "description": ""
+              },
+              {
+                "id": "3a5c",
+                "title": "# of government-led initiatives resulting in resettlement, complementary pathways or protection-sensitive regular pathways, assisted voluntary return and reintegration for migrants in vulnerable situations (disaggregated by type of assistance)",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "3a51",
+                "title": "Government and other actors have increased capacity to set up sustainable resettlement programmes taking into account vulnerabilities, and immediate post arrival assistance tailored to the needs of refugees and their families",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a51a",
+                    "title": "# of government officials and other actors who have increased capacity to set up programmes for resettlement and post-arrival assistance tailored to the needs of refugees, their families and communities",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3a52",
+                "title": "Migrants benefit from appropriate and gender-sensitive pre-departure, post-arrival or return assistance and counselling.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3a52a",
+                    "title": "# of migrants reached with appropriate and gender-sensitive   pre-departure, post-arrival or return assistance and counseling",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "3b",
+        "title": "Migration flows and cross-border mobility are well managed, with measures to ensure well-being, including health, security and safety throughout the mobility continuum.",
+        "description": "",
+        "short_term_outcomes": [
+          {
+            "id": "3b1",
+            "title": "Governments are able to prevent and counter trafficking in persons, smuggling of migrants and related transnational organised crimes at all levels in line with the Palermo Protocols",
+            "description": "",
+            "indicators": [
+              {
+                "id": "3b1a",
+                "title": "# and % of government officials who report having applied knowledge and skills acquired to prevent and counter trafficking in person, smuggling of migrants and related crimes.",
+                "description": ""
+              },
+              {
+                "id": "3b1b",
+                "title": "# of countries that actively participate in and contribute to bilateral, multilateral, regional and global platforms on counter-trafficking or counter-smuggling",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "3b11",
+                "title": "Relevant authorities have the knowledge, skills and tools to detect, investigate, and prosecute trafficking in persons, smuggling of migrants and related transnational organised crimes during the migration continuum.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3b11a",
+                    "title": "# of government institutions provided with knowledge, skills and tools to detect, investigate or prosecute organized crimes during the migration continuum",
+                    "description": ""
+                  },
+                  {
+                    "id": "3b11b",
+                    "title": "# of government officials who have capacities to detect, investigate and prosecute organised crimes during the migration continuum",
+                    "description": ""
+                  },
+                  {
+                    "id": "3b11c",
+                    "title": "# of initiatives developed with IOM support to counter smuggling or trafficking",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3b12",
+                "title": "Victims of trafficking, individuals at risks of trafficking in persons (TiP) and communities are equipped with up-to-date knowledge of TiP, migrant smuggling and other transnational organised crime, and on how to report trafficking networks and perpetrators to relevant authorities.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3b12a",
+                    "title": "# of persons who have directly participated in information and awareness raising activities on TiP, migrant smuggling, or other transnational organised crime",
+                    "description": ""
+                  },
+                  {
+                    "id": "3b12b",
+                    "title": "# of persons (estimated audience) reached with campaigns on TiP, migrant smuggling, or other transnational organised crime",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3b13",
+                "title": "Key stakeholders, including law enforcement and border officials and CSOs, have access to data and evidence to detect and report human trafficking and smuggling networks and to inform further interventions",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3b13a",
+                    "title": "# of stakeholders with access to migration research and analysis, including data, to detect and report human trafficking and smuggling networks",
+                    "description": ""
+                  },
+                  {
+                    "id": "3b13b",
+                    "title": "# of community policing fora or platforms that are established or strengthened on TiP awareness and prevention",
+                    "description": ""
+                  },
+                  {
+                    "id": "3b13c",
+                    "title": "# of community actors trained to facilitate community dialogue, outreach, and planning response to irregular migration, TiP, SoM",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3b2",
+            "title": "Migrants have access to essential healthcare along migration routes and the risks that population mobility may pose to individual and public health are mitigated.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "3b2a",
+                "title": "# of health systems strengthening interventions to improve health care services for migrants and mobile populations.",
+                "description": ""
+              },
+              {
+                "id": "3b2b",
+                "title": "# of persons who underwent pre-migration health activities",
+                "description": ""
+              },
+              {
+                "id": "3b2c",
+                "title": "# of government-led initiatives to include migration health in policies, strategies or programmes",
+                "description": ""
+              },
+              {
+                "id": "3b2d",
+                "title": "# of countries that include migrants and human mobility in national public health emergency preparedness and response planning",
+                "description": ""
+              },
+              {
+                "id": "3b2e",
+                "title": "# of government-led initiatives aiming at improving migrants' access to mental health and psychosocial support",
+                "description": ""
+              },
+              {
+                "id": "3b2f",
+                "title": "# of global, national and local guidance developed or co-developed for mental health and psychosocial support",
+                "description": ""
+              },
+              {
+                "id": "3b2g",
+                "title": "# of vulnerable individuals supported with MHPSS",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "3b21",
+                "title": "Governments and health service providers have increased skills, tools and resources to deliver health care services to migrants before departure, in transit and upon arrival, including in hard-to-reach areas along migration corridors and routes.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3b21a",
+                    "title": "# of government institutions and health providers supported with tools and resources to deliver health care services to migrants",
+                    "description": ""
+                  },
+                  {
+                    "id": "3b21b",
+                    "title": "# of PoEs supported to undertake preparedness and response measures for public health emergencies",
+                    "description": ""
+                  },
+                  {
+                    "id": "3b21c",
+                    "title": "# of migrant protection, law enforcement, integration and migration professionals trained on mental health and psychosocial support",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3b22",
+                "title": "Networks of community health workers are strengthened to educate communities about migration and health and link communities with available migrant-inclusive services.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3b22a",
+                    "title": "# of community health workers and volunteers trained by IOM to provide healthcare support at the community level",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3b3",
+            "title": "Government, development and humanitarian actors responsibly collect and use disaggregated data to inform mobility management systems, procedures, decisions and policies.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "3b3a",
+                "title": "# of governments, development and humanitarian actors who collect and use disaggregated data to inform mobility management systems, procedures, decisions or policies.",
+                "description": ""
+              },
+              {
+                "id": "3b3b",
+                "title": "# of government institutions, development or humanitarian actors involved in initiatives related to the collection, dissemination and use of mobility forecast data to inform decision-making on border management",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "3b31",
+                "title": "Data management systems are in place, such as border management information systems and passenger data exchange (Advance Passenger Information and Passenger Name Record), and used, while respecting data protection principles and disaggregating relevant data by gender, migration status and other key variables",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3b31a",
+                    "title": "# of governments equipped with MIDAS",
+                    "description": ""
+                  },
+                  {
+                    "id": "3b31b",
+                    "title": "# and % of borders within country equipped with MIDAS",
+                    "description": ""
+                  },
+                  {
+                    "id": "3b31c",
+                    "title": "# of border management-related information sharing systems developed in line with international standards",
+                    "description": ""
+                  },
+                  {
+                    "id": "3b31d",
+                    "title": "# of passenger data exchange systems developed (Advance Passenger Information or Passenger Name Record)",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3b32",
+                "title": "Immigration and border officials have knowledge and skills on document security, identity management, biometric solutions, data management and data protection.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3b32a",
+                    "title": "# of immigration and border officials trained on document authenticity and/or document fraud detection",
+                    "description": ""
+                  },
+                  {
+                    "id": "3b32b",
+                    "title": "# of immigration and border officials trained on identity management and the responsible use of biometrics",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3b4",
+            "title": "Integrated, non-discriminatory border management policies, strategies and systems ensure the human rights, dignity and safety and security of all those on the move, including children and vulnerable migrants.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "3b4a",
+                "title": "# of government-led initiatives implemented through policies, strategies, or systems for enhanced immigration and border management to facilitate cross-border mobility and streamline immigration processes",
+                "description": ""
+              },
+              {
+                "id": "3b4b",
+                "title": "# of preventable deaths of migrants along migratory routes",
+                "description": ""
+              },
+              {
+                "id": "3b4c",
+                "title": "# of migrants reported missing along migratory routes",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "3b41",
+                "title": "Governments have the knowledge and skills to develop inclusive immigration and border management policies, in line with international standards.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3b41a",
+                    "title": "# of immigration and border officials trained on developing inclusive immigration or border management policies",
+                    "description": ""
+                  },
+                  {
+                    "id": "3b41b",
+                    "title": "# of immigration and border officials who have capacities to deliver inclusive immigration or border management policies",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3b42",
+                "title": "Immigration and border management authorities have adequate infrastructure and equipment for safe, integrated and coordinated border management in air, on land and at sea.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3b42a",
+                    "title": "# of authorities provided with new or upgraded infrastructure or equipment for border management in air, on land or at sea",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3b43",
+                "title": "Immigration and border management officials, frontline and transit facility staff are able to take adequate protection measures, facilitate and support persons with protection concerns, such as victims of trafficking and smuggling, unaccompanied and separated migrant children, and survivors of Gender-Based Violence including sexual exploitation and abuse.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3b43a",
+                    "title": "# of immigration and border management officials, frontline or transit facility staff trained on the protection of vulnerable migrants",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3b44",
+                "title": "Relevant authorities have the knowledge, skills and tools to track, investigate and identify deceased migrants and those who have gone missing along migratory routes.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3b44a",
+                    "title": "# of officials trained by IOM to track, investigate and identify deceased migrants and those who have gone missing along migratory route",
+                    "description": ""
+                  },
+                  {
+                    "id": "3b44b",
+                    "title": "# of officials who have capacities to track, investigate and identify deceased migrants and those who have gone missing along migratory routes",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3b45",
+                "title": "Alternatives to detention are made available for people with special attention to more at-risk migrants including women, children, trafficked persons, people with severe health conditions and disabilities.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3b45a",
+                    "title": "# of initiatives where detention alternatives are established with the support of IOM",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3b46",
+                "title": "Border management officials and frontline workers have the knowledge and skills to prevent family separation and promote family reunification",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3b46a",
+                    "title": "# of beneficiaries supported with family reunification procedures",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "3c",
+        "title": "Migration policy and legal frameworks are coordinated through a whole-of-government approach and are aligned with international standards.",
+        "description": "",
+        "short_term_outcomes": [
+          {
+            "id": "3c1",
+            "title": "Governments implement comprehensive and evidence-based development strategies to address inequalities such as uneven access to natural resources and other adverse socio-economic or community factors.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "3c1a",
+                "title": "# of development strategies implemented that address inequalities for migrants.",
+                "description": ""
+              },
+              {
+                "id": "3c1b",
+                "title": "# of beneficiaries who report having improved access to natural resources or other socio-economic opportunities",
+                "description": ""
+              },
+              {
+                "id": "3c1c",
+                "title": "# of government-led initiatives that address inequalities or other adverse socio-economic drivers to migration",
+                "description": ""
+              },
+              {
+                "id": "3c1d",
+                "title": "# of government-led initiatives that facilitate access to financial systems for migrants, displaced persons or transnational communities",
+                "description": ""
+              },
+              {
+                "id": "3c1e",
+                "title": "# and % of migrants, displaced persons or transnational community members who report actively contributing to sustainable development",
+                "description": ""
+              },
+              {
+                "id": "3c1f",
+                "title": "% of GDP from remittances of transnational communities",
+                "description": ""
+              },
+              {
+                "id": "3c1g",
+                "title": "# of international or national financial institutions who leverage migrants' contribution to sustainable development",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "3c11",
+                "title": "Governments have the capacity to address inequalities and other adverse socio-economic drivers to migration.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3c11a",
+                    "title": "# of government officials who have participated in capacity development activities to address inequalities and other adverse socio-economic drivers to migration",
+                    "description": ""
+                  },
+                  {
+                    "id": "3c11b",
+                    "title": "# of government officials who have capacities to address inequalities socio-economic drivers to migration",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3c12",
+                "title": "Governments have the knowledge and tools to put in place measures for equitable access to natural resources for people.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3c12a",
+                    "title": "# of government institutions or relevant stakeholders supported in the development of policies or strategies to promote equitable access to natural resources",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3c13",
+                "title": "Governments have sufficient, reliable data and analysis on socio-economic needs of people at risk of engaging in unsafe or harmful migration, in particular those belonging to marginalized or vulnerable groups, [as a basis to inform evidence-based solutions].",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3c13a",
+                    "title": "# of government policy makers reached with up-to-date migration research, analysis or information on socioeconomic needs of populations at risk of irregular migration",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3c14",
+                "title": "Migrants, displaced persons and transnational communities are financially literate and have access to remittance channels and other financial services.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3c14a",
+                    "title": "# of initiatives supported to increase the financial literacy of migrants, displaced persons or transnational communities",
+                    "description": ""
+                  },
+                  {
+                    "id": "3c14b",
+                    "title": "# and % of migrants, displaced persons or transnational community members who report to be financially literate",
+                    "description": ""
+                  },
+                  {
+                    "id": "3c14c",
+                    "title": "# and % of migrants, displaced persons or transnational community members who report having access to financial services, including remittance channels",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3c15",
+                "title": "International and national financial institutions and governments are equipped with the knowledge and skills to leverage migrants' contribution to sustainable development through remittance, knowledge and skills transfer arrangements.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3c15a",
+                    "title": "# of initiatives supported to leverage migrants' contributions to sustainable development through remittances, knowledge and skills transfer",
+                    "description": ""
+                  },
+                  {
+                    "id": "3c15b",
+                    "title": "# of international or national financial institutions supported with knowledge and skills to leverage migrants' contribution to sustainable development",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3c2",
+            "title": "The global evidence base on migration is strengthened and available to governments and other relevant stakeholders.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "3c2a",
+                "title": "# of new or revised policies relevant to migration and mobility with a clear reference to migration-related evidence.",
+                "description": ""
+              },
+              {
+                "id": "3c2b",
+                "title": "# of global initiatives that enable access to migration data, research or analysis for governments and other relevant stakeholders",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "3c21",
+                "title": "IOM Global level initiatives are launched or strengthened to support data availability, access, analysis and promote the responsible use of migration data and research.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3c21a",
+                    "title": "# of average monthly users of the Global Migration Data Portal",
+                    "description": ""
+                  },
+                  {
+                    "id": "3c21b",
+                    "title": "# of average monthly users of the Migration Network Hub",
+                    "description": ""
+                  },
+                  {
+                    "id": "3c21c",
+                    "title": "# of new outputs related to migration data, research and analysis or migration data capacity development, contributing to the knowledge and evidence base in the field of migration",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3c22",
+                "title": "At national and regional levels, whole-of-government and whole-of-society coordination mechanisms improve migration data collection, management, sharing, analysis and use, as well as data harmonization.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3c22a",
+                    "title": "# of whole-of-government coordination mechanisms developed and maintained with IOM support to improve migration data collection, management, sharing, harmonization and use",
+                    "description": ""
+                  },
+                  {
+                    "id": "3c22b",
+                    "title": "# of initiatives supported to actively involve civil society and the private sector in efforts to improve migration data, including via coordination mechanisms",
+                    "description": ""
+                  },
+                  {
+                    "id": "3c22c",
+                    "title": "# of processes and initiatives supported to facilitate regional cooperation on migration data for evidenced-base policy development",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3c3",
+            "title": "Governments and relevant stakeholders responsibly collect, analyse, share and disseminate quality, timely, disaggregated and comparable migration-relevant data.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "3c3a",
+                "title": "# and % of new or revised data plans or data governance frameworks relevant to migration and reflecting global commitments.",
+                "description": ""
+              },
+              {
+                "id": "3c3b",
+                "title": "# of partnerships in support of quality, timely, disaggregated, and comparable migration data.",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "3c31",
+                "title": "Governments and other key stakeholders, including international organizations, civil society and the private sector, have increased knowledge and expertise to collect, manage, analyze and disseminate migration data in line with their needs, regional priorities, global commitments and in full respect of data protection and privacy.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3c31a",
+                    "title": "# of government, academia or practitioner initiatives supported, including through data plans and data governance frameworks, to collect, analyse and utilize migration data and statistics",
+                    "description": ""
+                  },
+                  {
+                    "id": "3c31b",
+                    "title": "# of officials trained on migration data who have increased knowledge and expertise to collect, manage, analyze and disseminate migration data",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3c32",
+                "title": "Governments and other stakeholders have access to relevant data resources including data standards, best practices, research methods and survey instruments.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3c32a",
+                    "title": "# of governments and other stakeholders who report to have access to relevant data resources",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3c4",
+            "title": "Governments enact migration policies, coordination mechanisms and legal frameworks that support good migration governance in line with international standards.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "3c4a",
+                "title": "# of new or revised migration-relevant and specific policies or laws developed with support from IOM.",
+                "description": ""
+              },
+              {
+                "id": "3c4b",
+                "title": "# and % of government officials who report having confidence in applying their newly acquired migration governance skills",
+                "description": ""
+              },
+              {
+                "id": "3c4c",
+                "title": "# of countries participating in assessments of migration policies or frameworks based on the Migration Governance Indicators",
+                "description": ""
+              },
+              {
+                "id": "3c4d",
+                "title": "# of migration governance materials developed by regional or international policy coordination mechanisms",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "3c41",
+                "title": "Governments and key stakeholders have access to migration research and reliable data analysis to engage in evidence-informed dialogue and learning exchange on policies and processes supporting good migration at global, regional and national levels.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3c41a",
+                    "title": "# of government officials or key stakeholders who have capacity to engage in evidence-informed dialogue or learning exchange on policies and processes for good migration governance",
+                    "description": ""
+                  },
+                  {
+                    "id": "3c41b",
+                    "title": "# and % of government officials or other stakeholders who report having access to migration research or reliable data analysis to inform good migration governance",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3c42",
+                "title": "Regional and international policy coordination mechanisms, including Intergovernmental Organizations (IGOs) and Inter-State Coordination Mechanisms (ISCMs) are supported to foster coherence, promote adherence to international conventions and protocols, and encourage more effective migration governance.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3c42a",
+                    "title": "# of regional or international policy coordination mechanisms set up with IOM involvement providing technical secretariat support",
+                    "description": ""
+                  },
+                  {
+                    "id": "3c42b",
+                    "title": "# of initiatives that support ISCMs to foster coherence, promote adherence to international conventions and protocols, or encourage more effective migration governance",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3c43",
+                "title": "Governments and key stakeholders at the local, national and regional levels have relevant capacity to develop migration policies and frameworks contributing to good migration governance, including a Whole of Government and Whole of Society approach.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3c43a",
+                    "title": "# of government officials or other stakeholders who have capacity on good migration governance",
+                    "description": ""
+                  },
+                  {
+                    "id": "3c43b",
+                    "title": "# of government officials and other stakeholders trained on the development of migration policies or legal frameworks contributing to good migration governance",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3c5",
+            "title": "Governments mainstream migration in related policies and strategic decision-making across sectors and agendas",
+            "description": "",
+            "indicators": [
+              {
+                "id": "3c5a",
+                "title": "# of sectoral policies where migration has been mainstreamed.",
+                "description": ""
+              },
+              {
+                "id": "3c5b",
+                "title": "# of countries where migration is mainstreamed in the National Adaptation Plan.",
+                "description": ""
+              },
+              {
+                "id": "3c5c",
+                "title": "# of new or revised policies that have integrated GCM objectives.",
+                "description": ""
+              },
+              {
+                "id": "3c5d",
+                "title": "# of countries where migration is mainstreamed in Voluntary National Reviews (VNR's).",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "3c51",
+                "title": "Governments [at the local, national and regional levels] and key stakeholders have the skills, knowledge, resources and evidence to effectively mainstream migration into relevant multi-sectoral policies and strategies.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3c51a",
+                    "title": "# of government officials or other stakeholders equipped with the skills, knowledge, resources and evidence to effectively mainstream migration into relevant multi-sectoral policies and strategies",
+                    "description": ""
+                  },
+                  {
+                    "id": "3c51b",
+                    "title": "# of resource materials   developed to mainstream migration into relevant policies and strategies based on evidence",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3c52",
+                "title": "Governments, through the UN Network on Migration, receive effective, coordinated and whole-of-system support to develop and implement migration policies and mainstream migration into related public policy domains, in line with the 2030 Agenda, the GCM and other relevant frameworks in humanitarian, environment and related fields.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3c52a",
+                    "title": "# of governments supported by IOM, through the UN Network on Migration and the UN Development system, to effectively mainstream migration into related public policy domains",
+                    "description": ""
+                  },
+                  {
+                    "id": "3c52b",
+                    "title": "# of governments receiving support through the UN Network on Migration to develop or implement migration policies or frameworks supporting good migration governance",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "3d",
+        "title": "Migrants  become accepted into society, both as individuals and as group, and are protected from violence, exploitation and abuse.",
+        "description": "",
+        "short_term_outcomes": [
+          {
+            "id": "3d3",
+            "title": "Governments and civil society stakeholders provide gender and child sensitive protection and assistance to marginalized or vulnerable migrants.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "3d3a",
+                "title": "# of gender- and child-sensitive strategies for protection or assistance in place for marginalized or vulnerable migrants.",
+                "description": ""
+              },
+              {
+                "id": "3d3b",
+                "title": "# of government-led initiatives to provide protection to marginalized or vulnerable migrants.",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "3d31",
+                "title": "Government and civil society stakeholders have improved knowledge, skills and resources to protect the rights of vulnerable migrants, including children and victims of trafficking, and are equipped to apply a survivor-centered, gender-sensitive, human-rights based approach.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3d31a",
+                    "title": "# of government officials or civil society stakeholder who have capacities, resources or tools to protect the rights of vulnerable migrants using a survivor-centered, gender-sensitive, human rights-based approach",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3d32",
+                "title": "Protection and essential service providers have access to tools and guidelines to effectively respond to the protection needs and rights of vulnerable migrants and displacement affected populations, including children and victims of trafficking.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3d32a",
+                    "title": "# of protection or relevant stakeholders trained on tools and guidelines to effectively respond to the protection needs of migrants in vulnerable situations",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3d33",
+                "title": "Stakeholder coordination and referral pathways for the identification and protection of vulnerable migrants are in place at different levels of government.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3d33a",
+                    "title": "# of referral mechanisms established or strengthened to uphold migrants' rights to access to protection",
+                    "description": ""
+                  },
+                  {
+                    "id": "3d33b",
+                    "title": "# of stakeholder coordination mechanism developments supported or strengthened to respond to protection needs and rights of marginalized or vulnerable migrants",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3d34",
+                "title": "GBV survivors of all gender and age groups, including Sexual Exploitation and Abuse (SEA), are provided with survivor-centered, gender- and child-sensitive multisectoral services, including protection, health,  and other types of assistance and support.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3d34a",
+                    "title": "# of GBV specialized services established or supported",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3d35",
+                "title": "Internal and international environmental migrants have access to multidimensional protection interventions.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3d35a",
+                    "title": "# of environmental migrants and community members who have access to multidimensional protection interventions",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3d4",
+            "title": "Vulnerable or marginalized migrants, including unaccompanied children and victims of trafficking, claim their rights and access to protection-related services that prioritize their safety and dignity, participation and overall empowerment.",
+            "description": "",
+            "indicators": [
+              {
+                "id": "3d4a",
+                "title": "# of vulnerable or marginalized migrants who use appropriate protection services prioritizing their safety, dignity, participation and overall empowerment.",
+                "description": ""
+              }
+            ],
+            "outputs": [
+              {
+                "id": "3d41",
+                "title": "Governments have the capacity to establish protection pathways for migrants in need of access to regular migration channels, including Victims of Trafficking.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3d41a",
+                    "title": "# of government officials who have capacity to establish pathways for migrants in vulnerable situations who are in need of protection through regular migration channels",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3d42",
+                "title": "Vulnerable migrants, including unaccompanied children and victims of trafficking have access to protection-related assistance, including throughout the return and reintegration, process.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3d42a",
+                    "title": "# of specialized protection services delivered to individuals in situations of vulnerability",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3d43",
+                "title": "Protection actors and service providers have access to baseline information to identify and remove barriers to access.",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3d43a",
+                    "title": "# of assessments on barriers to access services (disaggregated by type of assessment)",
+                    "description": ""
+                  }
+                ]
+              },
+              {
+                "id": "3d44",
+                "title": "Vulnerable or marginalized migrants are consulted and actively involved in shaping the programs and policies impacting them",
+                "description": "",
+                "indicators": [
+                  {
+                    "id": "3d44a",
+                    "title": "# and % of beneficiaries reporting that assistance is delivered in a safe, accessible, accountable and participatory manner",
+                    "description": ""
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Migration governance is supported by a Whole-of-Government and Whole-of-Society approach",
+    "description": "",
+    "long_term_outcomes": [
+      {
+        "id": "4",
+        "title": "Accurate, disaggregated evidence on human mobility is collected, shared and utilized for evidence-based policy making by governments [at the local, national, regional and global level]",
+        "description": "",
+        "short_term_outcomes": []
+      },
+      {
+        "id": "4b",
+        "title": "[Government] Institutions, systems and migration policy and legal frameworks are well-coordinated, aligned with international standards, and coherent with broader development and policy planning from the global to the local level",
+        "description": "",
+        "short_term_outcomes": []
+      }
+    ]
+  }
+]
