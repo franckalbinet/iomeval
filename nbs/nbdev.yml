@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "iomeval"
+  site-url: "https://franckalbinet.github.io/iomeval"
+  description: "IOM evaluation assistant"
+  repo-branch: main
+  repo-url: "https://github.com/franckalbinet/iomeval"
