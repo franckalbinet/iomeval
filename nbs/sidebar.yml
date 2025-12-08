@@ -8,3 +8,4 @@ website:
           - 02_downloaders.ipynb
           - 03_extract.ipynb
           - 04_themes.ipynb
+          - 05_mapper.ipynb

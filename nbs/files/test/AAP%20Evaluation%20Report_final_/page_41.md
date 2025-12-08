@@ -1,0 +1,5 @@
+- Ensure AAP focal points or dedicated staff have formalized inter-agency tasks in their job descriptions and their terms of reference, and that AAP coordination is part of the overall objectives of designated AAP roles.
+- Include AAP resources (staff capacity and funding) to allow for active IOM participation in inter-agency spaces, including co-leading AAP working groups and taskforces when relevant.
+- Include collective AAP contributions as a key metric of a revised theory of change and monitoring framework for AAP (linked to Recommendation 3).
+- Disseminate the IOM-led inter-agency leadership training on AAP to all IOM senior management.
+- Showcase successful experiences of collective accountability within IOM (for example, Ethiopia and Response for Venezuela).
