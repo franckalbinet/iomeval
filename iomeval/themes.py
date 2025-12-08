@@ -4,7 +4,7 @@
 
 # %% auto 0
 __all__ = ['load_enablers', 'load_ccp', 'load_srf_outs', 'load_gcms', 'load_gcm_lut', 'fmt_enablers_ccp', 'get_srf_out',
-           'fmt_srf_out', 'fmt_srf_outs', 'get_srf_outs', 'load_all']
+           'fmt_srf_out', 'fmt_srf_outs', 'get_srf_outs', 'load_all_themes']
 
 # %% ../nbs/04_themes.ipynb 2
 from fastcore.all import *
@@ -97,7 +97,8 @@ def get_srf_outs(lut:dict, # GCM to SRF lookup dict
     return L(v for k,v in lut.items() if k in gcm_ids).concat()
 
 # %% ../nbs/04_themes.ipynb 23
-def load_all(path:str='files/themes' # Directory containing theme files
-            ) -> dict:
-    "Load all theme data"
-    return dict(enablers=load_enablers(path), ccp=load_ccp(path), gcms=load_gcms(path), srf_outs=load_srf_outs(path), gcm_lut=load_gcm_lut(path))
+def load_all_themes(path:str='files/themes'  # Directory containing theme JSON files
+                   ) -> AttrDict:             # Dict with enablers, ccp, gcms, srf_outs, gcm_lut
+    "Load all theme data from path"
+    return AttrDict(enablers=load_enablers(path), ccp=load_ccp(path), gcms=load_gcms(path), 
+                    srf_outs=load_srf_outs(path), gcm_lut=load_gcm_lut(path))

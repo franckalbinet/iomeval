@@ -4,14 +4,14 @@
 
 # %% auto 0
 __all__ = ['ThemeScore', 'ThemeScores', 'parse_json_response', 'sort_by_centrality', 'get_top_ids', 'mk_system_blocks',
-           'map_themes', 'load_all_themes', 'load_prompts', 'map_all']
+           'map_themes', 'load_prompts', 'map_all']
 
 # %% ../nbs/05_mapper.ipynb 4
 from fastcore.all import *
 from pydantic import BaseModel
 from lisette.core import completion, mk_msg
 from .core import load_prompt, n_tokens
-from .themes import load_enablers, load_ccp, load_gcms, load_srf_outs, load_gcm_lut, fmt_enablers_ccp, fmt_srf_outs, get_srf_outs
+from .themes import load_enablers, load_ccp, load_gcms, load_srf_outs, load_gcm_lut, fmt_enablers_ccp, fmt_srf_outs, get_srf_outs, load_all_themes
 import json
 
 # %% ../nbs/05_mapper.ipynb 6
@@ -53,19 +53,12 @@ def map_themes(system_blocks:list,   # Cached system blocks from mk_system_block
                      response_format=response_format, max_tokens=8192)
 
 # %% ../nbs/05_mapper.ipynb 20
-def load_all_themes(path:str='files/themes'  # Directory containing theme JSON files
-                   ) -> AttrDict:             # Dict with enablers, ccp, gcms, srf_outs, gcm_lut
-    "Load all theme data from path"
-    return AttrDict(enablers=load_enablers(path), ccp=load_ccp(path), gcms=load_gcms(path), 
-                    srf_outs=load_srf_outs(path), gcm_lut=load_gcm_lut(path))
-
-# %% ../nbs/05_mapper.ipynb 21
 def load_prompts(path:str='files/prompts'  # Directory containing prompt files
                 ) -> AttrDict:              # Dict with srf_enablers, srf_ccps, gcm, srf_outputs prompts
     "Load all mapping prompts"
     return AttrDict({k: load_prompt(k, path) for k in ['srf_enablers', 'srf_ccps', 'gcm', 'srf_outputs']})
 
-# %% ../nbs/05_mapper.ipynb 22
+# %% ../nbs/05_mapper.ipynb 21
 @delegates(map_themes)
 def map_all(report:str,                      # Full report text to analyze
             path:str='files/themes',         # Directory containing theme JSON files
