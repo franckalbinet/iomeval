@@ -7,7 +7,6 @@ __all__ = ['default_config', 'EvalReader', 'iom_input_cfg', 'Evaluation', 'IOMRe
 
 # %% ../nbs/01_readers.ipynb 3
 from pathlib import Path
-from rich import print
 from dataclasses import dataclass
 import json
 import hashlib
