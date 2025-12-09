@@ -6,6 +6,61 @@
 [![CI](https://github.com/franckalbinet/iomeval/actions/workflows/test.yaml/badge.svg)](https://github.com/franckalbinet/iomeval/actions/workflows/test.yaml)
 [![PyPI](https://img.shields.io/pypi/v/iomeval.png)](https://pypi.org/project/iomeval/)
 
+`iomeval` streamlines the mapping of [IOM](https://www.iom.int)
+evaluation reports against strategic frameworks like the [Strategic
+Results Framework (SRF)](https://srf.iom.int/) and [Global Compact for
+Migration
+(GCM)](https://www.un.org/en/development/desa/population/migration/generalassembly/docs/globalcompact/A_RES_73_195.pdf).
+It uses LLMs to process PDF reports, extract key sections, and tag/map
+them to framework components, turning dispersed, untagged evaluation
+documents into structured, searchable knowledge maps.
+
+## Why This Matters
+
+UN agencies produce extensive evaluation reports and other public
+documents. For IOM, this body of knowledge is extensive and variegated,
+but putting it to practical use becomes more challenging as volume
+increases, particularly when documentation is stored across different
+repositories with no single index available.
+
+**The Challenge for IOM**
+
+IOM’s evaluation production is highly decentralized, with reports stored
+across multiple repositories (the [IOM Evaluation
+Repository](https://evaluation.iom.int/evaluation-search-pdf), IOM
+Library, IOM Protection Platform). Quality varies greatly—quality
+control processes are not applied uniformly, and variation also reflects
+the inherent subjectivity in evaluation approaches and interpretations.
+Reports also vary significantly in structure: some follow common formats
+with executive summaries, findings, and recommendations, while others
+have different structures entirely. This inconsistency makes systematic
+mapping challenging.
+
+Critically, existing metadata doesn’t indicate which elements of IOM’s
+strategic frameworks—the [Strategic Results Framework
+(SRF)](https://srf.iom.int/) or the [Global Compact for Migration
+(GCM)](https://www.un.org/en/development/desa/population/migration/generalassembly/docs/globalcompact/A_RES_73_195.pdf)—each
+report addresses. This is a major gap that limits the ability to connect
+evaluation evidence with key strategic frameworks.
+
+**Evidence Maps as a Solution**
+
+Evidence Maps display the extent and nature of research and evaluation
+available on a subject. Following the 2025 UNEG Eval Week, four primary
+use cases emerged: guiding future evidence generation, informing policy
+decisions, knowledge management, and enhancing collaboration. The maps
+created by `iomeval` serve primarily as **knowledge management
+tools**—structured repositories that make identifying relevant sources
+easier by organizing them against strategic framework components.
+
+**What This Enables**
+
+By tagging reports against SRF outputs, enablers, cross-cutting
+priorities, and GCM objectives, these maps help answer questions like:
+Which framework elements are well-covered by existing evaluations? Where
+are the knowledge gaps that should prioritize future evaluation work?
+Which themes have enough evidence for a dedicated synthesis report?
+
 ## Installation
 
 ``` sh
@@ -49,27 +104,6 @@ run_pipeline(report)
 
 The rich display shows processing status across all pipeline stages -
 from OCR through framework mapping.
-
-## Understanding Evaluation Mapping in the UN Context
-
-UN agencies conduct hundreds of evaluations annually. Each report
-contains valuable insights about what works (and what doesn’t) in
-international development and humanitarian response. However, these
-insights are often:
-
-- Buried in lengthy PDF documents
-- Difficult to compare across projects
-- Hard to connect to strategic frameworks and goals
-
-iomeval addresses this by automatically extracting key sections and
-mapping findings to IOM’s strategic frameworks, enabling:
-
-- **Portfolio Analysis**: Understand patterns across multiple
-  evaluations
-- **Strategic Alignment**: See how project outcomes connect to
-  organizational priorities
-- **Knowledge Management**: Make evaluation insights searchable and
-  comparable
 
 ## Detailed Workflow
 
