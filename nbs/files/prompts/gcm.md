@@ -100,7 +100,7 @@ Return a JSON array with EXACTLY 23 objects, one per GCM Objective, following th
 ```json
 [
   {
-    "theme_id": string,
+    "theme_id": string (MUST use the exact objecive ID from input, e.g., "1", "2", "3"),
     "theme_title": string,
     "centrality_score": float (0.0-1.0, 2 decimals),
     "reasoning": string (max 150 words, must reference specific report sections),

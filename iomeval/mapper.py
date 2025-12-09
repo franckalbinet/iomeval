@@ -30,10 +30,16 @@ class ThemeScores(BaseModel):
 def parse_json_response(res): return json.loads(res.choices[0].message.content)
 
 # %% ../nbs/05_mapper.ipynb 10
-def sort_by_centrality(res): return sorted(parse_json_response(res)['scores'], key=lambda x: x['centrality_score'], reverse=True)
+def sort_by_centrality(res):
+    "Sort themes by centrality score, accepts raw response or parsed dict"
+    data = res if isinstance(res, dict) else parse_json_response(res)
+    return sorted(data['scores'], key=lambda x: x['centrality_score'], reverse=True)
 
 # %% ../nbs/05_mapper.ipynb 11
-def get_top_ids(res, threshold=0.7): return [s['theme_id'] for s in parse_json_response(res)['scores'] if s['centrality_score'] >= threshold]
+def get_top_ids(res, min_score=0.7):
+    "Get IDs of themes with centrality score >= min_score, accepts raw response or parsed dict"
+    data = res if isinstance(res, dict) else parse_json_response(res)
+    return [o['theme_id'] for o in data['scores'] if o['centrality_score'] >= min_score]
 
 # %% ../nbs/05_mapper.ipynb 13
 def mk_system_blocks(report:str  # Full report text to analyze

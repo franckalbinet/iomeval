@@ -75,7 +75,7 @@ Return a JSON array with EXACTLY 7 objects, one per SRF Enabler, following this 
 ```json
 [
   {
-    "theme_id": string,
+    "theme_id": string (MUST use the exact Enabler ID from input, e.g., "1", "2", "3"),
     "theme_title": string,
     "centrality_score": float (0.0-1.0, 2 decimals),
     "reasoning": string (max 150 words, must reference specific report sections),

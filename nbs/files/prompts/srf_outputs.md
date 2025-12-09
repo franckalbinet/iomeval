@@ -82,7 +82,7 @@ Return a JSON array with one object per provided SRF Output, following this stru
 ```json
 [
   {
-    "theme_id": string,
+    "theme_id": string (MUST use the exact objecive ID from input using the following pattern "1a31"),
     "theme_title": string,
     "centrality_score": float (0.0-1.0, 2 decimals),
     "reasoning": string (max 120 words, must reference specific report sections and program activities),

@@ -9,3 +9,4 @@ website:
           - 03_extract.ipynb
           - 04_themes.ipynb
           - 05_mapper.ipynb
+          - 06_pipeline.ipynb
