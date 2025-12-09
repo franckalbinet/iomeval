@@ -5,6 +5,7 @@
 
 [![CI](https://github.com/franckalbinet/iomeval/actions/workflows/test.yaml/badge.svg)](https://github.com/franckalbinet/iomeval/actions/workflows/test.yaml)
 [![PyPI](https://img.shields.io/pypi/v/iomeval.png)](https://pypi.org/project/iomeval/)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
 `iomeval` streamlines the mapping of [IOM](https://www.iom.int)
 evaluation reports against strategic frameworks like the [Strategic

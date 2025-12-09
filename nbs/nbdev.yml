@@ -4,6 +4,6 @@ project:
 website:
   title: "iomeval"
   site-url: "https://franckalbinet.github.io/iomeval"
-  description: "IOM evaluation assistant"
+  description: "Streamline evaluation evidence mapping at scale with LLMs"
   repo-branch: main
   repo-url: "https://github.com/franckalbinet/iomeval"
