@@ -5,7 +5,7 @@
 # %% auto 0
 __all__ = ['Report', 'load_report', 'run_pipeline']
 
-# %% ../nbs/06_pipeline.ipynb 5
+# %% ../nbs/06_pipeline.ipynb 3
 from fastcore.all import *
 from pathlib import Path
 from .core import n_tokens, load_prompt
@@ -18,7 +18,7 @@ from mistocr.core import read_pgs
 from mistocr.pipeline import pdf_to_md
 import json
 
-# %% ../nbs/06_pipeline.ipynb 7
+# %% ../nbs/06_pipeline.ipynb 5
 class Report:
     "An evaluation report with full pipeline support"
     def __init__(self,
@@ -44,7 +44,35 @@ class Report:
                    results_path:str='data/results' # Path to save/load results
                   ): return cls(find_eval(evals, title, by='title'), results_path=results_path)
 
-# %% ../nbs/06_pipeline.ipynb 15
+# %% ../nbs/06_pipeline.ipynb 6
+@patch
+def _repr_markdown_(self:Report):
+    "Display report metadata and processing status in Jupyter notebooks"
+    title = self.ev.meta.get('Title', 'Untitled')
+    year = self.ev.meta.get('Year', 'n/a')
+    org = self.ev.meta.get('Evaluation Commissioner', 'Unknown')
+    
+    status = []
+    if self.pdf_path: status.append(f'✓ PDF downloaded')
+    if self.md_path: status.append(f'✓ Markdown converted')
+    if self.sections: status.append(f'✓ Sections extracted (~{n_tokens(self.sections)} tokens)')
+    if self.mappings:
+        mapped = ', '.join(self.mappings.keys())
+        status.append(f'✓ Mappings: {mapped}')
+    status_str = ' | '.join(status) if status else 'Not processed'
+    
+    return f"""
+## Report: {title}
+**Year:** {year} | **Organization:** {org}  
+**ID:** `{self.id}`
+
+**Processing Status:**  
+{status_str}
+
+**Documents:** {len(self.ev.docs)} available
+"""
+
+# %% ../nbs/06_pipeline.ipynb 13
 @patch
 def save(self:Report,
          path:str=None  # Override default results path
@@ -58,7 +86,7 @@ def save(self:Report,
     p.write_text(json.dumps(data, indent=2))
     return self
 
-# %% ../nbs/06_pipeline.ipynb 16
+# %% ../nbs/06_pipeline.ipynb 14
 def load_report(id:str,                  # Report ID (hash)
                 path:str='data/results'  # Results directory
                ) -> Report:
@@ -71,7 +99,7 @@ def load_report(id:str,                  # Report ID (hash)
     if data.get('md_path'): report.md_path = Path(data['md_path'])
     return report
 
-# %% ../nbs/06_pipeline.ipynb 21
+# %% ../nbs/06_pipeline.ipynb 19
 @patch
 def download(self:Report,
              dst:str='data/pdfs'  # Destination directory for PDFs
@@ -81,7 +109,7 @@ def download(self:Report,
     self.save(self.results_path)
     return self
 
-# %% ../nbs/06_pipeline.ipynb 25
+# %% ../nbs/06_pipeline.ipynb 23
 @patch
 async def ocr(self:Report,
               dst:str='data/md',       # Destination directory for markdown files
@@ -97,7 +125,7 @@ async def ocr(self:Report,
     self.save(self.results_path)
     return self
 
-# %% ../nbs/06_pipeline.ipynb 30
+# %% ../nbs/06_pipeline.ipynb 28
 @patch
 def extract(self:Report, **kwargs):
     "Extract core sections from markdown"
@@ -107,13 +135,13 @@ def extract(self:Report, **kwargs):
     self.save(self.results_path)
     return self
 
-# %% ../nbs/06_pipeline.ipynb 34
+# %% ../nbs/06_pipeline.ipynb 32
 @patch
 def _ensure_sys_blocks(self:Report):
     if self.sections is None: raise ValueError("Call extract() first")
     if not hasattr(self, '_sys_blocks'): self._sys_blocks = mk_system_blocks(self.sections)
 
-# %% ../nbs/06_pipeline.ipynb 35
+# %% ../nbs/06_pipeline.ipynb 33
 def _map_single(sys_blocks,                # System blocks from mk_system_blocks
                 theme_type,                 # One of: 'enablers', 'ccps', 'gcm', 'outputs'
                 path='files/themes',        # Path to theme files
@@ -130,7 +158,7 @@ def _map_single(sys_blocks,                # System blocks from mk_system_blocks
         res = map_themes(sys_blocks, fmt_srf_outs(srf_obj, output_ids), load_prompt('srf_outputs'), model)
     return parse_json_response(res)
 
-# %% ../nbs/06_pipeline.ipynb 37
+# %% ../nbs/06_pipeline.ipynb 35
 @patch
 def map_enablers(self:Report, **kwargs):
     self._ensure_sys_blocks()
@@ -138,7 +166,7 @@ def map_enablers(self:Report, **kwargs):
     self.save(self.results_path)
     return self
 
-# %% ../nbs/06_pipeline.ipynb 42
+# %% ../nbs/06_pipeline.ipynb 40
 @patch
 def map_ccps(self:Report, **kwargs):
     self._ensure_sys_blocks()
@@ -146,7 +174,7 @@ def map_ccps(self:Report, **kwargs):
     self.save(self.results_path)
     return self
 
-# %% ../nbs/06_pipeline.ipynb 46
+# %% ../nbs/06_pipeline.ipynb 44
 @patch
 def map_gcm(self:Report, **kwargs):
     self._ensure_sys_blocks()
@@ -154,7 +182,7 @@ def map_gcm(self:Report, **kwargs):
     self.save(self.results_path)
     return self
 
-# %% ../nbs/06_pipeline.ipynb 50
+# %% ../nbs/06_pipeline.ipynb 48
 @patch
 def map_outputs(self:Report, gcm_ids=None, **kwargs):
     self._ensure_sys_blocks()
@@ -163,11 +191,11 @@ def map_outputs(self:Report, gcm_ids=None, **kwargs):
     self.save(self.results_path)
     return self
 
-# %% ../nbs/06_pipeline.ipynb 54
+# %% ../nbs/06_pipeline.ipynb 52
 @patch
 def map_all(self:Report, **kwargs): return self.map_enablers(**kwargs).map_ccps(**kwargs).map_gcm(**kwargs).map_outputs(**kwargs)
 
-# %% ../nbs/06_pipeline.ipynb 56
+# %% ../nbs/06_pipeline.ipynb 54
 async def run_pipeline(url:str,                       # URL of the evaluation PDF
                        evals:list,                    # List of `Evaluation` objects to search
                        pdf_dst:str='data/pdfs',       # Destination directory for PDFs
