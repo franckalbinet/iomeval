@@ -1,0 +1,30 @@
+{
+  "img-5.jpeg": {
+    "is_informative": true,
+    "description": "A horizontal stacked bar chart showing satisfaction levels across three countries: Somalia, Ethiopia, and Sudan. Each bar represents 100% and is divided into five categories: Very satisfied (teal), Satisfied (coral/red), Neutral (dark gray), Dissatisfied (cyan), and Very dissatisfied (orange). Somalia shows 27% very satisfied, 53% satisfied, 15% neutral, and 5% dissatisfied. Ethiopia displays 17% very satisfied, 40% satisfied, 33% neutral, 8% dissatisfied, and 2% very dissatisfied. Sudan shows 12% very satisfied, 32% satisfied, 39% neutral, 16% dissatisfied, and 1% very dissatisfied. The chart demonstrates a declining trend in positive satisfaction (very satisfied + satisfied) from Somalia (80%) to Ethiopia (57%) to Sudan (44%), with a corresponding increase in neutral responses."
+  },
+  "img-0.jpeg": {
+    "is_informative": false,
+    "description": "Organizational logos - European Union flag and IOM UN Migration logo"
+  },
+  "img-1.jpeg": {
+    "is_informative": true,
+    "description": "This is a comprehensive framework diagram illustrating a multi-level approach to migrant reintegration. The diagram features a circular outer ring divided into four sectors labeled 'ECONOMIC', 'SOCIAL', 'PSYCHOSOCIAL', and 'MONITORING, EVALUATION AND LEARNING'. At the center are three overlapping circles in a Venn diagram arrangement: a blue circle with an individual person icon (top left), a red circle with multiple people icons (top right), and a yellow circle with a building/institution icon (bottom). Three colored text boxes on the right explain the three intervention levels: INDIVIDUAL LEVEL (blue) focuses on personalized assistance with preparation, flexibility, and follow-up; COMMUNITY LEVEL (red) emphasizes inclusion through social networks, joint initiatives, and partnerships; and STRUCTURAL LEVEL (yellow) addresses alignment with development policies through capacity-building, local ownership, and essential services. The diagram demonstrates how reintegration requires coordinated efforts across individual, community, and structural dimensions, integrated with economic, social, and psychosocial support systems."
+  },
+  "img-2.jpeg": {
+    "is_informative": true,
+    "description": "A conceptual diagram showing five overlapping circles arranged horizontally in a chain-like formation. Each circle is labeled with a key evaluation criterion: 'Relevance', 'Coherence', 'Effectiveness', 'Efficiency', and 'Sustainability' from left to right. The circles are rendered in a light blue/teal color and overlap at their edges, suggesting interconnection and relationships between these evaluation dimensions. This appears to be a framework or model for assessment, commonly used in program evaluation, project management, or organizational analysis contexts. The overlapping design emphasizes that these criteria are not isolated but rather interdependent aspects of evaluation."
+  },
+  "img-3.jpeg": {
+    "is_informative": true,
+    "description": "Horizontal bar chart showing two community satisfaction metrics. The chart displays two progress bars with accompanying icons and text. The first row shows 95% agreement that the project addressed community needs, represented by a community/network icon and a yellow-orange progress bar. The second row shows 92% agreement that the project addressed needs of returnees, represented by a single person icon and a similar progress bar. Both bars are nearly full, with the filled portions in yellow-orange and small unfilled portions in dark teal, visually representing the high percentage values."
+  },
+  "img-6.jpeg": {
+    "is_informative": true,
+    "description": "Pie chart showing the distribution of resources or activities across five categories. The largest segment is 'Specific Objective 3' at 62%, followed by 'Specific Objective 1' at 14%, 'Specific Objective 2' at 13%, 'Monitoring, learning, audit and evaluation' at 10%, and 'Communications and visibility' at 1%. The chart uses distinct colors for each segment: teal for Objective 1, coral/red for Objective 2, dark gray for Objective 3, bright blue for monitoring/evaluation, and orange for communications. This visualization demonstrates a heavily weighted allocation toward Specific Objective 3, which comprises nearly two-thirds of the total distribution."
+  },
+  "img-4.jpeg": {
+    "is_informative": true,
+    "description": "Bar chart comparing data across four countries (Djibouti, Ethiopia, Somalia, and Sudan) at two time points: Baseline 2017 (teal bars) and Sep-22 (coral/red bars). The y-axis ranges from 0 to 100. Ethiopia shows the highest value at Sep-22 with 83, followed by Somalia with 58, Sudan with 29, and Djibouti with 10. Baseline 2017 values are significantly lower across all countries: Djibouti (1), Ethiopia (6), Somalia (17), and Sudan (1). The chart demonstrates substantial increases between baseline and Sep-22 measurements for all countries, with Ethiopia showing the most dramatic increase of 77 units."
+  }
+}

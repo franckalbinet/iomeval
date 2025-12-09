@@ -1,0 +1,78 @@
+{
+  "img-5.jpeg": {
+    "is_informative": true,
+    "description": "Horizontal stacked bar chart showing survey responses about AAP (Advance Approval Process) knowledge and awareness since the launch of IN/285 in 2021. The chart displays two questions with responses on a 5-point scale (Very low, Low, Moderate, High, Very high, plus 'I don't know'). For 'Increased technical knowledge and capacity concerning AAP since the launch of IN/285': 3% don't know, 27% very high, 23% high, 30% moderate, 16% low, 5% very low. For 'Increased awareness of AAP since the launch of IN/285': 12% don't know, 28% very high, 28% high, 27% moderate, 12% low, 6% very low. The chart uses color-coded bars (cyan, orange, green, yellow, red, blue) corresponding to each response category. The x-axis shows percentages from 0% to 35%. Source is listed as 'Evaluation survey'."
+  },
+  "img-17.jpeg": {
+    "is_informative": true,
+    "description": "Horizontal bar chart showing barriers or challenges ranked by frequency or importance. The chart displays 11 categories with 'Capacity Building/Training' and 'Staff/Resource Availability' as the top two barriers with the longest bars extending nearly to the right edge. 'Governance/Guidelines' shows moderate length at approximately 40% of maximum. Mid-range barriers include 'I don't know/Not aware', 'Tools Availability', 'Frontline Action/Local', and 'Stakeholder Coordination'. The shortest bars represent 'CFM', 'Accountability/Commitment', 'Other', and 'Communication/Awareness' at the bottom. The bars are uniformly colored in dark blue, and the chart uses a simple grid layout with vertical gridlines for reference. This appears to be survey or assessment data related to organizational or programmatic challenges."
+  },
+  "img-10.jpeg": {
+    "is_informative": true,
+    "description": "This is a criteria evaluation matrix table focused on 'Relevance' as the main criterion. The table has 5 columns: Criteria, Questions, IOM staff HQ, IOM staff reg/local, International partners, and Local partners. The table contains 6 evaluation questions related to IOM's AAP (Accountability to Affected Populations) approach. Each question is marked with 'x' indicators showing which stakeholder groups should be consulted. The questions cover: (1) alignment of AAP with IOM Member States and UN system needs, (2) relevance of AAP mechanisms for IOM offices, (3) consideration of cross-cutting issues like human rights and gender equality, (4) engagement of marginalized groups, (5) unique aspects of IOM's AAP implementation, and (6) consideration of power differences in project design. Most questions involve consultation with IOM staff HQ and regional/local staff, with select questions also involving international and local partners."
+  },
+  "img-15.jpeg": {
+    "is_informative": true,
+    "description": "A pie chart showing gender distribution with accompanying data table. The chart displays four categories: Male (49.1%, shown in blue), Female (48.6%, shown in red), Prefer not to say (2.3%, shown in yellow/orange), and Other (0.0%). The pie chart visually represents these proportions with Male and Female segments being nearly equal in size, comprising almost the entire circle. The data is based on 214 total valid responses. The left side shows a table with the same information in text format, listing each category with its corresponding percentage."
+  },
+  "img-13.jpeg": {
+    "is_informative": true,
+    "description": "Pie chart showing regional distribution percentages. The chart displays data for multiple regions: East Asia (23.8%, largest segment in blue), Middle East (17.3%, red segment), South (10.7%, yellow segment), Headquarters (10.7%, green segment), Asia and Pacific (9.8%, orange segment), Central (8.0%, cyan segment), Central (8.4%, light blue segment), South America (3.7%, smaller light blue segment), Southern (3.1%, pink/salmon segment), and Europe (3.3%, yellow segment). The chart uses distinct colors for each segment and includes percentage labels for each region, providing a clear visual representation of proportional distribution across geographic areas."
+  },
+  "img-12.jpeg": {
+    "is_informative": true,
+    "description": "This is a survey or assessment table with a rating scale structure. The table has a blue header row with 'Question' on the left and numbered columns 1-5 on the right, plus two additional columns labeled 'I don't know/Not applicable'. The left column contains five questions related to Accountability to Affected Populations (AAP): 1) Senior leadership support to AAP, 2) Donor support to AAP, 3) Participatory mechanisms in place at IOM's field operations (both in emergency and development contexts), 4) External partners' support for APP in IOM, and 5) Visibility of IOM's work on AAP for external partners. The table appears to be a Likert-scale assessment tool where respondents would rate each question on a scale of 1-5, with an option to indicate if they don't know or if the question is not applicable."
+  },
+  "img-11.jpeg": {
+    "is_informative": true,
+    "description": "Survey or evaluation table with a rating scale from 1-5 plus 'I don't know/Not' column. The table lists five questions related to Age and Disability (AAP) guidance and tools: 1) Utility of AAP guidance and tools for programming at regional and local level, 2) Connection to cross-cutting issues of human rights, gender equality, disability and environment, 3) Coherence with other guidance, frameworks, and tools within IOM in other areas, 4) Communication of AAP's framework and tools within IOM, and 5) Utility of IOM's guidance on AAP to establish partnerships and implement joint programmes. The table appears to be part of an assessment or feedback form for evaluating IOM's Age and Disability Programming (AAP) framework."
+  },
+  "img-8.jpeg": {
+    "is_informative": true,
+    "description": "This is a circular framework diagram divided into four quadrants showing a monitoring and accountability system. The circle is split by a vertical and horizontal line creating four sections. The top half contains 'Tracking of assistance' (left) and 'Third Party Monitoring' (right). The bottom half shows 'Endorsement' (left) and 'Accountability to Affected Populations' (right). Four gray boxes surround the circle at the cardinal points, connected by arrows: 'Risk Mitigation' (top-left), 'Quantitative and Qualitative' (top-right), 'Complaints and feedback mechanism' (bottom-right), and an unlabeled box (bottom-left). The diagram illustrates an integrated approach to program monitoring, combining different monitoring methods with accountability mechanisms and risk management components."
+  },
+  "img-0.jpeg": {
+    "is_informative": false,
+    "description": "IOM UN Migration logo"
+  },
+  "img-14.jpeg": {
+    "is_informative": true,
+    "description": "Pie chart showing the distribution of responses across different office types, with accompanying data table. The chart displays five categories: Country Office (68.22%, shown in blue, occupying the majority of the pie), Regional Office (14.49%, shown in red), HQ (9.81%, shown in yellow), Other (6.54%, shown in green), and Administrative centers (0.93%, shown in a small orange slice). The left side shows a table with the same categories and percentages. Total valid responses are 214. The visualization clearly demonstrates that Country Office represents more than two-thirds of all responses, while Administrative centers represent less than 1%."
+  },
+  "img-9.jpeg": {
+    "is_informative": true,
+    "description": "Bar chart showing feedback/complaint distribution per IP (IP1-IP7). Each IP has two bars - blue bars representing 'Expressions of gratitude' and green bars representing 'Confirmed receipt of assistance'. Values range from 272-549 for blue bars and 354-549 for green bars. Below each IP pair are numerical breakdowns for different feedback categories: 'Issues with quality and quantity' (orange), 'Request to receive same assistance again/for longer time' (yellow), 'Requests for another type of assistance' (tan), and 'Other issues' (gray). IP1 shows highest values (504/549), while IP6 shows lowest (272/354). Source cited as DIPS report November 2023."
+  },
+  "img-16.jpeg": {
+    "is_informative": true,
+    "description": "Horizontal bar chart showing ranked responses to what appears to be a survey question about challenges or factors in a particular domain. The chart displays 15 categories in descending order of frequency or importance. The top three categories are 'CFM' (longest bar, extending to approximately 540 units), 'Communication' (approximately 530 units), and 'Capacity Building' (approximately 510 units). Mid-range categories include 'Affected Population' (~400 units), 'I don't know' (~380 units), 'Governance' (~340 units), 'Staff/Resources' (~310 units), 'Accountability' (~290 units), and 'Stakeholder' (~250 units). Lower-ranked categories include 'Tools Available', 'Other', 'Data Gathering', 'Institutional', 'Frontline Activities', and 'Deployment' (shortest bar at approximately 170 units). The bars are uniformly colored in dark blue, and the chart uses a clean, professional design with a white background and gridlines for easy reading of values."
+  },
+  "img-1.jpeg": {
+    "is_informative": true,
+    "description": "Process flow diagram showing five research methodology stages arranged horizontally with bidirectional arrows. The stages are: 1) Desk review (document icon), 2) Key informant interviews (people icon), 3) Focus group discussions (group meeting icon), 4) Survey (clipboard icon), and 5) Case studies (globe icon). Each stage is represented in a blue rounded rectangle with white icons and text. The horizontal arrows indicate the sequential or iterative nature of these research methods, suggesting they can be conducted in order or revisited as needed during the research process."
+  },
+  "img-2.jpeg": {
+    "is_informative": true,
+    "description": "Pie chart showing regional distribution of data across nine geographic regions. The largest segment is East Africa and the Horn of Africa at 18%, followed by Middle East and North Africa at 17%, and Headquarters/administrative centres at 15%. South-Eastern Europe, Eastern Europe and Central Asia represents 11%, matching Central and North America and the Caribbean also at 11%. Asia and the Pacific accounts for 10%, Central and West Africa for 9%, European Economic Area for 5%, and Southern Africa for 4%. The chart uses distinct colors for each region with percentage labels displayed on the segments."
+  },
+  "img-3.jpeg": {
+    "is_informative": true,
+    "description": "Horizontal stacked bar chart showing survey responses about four aspects of AAP (Age-friendly Action Plan) implementation within IOM (International Organization for Migration). The chart displays percentage distributions across five response categories: 'I don't know' (dark red), 'Very high' (blue), 'High' (cyan), 'Moderate' (orange), 'Low' (green), and 'Very low' (yellow). The four measured aspects are: 1) Utility of IOM guidance on AAP to establish partnerships and implement joint programmes (highest response: 34% High), 2) Communication of AAP Framework and tools within IOM (highest response: 40% High), 3) Connection to cross-cutting issues of human rights, gender equality, disability, and environment (highest response: 30% High), and 4) Utility of AAP guidance and tools to help with programming at regional and local level (highest response: 33% High). Each bar shows the complete distribution of responses with percentages labeled. The chart indicates generally positive perceptions with 'High' and 'Moderate' responses being most common across all categories."
+  },
+  "img-18.jpeg": {
+    "is_informative": true,
+    "description": "Horizontal bar chart showing various organizational or project challenges/factors ranked by frequency or importance. The x-axis appears to measure magnitude (unlabeled scale), while the y-axis lists categories. The top three factors are 'Capacity Building/Training' (longest bar, extending to approximately 500), 'I don't know/Not applicable' (second longest, approximately 400), and 'Governance/Guidelines' (third, approximately 400). Other significant factors include 'Staff/Resource Allocation' (approximately 325), 'Stakeholder Coordination' (approximately 300), and 'Accountability/Commitment' (approximately 225). Smaller factors at the bottom include 'CFM', 'Tools Availability', 'Other', 'Affected Population Involvement', 'Frontline Action/Local', 'Data Gathering', and 'Communication/Awareness' (shortest bar, approximately 50). All bars are displayed in dark blue color. This chart appears to represent survey results or assessment findings related to organizational challenges or barriers."
+  },
+  "img-7.jpeg": {
+    "is_informative": true,
+    "description": "Dashboard visualization showing community feedback metrics and operational presence map. Left panel displays 44,80 total feedbacks with an organization icon showing 29 organizations, and a 'Todos' dropdown filter under 'Months'. Right panel titled 'Recommendation for actions' shows 'Operational Presence' with a choropleth map of Ethiopia divided into administrative regions. The map uses a two-tone blue color scheme where darker blue indicates higher operational presence/activity and lighter blue/white indicates lower presence. The geographic distribution shows concentrated presence in certain regions with varying levels of coverage across the country's administrative boundaries."
+  },
+  "img-6.jpeg": {
+    "is_informative": true,
+    "description": "A grouped bar chart comparing three categories related to AAP (Accountability Action Plan) across six rating levels. The three categories are: 'Community of practice on AAP' (12% not available, 17% very high, 23% high, 18% moderate, 15% low, 16% very low), 'Online repository of AAP available for IOM Staff' (21% not available, 17% very high, 25% high, 22% moderate, 9% low, 7% very low), and 'Training provided by Headquarters on AAP to increase capacity in the area' (17% not available, 18% very high, 22% high, 19% moderate, 13% low, 10% very low). The chart uses six different colored bars (blue for 'Not available', red for 'Very high', yellow for 'High', green for 'Moderate', orange for 'Low', and cyan for 'Very low') to represent the distribution of responses. The y-axis shows percentages from 0% to 30%. Source is noted as 'Evaluation survey'."
+  },
+  "img-4.jpeg": {
+    "is_informative": true,
+    "description": "Bar chart showing the distribution of program implementation levels and their effects on affected people. The chart displays five categories: 'Very high' (18%, blue bar), 'High' (25%, red bar), 'Medium' (32%, yellow/gold bar), 'Low' (18%, green bar), and 'Very low' (6%, orange bar). The y-axis shows percentages from 0% to 35%, and each bar is labeled with its corresponding percentage value. The 'Medium' category represents the largest proportion at 32%, while 'Very low' represents the smallest at 6%. The chart appears to be measuring the impact or reach of some program across different intensity levels."
+  }
+}
