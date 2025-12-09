@@ -46,12 +46,14 @@ evaluation evidence with key strategic frameworks.
 **Evidence Maps as a Solution**
 
 Evidence Maps display the extent and nature of research and evaluation
-available on a subject. Following the 2025 UNEG Eval Week, four primary
-use cases emerged: guiding future evidence generation, informing policy
-decisions, knowledge management, and enhancing collaboration. The maps
-created by `iomeval` serve primarily as **knowledge management
-tools**—structured repositories that make identifying relevant sources
-easier by organizing them against strategic framework components.
+available on a subject. Following the [2025 UNEG Eval
+Week](https://www.unevaluation.org/events/uneg-evaluation-week-2025),
+four primary use cases emerged: guiding future evidence generation,
+informing policy decisions, knowledge management, and enhancing
+collaboration. The maps created by `iomeval` serve primarily as
+**knowledge management tools**—structured repositories that make
+identifying relevant sources easier by organizing them against strategic
+framework components.
 
 **What This Enables**
 
@@ -60,23 +62,6 @@ priorities, and GCM objectives, these maps help answer questions like:
 Which framework elements are well-covered by existing evaluations? Where
 are the knowledge gaps that should prioritize future evaluation work?
 Which themes have enough evidence for a dedicated synthesis report?
-
-## Installation
-
-``` sh
-pip install iomeval
-```
-
-## Configuration
-
-iomeval uses Claude for intelligent extraction and mapping. Set your
-Anthropic API key:
-
-``` sh
-export ANTHROPIC_API_KEY='your-key-here'
-```
-
-add mistral also …
 
 ## Key Features
 
@@ -91,78 +76,104 @@ add mistral also …
 - **Granular Control**: Use the full pipeline or individual components
   as needed
 
-## Quick Start
+## Installation
 
-Process an evaluation report end-to-end:
+Install from PyPI:
 
-``` python
-from iomeval.pipeline import Report, run_pipeline
-
-report = Report(id="IOM-2024-001", pdf_url="evaluation_report.pdf")
-run_pipeline(report)
+``` sh
+pip install iomeval
 ```
 
-The rich display shows processing status across all pipeline stages -
-from OCR through framework mapping.
+Or install the latest development version from GitHub:
+
+``` sh
+pip install git+https://github.com/franckalbinet/iomeval.git
+```
+
+## Configuration
+
+### Core Dependencies
+
+iomeval relies on two key libraries:
+
+- **[mistocr](https://fr.anckalbi.net/mistocr)**: Powers the
+  PDF-to-markdown conversion with intelligent OCR and heading hierarchy
+  detection
+- **[lisette](https://lisette.answer.ai)**: A thin wrapper around
+  [litellm](https://www.litellm.ai/) that provides access to all major
+  LLM providers. By default, iomeval uses Anthropic models (Haiku for
+  debugging, Sonnet for production)
+
+### API Keys
+
+Set your required API keys:
+
+``` sh
+export ANTHROPIC_API_KEY='your-key-here'
+export MISTRAL_API_KEY='your-key-here'
+```
+
+Since lisette supports all major LLM providers via litellm, you can
+alternatively configure other providers (OpenAI, Google, etc.) by
+setting their respective API keys.
+
+## Quick Start
+
+First, prepare your evaluations data. Export evaluations from [IOM’s
+evaluation repository](https://evaluation.iom.int/evaluation-search-pdf)
+as CSV, then convert to JSON:
+
+``` python
+from iomeval.readers import IOMRepoReader
+
+reader = IOMRepoReader('evaluation-search-export.csv')
+reader.to_json('evaluations.json')
+```
+
+Now process an evaluation report end-to-end:
+
+``` python
+from iomeval.readers import load_evals
+from iomeval.pipeline import run_pipeline
+
+evals = load_evals('evaluations.json')
+url = "https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Abridged%20Evaluation%20Report_%20Final_Olta%20NDOJA.pdf"
+
+report = await run_pipeline(url, evals, 
+                            pdf_dst='data/pdfs', 
+                            md_dst='data/md', 
+                            results_path='data/results', 
+                            ocr_kwargs=dict(add_img_desc=False), 
+                            model='claude-haiku-4-5')
+report
+```
+
+The pipeline runs 7 steps: download → OCR → extract → map enablers → map
+CCPs → map GCM objectives → map outputs. Progress is displayed as each
+step completes, and state is automatically saved after each stage for
+checkpoint/resume capability.
 
 ## Detailed Workflow
 
-For more control, use individual pipeline stages:
+For more control over individual pipeline stages, see the module
+documentation:
 
-### 1. Load evaluation metadata
-
-``` python
-from iomeval.readers import read_iom
-
-evals = read_iom()  # Returns DataFrame of all IOM evaluations
-evals.head()
-```
-
-### 2. Download and OCR a report
-
-``` python
-from iomeval.downloaders import download_pdf
-from iomeval.core import pdf_to_md
-
-# Download PDF
-pdf_path = download_pdf(report.pdf_url, dest_folder="pdfs")
-
-# Convert to markdown with heading hierarchy
-report.md = pdf_to_md(pdf_path)
-```
-
-### 3. Extract key sections
-
-``` python
-from iomeval.extract import extract_exec_summary, extract_findings, extract_conclusions, extract_recommendations
-
-report.exec_summary = extract_exec_summary(report.md)
-report.findings = extract_findings(report.md)
-report.conclusions = extract_conclusions(report.md)
-report.recommendations = extract_recommendations(report.md)
-```
-
-### 4. Map to strategic frameworks
-
-``` python
-from iomeval.mapper import map_srf_enablers, map_srf_crosscutting, map_gcm, map_srf_outputs
-
-# Each mapper returns structured results with centrality scores
-report.srf_enablers = map_srf_enablers(report.conclusions)
-report.srf_crosscutting = map_srf_crosscutting(report.conclusions)
-report.gcm = map_gcm(report.conclusions)
-report.srf_outputs = map_srf_outputs(report.conclusions)
-```
-
-### 5. Save/restore checkpoints
-
-``` python
-# Save progress
-report.save("checkpoint.json")
-
-# Resume later
-report = Report.load("checkpoint.json")
-```
+- **Loading evaluation metadata**: See
+  [readers](https://fr.anckalbi.net/iomeval/readers.html) for working
+  with IOM evaluation data
+- **Downloading and OCR**: See
+  [downloaders](https://fr.anckalbi.net/iomeval/downloaders.html) and
+  [core](https://fr.anckalbi.net/iomeval/core.html) for PDF processing
+- **Section extraction**: See
+  [extract](https://fr.anckalbi.net/iomeval/extract.html) for extracting
+  executive summaries, findings, conclusions, and recommendations
+- **Framework mapping**: See
+  [mapper](https://fr.anckalbi.net/iomeval/mapper.html) for mapping to
+  SRF enablers, cross-cutting priorities, GCM objectives, and SRF
+  outputs
+- **Pipeline control**: See
+  [pipeline](https://fr.anckalbi.net/iomeval/pipeline.html) for granular
+  control over the full pipeline and checkpoint/resume functionality
 
 ## Development
 
@@ -200,5 +211,4 @@ documentation](https://nbdev.fast.ai/).
 ### Contributing
 
 Contributions are welcome! Please: - Follow the existing notebook
-structure - Add tests using nbdev’s `#| test` cells - Run
-`nbdev_prepare` before submitting PRs
+structure - Run `nbdev_prepare` before submitting PRs
