@@ -8,6 +8,7 @@ __all__ = ['Report', 'load_report', 'run_pipeline']
 # %% ../nbs/06_pipeline.ipynb 3
 from fastcore.all import *
 from pathlib import Path
+import logging
 from .core import n_tokens, load_prompt
 from .readers import load_evals, find_eval, Evaluation
 from .downloaders import download_eval
@@ -17,6 +18,9 @@ from .mapper import mk_system_blocks, map_themes, sort_by_centrality, get_top_id
 from mistocr.core import read_pgs
 from mistocr.pipeline import pdf_to_md
 import json
+
+logging.basicConfig(level=logging.INFO)
+logging.getLogger('LiteLLM').setLevel(logging.WARNING)
 
 # %% ../nbs/06_pipeline.ipynb 5
 class Report:
@@ -29,6 +33,16 @@ class Report:
         store_attr('ev,pdf_url,results_path')
         self.id = ev.id
         self.pdf_path,self.md_path,self.sections,self.mappings = None,None,None,{}
+        self._load_existing()
+    
+    def _load_existing(self):
+        "Load state from saved JSON if it exists"
+        p = Path(self.results_path)/f'{self.id}.json'
+        if not p.exists(): return
+        data = json.loads(p.read_text())
+        self.sections,self.mappings = data.get('sections'),data.get('mappings', {})
+        if data.get('pdf_path'): self.pdf_path = Path(data['pdf_path'])
+        if data.get('md_path'): self.md_path = Path(data['md_path'])
     
     @classmethod
     def from_url(cls,
@@ -102,9 +116,11 @@ def load_report(id:str,                  # Report ID (hash)
 # %% ../nbs/06_pipeline.ipynb 19
 @patch
 def download(self:Report,
-             dst:str='data/pdfs'  # Destination directory for PDFs
+             dst:str='data/pdfs',  # Destination directory for PDFs
+             force:bool=False     # Force re-download
             ) -> Report:
     "Download evaluation PDF to `dst`/`eval_id`/"
+    if self.pdf_path and not force: return self
     self.pdf_path = download_eval(self.ev, dst=dst)
     self.save(self.results_path)
     return self
@@ -114,9 +130,11 @@ def download(self:Report,
 async def ocr(self:Report,
               dst:str='data/md',       # Destination directory for markdown files
               add_img_desc:bool=True,  # Whether to add image descriptions
+              force:bool=False,        # Force re-OCR              
               **kwargs                 # Additional args passed to pdf_to_md
              ) -> Report:
     "Run OCR on PDF and fix heading hierarchy"
+    if self.md_path and not force: return self
     if self.pdf_path is None: raise ValueError("Call download() first")
     if self.pdf_url: pdf_file = self.pdf_path/Path(self.pdf_url).name
     else: pdf_file = first(self.pdf_path.glob('*.pdf'))
@@ -127,8 +145,12 @@ async def ocr(self:Report,
 
 # %% ../nbs/06_pipeline.ipynb 28
 @patch
-def extract(self:Report, **kwargs):
+def extract(self:Report, 
+            force:bool=False, # Force re-extraction
+            **kwargs
+            ):
     "Extract core sections from markdown"
+    if self.sections and not force: return self
     if self.md_path is None: raise ValueError("Call ocr() first")
     md = read_pgs(self.md_path)
     self.sections = extract_sections(md, **kwargs)
@@ -160,7 +182,12 @@ def _map_single(sys_blocks,                 # System blocks from mk_system_block
 
 # %% ../nbs/06_pipeline.ipynb 35
 @patch
-def map_enablers(self:Report, **kwargs):
+def map_enablers(self:Report, 
+                 force:bool=False, # Re-run even if already completed
+                 **kwargs          # Additional args passed to _map_single (e.g. path, model)
+                ):
+    "Map report sections to Strategic Results Framework enablers"
+    if 'enablers' in self.mappings and not force: return self
     self._ensure_sys_blocks()
     self.mappings['enablers'] = _map_single(self._sys_blocks, 'enablers', **kwargs)
     self.save(self.results_path)
@@ -168,7 +195,12 @@ def map_enablers(self:Report, **kwargs):
 
 # %% ../nbs/06_pipeline.ipynb 40
 @patch
-def map_ccps(self:Report, **kwargs):
+def map_ccps(self:Report, 
+             force:bool=False, # Re-run even if already completed
+             **kwargs          # Additional args passed to _map_single (e.g. path, model)
+             ):
+    "Map report sections to Strategic Results Framework cross-cutting priorities"
+    if 'ccps' in self.mappings and not force: return self
     self._ensure_sys_blocks()
     self.mappings['ccps'] = _map_single(self._sys_blocks, 'ccps', **kwargs)
     self.save(self.results_path)
@@ -176,7 +208,12 @@ def map_ccps(self:Report, **kwargs):
 
 # %% ../nbs/06_pipeline.ipynb 44
 @patch
-def map_gcm(self:Report, **kwargs):
+def map_gcm(self:Report, 
+            force:bool=False, # Re-run even if already completed
+            **kwargs          # Additional args passed to _map_single (e.g. path, model)
+            ):
+    "Map report sections to Global Compact Mapping Objectives"
+    if 'gcm' in self.mappings and not force: return self
     self._ensure_sys_blocks()
     self.mappings['gcm'] = _map_single(self._sys_blocks, 'gcm', **kwargs)
     self.save(self.results_path)
@@ -184,7 +221,13 @@ def map_gcm(self:Report, **kwargs):
 
 # %% ../nbs/06_pipeline.ipynb 48
 @patch
-def map_outputs(self:Report, gcm_ids=None, **kwargs):
+def map_outputs(self:Report, 
+                gcm_ids=None,       # GCM IDs to filter SRF objectives
+                force:bool=False,   # Re-run even if already completed
+                **kwargs            # Additional args passed to _map_single (e.g. path, model)
+                ):
+    "Map report sections to Strategic Results Framework outputs"
+    if 'outputs' in self.mappings and not force: return self
     self._ensure_sys_blocks()
     if gcm_ids is None: gcm_ids = [get_top_ids(self.mappings['gcm'])[0]] if self.mappings['gcm'] else []
     self.mappings['outputs'] = _map_single(self._sys_blocks, 'outputs', gcm_ids=gcm_ids, **kwargs)
@@ -196,30 +239,42 @@ def map_outputs(self:Report, gcm_ids=None, **kwargs):
 def map_all(self:Report, **kwargs): return self.map_enablers(**kwargs).map_ccps(**kwargs).map_gcm(**kwargs).map_outputs(**kwargs)
 
 # %% ../nbs/06_pipeline.ipynb 54
-async def run_pipeline(url:str,                       # URL of the evaluation PDF
-                       evals:list,                    # List of `Evaluation` objects to search
-                       pdf_dst:str='data/pdfs',       # Destination directory for PDFs
-                       md_dst:str='data/md',          # Destination directory for markdown files
+def _should_force(force, # Bool to force all steps, or set of step names to force
+                  step   # Step name to check
+                 ):
+    "Check if step should be forced - handles bool or set of step names"
+    if isinstance(force, bool): return force
+    return step in force
+
+# %% ../nbs/06_pipeline.ipynb 55
+async def run_pipeline(url:str,                         # URL of the evaluation PDF
+                       evals:list,                      # List of `Evaluation` objects to search
+                       pdf_dst:str='data/pdfs',         # Destination directory for PDFs
+                       md_dst:str='data/md',            # Destination directory for markdown files
                        results_path:str='data/results', # Path to save/load results
-                       ocr_kwargs:dict=None,          # Additional arguments passed to ocr (e.g. add_img_desc, model)
-                       **kwargs                       # Additional arguments passed to mapping functions
-                      ) -> Report:                    # Fully processed report with all mappings
+                       ocr_kwargs:dict=None,            # Additional arguments passed to ocr (e.g. add_img_desc, model)
+                       force:bool|set=False,            # Force re-run: True for all, or set of step names {'download','ocr','extract','enablers','ccps','gcm','outputs'}
+                       **kwargs                         # Additional arguments passed to mapping functions
+                      ) -> Report:                      # Fully processed report with all mappings
     "Run complete pipeline: download → ocr → extract → map_themes"
-    print(f"Creating report from URL...")
+    logging.info(f"Creating report from URL...")
     report = Report.from_url(url, evals, results_path=results_path)
-    print(f"Step 1/7: Downloading PDF...")
-    report.download(dst=pdf_dst)
-    print(f"Step 2/7: Running OCR...")
-    await report.ocr(dst=md_dst, **(ocr_kwargs or {}))
-    print(f"Step 3/7: Extracting sections...")
-    report.extract()
-    print(f"Step 4/7: Mapping enablers...")
-    report.map_enablers(**kwargs)
-    print(f"Step 5/7: Mapping CCPs...")
-    report.map_ccps(**kwargs)
-    print(f"Step 6/7: Mapping GCM objectives...")
-    report.map_gcm(**kwargs)
-    print(f"Step 7/7: Mapping outputs...")
-    report.map_outputs(**kwargs)
-    print(f"Pipeline complete!")
+    # Try to load existing checkpoint
+    try: report = load_report(report.id, path=results_path)
+    except FileNotFoundError: pass
+    logging.info(f"Step 1/7: Downloading PDF...")
+    report.download(dst=pdf_dst, force=_should_force(force, 'download'))
+    logging.info(f"Step 2/7: Running OCR...")
+    await report.ocr(dst=md_dst, force=_should_force(force, 'ocr'), **(ocr_kwargs or {}))
+    logging.info(f"Step 3/7: Extracting sections...")
+    report.extract(force=_should_force(force, 'extract'))
+    logging.info(f"Step 4/7: Mapping enablers...")
+    report.map_enablers(force=_should_force(force, 'enablers'), **kwargs)
+    logging.info(f"Step 5/7: Mapping CCPs...")
+    report.map_ccps(force=_should_force(force, 'ccps'), **kwargs)
+    logging.info(f"Step 6/7: Mapping GCM objectives...")
+    report.map_gcm(force=_should_force(force, 'gcm'), **kwargs)
+    logging.info(f"Step 7/7: Mapping outputs...")
+    report.map_outputs(force=_should_force(force, 'outputs'), **kwargs)
+    logging.info(f"Pipeline complete!")
     return report

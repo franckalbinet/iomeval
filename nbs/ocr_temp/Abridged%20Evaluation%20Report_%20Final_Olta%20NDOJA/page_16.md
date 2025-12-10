@@ -1,8 +1,6 @@
 ### 4.3. Effectiveness  ... page 16
 
-Overall performance score for effectiveness: 3.8/5
-Overall score on IOM's achievements: 3.4/5
-Robustness score for the evidence: $4 / 5$
+Overall performance score for effectiveness: 3.8/5 <br> Overall score on IOM's achievements: 3.4/5 <br> Robustness score for the evidence: $4 / 5$ ... page 16
 
 The effectiveness of the JI was measured through one overarching objective and three Specific Objectives (each is discussed in a dedicated section below) with several result areas per Specific Objective. Indicators and targets were developed for the overall objective, outcomes, and result areas. According to the 2019 mid-term evaluation of the programme, the implementation of all pillars of the programme was "on good track" and some initial results were noted (e.g. effectiveness in reaching its target groups, provision of AVRR assistance). ${ }^{44}$
 
