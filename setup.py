@@ -37,6 +37,8 @@ if pkg_data:
 # Add package data to setup_cfg for setuptools.setup(..., **setup_cfg)
 setup_cfg['package_data'] = package_data
 
+print(setup_cfg['package_data'])
+
 setuptools.setup(
     name = cfg['lib_name'],
     license = lic[0],
