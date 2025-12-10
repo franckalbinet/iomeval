@@ -2,4 +2,7 @@ include settings.ini
 include LICENSE
 include CONTRIBUTING.md
 include README.md
+include iomeval/files/prompts/*.md
+include iomeval/files/themes/*.json
+include iomeval/files/themes/*.md
 recursive-exclude * __pycache__
