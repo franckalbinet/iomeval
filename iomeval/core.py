@@ -6,10 +6,31 @@
 __all__ = ['n_tokens', 'load_prompt']
 
 # %% ../nbs/00_core.ipynb 2
-import tiktoken
+import os
 from pathlib import Path
+import tiktoken
 
 # %% ../nbs/00_core.ipynb 3
+def _load_dotenv():
+    """Load .env file if it exists and env vars aren't already set"""
+    # Check if key env vars already exist
+    if os.getenv('ANTHROPIC_API_KEY') or os.getenv('MISTRAL_API_KEY'):
+        return  # Already set via export, don't override
+    
+    try:
+        from dotenv import load_dotenv
+        # For dev: look in project root (one level up from nbs/)
+        env_path = Path(__file__).parent.parent / '.env'
+        if env_path.exists():
+            load_dotenv(env_path)
+    except (ImportError, NameError):
+        pass  # dotenv not installed or __file__ not available
+
+# %% ../nbs/00_core.ipynb 4
+# Auto-load on import
+_load_dotenv()
+
+# %% ../nbs/00_core.ipynb 5
 def n_tokens(
     text:str, # Text to count tokens in
     model:str='gpt-4' # Model name for tokenizer
@@ -18,5 +39,5 @@ def n_tokens(
     enc = tiktoken.encoding_for_model(model)
     return len(enc.encode(text))
 
-# %% ../nbs/00_core.ipynb 5
+# %% ../nbs/00_core.ipynb 7
 def load_prompt(name, path='files/prompts'): return (Path(path)/f'{name}.md').read_text()

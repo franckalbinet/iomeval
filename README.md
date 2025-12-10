@@ -107,16 +107,25 @@ iomeval relies on two key libraries:
 
 ### API Keys
 
-Set your required API keys:
+iomeval automatically loads API keys on import. You have two options:
+
+**Option 1: Environment variables** (recommended for production)
 
 ``` sh
 export ANTHROPIC_API_KEY='your-key-here'
 export MISTRAL_API_KEY='your-key-here'
 ```
 
+**Option 2: .env file** (convenient for development)
+
+Create a `.env` file in your project root:
+
+    ANTHROPIC_API_KEY=your-key-here
+    MISTRAL_API_KEY=your-key-here
+
 Since lisette supports all major LLM providers via litellm, you can
-alternatively configure other providers (OpenAI, Google, etc.) by
-setting their respective API keys.
+configure other providers (OpenAI, Google, etc.) by setting their
+respective API keys using either method.
 
 ## Quick Start
 
