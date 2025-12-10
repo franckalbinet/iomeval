@@ -142,9 +142,9 @@ def _ensure_sys_blocks(self:Report):
     if not hasattr(self, '_sys_blocks'): self._sys_blocks = mk_system_blocks(self.sections)
 
 # %% ../nbs/06_pipeline.ipynb 33
-def _map_single(sys_blocks,                # System blocks from mk_system_blocks
+def _map_single(sys_blocks,                 # System blocks from mk_system_blocks
                 theme_type,                 # One of: 'enablers', 'ccps', 'gcm', 'outputs'
-                path='files/themes',        # Path to theme files
+                path=None,                  # Path to theme files
                 model='claude-haiku-4-5',   # Model to use for mapping
                 gcm_ids=None                # GCM IDs for output mapping
                ):
