@@ -16,6 +16,7 @@ import json
 
 # %% ../nbs/05_mapper.ipynb 6
 class ThemeScore(BaseModel):
+    "Single theme's centrality assessment with score, reasoning, and confidence"
     theme_id: str       # Unique identifier for the theme
     theme_title: str    # Human-readable theme name
     centrality_score: float  # 0-1 score indicating how central theme is to report
@@ -24,10 +25,13 @@ class ThemeScore(BaseModel):
 
 # %% ../nbs/05_mapper.ipynb 7
 class ThemeScores(BaseModel):
+    "Collection of theme centrality scores from a single mapping operation"
     scores: list[ThemeScore]  # All theme scores for a single mapping call
 
 # %% ../nbs/05_mapper.ipynb 9
-def parse_json_response(res): return json.loads(res.choices[0].message.content)
+def parse_json_response(res): 
+    "Extract and parse JSON content from LLM completion response"
+    return json.loads(res.choices[0].message.content)
 
 # %% ../nbs/05_mapper.ipynb 10
 def sort_by_centrality(res):

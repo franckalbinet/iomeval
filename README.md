@@ -29,7 +29,7 @@ repositories with no single index available.
 IOM’s evaluation production is highly decentralized, with reports stored
 across multiple repositories (the [IOM Evaluation
 Repository](https://evaluation.iom.int/evaluation-search-pdf), IOM
-Library, IOM Protection Platform). Quality varies greatly—quality
+Library, IOM Protection Platform). Quality varies greatly: quality
 control processes are not applied uniformly, and variation also reflects
 the inherent subjectivity in evaluation approaches and interpretations.
 Reports also vary significantly in structure: some follow common formats
@@ -38,11 +38,11 @@ have different structures entirely. This inconsistency makes systematic
 mapping challenging.
 
 Critically, existing metadata doesn’t indicate which elements of IOM’s
-strategic frameworks—the [Strategic Results Framework
+strategic frameworks (the [Strategic Results Framework
 (SRF)](https://srf.iom.int/) or the [Global Compact for Migration
-(GCM)](https://www.un.org/en/development/desa/population/migration/generalassembly/docs/globalcompact/A_RES_73_195.pdf)—each
-report addresses. This is a major gap that limits the ability to connect
-evaluation evidence with key strategic frameworks.
+(GCM)](https://www.un.org/en/development/desa/population/migration/generalassembly/docs/globalcompact/A_RES_73_195.pdf))
+each report addresses. This is a major gap that limits the ability to
+connect evaluation evidence with key strategic frameworks.
 
 **Evidence Maps as a Solution**
 
@@ -107,7 +107,7 @@ iomeval relies on two key libraries:
 
 ### API Keys
 
-iomeval automatically loads API keys on import. You have two options:
+`iomeval` automatically loads API keys on import. You have two options:
 
 **Option 1: Environment variables** (recommended for production)
 
@@ -158,10 +158,13 @@ report = await run_pipeline(url, evals,
 report
 ```
 
-The pipeline runs 7 steps: download → OCR → extract → map enablers → map
-CCPs → map GCM objectives → map outputs. Progress is displayed as each
-step completes, and state is automatically saved after each stage for
-checkpoint/resume capability.
+The pipeline runs 7 steps:
+
+**download → OCR → extract → map SRF Enablers → map SRF Cross-cutting
+Priorities → map GCM Objectives → map SRF Outputs**
+
+Progress is displayed as each step completes, and state is automatically
+saved after each stage for checkpoint/resume capability.
 
 ## Detailed Workflow
 

@@ -13,40 +13,48 @@ import json
 
 # %% ../nbs/04_themes.ipynb 3
 def _load(fname:str, # Filename to load
-          path:str='files/themes', # Directory containing theme files
+          path:str=None, # Directory containing theme files
           md:bool=False # Return raw text instead of JSON?
          ) -> dict|str:
     "Load theme file (JSON or markdown)"
+    if path is None:
+        try: path = Path(__file__).parent / 'files' / 'themes'
+        except NameError: path = Path('files/themes')  # notebook fallback
     p = Path(path)/fname
     return p.read_text() if md else json.loads(p.read_text())
 
 # %% ../nbs/04_themes.ipynb 4
-def load_enablers(path:str='files/themes' # Directory containing theme files
-                 ) -> list:
+def load_enablers(
+    path:str=None # Directory containing theme files
+    ) -> list:
     "Load SRF enablers"
     return _load('srf_enablers.json', path)
 
 # %% ../nbs/04_themes.ipynb 5
-def load_ccp(path:str='files/themes' # Directory containing theme files
-            ) -> list:
+def load_ccp(
+        path:str=None # Directory containing theme files
+        ) -> list:
     "Load cross-cutting priorities"
     return _load('crosscutting_priorities.json', path)
 
 # %% ../nbs/04_themes.ipynb 6
-def load_srf_outs(path:str='files/themes' # Directory containing theme files
-                 ) -> list:
+def load_srf_outs(
+    path:str=None # Directory containing theme files
+    ) -> list:
     "Load SRF objectives with outputs"
     return _load('srf_objectives.json', path)
 
 # %% ../nbs/04_themes.ipynb 7
-def load_gcms(path:str='files/themes' # Directory containing theme files
-             ) -> str:
+def load_gcms(
+    path:str=None # Directory containing theme files
+    ) -> str:
     "Load GCM objectives markdown"
     return _load('gcms_long.md', path, md=True)
 
 # %% ../nbs/04_themes.ipynb 8
-def load_gcm_lut(path:str='files/themes' # Directory containing theme files
-                ) -> dict:
+def load_gcm_lut(
+    path:str=None # Directory containing theme files
+    ) -> dict:
     "Load GCM to SRF output lookup table"
     return _load('gcm_to_srf_outputs.json', path)
 
@@ -97,8 +105,9 @@ def get_srf_outs(lut:dict, # GCM to SRF lookup dict
     return L(v for k,v in lut.items() if k in gcm_ids).concat()
 
 # %% ../nbs/04_themes.ipynb 23
-def load_all_themes(path:str='files/themes'  # Directory containing theme JSON files
-                   ) -> AttrDict:             # Dict with enablers, ccp, gcms, srf_outs, gcm_lut
+def load_all_themes(
+    path:str=None  # Directory containing theme JSON files
+    ) -> AttrDict: # Dict with enablers, ccp, gcms, srf_outs, gcm_lut
     "Load all theme data from path"
     return AttrDict(enablers=load_enablers(path), ccp=load_ccp(path), gcms=load_gcms(path), 
                     srf_outs=load_srf_outs(path), gcm_lut=load_gcm_lut(path))

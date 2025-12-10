@@ -40,4 +40,12 @@ def n_tokens(
     return len(enc.encode(text))
 
 # %% ../nbs/00_core.ipynb 7
-def load_prompt(name, path='files/prompts'): return (Path(path)/f'{name}.md').read_text()
+def load_prompt(
+    name:str, # Name of the prompt file (without .md extension)
+    path:Path|str|None=None # Directory containing prompt files, defaults to 'files/prompts'
+    ) -> str:
+    "Load a prompt template from a markdown file"
+    if path is None:
+        try: path = Path(__file__).parent / 'files' / 'prompts'
+        except NameError: path = Path('files/prompts')  # notebook fallback
+    return (Path(path)/f'{name}.md').read_text()

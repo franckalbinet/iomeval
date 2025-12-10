@@ -45,7 +45,7 @@ def identify_core_sections(
     model:str='claude-sonnet-4-5' # LLM model to use for identification
 ) -> dict: # Dictionary with 'section_paths' and 'reasoning' keys
     "Use LLM to identify core sections (exec summary, intro, conclusions, recommendations) from ToC"
-    if sp is None: sp = load_prompt('select_sections', 'files/prompts')
+    if sp is None: sp = load_prompt('select_sections')
     res = completion(model=model, messages=[mk_msg(f"Here is the table of contents as a nested dictionary:\n\n{hdgs}")], 
                      system=[{"type": "text", "text": sp}], response_format=response_format)
     return json.loads(res.choices[0].message.content)
