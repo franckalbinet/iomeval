@@ -12,6 +12,7 @@ from pydantic import BaseModel
 from lisette.core import completion, mk_msg
 from toolslm.md_hier import create_heading_dict
 import json
+import logging
 from .core import load_prompt
 
 # %% ../nbs/03_extract.ipynb 4
@@ -60,4 +61,11 @@ def extract_sections(
     hdgs = create_heading_dict(md)
     sections = identify_core_sections(hdgs, **kwargs)
     paths = rm_nested(sections['section_paths'])
-    return '\n'.join([get_text(p, hdgs) for p in paths])
+    
+    texts = []
+    for p in paths:
+        try:
+            texts.append(get_text(p, hdgs))
+        except (KeyError, AttributeError) as e:
+            logging.warning(f"Path not found, skipping: {p}")
+    return '\n'.join(texts)
