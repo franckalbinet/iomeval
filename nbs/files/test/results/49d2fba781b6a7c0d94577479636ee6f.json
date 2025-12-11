@@ -159,162 +159,162 @@
         {
           "theme_id": "1",
           "theme_title": "Collect and utilize accurate and disaggregated data as a basis for evidence-based policies",
-          "centrality_score": 0.68,
-          "reasoning": "Data work is a significant but not primary component. The Regional Data Hub is explicitly praised in findings (4.3.1.1) with 20 surveys/studies conducted, exceeding the target of 19. Stakeholders appreciated data production and capacity building. However, this is one pillar among five main activities. Actions on data strategies (a), capacity building (c), and use for programming (d) are discussed, but data collection appears secondary to return/reintegration focus. Conclusions note contributions to migration data availability, and Recommendation 7 addresses M&E tools, but data work does not drive the overall evaluation narrative.",
+          "centrality_score": 0.62,
+          "reasoning": "Data work is clearly present and valued. The Regional Data Hub produced migration data outputs (exceeding targets at 20 vs. 19), and stakeholders explicitly appreciated data contributions. Actions on data strategies (a), capacity building (c), and using data for programming (d) are evident. However, this is one component among several major pillars. It appears in relevance and conclusions sections but does not drive the overall evaluation structure, which is primarily focused on return and reintegration outcomes.",
           "confidence": "high"
         },
         {
           "theme_id": "2",
           "theme_title": "Minimize the adverse drivers and structural factors that compel people to leave their country of origin",
-          "centrality_score": 0.72,
-          "reasoning": "This is a major component but not the primary focus. The report emphasizes economic reintegration and livelihood support as crucial outcomes (4.3.3.1, 4.3.3.2). Community-based reintegration projects (54 projects, 76,348 beneficiaries) directly address economic opportunities to reduce migration incentives\u2014action (b) and (e) align strongly. The evaluation notes that inadequate economic support hindered reintegration, and the dire economic situations in countries severely limited effectiveness. Recommendation 4 highlights continuation of community projects to address 'drivers of irregular migration.' However, the broader structural/contextual factors (conflict, inflation, governance) are identified as barriers rather than being directly addressed by program design.",
-          "confidence": "high"
+          "centrality_score": 0.58,
+          "reasoning": "Addressed through community-based reintegration projects (CBR) and livelihood support reducing economic drivers of migration. Action (b) on sustainable development investments is implicit in CBR work. However, the program's primary focus is on returnees already at destination, not on origin-country structural interventions. The evaluation notes CBR projects created employment opportunities to reduce necessity to migrate, but this is secondary to the main return/reintegration mission. External factors (conflict, economic decline) limited this component's effectiveness.",
+          "confidence": "medium"
         },
         {
           "theme_id": "3",
           "theme_title": "Provide accurate and timely information at all stages of migration",
-          "centrality_score": 0.45,
-          "reasoning": "Information provision is mentioned but not a primary focus. The report notes awareness-raising activities (4.3.2.1) exceeded targets five times, and migrants reported 95% satisfaction with information to take informed return decisions. However, no dedicated objectives, indicators, or evaluation sections specifically address awareness raising. The report states: 'no guidelines for awareness raising and outreach ensure a harmonized approach' and this dimension 'did not have its own objectives, indicators and impact studies.' Actions (a, e) on centralized websites and awareness campaigns are referenced only tangentially within the AVRR context.",
+          "centrality_score": 0.48,
+          "reasoning": "Awareness raising and information provision occurred but lacked formal guidelines. The program conducted five times more awareness activities than expected; however, no dedicated objectives or M&E were established for this component. Actions on pre-departure orientation (e) and information on dangers (e) are mentioned briefly in migration context sections. This is a supporting activity rather than a core programmatic pillar.",
           "confidence": "medium"
         },
         {
           "theme_id": "4",
           "theme_title": "Ensure that all migrants have proof of legal identity and adequate documentation",
-          "centrality_score": 0.28,
-          "reasoning": "Documentation is minimally addressed. The report mentions identification of migrants in MRCs and Somaliland's returnee registration system (4.3.3.1), but does not discuss civil registry improvements, biometric systems, or passports\u2014core actions (a, b, c, d). The focus remains on migrant identification for assistance eligibility rather than systemic documentation reform. No evidence of engagement with actions on statelessness (e), local registration cards (g), or travel document harmonization.",
+          "centrality_score": 0.32,
+          "reasoning": "Minimal explicit engagement. While the program supported documentation for AVRR (action c on consular documentation is implicit in return procedures), there is no substantial discussion of civil registry systems, identity documents, or statelessness reduction. Documentation appears only as a procedural necessity for return, not as a thematic focus.",
           "confidence": "medium"
         },
         {
           "theme_id": "5",
           "theme_title": "Enhance availability and flexibility of pathways for regular migration",
-          "centrality_score": 0.22,
-          "reasoning": "Regular migration pathways are not addressed in the report. The program focuses exclusively on voluntary return and reintegration, not on labor mobility agreements, visa liberalization, humanitarian visas, or skills-matching for regular entry. Actions (a\u2013j) on labour mobility schemes, academic exchange, and family reunification are absent from the evaluation. This is a voluntary return and reintegration program, not a labor migration facilitation initiative.",
+          "centrality_score": 0.15,
+          "reasoning": "Minimal presence. The program addresses return and reintegration of those already in migration, not creation of regular pathways, labour mobility agreements (action a), or visa flexibility (action d). This objective focuses on origin-country policy development for outbound migration, which is outside the scope of a return/reintegration focused program.",
           "confidence": "high"
         },
         {
           "theme_id": "6",
           "theme_title": "Facilitate Fair And Ethical Recruitment And Safeguard Conditions That Ensure Decent Work",
-          "centrality_score": 0.18,
-          "reasoning": "Ethical recruitment and fair labor conditions are not primary themes. While returnees received economic support and some training, the report does not address recruitment agency regulation, labor contracts, debt bondage, or worker rights protections\u2014core actions (c, d, f). The focus is on reintegration support for returning migrants, not on ensuring safe recruitment conditions for those migrating. No discussion of partnerships with employers, trade unions, or labor inspectorates on migrant worker protections.",
-          "confidence": "high"
+          "centrality_score": 0.28,
+          "reasoning": "Limited engagement. While economic reintegration support (action i on fair work) is mentioned, there is no substantial discussion of recruitment regulations, labour inspectorates, or fair recruitment standards. The program focuses on post-migration support to returnees rather than on regulating labour recruitment systems or enforcement mechanisms.",
+          "confidence": "medium"
         },
         {
           "theme_id": "7",
           "theme_title": "Address and Reduce Vulnerabilities in Migration",
           "centrality_score": 0.78,
-          "reasoning": "Vulnerability protection is a major pillar. The integrated approach explicitly addresses vulnerable populations: women, children, trafficking victims, exploitation survivors (4.1.1.1, 4.3.2). Actions (b, c, f) on comprehensive policies and protection for vulnerable groups are extensively discussed. MRCs provided individualized support based on vulnerability assessments. However, vulnerability is addressed primarily within the return/reintegration context rather than as an overarching cross-cutting theme. Gaps in MHPSS (psychosocial support) are noted (4.1.1.2), indicating incomplete coverage of all vulnerability dimensions. Child protection procedures are mentioned but not deeply analyzed.",
+          "reasoning": "Major pillar. Protection of vulnerable migrants is extensively addressed. Actions on human rights-based approaches (a), gender-responsive policies (c), and identification and assistance (b, f) appear throughout. The program explicitly protects women, persons with disabilities, trafficking victims, and unaccompanied children. Psychosocial support (MHPSS) is discussed, though with gaps. Vulnerability identification in MRCs is core to the program. Multiple recommendations address protection, though this is somewhat secondary to reintegration focus.",
           "confidence": "high"
         },
         {
           "theme_id": "8",
           "theme_title": "Save Lives and Establish Coordinated International Efforts on Missing Migrants",
-          "centrality_score": 0.15,
-          "reasoning": "Missing migrants and search-and-rescue are not addressed. The report does not discuss procedures for search and rescue (a), mechanisms to prevent migrants going missing (b), family tracing (c), or identification of deceased migrants (e, f). While the JI-HoA facilitates safe return, there is no evidence of engagement with the Missing Migrants initiative or coordination on fatality prevention beyond the indirect effect of providing AVRR.",
-          "confidence": "high"
+          "centrality_score": 0.41,
+          "reasoning": "Partially present. The program emphasizes saving lives through AVRR from dangerous environments (detention, exploitation). Actions on search and rescue (a) and communication with families (c) are implicit in return facilitation. However, there is no explicit discussion of missing migrants tracing systems, forensic standards (action e), or repatriation of remains. Life-saving is framed as emergency assistance rather than missing migrant coordination.",
+          "confidence": "medium"
         },
         {
           "theme_id": "9",
           "theme_title": "Strengthen the transnational response to smuggling of migrants",
           "centrality_score": 0.35,
-          "reasoning": "Counter-smuggling is tangentially present. The report mentions smuggled migrants may be identified in MRCs and provided protection (not criminalized), but does not substantively address actions on smuggling networks, intelligence sharing (b), counter-smuggling protocols (c), or criminal prosecutions (d). The focus is on assisting smuggled/exploited migrants through return rather than dismantling smuggling infrastructure. One recommendation addresses distinction between smuggling and trafficking, but enforcement and transnational cooperation on smuggling prevention are not primary themes.",
+          "reasoning": "Limited presence. While the program operates in smuggling-affected contexts and addresses smuggled migrants, there is minimal discussion of counter-smuggling cooperation (action b), criminal prosecutions (action d), or law enforcement coordination. The program focuses on protection and return of smuggled migrants rather than on dismantling networks or preventing smuggling.",
           "confidence": "medium"
         },
         {
           "theme_id": "10",
           "theme_title": "Prevent, Combat And Eradicate Trafficking In Persons In The Context Of International Migration",
-          "centrality_score": 0.52,
-          "reasoning": "Trafficking prevention and victim support is a significant element. The report discusses protection of trafficking victims within the MRC framework and reintegration support (4.1.1.1, 4.3.3). Research on MHPSS indicates high rates of trauma consistent with trafficking/exploitation experiences. However, actions on ratification of protocols (a), prosecution of traffickers (g), victim compensation (h), and public education campaigns (j) are not explicitly addressed. The program provides humanitarian assistance post-trafficking rather than prevention, prosecution, or international cooperation on trafficking networks. Trafficking is addressed reactively within the reintegration context.",
+          "centrality_score": 0.39,
+          "reasoning": "Moderately present. Trafficking victims are explicitly identified and assisted (action e on victim protection is implicit). However, there is minimal discussion of UNTOC protocols (action a), financial investigations (action d), or prosecution of traffickers. The program emphasizes victim identification and reintegration support rather than prevention and prosecution of trafficking networks.",
           "confidence": "medium"
         },
         {
           "theme_id": "11",
           "theme_title": "Manage Borders In An Integrated, Secure And Coordinated Manner",
-          "centrality_score": 0.38,
-          "reasoning": "Border management is mentioned but not a primary focus. MRCs operate at transit points and borders (4.3.2.1), facilitating identification and referral of vulnerable migrants. However, the report does not discuss actions on integrated border procedures (b), border screening protocols (c), child protection at borders (e), or collaborative border management agreements (a). The emphasis is on identifying migrants for humanitarian assistance, not on border security architecture or international border cooperation frameworks.",
+          "centrality_score": 0.52,
+          "reasoning": "Moderately addressed. Border management appears indirectly through MRC operations and return facilitation. Actions on screening (b) and assessment (c) are embedded in referral procedures. However, there is no explicit discussion of integrated border management systems, cross-border cooperation structures, or border technology. The focus is on assistance within transit rather than border management policy.",
           "confidence": "medium"
         },
         {
           "theme_id": "12",
           "theme_title": "Strengthen Certainty And Predictability In Migration Procedures For Appropriate Screening, Assessment And Referral",
-          "centrality_score": 0.64,
-          "reasoning": "Procedures and screening are moderately addressed. The report emphasizes individualized vulnerability assessments (4.3.2.1) and MRC operations with standardized support protocols. Referral mechanisms are discussed (4.3.3.1: 99% of returnees referred to actors were assisted), and trainings for staff are mentioned. However, actions on transparency of procedures (a), specialized trainings for first responders (b), standardized operating procedures (c), child age assessment (d), and communication of rights (e) are present but not deeply analyzed. The report notes capacity building efforts but not systematic procedure harmonization.",
-          "confidence": "medium"
+          "centrality_score": 0.68,
+          "reasoning": "Significant element. Screening and referral procedures are central to program operations. SOPs and guidelines developed strengthen procedural certainty (action c). Specialized trainings for officials on vulnerability identification (action b) are documented. However, this is primarily about individual case management rather than systemic procedure reform. The focus is on implementing procedures rather than designing comprehensive national systems.",
+          "confidence": "high"
         },
         {
           "theme_id": "13",
           "theme_title": "Use Migration Detention Only As A Measure Of Last Resort And Work Towards Alternatives",
-          "centrality_score": 0.32,
-          "reasoning": "Detention alternatives are minimally addressed. While the report mentions that migrants suffered in detention and needed rescue (4.1.1.1), there is no discussion of actions on monitoring detention (a), alternatives to detention (b, h), or legal safeguards (d, e, f). The program provides AVR as a pathway out of detention but does not advocate for or analyze detention reform, alternatives in host countries, or access to justice for detained migrants. Detention is mentioned as a context that the JI responds to, not as a policy area the JI addresses.",
+          "centrality_score": 0.44,
+          "reasoning": "Moderately present. The program aims to provide alternatives by facilitating AVRR from detention contexts (actions a and c are implicit). However, there is no systematic evaluation of detention alternatives, no discussion of legal frameworks reducing detention (action c), or independent monitoring mechanisms. The program responds to detention outcomes rather than addressing detention policy reform.",
           "confidence": "medium"
         },
         {
           "theme_id": "14",
           "theme_title": "Enhance Consular Protection, Assistance And Cooperation Throughout The Migration Cycle",
-          "centrality_score": 0.41,
-          "reasoning": "Consular support is mentioned but not a primary theme. The report references consular assistance in organizing returns (4.3.2.1) and consular presence in information provision. However, actions on building consular capacities (a), consular cooperation agreements (c), specialized training for consular officers (d), migrant registration (e), or consular documentation support (f) are not substantively discussed. The focus is on IOM-led assistance rather than strengthening governmental consular services. Consular roles are noted as supporting agents rather than primary actors.",
+          "centrality_score": 0.55,
+          "reasoning": "Moderately present. Consular cooperation is implicit in return processes. Actions on capacity building (a) and assistance to vulnerable nationals (d) appear in stakeholder capacity building and return facilitation. However, there is no explicit discussion of consular helplines (action e), digital databases, or systematized consular assistance programs. Support is fragmented within broader return processes.",
           "confidence": "medium"
         },
         {
           "theme_id": "15",
           "theme_title": "Provide access to basic services for migrants",
-          "centrality_score": 0.59,
-          "reasoning": "Access to basic services is a significant element. The integrated approach includes social dimension support: health, education, housing, justice, and social protection (Section 2.1). The report discusses psychosocial support, medical care, and social assistance in MRCs and reintegration (4.1.1.2, 4.3.3.1). Referral systems to health and other providers are mentioned (4.3.3.1: 29 institutions supported on data collection). However, actions on non-discrimination legislation (a), safe access without immigration enforcement (b), holistic service points (c), health policy integration (e), and education access (f) are addressed partially. The report notes gaps in psychosocial service availability and access barriers, indicating incomplete coverage of this objective.",
+          "centrality_score": 0.65,
+          "reasoning": "Significant element. Social reintegration dimension explicitly addresses access to services. Actions on health (e) appear through medical support; education (f) is mentioned in reintegration; psychosocial support is documented though with gaps. The program ensures non-discrimination in service access for returnees. However, this addresses services for beneficiaries rather than systemic health and education policy integration.",
           "confidence": "high"
         },
         {
           "theme_id": "16",
           "theme_title": "Empower Migrants And Societies To Realize Full Inclusion And Social Cohesion",
-          "centrality_score": 0.69,
-          "reasoning": "Social cohesion and inclusion is a major component. The integrated approach emphasizes psychosocial reintegration and community-based projects promoting social cohesion and inclusion. Focus group discussions highlight how CBR projects reduced stigma towards returnees and facilitated social integration (4.3.3.1, 4.3.3.2). The report notes that social cohesion is linked to economic self-sufficiency. However, actions on integration policies (a), pre- and post-arrival programs (b), labor market integration (d), empowerment of women (e), and community centers (f) are addressed through community projects and reintegration support but not comprehensively. Integration is a component of reintegration rather than a standalone objective.",
+          "centrality_score": 0.73,
+          "reasoning": "Major component. Social cohesion is explicitly addressed through CBR projects and community engagement. Actions on mutual respect (a), community centres (f), and cultural activities (h) appear in community-based work. The program documents reduction in stigma toward returnees and promotion of social inclusion. School integration (i) is implicit. However, this is integrated within reintegration framework rather than a standalone inclusion focus.",
           "confidence": "high"
         },
         {
           "theme_id": "17",
           "theme_title": "Eliminate All Forms Of Discrimination And Promote Evidence-Based Public Discourse To Shape Perceptions Of Migration",
-          "centrality_score": 0.25,
-          "reasoning": "Anti-discrimination is minimally addressed. The report mentions gender-responsive and child-sensitive approaches within the program design (4.3.2.1) but does not discuss actions on hate crime legislation (a), media profiling prevention (d), awareness campaigns on positive migration contributions (f), or engagement of community leaders (g) to counter discrimination. While the program is rights-based, it does not systematically address discrimination reduction in receiving societies or promote positive migration narratives.",
+          "centrality_score": 0.38,
+          "reasoning": "Limited presence. The program addresses stigma reduction toward returnees and promotes evidence through research outputs. However, there is minimal discussion of hate crime legislation (action a), media regulation (action c), or discrimination monitoring mechanisms (action d). The focus is on changing local community attitudes toward returnees rather than national anti-discrimination frameworks.",
           "confidence": "medium"
         },
         {
           "theme_id": "18",
           "theme_title": "Invest In Skills Development And Facilitate Mutual Recognition Of Skills, Qualifications And Competences",
-          "centrality_score": 0.48,
-          "reasoning": "Skills development and recognition is a moderate element. The report mentions vocational training, skills development programs, and entrepreneurship training as components of reintegration support (4.3.3.1). Recommendation 5 suggests enrolling returnees in education and developing entrepreneurial skills. However, actions on mutual recognition frameworks (a, c), skills profiling tools (b), digitalization of credentials (d), global skills partnerships (e), or employer engagement (h) are not addressed. Skills support is provided post-return for reintegration rather than as part of labor mobility pathways or systematic credential recognition systems.",
+          "centrality_score": 0.45,
+          "reasoning": "Moderately present. Economic reintegration includes skills development through livelihood support and vocational training (actions e and h implicit). However, there is no discussion of qualifications recognition frameworks (actions a, c), digitalization of credentials (action d), or bilateral recognition agreements. Skills support is provided on an individual basis rather than through harmonized systems.",
           "confidence": "medium"
         },
         {
           "theme_id": "19",
           "theme_title": "Create Conditions For Migrants And Diasporas To Fully Contribute To Sustainable Development In All Countries",
-          "centrality_score": 0.55,
-          "reasoning": "Migrant contributions to development is a significant but secondary element. The evaluation notes that reintegration support enables returnees to contribute to home communities' livelihoods and economic growth, and CBR projects support sustainable development through community investments. Conclusions state the JI contributes to sustainable development goals. However, actions on diaspora engagement (d, e), diaspora offices (d), migrant political participation (g), diaspora bonds (e), or knowledge transfer mechanisms (j) are not explicitly discussed. The focus is on returnee reintegration and community livelihood improvement rather than systematic diaspora mobilization for development.",
+          "centrality_score": 0.35,
+          "reasoning": "Limited presence. The program contributes indirectly by supporting returnee reintegration as development actors. Actions on diaspora engagement (d, f) and diaspora investment (e) are not explicitly discussed. The focus is on individual returnee economic reintegration rather than on diaspora mobilization or development contribution strategies.",
           "confidence": "medium"
         },
         {
           "theme_id": "20",
           "theme_title": "Minimize the adverse drivers and structural factors that compel people to leave their country of origin",
-          "centrality_score": 0.72,
-          "reasoning": "Addressing structural drivers is a major pillar, identical in scope to Objective 2. Community-based reintegration projects directly target economic opportunity creation to reduce migration incentives (4.3.3.1: 54 projects, 76,348 beneficiaries). The evaluation emphasizes that community livelihood support addresses 'drivers of migration.' However, the report identifies that broader contextual factors\u2014conflict, inflation, governance, poverty\u2014limit the program's ability to address structural drivers at scale. Recommendations focus on sustaining these efforts rather than on comprehensive structural transformation. Economic reintegration is the weakest dimension across all countries (4.3.3.2).",
+          "centrality_score": 0.58,
+          "reasoning": "Addressed through development-focused reintegration. CBR projects and livelihood creation reduce economic drivers (action b implicit). However, the program operates within already-fragile contexts (conflict, economic decline noted in external factors). Structural drivers at national policy level (action d on investment, action e on employment creation) are beyond the program's scope. Community-level interventions are present but limited in scale relative to national structural needs.",
           "confidence": "high"
         },
         {
           "theme_id": "21",
           "theme_title": "Cooperate In Facilitating Safe And Dignified Return And Readmission, As Well As Sustainable Reintegration",
           "centrality_score": 0.95,
-          "reasoning": "This is THE primary focus. The program's stated objective is 'dignified voluntary return and sustainable reintegration' (Section 1, Section 2.1). The integrated approach targets individual, community, and structural reintegration across economic, social, and psychosocial dimensions. Findings extensively address: AVR support (9,025 migrants returned, 95% satisfaction\u20144.3.2); reintegration assistance (15,161 beneficiaries, 55% satisfaction\u20144.3.3.1); community-based projects (54 projects); and sustainability of reintegration (4.3.3.2). All five pillars of action feed into return/reintegration. Actions (a) on cooperation frameworks, (b) on gender-responsive programs, (h) on sustainable reintegration support, and (i) on community needs are extensively analyzed. Multiple recommendations directly address return and reintegration continuation. This objective subsumes the program's core logic.",
+          "reasoning": "PRIMARY FOCUS. The program's stated objective is 'dignified voluntary return and sustainable reintegration.' Actions on cooperation frameworks (a), gender-responsive return (b), consular assistance (d), and sustainable reintegration support (h, i) dominate the evaluation. All five evaluation criteria sections address this theme. The integrated approach explicitly targets economic, social, and psychosocial reintegration across individual, community, and structural levels. Multiple recommendations focus on continuation of this work. Return numbers and satisfaction metrics are extensively reported.",
           "confidence": "high"
         },
         {
           "theme_id": "22",
           "theme_title": "Establish Mechanisms For The Portability Of Social Security Entitlements And Earned Benefits",
-          "centrality_score": 0.2,
-          "reasoning": "Social security portability is minimally addressed. The report discusses access to social protection and services in reintegration (4.3.3.1, action h: 'social protection schemes'), but does not substantively address actions on social protection floors (a), reciprocal bilateral agreements (b), or designated portability focal points (c). The program provides direct reintegration support rather than engaging with national social security systems or designing portable entitlements. No discussion of pension transfers, healthcare portability, or migrant welfare funds.",
+          "centrality_score": 0.18,
+          "reasoning": "Minimal presence. Social protection access is mentioned in reintegration context but not as a focal area. No discussion of bilateral social security agreements (action b), portability frameworks, or social protection floors (action a). The program provides emergency support rather than addressing systemic social security portability.",
           "confidence": "medium"
         },
         {
           "theme_id": "23",
           "theme_title": "Strengthen International Cooperation And Global Partnerships For Safe, Orderly And Regular Migration",
-          "centrality_score": 0.76,
-          "reasoning": "International cooperation is a major structural component. The EU-IOM Joint Initiative itself demonstrates bilateral, regional, and multilateral cooperation (Section 2.1). The report discusses partnership coordination with IGAD, African Union, UN agencies, and NGOs (Section 4.2.2), avoiding duplication and creating complementarity. Regional Data Hub collaboration with national statistical offices and regional mechanisms (4.3.1.1) exemplifies action (b). However, actions on capacity-building mechanisms (d), financial/technical assistance (a), and tailored partnerships (e) are mentioned but not deeply analyzed as evaluation outcomes. The focus is on program implementation partnership rather than evaluating international cooperation frameworks or bilateral agreements as outcomes.",
+          "centrality_score": 0.72,
+          "reasoning": "Major component. International cooperation is foundational to the program model. Actions on bilateral/regional agreements (action e), technical assistance (action d), and local authority involvement (action c) are extensively documented. Regional coordination through the RCU, cooperation with IGAD and AU, and partnerships with 40 MRC organizations exemplify this. However, cooperation is primarily for return/reintegration implementation rather than broader migration governance frameworks.",
           "confidence": "high"
         }
       ]
@@ -322,123 +322,186 @@
     "outputs": {
       "scores": [
         {
+          "theme_id": "1a11",
+          "theme_title": "Crisis-affected populations in-need receive dignified shelter and settlement support.",
+          "centrality_score": 0.35,
+          "reasoning": "The report addresses basic needs provision to migrants in MRCs (food, water, clothing, shelter) as part of immediate assistance. However, shelter support is not a primary focus\u2014the program emphasizes return and reintegration rather than sustained shelter provision. Mentioned briefly in section 4.1.1.1 regarding migrant needs.",
+          "confidence": "medium"
+        },
+        {
+          "theme_id": "1a12",
+          "theme_title": "Government and local actors have resources, skills and tools to ensure assistance is delivered in an equitable manner, without barriers based on ethnicity, religion, gender, ability, migration status or other factors.",
+          "centrality_score": 0.62,
+          "reasoning": "The report extensively documents capacity building of government and local stakeholders (section 4.3.1.1), with 665 stakeholders strengthened vs. target of 434. Findings emphasize training on return/reintegration procedures and tools. However, evidence on equitable delivery without discrimination across demographic groups is limited, and barriers to access based on specific demographics are not thoroughly evaluated.",
+          "confidence": "medium"
+        },
+        {
+          "theme_id": "1a16",
+          "theme_title": "Crisis-affected populations in-need receive movement assistance.",
+          "centrality_score": 0.92,
+          "reasoning": "This is a core program output. The JI-HoA directly delivered Assisted Voluntary Return (AVR) to 9,025 migrants (exceeding target of 8,450). Section 4.3.2 provides extensive findings on AVR effectiveness: 95% satisfaction with travel arrangements, 99.6% felt travel was safe. MRC development (15 centers) and protection/direct assistance to 8,960 migrants in transit are documented. Multiple recommendations (4, 6) address continuation of AVR support.",
+          "confidence": "high"
+        },
+        {
+          "theme_id": "1a17",
+          "theme_title": "Crisis-affected populations in camps and camp-like settings have equitable access to assistance, protection, and services in displacement sites.",
+          "centrality_score": 0.15,
+          "reasoning": "The report does not address camps or camp-like settings. The JI-HoA focused on transit (MRCs) and return contexts, not displacement camps. This output falls outside the program's scope as evaluated.",
+          "confidence": "high"
+        },
+        {
+          "theme_id": "1a19",
+          "theme_title": "Victims of human rights violations in the context of reparations and restitution mechanisms have improved living conditions and wellbeing.",
+          "centrality_score": 0.2,
+          "reasoning": "The report does not address formal reparations or restitution mechanisms. While psychosocial support to trauma victims is mentioned (Common Mental Disorders study), systematic reparations mechanisms are not discussed. This output is not directly relevant to the JI-HoA's focus.",
+          "confidence": "high"
+        },
+        {
           "theme_id": "1a21",
           "theme_title": "Humanitarian actors at all levels have knowledge and tools to formulate interventions that address both the immediate and longer-term needs of affected populations, including climate-sensitive considerations.",
-          "centrality_score": 0.32,
-          "reasoning": "While the JI-HoA addressed immediate humanitarian needs of migrants (food, water, shelter per section 4.1.1.1), the evaluation does not focus on humanitarian actor capacity or climate-sensitive interventions. The program targeted migration protection rather than broader humanitarian response frameworks.",
-          "confidence": "high"
+          "centrality_score": 0.48,
+          "reasoning": "The report documents knowledge development through M&E systems (36 tools established, section 4.3.3.1) and capacity building that enhanced understanding of returnees' needs. However, climate-sensitive considerations are not discussed, and tools are primarily focused on migration data and reintegration rather than broader humanitarian intervention frameworks.",
+          "confidence": "medium"
         },
         {
           "theme_id": "1a22",
           "theme_title": "Local stakeholders have capacity to actively contribute to the immediate and longer-term response.",
           "centrality_score": 0.72,
-          "reasoning": "Directly addressed in section 4.1.2.1 and 4.3.1.1. The JI-HoA exceeded targets for stakeholders strengthened through capacity building (665 vs 434 target). Section 4.3.1 documents capacity building on return/reintegration procedures. However, sustainability challenges (section 4.5) reveal limited independent capacity without continued IOM funding, preventing a higher score.",
+          "reasoning": "The report extensively evaluates capacity building of local stakeholders across section 4.3.1. Key findings: 97% of stakeholders reported increased knowledge; 180 actors involved by 2022 (vs. 25 baseline); 29 networks established/enhanced. However, major sustainability concerns (section 4.5) reveal limited operational and financial capacity for independent continuation without IOM support.",
+          "confidence": "high"
+        },
+        {
+          "theme_id": "1b32",
+          "theme_title": "Governments and humanitarian actors have strengthened protection referral pathways to promote and facilitate access to humanitarian services and assistance.",
+          "centrality_score": 0.68,
+          "reasoning": "The report discusses national referral systems established in all countries (section 4.4.2), though findings note they 'did not become fully effective and sustainable' due to lack of independent capacity. Referral systems for reintegration assistance mentioned in section 4.3.3.2 (99% of returnees referred were assisted). This is a significant component but with documented implementation challenges.",
+          "confidence": "high"
+        },
+        {
+          "theme_id": "1b33",
+          "theme_title": "Vulnerable and at-risk persons are protected through their sustained and meaningful participation within humanitarian protection.",
+          "centrality_score": 0.58,
+          "reasoning": "The report documents identification and protection of vulnerable migrants (vulnerability assessments in MRCs, section 4.1.1.1) and individualized MHPSS support. However, evidence on 'meaningful participation' of vulnerable groups in program design/decision-making is limited. Community participation survey (section 4.1.1.3) shows 92% felt involved in CBR, but broader protection participation mechanisms are not detailed.",
+          "confidence": "medium"
+        },
+        {
+          "theme_id": "1c11",
+          "theme_title": "Mechanisms for the procurement and movement of quality and cost-effective supplies are established and maintained.",
+          "centrality_score": 0.28,
+          "reasoning": "The report does not address supply chain management, procurement systems, or logistics mechanisms. Budget allocation by objective (Figure 6) shows financial resources but not procurement mechanisms. This operational management aspect is outside the report's evaluation scope.",
           "confidence": "high"
         },
         {
           "theme_id": "1c21",
           "theme_title": "Humanitarian coordination mechanisms are established and strengthened to ensure the efficiency and effectiveness of humanitarian response.",
           "centrality_score": 0.55,
-          "reasoning": "Section 4.2.2 discusses coordination with IGAD and AU frameworks, and section 4.4.2 mentions national referral systems in all countries. However, the report notes these systems 'did not become fully effective and sustainable' due to lack of independent capacity. Coordination is relevant but not the program's primary focus compared to direct assistance delivery.",
+          "reasoning": "Section 4.2.2 documents coordination efforts: IOM mapped activities to avoid duplication; worked with IGAD and AU frameworks; established partnerships avoiding duplication. However, formal humanitarian coordination mechanisms (clusters, etc.) are not explicitly discussed. The focus is more on programmatic alignment than interagency coordination infrastructure.",
           "confidence": "medium"
         },
         {
           "theme_id": "1c22",
           "theme_title": "Humanitarian actors have knowledge, capacity, and resources to engage in the IASC system and multi-agency joint initiatives to ensure a holistic response to multifaceted impact of crisis.",
-          "centrality_score": 0.38,
-          "reasoning": "The report mentions partnerships and complementarity (section 4.2.2) and notes coordination with other UN agencies and NGOs to avoid duplication. However, the JI-HoA was not designed around IASC system engagement or multi-agency joint initiatives; it was a bilateral EU-IOM initiative.",
+          "centrality_score": 0.45,
+          "reasoning": "The report mentions IOM's engagement with UN agencies, NGOs, and regional bodies (section 4.2.2), noting complementarity with other initiatives. However, explicit discussion of IASC participation, cluster coordination, or formal multi-agency frameworks is absent. The integrated approach itself (section 4.3.4) addresses holistic response but not IASC engagement specifically.",
           "confidence": "medium"
         },
         {
-          "theme_id": "1c23",
-          "theme_title": "Humanitarian actors are supported to ensure that affected populations and local actors, especially marginalized groups, are fully consulted and can actively participate in humanitarian response.",
-          "centrality_score": 0.61,
-          "reasoning": "Section 4.1.1.3 documents community participation, noting 92% felt involved in CBR identification and design. Gender mainstreaming is mentioned (section 4.3.2.1). However, section 4.1.1.3 also reveals gaps: some communities' needs were assessed by local government rather than direct community consultation. Participation is present but inconsistently applied.",
-          "confidence": "high"
-        },
-        {
-          "theme_id": "2a11",
-          "theme_title": "Governments and communities have preparedness systems and capacities in place to effectively manage their immediate response to disasters or climate hazards.",
-          "centrality_score": 0.18,
-          "reasoning": "The report does not address disaster preparedness or climate hazard management systems. Section 2.2 lists external shocks (COVID-19, conflict) affecting implementation, but the JI-HoA did not focus on building preparedness systems. Climate considerations are absent from the evaluation.",
-          "confidence": "high"
-        },
-        {
-          "theme_id": "2a12",
-          "theme_title": "Governments and communities have systems and capacities, tools and skills in place to foresee migration and displacement patterns, prevent and recover from disasters, or adapt to the long-term effects of climate and environmental change.",
-          "centrality_score": 0.28,
-          "reasoning": "Section 4.3.1.1 documents increased migration data availability and capacity (36 M&E tools established). However, the focus is on migration data collection, not disaster prevention, recovery, or climate adaptation. Environmental drivers of migration are mentioned as context (section 2.1) but not addressed through climate-adaptation programming.",
-          "confidence": "high"
-        },
-        {
-          "theme_id": "2a21",
-          "theme_title": "Populations at risk of engaging with violent extremist groups are provided with social, political and economic alternatives.",
-          "centrality_score": 0.22,
-          "reasoning": "The JI-HoA did not explicitly target violent extremism prevention. While economic livelihood support (section 4.3.3.1) and CBR projects indirectly address economic drivers, the report provides no evidence of deliberate VEO risk identification or tailored counter-radicalization programming.",
-          "confidence": "high"
-        },
-        {
-          "theme_id": "2a22",
-          "theme_title": "Governments and civil society have enhanced capacities, tools and systems to identify and address the drivers of conflict.",
-          "centrality_score": 0.19,
-          "reasoning": "The report treats conflict as external context (section 2.2: Tigray conflict in Ethiopia, Somalia security) affecting implementation rather than as a target for intervention. There is no evidence of programming to address conflict drivers; the JI-HoA adapted to conflict rather than resolving it.",
-          "confidence": "high"
-        },
-        {
-          "theme_id": "2b11",
-          "theme_title": "Affected populations, including vulnerable or marginalized groups, participate actively in the planning and implementation of recovery, peacebuilding and resilience programmes.",
-          "centrality_score": 0.68,
-          "reasoning": "Section 4.1.1.3 documents community participation in CBR project design (92% felt involved). Focus Group Discussions (section 4.3.3) show returnees actively engaged in reintegration. However, section 4.1.1.3 notes some communities were not directly consulted, and 'peacebuilding' programming is not explicitly addressed. Participation is substantive but incomplete.",
-          "confidence": "high"
-        },
-        {
-          "theme_id": "2b12",
-          "theme_title": "Inclusive systems and structures linking populations and government are established to strengthen social cohesion and resolve conflicts without resorting to violence.",
-          "centrality_score": 0.52,
-          "reasoning": "Section 4.3.3 notes CBR projects contributed to social cohesion and reduction of stigma toward returnees. However, the report does not evaluate deliberate conflict-resolution mechanisms or peace structures. Social cohesion gains are outcomes of livelihood programming rather than core system-building.",
-          "confidence": "medium"
-        },
-        {
-          "theme_id": "2b13",
-          "theme_title": "Members of armed and violent groups and their associates are socially, economically and culturally reintegrated into the communities.",
-          "centrality_score": 0.08,
-          "reasoning": "The JI-HoA did not target reintegration of VEO members or armed group personnel. The report focuses on migrant and returnee reintegration. No evidence of programming for violent extremist fighter reintegration appears in any section.",
-          "confidence": "high"
-        },
-        {
-          "theme_id": "2b61",
-          "theme_title": "Communities impacted by crisis or situations of vulnerability have the necessary material resources and technical capacities and access to markets to restore sustainable livelihoods.",
-          "centrality_score": 0.74,
-          "reasoning": "Directly addressed in section 4.3.3.1. The JI provided 15,161 beneficiaries with reintegration assistance and 54 community-based projects supporting ~76,348 people. Section 4.3.3 confirms CBR projects focused on 'livelihood support' and 'capacity building.' Satisfaction at 55% indicates partial achievement; economic insufficiency limits sustainability per section 4.3.3.2.",
-          "confidence": "high"
-        },
-        {
-          "theme_id": "2b62",
-          "theme_title": "Migrants, returnees and communities impacted by crisis or other situations of vulnerability are able to access the labour market and environmentally sustainable livelihood opportunities.",
-          "centrality_score": 0.78,
-          "reasoning": "Central to the evaluation. Section 4.3.3.1 states returnees used economic support to 'start a business or search for employment.' However, section 4.3.3.2 documents that economic reintegration had the 'lowest score' across beneficiaries, and many returnees deemed support 'too little' to sustain livelihoods. Environmental sustainability of livelihoods is not explicitly addressed.",
-          "confidence": "high"
-        },
-        {
-          "theme_id": "3c11",
-          "theme_title": "Governments have the capacity to address inequalities and other adverse socio-economic drivers to migration.",
-          "centrality_score": 0.68,
-          "reasoning": "Section 4.3.1.1 documents capacity building on return/reintegration procedures, exceeding targets (665 vs 434). Section 4.3.1.2 notes increased stakeholder involvement (25 to 180 actors). However, section 4.3.1.1 reveals only 22% of stakeholders received increased budget allocations, and section 4.5 emphasizes governments lack 'operational and financial capacity.' Capacity increased but sustainability is weak.",
-          "confidence": "high"
-        },
-        {
-          "theme_id": "3c12",
-          "theme_title": "Governments have the knowledge and tools to put in place measures for equitable access to natural resources for people of all genders, ages, abilities, other diversities or legal status.",
+          "theme_id": "2b21",
+          "theme_title": "A collaborative relationship is established between communities and law enforcement entities, with community level accountability and trust building mechanisms in place.",
           "centrality_score": 0.12,
-          "reasoning": "The JI-HoA did not focus on natural resource governance or equitable access frameworks. While CBR projects and livelihood support implicitly relate to resource access, no deliberate policy work on natural resource management, land rights, or resource distribution is documented.",
+          "reasoning": "The report does not address law enforcement engagement or community-police collaboration. Security challenges are mentioned as contextual barriers (section 2.2), but community-law enforcement partnerships and accountability mechanisms are not program activities or evaluation topics.",
           "confidence": "high"
+        },
+        {
+          "theme_id": "2b22",
+          "theme_title": "Law enforcement officials have strengthened knowledge, skills and tools for community engagement in support of community policing, in particular for marginalized or vulnerable groups.",
+          "centrality_score": 0.05,
+          "reasoning": "Community policing or law enforcement capacity building is not addressed in the report. The program focused on migration management and reintegration, not community policing. This output is entirely outside program scope.",
+          "confidence": "high"
+        },
+        {
+          "theme_id": "2b31",
+          "theme_title": "Populations affected by crises and/or displacement are appropriately compensated for lost housing, land or property.",
+          "centrality_score": 0.1,
+          "reasoning": "No discussion of compensation mechanisms for lost housing, land, or property. The program provided cash assistance for livelihood/businesses but not property compensation. This output does not align with JI-HoA activities.",
+          "confidence": "high"
+        },
+        {
+          "theme_id": "2b32",
+          "theme_title": "Victims of human rights violations in the context of restitution and reparations receive material and other forms of compensation.",
+          "centrality_score": 0.25,
+          "reasoning": "The report mentions MHPSS for trauma survivors and economic assistance to returnees, but formal reparations/restitution mechanisms are not evaluated. While victims of trafficking and abuse received support (section 4.1.1.1), this is direct assistance rather than structured reparations systems.",
+          "confidence": "medium"
+        },
+        {
+          "theme_id": "2b52",
+          "theme_title": "Affected populations have access to sustainable settlement solutions (in the locations that they choose).",
+          "centrality_score": 0.75,
+          "reasoning": "The reintegration program (section 4.3.3) supported returnees' settlement in communities of choice through individual and community-based projects. CBR projects created livelihood opportunities (76,348 beneficiaries); economic support enabled return to chosen locations. However, 'sustainable' settlement is partially achieved\u2014economic reintegration scores were lowest, and sustainability concerns noted in section 4.5.",
+          "confidence": "high"
+        },
+        {
+          "theme_id": "2c11",
+          "theme_title": "Government and other actors have increased capacity to set up sustainable resettlement programmes taking into account vulnerabilities, and immediate post arrival assistance tailored to the needs of refugees and their families.",
+          "centrality_score": 0.82,
+          "reasoning": "The program delivered immediate post-arrival assistance (medical, psychosocial, economic) tailored to vulnerabilities identified through assessments (section 4.1.1.1). Section 4.3.1 documents capacity building of stakeholders on return procedures. However, 'sustainable resettlement programmes' (formal refugee/IDP resettlement) is broader than return assistance. The program focused on assisting voluntary return, not resettlement per se.",
+          "confidence": "high"
+        },
+        {
+          "theme_id": "2c12",
+          "theme_title": "Governments have the capacity to implement solutions for persons on the move due to disasters, the adverse effects of climate change, and environmental degradation, crossing or not international borders, in line with human rights standards.",
+          "centrality_score": 0.32,
+          "reasoning": "Climate change and environmental migration are not substantively addressed. Section 2.1 mentions 'degradation of the environment' as a migration factor, but climate-specific capacity building or disaster-migration solutions are not evaluated. The program was migration-focused, not climate-specific.",
+          "confidence": "medium"
+        },
+        {
+          "theme_id": "3c13",
+          "theme_title": "Governments have sufficient, reliable data and analysis on socio-economic needs of people at risk of engaging in unsafe or harmful migration, in particular those belonging to marginalized or vulnerable groups, as a basis to inform evidence-based solutions.",
+          "centrality_score": 0.88,
+          "reasoning": "Section 4.3.1.1 documents substantial progress on data availability and use. The Regional Data Hub produced 20 field studies/surveys; 136 stakeholders reported data supporting evidence-based policies (exceeding target of 42). M&E systems tracked returnee needs (36 tools established). However, explicit focus on 'people at risk of engaging in unsafe migration' (prevention angle) versus returnee data is not clearly separated.",
+          "confidence": "high"
+        },
+        {
+          "theme_id": "3d21",
+          "theme_title": "Governments and civil society actors have the skills, tools and knowledge to identify (S)GBV risks, including (P)SEA, and to implement sustainable risk mitigation measures.",
+          "centrality_score": 0.52,
+          "reasoning": "The report mentions gender mainstreaming in reintegration (section 4.3.2.1) and MHPSS research identifying trauma. However, formal GBV/SEA risk identification tools and mitigation measures are not extensively documented. Capacity building covered reintegration broadly, not GBV prevention mechanisms specifically.",
+          "confidence": "medium"
+        },
+        {
+          "theme_id": "3d22",
+          "theme_title": "Governments and civil society actors have the knowledge and skills to put in place measures to prevent GBV, including through enforcing policies and practices that promote gender equality and address GBV.",
+          "centrality_score": 0.35,
+          "reasoning": "Gender mainstreaming in reintegration is mentioned (section 4.3.2.1: IOM organized SGBV awareness), but broader GBV prevention policy mechanisms and enforcement measures are not detailed. The program did not focus on establishing gender equality policies or GBV prevention systems.",
+          "confidence": "medium"
+        },
+        {
+          "theme_id": "3d23",
+          "theme_title": "Measures for the prevention of other forms of violence, exploitation and abuse, including trafficking in persons, are in place.",
+          "centrality_score": 0.48,
+          "reasoning": "Awareness raising on migration dangers (section 4.3.2.1) and identification of trafficking victims suggest some prevention engagement. However, systematic prevention measures (policies, enforcement mechanisms) are not evaluated. The focus was more on assisting victims than preventing exploitation.",
+          "confidence": "medium"
+        },
+        {
+          "theme_id": "3d31",
+          "theme_title": "Government and civil society stakeholders have improved knowledge, skills and resources to protect the rights of vulnerable migrants, including children and victims of trafficking, and are equipped to apply a survivor-centered, gender-sensitive, human-rights based approach.",
+          "centrality_score": 0.77,
+          "reasoning": "Section 4.3.1 documents capacity building of 665 stakeholders with 97% reporting increased knowledge. Section 4.1.1.1 describes identification of vulnerable migrants and individualized support based on vulnerabilities. Psychosocial support research (Kan, 2022) informed survivor-centered approaches. However, formal documentation of rights-based framework training and gender-sensitivity protocols is limited.",
+          "confidence": "high"
+        },
+        {
+          "theme_id": "3d34",
+          "theme_title": "GBV survivors of all gender and age groups, including Sexual Exploitation and Abuse (SEA), are provided with survivor-centered, gender- and child-sensitive multisectoral services, including protection, health, and other types of assistance and support.",
+          "centrality_score": 0.58,
+          "reasoning": "Section 4.1.1.1 confirms survivors of abuse and trafficking received reintegration assistance (economic, social, psychosocial support). MHPSS research (Kan, 2022) indicates trauma survivors received mental health support. However, formal multisectoral service coordination (health, protection, legal) is not explicitly documented as a structured output.",
+          "confidence": "medium"
         },
         {
           "theme_id": "3d35",
           "theme_title": "Internal and international environmental migrants have access to multidimensional protection interventions.",
-          "centrality_score": 0.24,
-          "reasoning": "The report addresses migrant protection comprehensively (sections 4.3.2) with individual support, MRCs, and AVRR assistance. However, 'environmental migrants' as a distinct category are not identified or analyzed separately. Migration drivers (section 2.1) mention 'environment degradation' contextually, but the program did not develop environmental migrant-specific interventions.",
-          "confidence": "medium"
+          "centrality_score": 0.18,
+          "reasoning": "Environmental migration is not a focus of evaluation or program design. While section 2.1 lists 'degradation of environment' as a migration factor, the program did not target or track environmental migrants specifically. This output is outside program scope.",
+          "confidence": "high"
         }
       ]
     }

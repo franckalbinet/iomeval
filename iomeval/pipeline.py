@@ -19,8 +19,8 @@ from mistocr.core import read_pgs
 from mistocr.pipeline import pdf_to_md
 import json
 
-logging.basicConfig(level=logging.INFO)
-logging.getLogger('LiteLLM').setLevel(logging.WARNING)
+logging.root.handlers.clear()
+logging.basicConfig(level=logging.INFO, format='%(message)s', stream=sys.stdout, force=True)
 
 # %% ../nbs/06_pipeline.ipynb 5
 class Report:
