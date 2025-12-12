@@ -166,6 +166,12 @@ Priorities → map GCM Objectives → map SRF Outputs**
 Progress is displayed as each step completes, and state is automatically
 saved after each stage for checkpoint/resume capability.
 
+> [!NOTE]
+>
+> The prompts used for extraction and framework mapping are available in
+> the [prompts
+> directory](https://github.com/franckalbinet/iomeval/tree/master/nbs/files/prompts).
+
 ## Detailed Workflow
 
 For more control over individual pipeline stages, see the module
