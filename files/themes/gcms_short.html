@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>gcms_short – iomeval</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-000f0825b9c55ed21d14970d810c14a9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="iomeval">
+<meta property="og:site_name" content="iomeval">
+<meta name="twitter:title" content="iomeval">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">iomeval</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOMEval</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../analysis/eval_metadata_eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOM Reports Exploration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">API</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../readers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Readers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../downloaders.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Downloaders</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../extract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extract</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../themes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Themes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../mapper.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapper</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#objective-1" id="toc-objective-1" class="nav-link active" data-scroll-target="#objective-1">Objective 1</a>
+  <ul class="collapse">
+  <li><a href="#title-collect-and-utilize-accurate-and-disaggregated-data-as-a-basis-for-evidence-based-policies" id="toc-title-collect-and-utilize-accurate-and-disaggregated-data-as-a-basis-for-evidence-based-policies" class="nav-link" data-scroll-target="#title-collect-and-utilize-accurate-and-disaggregated-data-as-a-basis-for-evidence-based-policies">Title: Collect and utilize accurate and disaggregated data as a basis for evidence-based policies</a></li>
+  <li><a href="#associated-actions" id="toc-associated-actions" class="nav-link" data-scroll-target="#associated-actions">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-2" id="toc-objective-2" class="nav-link" data-scroll-target="#objective-2">Objective 2</a>
+  <ul class="collapse">
+  <li><a href="#title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin" id="toc-title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin" class="nav-link" data-scroll-target="#title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin">Title: Minimize the adverse drivers and structural factors that compel people to leave their country of origin</a></li>
+  <li><a href="#associated-actions-1" id="toc-associated-actions-1" class="nav-link" data-scroll-target="#associated-actions-1">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-3" id="toc-objective-3" class="nav-link" data-scroll-target="#objective-3">Objective 3</a>
+  <ul class="collapse">
+  <li><a href="#title-provide-accurate-and-timely-information-at-all-stages-of-migration" id="toc-title-provide-accurate-and-timely-information-at-all-stages-of-migration" class="nav-link" data-scroll-target="#title-provide-accurate-and-timely-information-at-all-stages-of-migration">Title: Provide accurate and timely information at all stages of migration</a></li>
+  <li><a href="#associated-actions-2" id="toc-associated-actions-2" class="nav-link" data-scroll-target="#associated-actions-2">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-4" id="toc-objective-4" class="nav-link" data-scroll-target="#objective-4">Objective 4</a>
+  <ul class="collapse">
+  <li><a href="#title-ensure-that-all-migrants-have-proof-of-legal-identity-and-adequate-documentation" id="toc-title-ensure-that-all-migrants-have-proof-of-legal-identity-and-adequate-documentation" class="nav-link" data-scroll-target="#title-ensure-that-all-migrants-have-proof-of-legal-identity-and-adequate-documentation">Title: Ensure that all migrants have proof of legal identity and adequate documentation</a></li>
+  <li><a href="#associated-actions-3" id="toc-associated-actions-3" class="nav-link" data-scroll-target="#associated-actions-3">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-5" id="toc-objective-5" class="nav-link" data-scroll-target="#objective-5">Objective 5</a>
+  <ul class="collapse">
+  <li><a href="#title-enhance-availability-and-flexibility-of-pathways-for-regular-migration" id="toc-title-enhance-availability-and-flexibility-of-pathways-for-regular-migration" class="nav-link" data-scroll-target="#title-enhance-availability-and-flexibility-of-pathways-for-regular-migration">Title: Enhance availability and flexibility of pathways for regular migration</a></li>
+  <li><a href="#associated-actions-4" id="toc-associated-actions-4" class="nav-link" data-scroll-target="#associated-actions-4">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-6" id="toc-objective-6" class="nav-link" data-scroll-target="#objective-6">Objective 6</a>
+  <ul class="collapse">
+  <li><a href="#title-facilitate-fair-and-ethical-recruitment-and-safeguard-conditions-that-ensure-decent-work" id="toc-title-facilitate-fair-and-ethical-recruitment-and-safeguard-conditions-that-ensure-decent-work" class="nav-link" data-scroll-target="#title-facilitate-fair-and-ethical-recruitment-and-safeguard-conditions-that-ensure-decent-work">Title: Facilitate Fair And Ethical Recruitment And Safeguard Conditions That Ensure Decent Work</a></li>
+  <li><a href="#associated-actions-5" id="toc-associated-actions-5" class="nav-link" data-scroll-target="#associated-actions-5">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-7" id="toc-objective-7" class="nav-link" data-scroll-target="#objective-7">Objective 7</a>
+  <ul class="collapse">
+  <li><a href="#title-address-and-reduce-vulnerabilities-in-migration" id="toc-title-address-and-reduce-vulnerabilities-in-migration" class="nav-link" data-scroll-target="#title-address-and-reduce-vulnerabilities-in-migration">Title: Address and Reduce Vulnerabilities in Migration</a></li>
+  <li><a href="#associated-actions-6" id="toc-associated-actions-6" class="nav-link" data-scroll-target="#associated-actions-6">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-8" id="toc-objective-8" class="nav-link" data-scroll-target="#objective-8">Objective 8</a>
+  <ul class="collapse">
+  <li><a href="#title-save-lives-and-establish-coordinated-international-efforts-on-missing-migrants" id="toc-title-save-lives-and-establish-coordinated-international-efforts-on-missing-migrants" class="nav-link" data-scroll-target="#title-save-lives-and-establish-coordinated-international-efforts-on-missing-migrants">Title: Save Lives and Establish Coordinated International Efforts on Missing Migrants</a></li>
+  <li><a href="#associated-actions-7" id="toc-associated-actions-7" class="nav-link" data-scroll-target="#associated-actions-7">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-9" id="toc-objective-9" class="nav-link" data-scroll-target="#objective-9">Objective 9</a>
+  <ul class="collapse">
+  <li><a href="#title-strengthen-the-transnational-response-to-smuggling-of-migrants" id="toc-title-strengthen-the-transnational-response-to-smuggling-of-migrants" class="nav-link" data-scroll-target="#title-strengthen-the-transnational-response-to-smuggling-of-migrants">Title: Strengthen the transnational response to smuggling of migrants</a></li>
+  <li><a href="#associated-actions-8" id="toc-associated-actions-8" class="nav-link" data-scroll-target="#associated-actions-8">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-10" id="toc-objective-10" class="nav-link" data-scroll-target="#objective-10">Objective 10</a>
+  <ul class="collapse">
+  <li><a href="#title-prevent-combat-and-eradicate-trafficking-in-persons-in-the-context-of-international-migration" id="toc-title-prevent-combat-and-eradicate-trafficking-in-persons-in-the-context-of-international-migration" class="nav-link" data-scroll-target="#title-prevent-combat-and-eradicate-trafficking-in-persons-in-the-context-of-international-migration">Title: Prevent, Combat And Eradicate Trafficking In Persons In The Context Of International Migration</a></li>
+  <li><a href="#associated-actions-9" id="toc-associated-actions-9" class="nav-link" data-scroll-target="#associated-actions-9">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-11" id="toc-objective-11" class="nav-link" data-scroll-target="#objective-11">Objective 11</a>
+  <ul class="collapse">
+  <li><a href="#title-manage-borders-in-an-integrated-secure-and-coordinated-manner" id="toc-title-manage-borders-in-an-integrated-secure-and-coordinated-manner" class="nav-link" data-scroll-target="#title-manage-borders-in-an-integrated-secure-and-coordinated-manner">Title: Manage Borders In An Integrated, Secure And Coordinated Manner</a></li>
+  <li><a href="#associated-actions-10" id="toc-associated-actions-10" class="nav-link" data-scroll-target="#associated-actions-10">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-12" id="toc-objective-12" class="nav-link" data-scroll-target="#objective-12">Objective 12</a>
+  <ul class="collapse">
+  <li><a href="#title-strengthen-certainty-and-predictability-in-migration-procedures-for-appropriate-screening-assessment-and-referral" id="toc-title-strengthen-certainty-and-predictability-in-migration-procedures-for-appropriate-screening-assessment-and-referral" class="nav-link" data-scroll-target="#title-strengthen-certainty-and-predictability-in-migration-procedures-for-appropriate-screening-assessment-and-referral">Title: Strengthen Certainty And Predictability In Migration Procedures For Appropriate Screening, Assessment And Referral</a></li>
+  <li><a href="#associated-actions-11" id="toc-associated-actions-11" class="nav-link" data-scroll-target="#associated-actions-11">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-13" id="toc-objective-13" class="nav-link" data-scroll-target="#objective-13">Objective 13</a>
+  <ul class="collapse">
+  <li><a href="#title-use-migration-detention-only-as-a-measure-of-last-resort-and-work-towards-alternatives" id="toc-title-use-migration-detention-only-as-a-measure-of-last-resort-and-work-towards-alternatives" class="nav-link" data-scroll-target="#title-use-migration-detention-only-as-a-measure-of-last-resort-and-work-towards-alternatives">Title: Use Migration Detention Only As A Measure Of Last Resort And Work Towards Alternatives</a></li>
+  <li><a href="#associated-actions-12" id="toc-associated-actions-12" class="nav-link" data-scroll-target="#associated-actions-12">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-14" id="toc-objective-14" class="nav-link" data-scroll-target="#objective-14">Objective 14</a>
+  <ul class="collapse">
+  <li><a href="#title-enhance-consular-protection-assistance-and-cooperation-throughout-the-migration-cycle" id="toc-title-enhance-consular-protection-assistance-and-cooperation-throughout-the-migration-cycle" class="nav-link" data-scroll-target="#title-enhance-consular-protection-assistance-and-cooperation-throughout-the-migration-cycle">Title: Enhance Consular Protection, Assistance And Cooperation Throughout The Migration Cycle</a></li>
+  <li><a href="#associated-actions-13" id="toc-associated-actions-13" class="nav-link" data-scroll-target="#associated-actions-13">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-15" id="toc-objective-15" class="nav-link" data-scroll-target="#objective-15">Objective 15</a>
+  <ul class="collapse">
+  <li><a href="#title-provide-access-to-basic-services-for-migrants" id="toc-title-provide-access-to-basic-services-for-migrants" class="nav-link" data-scroll-target="#title-provide-access-to-basic-services-for-migrants">Title: Provide access to basic services for migrants</a></li>
+  <li><a href="#associated-actions-14" id="toc-associated-actions-14" class="nav-link" data-scroll-target="#associated-actions-14">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-16" id="toc-objective-16" class="nav-link" data-scroll-target="#objective-16">Objective 16</a>
+  <ul class="collapse">
+  <li><a href="#title-empower-migrants-and-societies-to-realize-full-inclusion-and-social-cohesion" id="toc-title-empower-migrants-and-societies-to-realize-full-inclusion-and-social-cohesion" class="nav-link" data-scroll-target="#title-empower-migrants-and-societies-to-realize-full-inclusion-and-social-cohesion">Title: Empower Migrants And Societies To Realize Full Inclusion And Social Cohesion</a></li>
+  <li><a href="#associated-actions-15" id="toc-associated-actions-15" class="nav-link" data-scroll-target="#associated-actions-15">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-17" id="toc-objective-17" class="nav-link" data-scroll-target="#objective-17">Objective 17</a>
+  <ul class="collapse">
+  <li><a href="#title-eliminate-all-forms-of-discrimination-and-promote-evidence-based-public-discourse-to-shape-perceptions-of-migration" id="toc-title-eliminate-all-forms-of-discrimination-and-promote-evidence-based-public-discourse-to-shape-perceptions-of-migration" class="nav-link" data-scroll-target="#title-eliminate-all-forms-of-discrimination-and-promote-evidence-based-public-discourse-to-shape-perceptions-of-migration">Title: Eliminate All Forms Of Discrimination And Promote Evidence-Based Public Discourse To Shape Perceptions Of Migration</a></li>
+  <li><a href="#associated-actions-16" id="toc-associated-actions-16" class="nav-link" data-scroll-target="#associated-actions-16">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-18" id="toc-objective-18" class="nav-link" data-scroll-target="#objective-18">Objective 18</a>
+  <ul class="collapse">
+  <li><a href="#title-invest-in-skills-development-and-facilitate-mutual-recognition-of-skills-qualifications-and-competences" id="toc-title-invest-in-skills-development-and-facilitate-mutual-recognition-of-skills-qualifications-and-competences" class="nav-link" data-scroll-target="#title-invest-in-skills-development-and-facilitate-mutual-recognition-of-skills-qualifications-and-competences">Title: Invest In Skills Development And Facilitate Mutual Recognition Of Skills, Qualifications And Competences</a></li>
+  <li><a href="#associated-actions-17" id="toc-associated-actions-17" class="nav-link" data-scroll-target="#associated-actions-17">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-19" id="toc-objective-19" class="nav-link" data-scroll-target="#objective-19">Objective 19</a>
+  <ul class="collapse">
+  <li><a href="#title-create-conditions-for-migrants-and-diasporas-to-fully-contribute-to-sustainable-development-in-all-countries" id="toc-title-create-conditions-for-migrants-and-diasporas-to-fully-contribute-to-sustainable-development-in-all-countries" class="nav-link" data-scroll-target="#title-create-conditions-for-migrants-and-diasporas-to-fully-contribute-to-sustainable-development-in-all-countries">Title: Create Conditions For Migrants And Diasporas To Fully Contribute To Sustainable Development In All Countries</a></li>
+  <li><a href="#associated-actions-18" id="toc-associated-actions-18" class="nav-link" data-scroll-target="#associated-actions-18">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-20" id="toc-objective-20" class="nav-link" data-scroll-target="#objective-20">Objective 20</a>
+  <ul class="collapse">
+  <li><a href="#title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin-1" id="toc-title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin-1" class="nav-link" data-scroll-target="#title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin-1">Title: Minimize the adverse drivers and structural factors that compel people to leave their country of origin</a></li>
+  <li><a href="#associated-actions-19" id="toc-associated-actions-19" class="nav-link" data-scroll-target="#associated-actions-19">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-21" id="toc-objective-21" class="nav-link" data-scroll-target="#objective-21">Objective 21</a>
+  <ul class="collapse">
+  <li><a href="#title-cooperate-in-facilitating-safe-and-dignified-return-and-readmission-as-well-as-sustainable-reintegration" id="toc-title-cooperate-in-facilitating-safe-and-dignified-return-and-readmission-as-well-as-sustainable-reintegration" class="nav-link" data-scroll-target="#title-cooperate-in-facilitating-safe-and-dignified-return-and-readmission-as-well-as-sustainable-reintegration">Title: Cooperate In Facilitating Safe And Dignified Return And Readmission, As Well As Sustainable Reintegration</a></li>
+  <li><a href="#associated-actions-20" id="toc-associated-actions-20" class="nav-link" data-scroll-target="#associated-actions-20">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-22" id="toc-objective-22" class="nav-link" data-scroll-target="#objective-22">Objective 22</a>
+  <ul class="collapse">
+  <li><a href="#title-establish-mechanisms-for-the-portability-of-social-security-entitlements-and-earned-benefits" id="toc-title-establish-mechanisms-for-the-portability-of-social-security-entitlements-and-earned-benefits" class="nav-link" data-scroll-target="#title-establish-mechanisms-for-the-portability-of-social-security-entitlements-and-earned-benefits">Title: Establish Mechanisms For The Portability Of Social Security Entitlements And Earned Benefits</a></li>
+  <li><a href="#associated-actions-21" id="toc-associated-actions-21" class="nav-link" data-scroll-target="#associated-actions-21">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-23" id="toc-objective-23" class="nav-link" data-scroll-target="#objective-23">Objective 23</a>
+  <ul class="collapse">
+  <li><a href="#title-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration" id="toc-title-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration" class="nav-link" data-scroll-target="#title-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration">Title: Strengthen International Cooperation And Global Partnerships For Safe, Orderly And Regular Migration</a></li>
+  <li><a href="#associated-actions-22" id="toc-associated-actions-22" class="nav-link" data-scroll-target="#associated-actions-22">Associated actions</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="gcms_short-commonmark.md"><i class="bi bi-file-code"></i>CommonMark</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="objective-1" class="level1">
+<h1>Objective 1</h1>
+<section id="title-collect-and-utilize-accurate-and-disaggregated-data-as-a-basis-for-evidence-based-policies" class="level2">
+<h2 class="anchored" data-anchor-id="title-collect-and-utilize-accurate-and-disaggregated-data-as-a-basis-for-evidence-based-policies">Title: Collect and utilize accurate and disaggregated data as a basis for evidence-based policies</h2>
+</section>
+<section id="associated-actions" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Elaborate and implement a comprehensive strategy for improving migration data at local, national, regional and global levels</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Improve international comparability and compatibility of migration statistics and national data systems</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Develop a global programme to build and enhance national capacities in data collection, analysis and dissemination</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Collect, analyse and use data on the effects and benefits of migration</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Support further development of and collaboration between existing global and regional databases and depositories</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Establish and strengthen regional centres for research and training on migration or migration observatories</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Improve national data collection by integrating migration-related topics in national censuses, as early as practicable</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Conduct household, labour force and other surveys to collect information on the social and economic integration of migrants</li>
+</ol></li>
+<li><ol type="i">
+<li>Enhance collaboration between State units responsible for migration data and national statistical offices</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Develop and use country-specific migration profiles</li>
+</ol></li>
+<li><ol start="11" type="a">
+<li>Cooperate with relevant stakeholders in countries of origin, transit and destination</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-2" class="level1">
+<h1>Objective 2</h1>
+<section id="title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin" class="level2">
+<h2 class="anchored" data-anchor-id="title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin">Title: Minimize the adverse drivers and structural factors that compel people to leave their country of origin</h2>
+</section>
+<section id="associated-actions-1" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-1">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Promote the implementation of the 2030 Agenda for Sustainable Development</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Invest in programmes that accelerate States’ fulfilment of the Sustainable Development Goals</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Establish or strengthen mechanisms to monitor and anticipate the development of risks and threats</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Invest in sustainable development at local and national levels in all regions</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Invest in human capital development</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Strengthen collaboration between humanitarian and development actors</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Account for migrants in national emergency preparedness and response</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Strengthen joint analysis and sharing of information to better map, understand, predict and address migration movements</li>
+</ol></li>
+<li><ol type="i">
+<li>Develop adaptation and resilience strategies to sudden-onset and slow-onset natural disasters</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Integrate displacement considerations into disaster preparedness strategies and promote cooperation with neighbouring and other relevant countries</li>
+</ol></li>
+<li><ol start="11" type="a">
+<li>Harmonize and develop approaches and mechanisms at subregional and regional levels</li>
+</ol></li>
+<li><ol start="12" type="a">
+<li>Develop coherent approaches to address the challenges of migration movements in the context of sudden-onset and slow-onset natural disasters</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-3" class="level1">
+<h1>Objective 3</h1>
+<section id="title-provide-accurate-and-timely-information-at-all-stages-of-migration" class="level2">
+<h2 class="anchored" data-anchor-id="title-provide-accurate-and-timely-information-at-all-stages-of-migration">Title: Provide accurate and timely information at all stages of migration</h2>
+</section>
+<section id="associated-actions-2" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-2">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Launch and publicize a centralized and publicly accessible national website</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Promote and improve systematic bilateral, regional and international cooperation and dialogue</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Establish open and accessible information points along relevant migration routes</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Provide newly arrived migrants with targeted, gender-responsive, child-sensitive, accessible and comprehensive information and legal guidance</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Promote multi-lingual, gender-responsive and evidence-based information campaigns</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-4" class="level1">
+<h1>Objective 4</h1>
+<section id="title-ensure-that-all-migrants-have-proof-of-legal-identity-and-adequate-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="title-ensure-that-all-migrants-have-proof-of-legal-identity-and-adequate-documentation">Title: Ensure that all migrants have proof of legal identity and adequate documentation</h2>
+</section>
+<section id="associated-actions-3" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-3">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Improve civil registry systems</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Harmonize travel documents in line with the specifications of the International Civil Aviation Organization</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Ensure adequate, timely, reliable and accessible consular documentation to our nationals residing in other countries</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Facilitate access to personal documentation</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Strengthen measures to reduce statelessness</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Review and revise requirements to prove nationality at service delivery centres</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Build upon existing practices at the local level that facilitate participation in community life</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-5" class="level1">
+<h1>Objective 5</h1>
+<section id="title-enhance-availability-and-flexibility-of-pathways-for-regular-migration" class="level2">
+<h2 class="anchored" data-anchor-id="title-enhance-availability-and-flexibility-of-pathways-for-regular-migration">Title: Enhance availability and flexibility of pathways for regular migration</h2>
+</section>
+<section id="associated-actions-4" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-4">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Develop human rights-based and gender-responsive bilateral, regional and multilateral labour mobility agreements</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Facilitate regional and cross-regional labour mobility through international and bilateral cooperation arrangements</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Review and revise existing options and pathways for regular migration</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Develop flexible, rights-based and gender-responsive labour mobility schemes for migrants</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Promote effective skills matching in the national economy by involving local authorities and other relevant stakeholders</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Foster efficient and effective skills-matching programmes</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Develop or build on existing national and regional practices for admission and stay of appropriate duration</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Cooperate to identify, develop and strengthen solutions for migrants compelled to leave their countries of origin</li>
+</ol></li>
+<li><ol type="i">
+<li>Facilitate access to procedures for family reunification for migrants</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Expand available options for academic mobility</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-6" class="level1">
+<h1>Objective 6</h1>
+<section id="title-facilitate-fair-and-ethical-recruitment-and-safeguard-conditions-that-ensure-decent-work" class="level2">
+<h2 class="anchored" data-anchor-id="title-facilitate-fair-and-ethical-recruitment-and-safeguard-conditions-that-ensure-decent-work">Title: Facilitate Fair And Ethical Recruitment And Safeguard Conditions That Ensure Decent Work</h2>
+</section>
+<section id="associated-actions-5" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-5">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Promote signature, ratification, accession and implementation of relevant international instruments</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Build upon the work of existing bilateral, subregional and regional platforms</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Improve regulations on public and private recruitment agencies</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Establish partnerships with all relevant stakeholders</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Enact and implement national laws that sanction human and labour rights violations</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Strengthen the enforcement of fair and ethical recruitment and decent work norms and policies</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Develop and strengthen labour migration and fair and ethical recruitment processes</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Take measures that prohibit the confiscation or non-consensual retention of work contracts</li>
+</ol></li>
+<li><ol type="i">
+<li>Provide migrant workers engaged in remunerated and contractual labour with the same labour rights and protections</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Ensure migrants working in the informal economy have safe access to effective reporting, complaint, and redress mechanisms</li>
+</ol></li>
+<li><ol start="11" type="a">
+<li>Review relevant national labour laws, employment policies and programmes</li>
+</ol></li>
+<li><ol start="12" type="a">
+<li>Develop and improve national policies and programmes relating to international labour mobility</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-7" class="level1">
+<h1>Objective 7</h1>
+<section id="title-address-and-reduce-vulnerabilities-in-migration" class="level2">
+<h2 class="anchored" data-anchor-id="title-address-and-reduce-vulnerabilities-in-migration">Title: Address and Reduce Vulnerabilities in Migration</h2>
+</section>
+<section id="associated-actions-6" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-6">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Review relevant policies and practices to ensure they do not create, exacerbate or unintentionally increase vulnerabilities of migrants</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Establish comprehensive policies and develop partnerships</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Develop gender-responsive migration policies</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Review relevant existing labour laws and work conditions</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Account for migrant children in national child protection systems</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Protect unaccompanied and separated children at all stages of migration</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Ensure migrants have access to public or affordable independent legal assistance and representation</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Develop accessible and expedient procedures that facilitate transitions from one status to another</li>
+</ol></li>
+<li><ol type="i">
+<li>Build on existing practices to facilitate access for migrants in an irregular status</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Apply specific support measures</li>
+</ol></li>
+<li><ol start="11" type="a">
+<li>Involve local authorities and relevant stakeholders in the identification, referral and assistance of migrants</li>
+</ol></li>
+<li><ol start="12" type="a">
+<li>Develop national policies and programmes to improve national responses</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-8" class="level1">
+<h1>Objective 8</h1>
+<section id="title-save-lives-and-establish-coordinated-international-efforts-on-missing-migrants" class="level2">
+<h2 class="anchored" data-anchor-id="title-save-lives-and-establish-coordinated-international-efforts-on-missing-migrants">Title: Save Lives and Establish Coordinated International Efforts on Missing Migrants</h2>
+</section>
+<section id="associated-actions-7" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-7">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Develop procedures and agreements on search and rescue of migrants</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Review the impacts of migration-related policies and laws to ensure that these do not raise or create the risk of migrants going missing</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Enable migrants to communicate with their families without delay to inform them that they are alive</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Establish transnational coordination channels</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Collect, centralize and systematize data regarding corpses and ensure traceability after burial</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Make all efforts, including through international cooperation, to recover, identify and repatriate the remains of deceased migrants</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-9" class="level1">
+<h1>Objective 9</h1>
+<section id="title-strengthen-the-transnational-response-to-smuggling-of-migrants" class="level2">
+<h2 class="anchored" data-anchor-id="title-strengthen-the-transnational-response-to-smuggling-of-migrants">Title: Strengthen the transnational response to smuggling of migrants</h2>
+</section>
+<section id="associated-actions-8" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-8">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Promote ratification, accession and implementation of the Protocol against the Smuggling of Migrants by Land, Sea and Air</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Use transnational, regional and bilateral mechanisms to share relevant information and intelligence on smuggling routes</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Develop gender-responsive and child-sensitive cooperation protocols along migration routes</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Adopt legislative and other measures as may be necessary to establish the smuggling of migrants as a criminal offence</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Design, review or amend relevant policies and procedures to distinguish between the crimes of smuggling of migrants and trafficking in persons</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Take measures to prevent the smuggling of migrants along the migration cycle in partnership with other States and relevant stakeholders</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-10" class="level1">
+<h1>Objective 10</h1>
+<section id="title-prevent-combat-and-eradicate-trafficking-in-persons-in-the-context-of-international-migration" class="level2">
+<h2 class="anchored" data-anchor-id="title-prevent-combat-and-eradicate-trafficking-in-persons-in-the-context-of-international-migration">Title: Prevent, Combat And Eradicate Trafficking In Persons In The Context Of International Migration</h2>
+</section>
+<section id="associated-actions-9" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-9">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Promote, ratification, accession and implementation of the Protocol to Prevent, Suppress and Punish Trafficking in Persons Especially Women and Children</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Promote the implementation of the Global Plan of Action to Combat Trafficking in Persons and take into consideration relevant recommendations</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Monitor irregular migration routes which may be exploited by human trafficking networks</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Share relevant information and intelligence through transnational and regional mechanisms</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Apply measures that address the particular vulnerabilities of women, men, girls and boys</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Ensure that definitions of trafficking in persons used in legislation, migration policy and planning are in accordance with international law</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Strengthen legislation and relevant procedures to enhance prosecution of traffickers, avoid criminalization of migrants</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Provide migrants that have become victims of trafficking in persons with protection and assistance</li>
+</ol></li>
+<li><ol type="i">
+<li>Create national and local information systems and training programmes</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Invest in awareness-raising campaigns</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-11" class="level1">
+<h1>Objective 11</h1>
+<section id="title-manage-borders-in-an-integrated-secure-and-coordinated-manner" class="level2">
+<h2 class="anchored" data-anchor-id="title-manage-borders-in-an-integrated-secure-and-coordinated-manner">Title: Manage Borders In An Integrated, Secure And Coordinated Manner</h2>
+</section>
+<section id="associated-actions-10" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-10">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Enhance international, regional and cross-regional border management cooperation</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Establish appropriate structures and mechanisms for effective integrated border management</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Review and revise relevant national procedures for border screening, individual assessment and interview processes</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Develop technical cooperation agreements</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Ensure that child protection authorities are promptly informed and assigned to participate in procedures</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Review and revise relevant laws and regulations</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Improve cross-border collaboration among neighbouring and other States</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-12" class="level1">
+<h1>Objective 12</h1>
+<section id="title-strengthen-certainty-and-predictability-in-migration-procedures-for-appropriate-screening-assessment-and-referral" class="level2">
+<h2 class="anchored" data-anchor-id="title-strengthen-certainty-and-predictability-in-migration-procedures-for-appropriate-screening-assessment-and-referral">Title: Strengthen Certainty And Predictability In Migration Procedures For Appropriate Screening, Assessment And Referral</h2>
+</section>
+<section id="associated-actions-11" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-11">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Increase transparency and accessibility of migration procedures</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Develop and conduct intra- and cross-regional specialized human rights and trauma informed trainings</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Establish gender-responsive and child-sensitive referral mechanisms</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Ensure that migrant children are promptly identified at places of first arrival in countries of transit and destination</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Ensure that, in the context of mixed movements, relevant information on rights and obligations</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-13" class="level1">
+<h1>Objective 13</h1>
+<section id="title-use-migration-detention-only-as-a-measure-of-last-resort-and-work-towards-alternatives" class="level2">
+<h2 class="anchored" data-anchor-id="title-use-migration-detention-only-as-a-measure-of-last-resort-and-work-towards-alternatives">Title: Use Migration Detention Only As A Measure Of Last Resort And Work Towards Alternatives</h2>
+</section>
+<section id="associated-actions-12" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-12">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Use existing relevant human rights mechanisms to improve independent monitoring of migrant detention</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Consolidate a comprehensive repository to disseminate best practices of human rights based alternatives to detention</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Review and revise relevant legislation, policies and practices related to migration detention</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Provide access to justice for all migrants in countries of transit and destination that are or may be subject to detention</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Ensure that all migrants in detention are informed about the reasons for their detention</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Reduce the negative and potentially lasting effects of detention on migrants</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Ensure that all governmental authorities and private actors duly charged with administering immigration detention do so in a way consistent with human rights</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Protect and respect the rights and best interests of the child at all times</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-14" class="level1">
+<h1>Objective 14</h1>
+<section id="title-enhance-consular-protection-assistance-and-cooperation-throughout-the-migration-cycle" class="level2">
+<h2 class="anchored" data-anchor-id="title-enhance-consular-protection-assistance-and-cooperation-throughout-the-migration-cycle">Title: Enhance Consular Protection, Assistance And Cooperation Throughout The Migration Cycle</h2>
+</section>
+<section id="associated-actions-13" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-13">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Cooperate to build consular capacities</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Involve relevant consular and immigration personnel in existing global and regional fora on migration</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Conclude bilateral or regional agreements on consular assistance and representation</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Strengthen consular capacities in order to identify, protect and assist our nationals abroad who are in a situation of vulnerability</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Provide our nationals abroad the opportunity to register with the country of origin</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Provide consular support to our nationals through advice</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-15" class="level1">
+<h1>Objective 15</h1>
+<section id="title-provide-access-to-basic-services-for-migrants" class="level2">
+<h2 class="anchored" data-anchor-id="title-provide-access-to-basic-services-for-migrants">Title: Provide access to basic services for migrants</h2>
+</section>
+<section id="associated-actions-14" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-14">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Enact laws and take measures to ensure that service delivery does not amount to discrimination against migrants</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Ensure that cooperation between service providers and immigration authorities does not exacerbate vulnerabilities of irregular migrants</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Establish and strengthen holistic and easily accessible service points at local level</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Establish or mandate independent institutions at the national or local level</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Incorporate the health needs of migrants in national and local health care policies and plans</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Provide inclusive and equitable quality education to migrant children and youth</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-16" class="level1">
+<h1>Objective 16</h1>
+<section id="title-empower-migrants-and-societies-to-realize-full-inclusion-and-social-cohesion" class="level2">
+<h2 class="anchored" data-anchor-id="title-empower-migrants-and-societies-to-realize-full-inclusion-and-social-cohesion">Title: Empower Migrants And Societies To Realize Full Inclusion And Social Cohesion</h2>
+</section>
+<section id="associated-actions-15" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-15">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Promote mutual respect for the cultures, traditions and customs of communities of destination and of migrants</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Establish comprehensive and needs-based pre-departure and post-arrival programmes</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Develop national short, medium and long term policy goals regarding the inclusion of migrants in societies</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Work towards inclusive labour markets and full participation of migrant workers in the formal economy</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Empower migrant women by eliminating gender-based discriminatory restrictions</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Establish community centres or programmes at the local level to facilitate migrant participation in the receiving society</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Capitalize on the skills, cultural and language proficiency of migrants and receiving communities</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Support multicultural activities through sports, music, arts, culinary festivals, volunteering and other social events</li>
+</ol></li>
+<li><ol type="i">
+<li>Promote school environments that are welcoming and safe, and support the aspirations of migrant children</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-17" class="level1">
+<h1>Objective 17</h1>
+<section id="title-eliminate-all-forms-of-discrimination-and-promote-evidence-based-public-discourse-to-shape-perceptions-of-migration" class="level2">
+<h2 class="anchored" data-anchor-id="title-eliminate-all-forms-of-discrimination-and-promote-evidence-based-public-discourse-to-shape-perceptions-of-migration">Title: Eliminate All Forms Of Discrimination And Promote Evidence-Based Public Discourse To Shape Perceptions Of Migration</h2>
+</section>
+<section id="associated-actions-16" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-16">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Enact, implement or maintain legislation that penalizes hate crimes and aggravated hate crimes targeting migrants</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Empower migrants and communities to denounce any acts of incitement to violence directed towards migrants</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Promote independent, objective and quality reporting of media outlets</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Establish mechanisms to prevent, detect and respond to racial, ethnic and religious profiling of migrants</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Provide migrants, especially migrant women, with access to national and regional complaint and redress mechanisms</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Promote awareness-raising campaigns targeted at communities of origin, transit and destination</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Engage migrants, political, religious and community leaders, as well as educators and service providers</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-18" class="level1">
+<h1>Objective 18</h1>
+<section id="title-invest-in-skills-development-and-facilitate-mutual-recognition-of-skills-qualifications-and-competences" class="level2">
+<h2 class="anchored" data-anchor-id="title-invest-in-skills-development-and-facilitate-mutual-recognition-of-skills-qualifications-and-competences">Title: Invest In Skills Development And Facilitate Mutual Recognition Of Skills, Qualifications And Competences</h2>
+</section>
+<section id="associated-actions-17" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-17">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Develop standards and guidelines for the mutual recognition of foreign qualifications and non-formally acquired skills</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Promote transparency of certifications and compatibility of National Qualifications Frameworks</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Conclude bilateral, regional or multilateral mutual recognition agreements</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Use technology and digitalization to evaluate and mutually recognize skills more comprehensively</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Build global skills partnerships amongst countries</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Promote inter-institutional networks and collaborative programmes for partnerships between the private sector and educational institutions</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Engage in bilateral partnerships and programmes in cooperation with relevant stakeholders</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Cooperate with the private sector and employers</li>
+</ol></li>
+<li><ol type="i">
+<li>Enhance the ability of migrant workers to transition from a job or employer to another</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Develop and promote innovative ways to mutually recognize and assess formally and informally acquired skills</li>
+</ol></li>
+<li><ol start="11" type="a">
+<li>Establish screening mechanisms of credentials and offer information to migrants</li>
+</ol></li>
+<li><ol start="12" type="a">
+<li>Cooperate to promote documentation and information tools</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-19" class="level1">
+<h1>Objective 19</h1>
+<section id="title-create-conditions-for-migrants-and-diasporas-to-fully-contribute-to-sustainable-development-in-all-countries" class="level2">
+<h2 class="anchored" data-anchor-id="title-create-conditions-for-migrants-and-diasporas-to-fully-contribute-to-sustainable-development-in-all-countries">Title: Create Conditions For Migrants And Diasporas To Fully Contribute To Sustainable Development In All Countries</h2>
+</section>
+<section id="associated-actions-18" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-18">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Ensure the full and effective implementation of the 2030 Agenda for Sustainable Development and the Addis Ababa Action Agenda</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Integrate migration into development planning and sectoral policies at local, national, regional and global levels</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Invest in research on the impact of non-financial contributions of migrants and diasporas to sustainable development</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Facilitate the contributions of migrants and diasporas to their countries of origin</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Develop targeted support programmes and financial products</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Provide easily accessible information and guidance</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Enable political participation and engagement of migrants in their countries of origin</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Promote migration policies that optimize the benefits of diasporas for countries of origin and destination</li>
+</ol></li>
+<li><ol type="i">
+<li>Cooperate with other States, the private sector and employers organizations to enable migrants and diasporas</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Build partnerships between local authorities, local communities, the private sector, diasporas, hometown associations and migrant organizations</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-20" class="level1">
+<h1>Objective 20</h1>
+<section id="title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin-1" class="level2">
+<h2 class="anchored" data-anchor-id="title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin-1">Title: Minimize the adverse drivers and structural factors that compel people to leave their country of origin</h2>
+</section>
+<section id="associated-actions-19" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-19">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Promote the implementation of the 2030 Agenda for Sustainable Development</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Invest in programmes that accelerate States’ fulfilment of the Sustainable Development Goals</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Establish or strengthen mechanisms to monitor and anticipate the development of risks and threats</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Invest in sustainable development at local and national levels in all regions</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Invest in human capital development</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Strengthen collaboration between humanitarian and development actors</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Account for migrants in national emergency preparedness and response</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Strengthen joint analysis and sharing of information to better map, understand, predict and address migration movements</li>
+</ol></li>
+<li><ol type="i">
+<li>Develop adaptation and resilience strategies to sudden-onset and slow-onset natural disasters</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Integrate displacement considerations into disaster preparedness strategies and promote cooperation with neighbouring and other relevant countries</li>
+</ol></li>
+<li><ol start="11" type="a">
+<li>Harmonize and develop approaches and mechanisms at subregional and regional levels</li>
+</ol></li>
+<li><ol start="12" type="a">
+<li>Develop coherent approaches to address the challenges of migration movements in the context of sudden-onset and slow-onset natural disasters</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-21" class="level1">
+<h1>Objective 21</h1>
+<section id="title-cooperate-in-facilitating-safe-and-dignified-return-and-readmission-as-well-as-sustainable-reintegration" class="level2">
+<h2 class="anchored" data-anchor-id="title-cooperate-in-facilitating-safe-and-dignified-return-and-readmission-as-well-as-sustainable-reintegration">Title: Cooperate In Facilitating Safe And Dignified Return And Readmission, As Well As Sustainable Reintegration</h2>
+</section>
+<section id="associated-actions-20" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-20">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Develop and implement bilateral, regional and multilateral cooperation frameworks and agreements</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Promote gender-responsive and child-sensitive return and reintegration programmes</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Cooperate on identification of nationals and issuance of travel documents for safe and dignified return and readmission</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Foster institutional contacts between consular authorities and relevant officials from countries of origin and destination</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Ensure that the return of migrants who do not have the legal right to stay on another State’s territory is safe and dignified</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Establish or strengthen national monitoring mechanisms on return</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Ensure that return and readmission processes involving children are carried out only after a determination of the best interests of the child</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Facilitate the sustainable reintegration of returning migrants into community life</li>
+</ol></li>
+<li><ol type="i">
+<li>Identify and address the needs of the communities to which migrants return</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-22" class="level1">
+<h1>Objective 22</h1>
+<section id="title-establish-mechanisms-for-the-portability-of-social-security-entitlements-and-earned-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="title-establish-mechanisms-for-the-portability-of-social-security-entitlements-and-earned-benefits">Title: Establish Mechanisms For The Portability Of Social Security Entitlements And Earned Benefits</h2>
+</section>
+<section id="associated-actions-21" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-21">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Establish or maintain non-discriminatory national social protection systems</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Conclude reciprocal bilateral, regional or multilateral social security agreements</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Integrate provisions on the portability of entitlements and earned benefits into national social security frameworks</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-23" class="level1">
+<h1>Objective 23</h1>
+<section id="title-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration" class="level2">
+<h2 class="anchored" data-anchor-id="title-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration">Title: Strengthen International Cooperation And Global Partnerships For Safe, Orderly And Regular Migration</h2>
+</section>
+<section id="associated-actions-22" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-22">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Support other States as we collectively implement the Global Compact</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Increase international and regional cooperation to accelerate the implementation of the 2030 Agenda for Sustainable Development</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Involve and support local authorities in the identification of needs and opportunities for international cooperation for the effective implementation of the Global Compact</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Make use of the capacity-building mechanism and build upon other existing instruments to strengthen the capacities of relevant authorities</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Conclude bilateral, regional or multilateral mutually beneficial, tailored and transparent partnerships</li>
+</ol></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/franckalbinet\.github\.io\/iomeval");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

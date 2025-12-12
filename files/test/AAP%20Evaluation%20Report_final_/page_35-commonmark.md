@@ -1,0 +1,66 @@
+
+
+The notion of “accountability” in AAP should always be seen as
+collective, in the sense that the whole humanitarian and development
+system should be accountable to the affected people they are supposed to
+serve, rather than each single organization holding that accountability
+individually. All actors operating in a specific context should work in
+concert to achieve common goals and complement each other, based on
+their respective roles and capabilities, and that requires collective
+accountability. <sup>25</sup> In this evaluation, collective
+accountability emerged as a frequent and important concept in the
+narration of many informants. Instances were described in which IOM
+established effective communication and coordination with other United
+Nations agencies and partners (for example, for the joint collection,
+analysis and dissemination of CFM or needs data) to promote collective
+accountability. In other cases, scenarios of limited inter-agency
+communication and collaboration on AAP were described, sometimes
+producing cumbersome or uncertain referrals, and sometimes making it
+impossible to properly address reasonable needs voiced by affected
+people, as these did not fall within the IOM operational sphere.
+
+Many examples of operational changes and adaptations that were based on
+feedback received from affected people were gathered as part of this
+evaluation, suggesting that AAP initiatives have some effectiveness in
+informing operations. At the same time, some findings point at the need
+to structure or strengthen the processes that translate feedback into
+meaningful operational adjustments (in a timely manner), and several
+informants perceived that not all data gathered from affected people
+were being used.
+
+At an aggregate level, more and more AAP engagement is taking place in
+IOM, as confirmed by both the prevalent perceptions of informants and by
+the fact that indicators used to monitor AAP in IOM are generally
+recording substantial improvements. It is, however, doubtful whether the
+current level of AAP engagement is commensurate to the size of IOM
+operations. Moreover, IOM does not have a formal result matrix or a
+theory of change for AAP; rather, it relies on a collection of
+indicators from different institutional monitoring frameworks, mostly
+focusing on outputs and on broadly defined outcomes, which makes it hard
+to usefully assess the implementation of AAP. Overall progress still
+seems insufficient to support claims of AAP mainstreaming within the
+Organization.
+
+The opinion that resources allocated to AAP in IOM are inadequate was
+prevalent in both qualitative and quantitative data gathered for this
+evaluation. The work that led to IN/285 was funded by donors on the
+basis of a specific initiative. The size of the central AAP unit in IOM
+Headquarters was generally deemed insufficient to proactively engage
+with technical support, capacity-building activities including training
+and programme and policy development. In country offices, AAP
+initiatives are most often funded by and within specific projects, with
+their scope tailored to the requirements of the funding initiative. Some
+informants doubted that IOM has a strategic approach to the funding of
+AAP, neither at the central nor at the country
+
+\[^0\] \[^0\]: <sup>25</sup> Some informants pointed out the fact that
+collective accountability applies not only to the organizations
+intervening in a certain operational context, but also to their donors.
+According to one informant, donors sometimes push for the integration of
+AAP into the initiatives they fund, but then are not necessarily
+equipped or willing to make adjustments to their funding allocations
+when these would be required to follow-up on feedback received from
+affected people. The role of donors was not sufficiently explored in
+this evaluation to formulate specific findings and recommendations on
+this issue. It is, however, hoped that this aspect will be explored in
+future evaluative work.

@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>gcms_long – iomeval</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-000f0825b9c55ed21d14970d810c14a9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="iomeval">
+<meta property="og:site_name" content="iomeval">
+<meta name="twitter:title" content="iomeval">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">iomeval</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOMEval</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../analysis/eval_metadata_eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOM Reports Exploration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">API</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../readers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Readers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../downloaders.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Downloaders</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../extract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extract</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../themes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Themes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../mapper.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapper</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#objective-1" id="toc-objective-1" class="nav-link active" data-scroll-target="#objective-1">Objective 1</a>
+  <ul class="collapse">
+  <li><a href="#title-collect-and-utilize-accurate-and-disaggregated-data-as-a-basis-for-evidence-based-policies" id="toc-title-collect-and-utilize-accurate-and-disaggregated-data-as-a-basis-for-evidence-based-policies" class="nav-link" data-scroll-target="#title-collect-and-utilize-accurate-and-disaggregated-data-as-a-basis-for-evidence-based-policies">Title: Collect and utilize accurate and disaggregated data as a basis for evidence-based policies</a></li>
+  <li><a href="#associated-actions" id="toc-associated-actions" class="nav-link" data-scroll-target="#associated-actions">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-2" id="toc-objective-2" class="nav-link" data-scroll-target="#objective-2">Objective 2</a>
+  <ul class="collapse">
+  <li><a href="#title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin" id="toc-title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin" class="nav-link" data-scroll-target="#title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin">Title: Minimize the adverse drivers and structural factors that compel people to leave their country of origin</a></li>
+  <li><a href="#associated-actions-1" id="toc-associated-actions-1" class="nav-link" data-scroll-target="#associated-actions-1">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-3" id="toc-objective-3" class="nav-link" data-scroll-target="#objective-3">Objective 3</a>
+  <ul class="collapse">
+  <li><a href="#title-provide-accurate-and-timely-information-at-all-stages-of-migration" id="toc-title-provide-accurate-and-timely-information-at-all-stages-of-migration" class="nav-link" data-scroll-target="#title-provide-accurate-and-timely-information-at-all-stages-of-migration">Title: Provide accurate and timely information at all stages of migration</a></li>
+  <li><a href="#associated-actions-2" id="toc-associated-actions-2" class="nav-link" data-scroll-target="#associated-actions-2">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-4" id="toc-objective-4" class="nav-link" data-scroll-target="#objective-4">Objective 4</a>
+  <ul class="collapse">
+  <li><a href="#title-ensure-that-all-migrants-have-proof-of-legal-identity-and-adequate-documentation" id="toc-title-ensure-that-all-migrants-have-proof-of-legal-identity-and-adequate-documentation" class="nav-link" data-scroll-target="#title-ensure-that-all-migrants-have-proof-of-legal-identity-and-adequate-documentation">Title: Ensure that all migrants have proof of legal identity and adequate documentation</a></li>
+  <li><a href="#associated-actions-3" id="toc-associated-actions-3" class="nav-link" data-scroll-target="#associated-actions-3">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-5" id="toc-objective-5" class="nav-link" data-scroll-target="#objective-5">Objective 5</a>
+  <ul class="collapse">
+  <li><a href="#title-enhance-availability-and-flexibility-of-pathways-for-regular-migration" id="toc-title-enhance-availability-and-flexibility-of-pathways-for-regular-migration" class="nav-link" data-scroll-target="#title-enhance-availability-and-flexibility-of-pathways-for-regular-migration">Title: Enhance availability and flexibility of pathways for regular migration</a></li>
+  <li><a href="#associated-actions-4" id="toc-associated-actions-4" class="nav-link" data-scroll-target="#associated-actions-4">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-6" id="toc-objective-6" class="nav-link" data-scroll-target="#objective-6">Objective 6</a>
+  <ul class="collapse">
+  <li><a href="#title-facilitate-fair-and-ethical-recruitment-and-safeguard-conditions-that-ensure-decent-work" id="toc-title-facilitate-fair-and-ethical-recruitment-and-safeguard-conditions-that-ensure-decent-work" class="nav-link" data-scroll-target="#title-facilitate-fair-and-ethical-recruitment-and-safeguard-conditions-that-ensure-decent-work">Title: Facilitate Fair And Ethical Recruitment And Safeguard Conditions That Ensure Decent Work</a></li>
+  <li><a href="#associated-actions-5" id="toc-associated-actions-5" class="nav-link" data-scroll-target="#associated-actions-5">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-7" id="toc-objective-7" class="nav-link" data-scroll-target="#objective-7">Objective 7</a>
+  <ul class="collapse">
+  <li><a href="#title-address-and-reduce-vulnerabilities-in-migration" id="toc-title-address-and-reduce-vulnerabilities-in-migration" class="nav-link" data-scroll-target="#title-address-and-reduce-vulnerabilities-in-migration">Title: Address and Reduce Vulnerabilities in Migration</a></li>
+  <li><a href="#associated-actions-6" id="toc-associated-actions-6" class="nav-link" data-scroll-target="#associated-actions-6">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-8" id="toc-objective-8" class="nav-link" data-scroll-target="#objective-8">Objective 8</a>
+  <ul class="collapse">
+  <li><a href="#title-save-lives-and-establish-coordinated-international-efforts-on-missing-migrants" id="toc-title-save-lives-and-establish-coordinated-international-efforts-on-missing-migrants" class="nav-link" data-scroll-target="#title-save-lives-and-establish-coordinated-international-efforts-on-missing-migrants">Title: Save Lives and Establish Coordinated International Efforts on Missing Migrants</a></li>
+  <li><a href="#associated-actions-7" id="toc-associated-actions-7" class="nav-link" data-scroll-target="#associated-actions-7">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-9" id="toc-objective-9" class="nav-link" data-scroll-target="#objective-9">Objective 9</a>
+  <ul class="collapse">
+  <li><a href="#title-strengthen-the-transnational-response-to-smuggling-of-migrants" id="toc-title-strengthen-the-transnational-response-to-smuggling-of-migrants" class="nav-link" data-scroll-target="#title-strengthen-the-transnational-response-to-smuggling-of-migrants">Title: Strengthen the transnational response to smuggling of migrants</a></li>
+  <li><a href="#associated-actions-8" id="toc-associated-actions-8" class="nav-link" data-scroll-target="#associated-actions-8">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-10" id="toc-objective-10" class="nav-link" data-scroll-target="#objective-10">Objective 10</a>
+  <ul class="collapse">
+  <li><a href="#title-prevent-combat-and-eradicate-trafficking-in-persons-in-the-context-of-international-migration" id="toc-title-prevent-combat-and-eradicate-trafficking-in-persons-in-the-context-of-international-migration" class="nav-link" data-scroll-target="#title-prevent-combat-and-eradicate-trafficking-in-persons-in-the-context-of-international-migration">Title: Prevent, Combat And Eradicate Trafficking In Persons In The Context Of International Migration</a></li>
+  <li><a href="#associated-actions-9" id="toc-associated-actions-9" class="nav-link" data-scroll-target="#associated-actions-9">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-11" id="toc-objective-11" class="nav-link" data-scroll-target="#objective-11">Objective 11</a>
+  <ul class="collapse">
+  <li><a href="#title-manage-borders-in-an-integrated-secure-and-coordinated-manner" id="toc-title-manage-borders-in-an-integrated-secure-and-coordinated-manner" class="nav-link" data-scroll-target="#title-manage-borders-in-an-integrated-secure-and-coordinated-manner">Title: Manage Borders In An Integrated, Secure And Coordinated Manner</a></li>
+  <li><a href="#associated-actions-10" id="toc-associated-actions-10" class="nav-link" data-scroll-target="#associated-actions-10">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-12" id="toc-objective-12" class="nav-link" data-scroll-target="#objective-12">Objective 12</a>
+  <ul class="collapse">
+  <li><a href="#title-strengthen-certainty-and-predictability-in-migration-procedures-for-appropriate-screening-assessment-and-referral" id="toc-title-strengthen-certainty-and-predictability-in-migration-procedures-for-appropriate-screening-assessment-and-referral" class="nav-link" data-scroll-target="#title-strengthen-certainty-and-predictability-in-migration-procedures-for-appropriate-screening-assessment-and-referral">Title: Strengthen Certainty And Predictability In Migration Procedures For Appropriate Screening, Assessment And Referral</a></li>
+  <li><a href="#associated-actions-11" id="toc-associated-actions-11" class="nav-link" data-scroll-target="#associated-actions-11">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-13" id="toc-objective-13" class="nav-link" data-scroll-target="#objective-13">Objective 13</a>
+  <ul class="collapse">
+  <li><a href="#title-use-migration-detention-only-as-a-measure-of-last-resort-and-work-towards-alternatives" id="toc-title-use-migration-detention-only-as-a-measure-of-last-resort-and-work-towards-alternatives" class="nav-link" data-scroll-target="#title-use-migration-detention-only-as-a-measure-of-last-resort-and-work-towards-alternatives">Title: Use Migration Detention Only As A Measure Of Last Resort And Work Towards Alternatives</a></li>
+  <li><a href="#associated-actions-12" id="toc-associated-actions-12" class="nav-link" data-scroll-target="#associated-actions-12">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-14" id="toc-objective-14" class="nav-link" data-scroll-target="#objective-14">Objective 14</a>
+  <ul class="collapse">
+  <li><a href="#title-enhance-consular-protection-assistance-and-cooperation-throughout-the-migration-cycle" id="toc-title-enhance-consular-protection-assistance-and-cooperation-throughout-the-migration-cycle" class="nav-link" data-scroll-target="#title-enhance-consular-protection-assistance-and-cooperation-throughout-the-migration-cycle">Title: Enhance Consular Protection, Assistance And Cooperation Throughout The Migration Cycle</a></li>
+  <li><a href="#associated-actions-13" id="toc-associated-actions-13" class="nav-link" data-scroll-target="#associated-actions-13">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-15" id="toc-objective-15" class="nav-link" data-scroll-target="#objective-15">Objective 15</a>
+  <ul class="collapse">
+  <li><a href="#title-provide-access-to-basic-services-for-migrants" id="toc-title-provide-access-to-basic-services-for-migrants" class="nav-link" data-scroll-target="#title-provide-access-to-basic-services-for-migrants">Title: Provide access to basic services for migrants</a></li>
+  <li><a href="#associated-actions-14" id="toc-associated-actions-14" class="nav-link" data-scroll-target="#associated-actions-14">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-16" id="toc-objective-16" class="nav-link" data-scroll-target="#objective-16">Objective 16</a>
+  <ul class="collapse">
+  <li><a href="#title-empower-migrants-and-societies-to-realize-full-inclusion-and-social-cohesion" id="toc-title-empower-migrants-and-societies-to-realize-full-inclusion-and-social-cohesion" class="nav-link" data-scroll-target="#title-empower-migrants-and-societies-to-realize-full-inclusion-and-social-cohesion">Title: Empower Migrants And Societies To Realize Full Inclusion And Social Cohesion</a></li>
+  <li><a href="#associated-actions-15" id="toc-associated-actions-15" class="nav-link" data-scroll-target="#associated-actions-15">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-17" id="toc-objective-17" class="nav-link" data-scroll-target="#objective-17">Objective 17</a>
+  <ul class="collapse">
+  <li><a href="#title-eliminate-all-forms-of-discrimination-and-promote-evidence-based-public-discourse-to-shape-perceptions-of-migration" id="toc-title-eliminate-all-forms-of-discrimination-and-promote-evidence-based-public-discourse-to-shape-perceptions-of-migration" class="nav-link" data-scroll-target="#title-eliminate-all-forms-of-discrimination-and-promote-evidence-based-public-discourse-to-shape-perceptions-of-migration">Title: Eliminate All Forms Of Discrimination And Promote Evidence-Based Public Discourse To Shape Perceptions Of Migration</a></li>
+  <li><a href="#associated-actions-16" id="toc-associated-actions-16" class="nav-link" data-scroll-target="#associated-actions-16">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-18" id="toc-objective-18" class="nav-link" data-scroll-target="#objective-18">Objective 18</a>
+  <ul class="collapse">
+  <li><a href="#title-invest-in-skills-development-and-facilitate-mutual-recognition-of-skills-qualifications-and-competences" id="toc-title-invest-in-skills-development-and-facilitate-mutual-recognition-of-skills-qualifications-and-competences" class="nav-link" data-scroll-target="#title-invest-in-skills-development-and-facilitate-mutual-recognition-of-skills-qualifications-and-competences">Title: Invest In Skills Development And Facilitate Mutual Recognition Of Skills, Qualifications And Competences</a></li>
+  <li><a href="#associated-actions-17" id="toc-associated-actions-17" class="nav-link" data-scroll-target="#associated-actions-17">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-19" id="toc-objective-19" class="nav-link" data-scroll-target="#objective-19">Objective 19</a>
+  <ul class="collapse">
+  <li><a href="#title-create-conditions-for-migrants-and-diasporas-to-fully-contribute-to-sustainable-development-in-all-countries" id="toc-title-create-conditions-for-migrants-and-diasporas-to-fully-contribute-to-sustainable-development-in-all-countries" class="nav-link" data-scroll-target="#title-create-conditions-for-migrants-and-diasporas-to-fully-contribute-to-sustainable-development-in-all-countries">Title: Create Conditions For Migrants And Diasporas To Fully Contribute To Sustainable Development In All Countries</a></li>
+  <li><a href="#associated-actions-18" id="toc-associated-actions-18" class="nav-link" data-scroll-target="#associated-actions-18">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-20" id="toc-objective-20" class="nav-link" data-scroll-target="#objective-20">Objective 20</a>
+  <ul class="collapse">
+  <li><a href="#title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin-1" id="toc-title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin-1" class="nav-link" data-scroll-target="#title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin-1">Title: Minimize the adverse drivers and structural factors that compel people to leave their country of origin</a></li>
+  <li><a href="#associated-actions-19" id="toc-associated-actions-19" class="nav-link" data-scroll-target="#associated-actions-19">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-21" id="toc-objective-21" class="nav-link" data-scroll-target="#objective-21">Objective 21</a>
+  <ul class="collapse">
+  <li><a href="#title-cooperate-in-facilitating-safe-and-dignified-return-and-readmission-as-well-as-sustainable-reintegration" id="toc-title-cooperate-in-facilitating-safe-and-dignified-return-and-readmission-as-well-as-sustainable-reintegration" class="nav-link" data-scroll-target="#title-cooperate-in-facilitating-safe-and-dignified-return-and-readmission-as-well-as-sustainable-reintegration">Title: Cooperate In Facilitating Safe And Dignified Return And Readmission, As Well As Sustainable Reintegration</a></li>
+  <li><a href="#associated-actions-20" id="toc-associated-actions-20" class="nav-link" data-scroll-target="#associated-actions-20">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-22" id="toc-objective-22" class="nav-link" data-scroll-target="#objective-22">Objective 22</a>
+  <ul class="collapse">
+  <li><a href="#title-establish-mechanisms-for-the-portability-of-social-security-entitlements-and-earned-benefits" id="toc-title-establish-mechanisms-for-the-portability-of-social-security-entitlements-and-earned-benefits" class="nav-link" data-scroll-target="#title-establish-mechanisms-for-the-portability-of-social-security-entitlements-and-earned-benefits">Title: Establish Mechanisms For The Portability Of Social Security Entitlements And Earned Benefits</a></li>
+  <li><a href="#associated-actions-21" id="toc-associated-actions-21" class="nav-link" data-scroll-target="#associated-actions-21">Associated actions</a></li>
+  </ul></li>
+  <li><a href="#objective-23" id="toc-objective-23" class="nav-link" data-scroll-target="#objective-23">Objective 23</a>
+  <ul class="collapse">
+  <li><a href="#title-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration" id="toc-title-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration" class="nav-link" data-scroll-target="#title-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration">Title: Strengthen International Cooperation And Global Partnerships For Safe, Orderly And Regular Migration</a></li>
+  <li><a href="#associated-actions-22" id="toc-associated-actions-22" class="nav-link" data-scroll-target="#associated-actions-22">Associated actions</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="gcms_long-commonmark.md"><i class="bi bi-file-code"></i>CommonMark</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="objective-1" class="level1">
+<h1>Objective 1</h1>
+<section id="title-collect-and-utilize-accurate-and-disaggregated-data-as-a-basis-for-evidence-based-policies" class="level2">
+<h2 class="anchored" data-anchor-id="title-collect-and-utilize-accurate-and-disaggregated-data-as-a-basis-for-evidence-based-policies">Title: Collect and utilize accurate and disaggregated data as a basis for evidence-based policies</h2>
+</section>
+<section id="associated-actions" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Elaborate and implement a comprehensive strategy for improving migration data at local, national, regional and global levels, with the participation of all relevant stakeholders, under the guidance of the United Nations Statistical Commission, by harmonizing methodologies for data collection, and strengthening analysis and dissemination of migration-related data and indicators.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Improve international comparability and compatibility of migration statistics and national data systems,including by further developing and applying the statistical definition of an international migrant, elaborating a set of standards to measure migrant stocks and flows, and documenting migration patterns and trends, characteristics of migrants,as well as drivers and impacts of migration.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Develop a global programme to build and enhance national capacities in data collection, analysis and dissemination to share data, address data gaps and assess key migration trends, that encourages collaboration between relevant stakeholders at all levels, provides dedicated training financial support and technical assistance, leverages new data sources, including big data, and is reviewed by the United Nations Statistical Commission on a regular basis.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Collect, analyse and use data on the effects and benefits of migration, as well as the contributions of migrants and diasporas to sustainable development, with a view to inform the implementation of the 2030 Agenda for Sustainable Development and related strategies and programmes at the local, national, regional and global levels.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Support further development of and collaboration between existing global and regional databases and depositories, including the IOM Global Migration Data Portal and the World Bank Global Knowledge Partnership on Migration and Development, with a view to systematically consolidate relevant data in a transparent and user-friendly manner, while encouraging inter-agency collaboration to avoid duplication.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Establish and strengthen regional centres for research and training on migration or migration observatories, such as the African Observatory for Migration and Development, to collect and analyse data in line with United Nations standards, including on best practices, the contributions of migrants, the overall economic,social and political benefits and challenges of migration in countries of origin, transit and destination, as well as drivers of migration, with a view to establishing shared strategies and maximizing the value of disaggregated migration data, in coordination with existing regional and subregional mechanisms.</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Improve national data collection by integrating migration-related topics in national censuses, as early as practicable, such as on country of birth, country of birth of parents, country of citizenship, country of residence five years prior to the census, most recent arrival date and reason for migrating, to ensure timely analysis and dissemination of results, disaggregated and tabulated in accordance with international standards, for statistical purposes.</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Conduct household, labour force and other surveys to collect information on the social and economic integration of migrants or add standard migration modules to existing household surveys to improve national, regional and international comparability, and make collected data available through public-use of statistical microdata files.</li>
+</ol></li>
+<li><ol type="i">
+<li>Enhance collaboration between State units responsible for migration data and national statistical offices to produce migration-related statistics, including by using administrative records for statistical purposes, such as border records, visa, resident permits, population registers and other relevant sources, while upholding the right to privacy and protecting personal data.</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Develop and use country-specific migration profiles, which include disaggregated data on all migration-relevant aspects in a national context, including those on labour market needs, demand and availability of skills, the economic, environmental and social impacts of migration,remittance transfer costs, health, education, occupation,living and working conditions, wages, and the needs of migrants and receiving communities, in order to develop evidence-based migration policies.</li>
+</ol></li>
+<li><ol start="11" type="a">
+<li>Cooperate with relevant stakeholders in countries of origin, transit and destination to develop research, studies and surveys on the interrelationship between migration and the three dimensions of sustainable development, the contributions and skills of migrants and diasporas, as well as their ties to the countries of origin and destination.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-2" class="level1">
+<h1>Objective 2</h1>
+<section id="title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin" class="level2">
+<h2 class="anchored" data-anchor-id="title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin">Title: Minimize the adverse drivers and structural factors that compel people to leave their country of origin</h2>
+</section>
+<section id="associated-actions-1" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-1">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Promote the implementation of the 2030 Agenda for Sustainable Development, including the Sustainable Development Goals and the Addis Ababa Action Agenda, and the commitment to reach the furthest behind first, as well as the Paris Agreement4 and the Sendai Framework for Disaster Risk Reduction 2015-2030.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Invest in programmes that accelerate States’ fulfilment of the Sustainable Development Goals with the aim of eliminating the adverse drivers and structural factors that compel people to leave their country of origin, including through poverty eradication, food security, health and sanitation, education, inclusive economic growth, infrastructure, urban and rural development, employment creation, decent work, gender equality and empowerment of women and girls, resilience and disaster risk reduction, climate change mitigation and adaptation, addressing the socioeconomic effects of all forms of violence, non-discrimination, rule of law and good governance access to justice and protection of human rights, as well as creating and maintaining peaceful and inclusive societies with effective, accountable and transparent institutions.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Establish or strengthen mechanisms to monitor and anticipate the development of risks and threats that might trigger or affect migration movements, strengthen early warning systems, develop emergency procedures and toolkits, launch emergency operations, and support post-emergency recovery, in close cooperation with and support of other States, relevant national and local authorities, National Human Rights Institutions, and civil society.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Invest in sustainable development at local and national levels in all regions allowing all people to improve their lives and meet their aspirations, by fostering sustained, inclusive and sustainable economic growth, including through private and foreign direct investment and trade preferences, to create conducive conditions that allow communities and individuals to take advantage of opportunities in their own countries and drive sustainable development.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Invest in human capital development by promoting entrepreneurship, education, vocational training and skills development programmes and partnerships, productive employment creation, in line with labour market needs, as well as in cooperation with the private sector and trade unions, with a view to reducing youth unemployment, avoiding brain drain and optimizing brain gain in countries of origin, and harnessing the demographic dividend.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Strengthen collaboration between humanitarian and development actors, including by promoting joint analysis, multi-donor approaches and multi-year funding cycles, in order to develop long-term responses and outcomes that ensure respect for the rights of affected individuals,resilience and coping capacities of populations, as well as economic and social self-reliance, and by ensuring these efforts take migration into account.</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Account for migrants in national emergency preparedness and response, including by taking into consideration relevant recommendations from State-led consultative processes, such as the Guidelines to Protect Migrants in Countries Experiencing Conflict or Natural Disaster (MICIC Guidelines),</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Strengthen joint analysis and sharing of information to better map, understand, predict and address migration movements, such as those that may result from sudden-onset and slow onset natural disasters, the adverse effects of climate change, environmental degradation, as well as other precarious situations, while ensuring the effective respect, protection and fulfilment of the human rights of all migrants.</li>
+</ol></li>
+<li><ol type="i">
+<li>Develop adaptation and resilience strategies to sudden-onset and slow-onset natural disasters, the adverse effects of climate change, and environmental degradation, such as desertification, land degradation, drought and sea level rise, taking into account the potential implications on migration, while recognizing that adaptation in the country of origin is a priority.</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Integrate displacement considerations into disaster preparedness strategies and promote cooperation with neighbouring and other relevant countries to prepare for early warning, contingency planning, stockpiling, coordination mechanisms, evacuation planning, reception and assistance arrangements, and public information.</li>
+</ol></li>
+<li><ol start="11" type="a">
+<li>Harmonize and develop approaches and mechanisms at subregional and regional levels to address the vulnerabilities of persons affected by sudden-onset and slow-onset natural disasters, by ensuring they have access to humanitarian assistance that meets their essential needs with full respect for their rights wherever they are, and by promoting sustainable outcomes that increase resilience and self-reliance, taking into account the capacities of all countries involved.</li>
+</ol></li>
+<li><ol start="12" type="a">
+<li>Develop coherent approaches to address the challenges of migration movements in the context of sudden-onset and slow-onset natural disasters, including by taking into consideration relevant recommendations from State-led consultative processes, such as the Agenda for the Protection of Cross-Border Displaced Persons in the Context of Disasters and Climate Change, and the Platform on Disaster Displacement.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-3" class="level1">
+<h1>Objective 3</h1>
+<section id="title-provide-accurate-and-timely-information-at-all-stages-of-migration" class="level2">
+<h2 class="anchored" data-anchor-id="title-provide-accurate-and-timely-information-at-all-stages-of-migration">Title: Provide accurate and timely information at all stages of migration</h2>
+</section>
+<section id="associated-actions-2" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-2">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Launch and publicize a centralized and publicly accessible national website to make information available on regular migration options, such as on country-specific immigration laws and policies, visa requirements, application formalities, fees and conversion criteria, employment permit requirements, professional qualification requirements, credential assessment and equivalences, training and study opportunities, and living costs and conditions, in order to inform the decisions of migrants.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Promote and improve systematic bilateral, regional and international cooperation and dialogue to exchange information on migration-related trends, including through joint databases, online training centres and liaison networks, while upholding the right to privacy and protecting personal data.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Establish open and accessible information points along relevant migration routes that can refer migrants to child-sensitive and gender-responsive support and counselling, offer opportunities to communicate with consular representatives of the country of origin, and make available relevant information, including on human rights and fundamental freedoms, appropriate protection and assistance, options and pathways for regular migration, and possibilities for return, in a language the person concerned understands.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Provide newly arrived migrants with targeted, gender-responsive, child-sensitive, accessible and comprehensive information and legal guidance on their rights and obligations, including on compliance with national and local laws, obtaining of work and resident permits, status adjustments, registration with authorities, access to justice to file complaints about rights violations, as well as on access to basic services.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Promote multi-lingual, gender-responsive and evidence-based information campaigns and organize awareness-raising events and pre-departure orientation trainings in countries of origin, in cooperation with local authorities, consular and diplomatic missions, the private sector, academia, migrant and diaspora organizations and civil society, in order to promote safe, orderly and regular migration, as well as to highlight the risks associated with irregular and unsafe migration.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-4" class="level1">
+<h1>Objective 4</h1>
+<section id="title-ensure-that-all-migrants-have-proof-of-legal-identity-and-adequate-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="title-ensure-that-all-migrants-have-proof-of-legal-identity-and-adequate-documentation">Title: Ensure that all migrants have proof of legal identity and adequate documentation</h2>
+</section>
+<section id="associated-actions-3" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-3">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Improve civil registry systems, with a particular focus on reaching unregistered persons and our nationals residing in other countries, including by providing relevant identity and civil registry documents, strengthening capacities, and investing in information and communication technology solutions, while upholding the right to privacy and protecting personal data.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Harmonize travel documents in line with the specifications of the International Civil Aviation Organization to facilitate interoperable and universal recognition of travel documents, as well as to combat identity fraud and document forgery, including by investing in digitalization, and strengthening mechanisms for biometric data-sharing, while upholding the right to privacy and protecting personal data.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Ensure adequate, timely, reliable and accessible consular documentation to our nationals residing in other countries, including identity and travel documents, making use of information and communications technology, as well as community outreach, particularly in remote areas.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Facilitate access to personal documentation, such as passports and visas, and ensure that relevant regulations and criteria to obtain such documentation are non-discriminatory, by undertaking a gender-responsive and age-sensitive review in order to prevent increased risk of vulnerabilities throughout the migration cycle.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Strengthen measures to reduce statelessness, including by registering migrants’ births, ensuring that women and men can equally confer their nationality to their children, and providing nationality to children born in another State’s territory, especially in situations where a child would otherwise be stateless, fully respecting the human right to a nationality and in accordance with national legislation.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Review and revise requirements to prove nationality at service delivery centres to ensure that migrants without proof of nationality or legal identity are not precluded from accessing basic services nor denied their human rights.</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Build upon existing practices at the local level that facilitate participation in community life, such as interaction with authorities and access to relevant services, through the issuance of registration cards to all persons living in a municipality, including migrants, that contain basic personal information, while not constituting entitlements to citizenship or residency.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-5" class="level1">
+<h1>Objective 5</h1>
+<section id="title-enhance-availability-and-flexibility-of-pathways-for-regular-migration" class="level2">
+<h2 class="anchored" data-anchor-id="title-enhance-availability-and-flexibility-of-pathways-for-regular-migration">Title: Enhance availability and flexibility of pathways for regular migration</h2>
+</section>
+<section id="associated-actions-4" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-4">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Develop human rights-based and gender-responsive bilateral, regional and multilateral labour mobility agreements with sector-specific standard terms of employment in cooperation with relevant stakeholders, drawing on relevant ILO standards, guidelines and principles, in compliance with international human rights and labour law.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Facilitate regional and cross-regional labour mobility through international and bilateral cooperation arrangements, such as free movement regimes, visa liberalization or multiple country visas, and labour mobility cooperation frameworks, in accordance with national priorities, local market needs and skills supply.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Review and revise existing options and pathways for regular migration, with a view to optimize skills matching in labour markets, address demographic realities and development challenges and opportunities, in accordance with local and national labour market demands and skills supply, in consultation with the private sector and other relevant stakeholders.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Develop flexible, rights-based and gender-responsive labour mobility schemes for migrants, in accordance with local and national labour market needs and skills supply at all skills levels, including temporary, seasonal, circular, and fast-track programmes in areas of labour shortages, by providing flexible, convertible and non-discriminatory visa and permit options, such as for permanent and temporary work, multiple-entry study, business, visit, investment and entrepreneurship.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Promote effective skills matching in the national economy by involving local authorities and other relevant stakeholders, particularly the private sector and trade unions, in the analysis of the local labour market, identification of skills gaps, definition of required skills profiles, and evaluation of the efficacy of labour migration policies, in order to ensure market-responsive contractual labour mobility through regular pathways.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Foster efficient and effective skills-matching programmes by reducing visa and permit processing timeframes for standard employment authorizations, and by offering accelerated and facilitated visa and permit processing for employers with a track record of compliance.</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Develop or build on existing national and regional practices for admission and stay of appropriate duration based on compassionate, humanitarian or other considerations for migrants compelled to leave their countries of origin, due to sudden-onset natural disasters and other precarious situations, such as by providing humanitarian visas, private sponsorships, access to education for children, and temporary work permits, while adaptation in or return to their country of origin is not possible.</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Cooperate to identify, develop and strengthen solutions for migrants compelled to leave their countries of origin due to slow-onset natural disasters, the adverse effects of climate change, and environmental degradation, such as desertification, land degradation, drought and sea level rise, including by devising planned relocation and visa options, in cases where adaptation in or return to their country of origin is not possible.</li>
+</ol></li>
+<li><ol type="i">
+<li>Facilitate access to procedures for family reunification for migrants at all skills levels through appropriate measures that promote the realization of the right to family life and the best interests of the child, including by reviewing and revising applicable requirements, such as on income, language proficiency, length of stay, work authorization, and access to social security and services.</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Expand available options for academic mobility, including through bilateral and multilateral agreements that facilitate academic exchanges, such as scholarships for students and academic professionals, visiting professorships, joint training programmes, and international research opportunities, in cooperation with academic institutions and other relevant stakeholders.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-6" class="level1">
+<h1>Objective 6</h1>
+<section id="title-facilitate-fair-and-ethical-recruitment-and-safeguard-conditions-that-ensure-decent-work" class="level2">
+<h2 class="anchored" data-anchor-id="title-facilitate-fair-and-ethical-recruitment-and-safeguard-conditions-that-ensure-decent-work">Title: Facilitate Fair And Ethical Recruitment And Safeguard Conditions That Ensure Decent Work</h2>
+</section>
+<section id="associated-actions-5" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-5">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Promote signature, ratification, accession and implementation of relevant international instruments related to international labour migration, labour rights, decent work and forced labour.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Build upon the work of existing bilateral, subregional and regional platforms that have overcome obstacles and identified best practices in labour mobility, by facilitating cross-regional dialogue to share this knowledge, and to promote the full respect for the human and labour rights of migrant workers at all skills levels, including migrant domestic workers.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Improve regulations on public and private recruitment agencies, in order to align them with international guidelines and best practices, prohibit recruiters and employers from charging or shifting recruitment fees or related costs to migrant workers in order to prevent debt bondage, exploitation and forced labour, including by establishing mandatory, enforceable mechanisms for effective regulation and monitoring of the recruitment industry.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Establish partnerships with all relevant stakeholders, including employers, migrant workers organizations and trade unions, to ensure that migrant workers are provided written contracts and are made aware of the provisions therein, the regulations relating to international labour recruitment and employment in the country of destination, their rights and obligations, as well as on how to access effective complaint and redress mechanisms, in a language they understand.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Enact and implement national laws that sanction human and labour rights violations, especially in cases of forced and child labour, and cooperate with the private sector, including employers, recruiters, subcontractors and suppliers, to build partnerships that promote conditions for decent work, prevent abuse and exploitation, and ensure that the roles and responsibilities within the recruitment and employment processes are clearly outlined, thereby enhancing supply chain transparency.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Strengthen the enforcement of fair and ethical recruitment and decent work norms and policies by enhancing the abilities of labour inspectors and other authorities to better monitor recruiters, employers and service providers in all sectors, ensuring that international human rights and labour law is observed to prevent all forms of exploitation, slavery, servitude, and forced, compulsory or child labour.</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Develop and strengthen labour migration and fair and ethical recruitment processes that allow migrants to change employers and modify the conditions or length of their stay with minimal administrative burden, while promoting greater opportunities for decent work and respect for international human rights and labour law.</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Take measures that prohibit the confiscation or non-consensual retention of work contracts, and travel or identity documents from migrants, in order to prevent abuse, all forms of exploitation, forced, compulsory and child labour, extortion and other situations of dependency, and to allow migrants to fully exercise their human rights.</li>
+</ol></li>
+<li><ol type="i">
+<li>Provide migrant workers engaged in remunerated and contractual labour with the same labour rights and protections extended to all workers in the respective sector, such as the rights to just and favourable conditions of work, to equal pay for work of equal value, to freedom of peaceful assembly and association, and to the highest attainable standard of physical and mental health, including through wage protection mechanisms, social dialogue and membership in trade unions.</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Ensure migrants working in the informal economy have safe access to effective reporting, complaint, and redress mechanisms in cases of exploitation, abuse or violations of their rights in the workplace, in a manner that does not exacerbate vulnerabilities of migrants that denounce such incidents and allow them to participate in respective legal proceedings whether in the country of origin or destination.</li>
+</ol></li>
+<li><ol start="11" type="a">
+<li>Review relevant national labour laws, employment policies and programmes to ensure that they include considerations of the specific needs and contributions of women migrant workers, especially in domestic work and lower-skilled occupations, and adopt specific measures to prevent, report, address and provide effective remedy for all forms of exploitation and abuse, including sexual and gender-based violence, as a basis to promote gender-responsive labour mobility policies.</li>
+</ol></li>
+<li><ol start="12" type="a">
+<li>Develop and improve national policies and programmes relating to international labour mobility, including by taking into consideration relevant recommendations of the ILO General Principles and Operational Guidelines for Fair Recruitment, the United Nations Guiding Principles on Business and Human Rights, and the IOM International Recruitment Integrity System (IRIS).</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-7" class="level1">
+<h1>Objective 7</h1>
+<section id="title-address-and-reduce-vulnerabilities-in-migration" class="level2">
+<h2 class="anchored" data-anchor-id="title-address-and-reduce-vulnerabilities-in-migration">Title: Address and Reduce Vulnerabilities in Migration</h2>
+</section>
+<section id="associated-actions-6" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-6">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Review relevant policies and practices to ensure they do not create, exacerbate or unintentionally increase vulnerabilities of migrants, including by applying a human rights-based, gender- and disability-responsive, as well as an age- and child-sensitive approach.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Establish comprehensive policies and develop partnerships that provide migrants in a situation of vulnerability, regardless of their migration status, with necessary support at all stages of migration, through identification and assistance, as well as protection of their human rights, in particular in cases related to women at risk, children, especially those unaccompanied or separated from their families, members of ethnic and religious minorities, victims of violence, including sexual and gender-based violence, older persons, persons with disabilities, persons who are discriminated against on any basis, indigenous peoples, workers facing exploitation and abuse, domestic workers, victims of trafficking in persons, and migrants subject to exploitation and abuse in the context of smuggling of migrants.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Develop gender-responsive migration policies to address the particular needs and vulnerabilities of migrant women, girls and boys, which may include assistance, health care, psychological and other counselling services, as well as access to justice and effective remedies, especially in cases of sexual and gender-based violence, abuse and exploitation.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Review relevant existing labour laws and work conditions to identify and effectively address workplace-related vulnerabilities and abuses of migrant workers at all skills levels, including domestic workers, and those working in the informal economy, in cooperation with relevant stakeholders, particularly the private sector.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Account for migrant children in national child protection systems by establishing robust procedures for the protection of migrant children in relevant legislative, administrative and judicial proceedings and decisions, as well as in all migration policies and programmes that impact children, including consular protection policies and services, as well as cross-border cooperation frameworks, in order to ensure the best interests of the child are appropriately integrated, consistently interpreted and applied in coordination and cooperation with child protection authorities.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Protect unaccompanied and separated children at all stages of migration through the establishment of specialized procedures for their identification, referral, care and family reunification, and provide access to health care services, including mental health, education, legal assistance and the right to be heard in administrative and judicial proceedings, including by swiftly appointing a competent and impartial legal guardian, as essential means to address their particular vulnerabilities and discrimination, protect them from all forms of violence, and provide access to sustainable solutions that are in their best interests.</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Ensure migrants have access to public or affordable independent legal assistance and representation in legal proceedings that affect them, including during any related judicial or administrative hearing, in order to safeguard that all migrants, everywhere, are recognized as persons before the law and that the delivery of justice is impartial and non-discriminatory.</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Develop accessible and expedient procedures that facilitate transitions from one status to another and inform migrants of their rights and obligations, so as to prevent migrants from falling into an irregular status in the country of destination, to reduce precariousness of status and related vulnerabilities, as well as to enable individual status assessments for migrants, including for those who have fallen out of regular status, without fear of arbitrary expulsion.</li>
+</ol></li>
+<li><ol type="i">
+<li>Build on existing practices to facilitate access for migrants in an irregular status to an individual assessment that may lead to regular status, on a case by case basis and with clear and transparent criteria, especially in cases where children, youth and families are involved, as an option to reduce vulnerabilities, as well as for States to ascertain better knowledge of the resident population.</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Apply specific support measures to ensure that migrants caught up in situations of crisis in countries of transit and destination have access to consular protection and humanitarian assistance, including by facilitating cross-border and broader international cooperation, as well as by taking migrant populations into account in crisis preparedness, emergency response and post-crisis action.</li>
+</ol></li>
+<li><ol start="11" type="a">
+<li>Involve local authorities and relevant stakeholders in the identification, referral and assistance of migrants in a situation of vulnerability, including through agreements with national protection bodies, legal aid and service providers, as well as the engagement of mobile response teams, where they exist.</li>
+</ol></li>
+<li><ol start="12" type="a">
+<li>Develop national policies and programmes to improve national responses that address the needs of migrants in situations of vulnerability, including by taking into consideration relevant recommendations of the Global Migration Group Principles and Guidelines, Supported by Practical Guidance, on the Human Rights Protection of Migrants in Vulnerable Situations.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-8" class="level1">
+<h1>Objective 8</h1>
+<section id="title-save-lives-and-establish-coordinated-international-efforts-on-missing-migrants" class="level2">
+<h2 class="anchored" data-anchor-id="title-save-lives-and-establish-coordinated-international-efforts-on-missing-migrants">Title: Save Lives and Establish Coordinated International Efforts on Missing Migrants</h2>
+</section>
+<section id="associated-actions-7" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-7">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Develop procedures and agreements on search and rescue of migrants, with the primary objective to protect migrants’ right to life that uphold the prohibition of collective expulsion, guarantee due process and individual assessments, enhance reception and assistance capacities, and ensure that the provision of assistance of an exclusively humanitarian nature for migrants is not considered unlawful.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Review the impacts of migration-related policies and laws to ensure that these do not raise or create the risk of migrants going missing, including by identifying dangerous transit routes used by migrants, by working with other States as well as relevant stakeholders and international organizations to identify contextual risks and establishing mechanisms for preventing and responding to such situations, with particular attention to migrant children, especially those unaccompanied or separated.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Enable migrants to communicate with their families without delay to inform them that they are alive by facilitating access to means of communication along routes and at their destination, including in places of detention, as well as access to consular missions, local authorities and organizations that can provide assistance with family contacts, especially in cases of unaccompanied or separated migrant children, as well as adolescents.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Establish transnational coordination channels, including through consular cooperation, and designate contact points for families looking for missing migrants, through which families can be kept informed on the status of the search and obtain other relevant information, while respecting the right to privacy and protecting personal data.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Collect, centralize and systematize data regarding corpses and ensure traceability after burial, in accordance with internationally accepted forensic standards, and establish coordination channels at transnational level to facilitate identification and the provision of information to families.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Make all efforts, including through international cooperation, to recover, identify and repatriate the remains of deceased migrants to their countries of origin, respecting the wishes of grieving families, and, in the case of unidentified individuals, facilitate the identification and subsequent recovery of the mortal remains, ensuring that the remains of deceased migrants are treated in a dignified, respectful and proper manner.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-9" class="level1">
+<h1>Objective 9</h1>
+<section id="title-strengthen-the-transnational-response-to-smuggling-of-migrants" class="level2">
+<h2 class="anchored" data-anchor-id="title-strengthen-the-transnational-response-to-smuggling-of-migrants">Title: Strengthen the transnational response to smuggling of migrants</h2>
+</section>
+<section id="associated-actions-8" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-8">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Promote ratification, accession and implementation of the Protocol against the Smuggling of Migrants by Land, Sea and Air, supplementing the United Nations Convention against Transnational Organised Crime (UNTOC).</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Use transnational, regional and bilateral mechanisms to share relevant information and intelligence on smuggling routes, modus operandi and financial transactions of smuggling networks, vulnerabilities faced by smuggled migrants, and other data to dismantle the smuggling networks and enhance joint responses.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Develop gender-responsive and child-sensitive cooperation protocols along migration routes that outline step-by-step measures to adequately identify and assist smuggled migrants, in accordance with international law, as well as to facilitate cross-border law enforcement and intelligence cooperation in order to prevent and counter smuggling of migrants with the aim to end impunity for smugglers and prevent irregular migration, while ensuring that counter-smuggling measures are in full respect for human rights.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Adopt legislative and other measures as may be necessary to establish the smuggling of migrants as a criminal offence, when committed intentionally and in order to obtain, directly or indirectly, a financial or other material benefit for the smuggler, and include enhanced penalties for smuggling of migrants under aggravating circumstances, in accordance with international law.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Design, review or amend relevant policies and procedures to distinguish between the crimes of smuggling of migrants and trafficking in persons by using the correct definitions and applying distinct responses to these separate crimes, while recognizing that smuggled migrants might also become victims of trafficking in persons, therefore requiring appropriate protection and assistance.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Take measures to prevent the smuggling of migrants along the migration cycle in partnership with other States and relevant stakeholders, including by cooperating in the fields of development, public information, justice, as well as training and technical capacity building at national and local levels, paying special attention to geographic areas from where irregular migration systematically originates.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-10" class="level1">
+<h1>Objective 10</h1>
+<section id="title-prevent-combat-and-eradicate-trafficking-in-persons-in-the-context-of-international-migration" class="level2">
+<h2 class="anchored" data-anchor-id="title-prevent-combat-and-eradicate-trafficking-in-persons-in-the-context-of-international-migration">Title: Prevent, Combat And Eradicate Trafficking In Persons In The Context Of International Migration</h2>
+</section>
+<section id="associated-actions-9" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-9">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Promote, ratification, accession and implementation of the Protocol to Prevent, Suppress and Punish Trafficking in Persons Especially Women and Children, supplementing the United Nations Convention against Transnational Organized Crime (UNTOC).</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Promote the implementation of the Global Plan of Action to Combat Trafficking in Persons and take into consideration relevant recommendations of the UNODC Toolkit to Combat Trafficking in Persons and other relevant UNODC documents when developing and implementing national and regional policies and measures relating to trafficking in persons.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Monitor irregular migration routes which may be exploited by human trafficking networks to recruit and victimize smuggled or irregular migrants, in order to strengthen cooperation at bilateral, regional and cross-regional levels on prevention, investigation, and prosecution of perpetrators, as well as on identification of, and protection and assistance to victims of trafficking in persons.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Share relevant information and intelligence through transnational and regional mechanisms, including on the modus operandi, economic models and conditions driving trafficking networks, strengthen cooperation between all relevant actors, including financial intelligence units, regulators and financial institutions, to identify and disrupt financial flows associated with trafficking in persons, and enhance judicial cooperation and enforcement with the aim to ensure accountability and end impunity.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Apply measures that address the particular vulnerabilities of women, men, girls and boys, regardless of their migration status, that have become or are at risk of becoming victims of trafficking in persons and other forms of exploitation by facilitating access to justice and safe reporting without fear of detention, deportation or penalty, focusing on prevention, identification, appropriate protection and assistance, and addressing specific forms of abuse and exploitation.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Ensure that definitions of trafficking in persons used in legislation, migration policy and planning, as well as in judicial prosecutions are in accordance with international law, in order to distinguish between the crimes of trafficking in persons and smuggling of migrants.</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Strengthen legislation and relevant procedures to enhance prosecution of traffickers, avoid criminalization of migrants who are victims of trafficking in persons for trafficking-related offences, and ensure that the victim receives appropriate protection and assistance, not conditional upon cooperation with the authorities against suspected traffickers.</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Provide migrants that have become victims of trafficking in persons with protection and assistance, such as measures for physical, psychological and social recovery, as well as measures that permit them to remain in the country of destination, temporarily or permanently, in appropriate cases, facilitating victims’ access to justice, including redress and compensation, in accordance with international law.</li>
+</ol></li>
+<li><ol type="i">
+<li>Create national and local information systems and training programmes which alert and educate citizens, employers, as well as public officials and law enforcement officers, and strengthen capacities to identify signs of trafficking in persons, such as forced, compulsory or child labour, in countries of origin, transit and destination.</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Invest in awareness-raising campaigns, in partnership with relevant stakeholders, for migrants and prospective migrants on the risks and dangers of trafficking in persons, and provide them with information on preventing and reporting trafficking activities.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-11" class="level1">
+<h1>Objective 11</h1>
+<section id="title-manage-borders-in-an-integrated-secure-and-coordinated-manner" class="level2">
+<h2 class="anchored" data-anchor-id="title-manage-borders-in-an-integrated-secure-and-coordinated-manner">Title: Manage Borders In An Integrated, Secure And Coordinated Manner</h2>
+</section>
+<section id="associated-actions-10" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-10">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Enhance international, regional and cross-regional border management cooperation, taking into consideration the particular situation of countries of transit, on proper identification, timely and efficient referral, assistance and appropriate protection of migrants in situations of vulnerability at or near international borders, in compliance with international human rights law, by adopting whole-of-government approaches, implementing joint cross-border trainings, and fostering capacity-building measures.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Establish appropriate structures and mechanisms for effective integrated border management by ensuring comprehensive and efficient border crossing procedures, including through pre-screening of arriving persons, pre-reporting by carriers of passengers, and use of information and communication technology, while upholding the principle of non-discrimination, respecting the right to privacy and protecting personal data.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Review and revise relevant national procedures for border screening, individual assessment and interview processes to ensure due process at international borders and that all migrants are treated in accordance with international human rights law, including through cooperation with National Human Rights Institutions and other relevant stakeholders.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Develop technical cooperation agreements that enable States to request and offer assets, equipment and other technical assistance to strengthen border management, particularly in the area of search and rescue as well as other emergency situations.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Ensure that child protection authorities are promptly informed and assigned to participate in procedures for the determination of the best interests of the child once an unaccompanied or separated child crosses an international border, in accordance with international law, including by training border officials in the rights of the child and child-sensitive procedures, such as those that prevent family separation and reunite families when family separation occurs.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Review and revise relevant laws and regulations to determine whether sanctions are appropriate to address irregular entry or stay and, if so, to ensure that they are proportionate, equitable, non-discriminatory, and fully consistent with due process and other obligations under international law.</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Improve cross-border collaboration among neighbouring and other States relating to the treatment given to persons crossing or seeking to cross international borders, including by taking into consideration relevant recommendations from the OHCHR Recommended Principles and Guidelines on Human Rights at International Borders when identifying best practices.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-12" class="level1">
+<h1>Objective 12</h1>
+<section id="title-strengthen-certainty-and-predictability-in-migration-procedures-for-appropriate-screening-assessment-and-referral" class="level2">
+<h2 class="anchored" data-anchor-id="title-strengthen-certainty-and-predictability-in-migration-procedures-for-appropriate-screening-assessment-and-referral">Title: Strengthen Certainty And Predictability In Migration Procedures For Appropriate Screening, Assessment And Referral</h2>
+</section>
+<section id="associated-actions-11" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-11">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Increase transparency and accessibility of migration procedures by communicating the requirements for entry, admission, stay, work, study or other activities, and introducing technology to simplify application procedures, in order to avoid unnecessary delays and expenses for States and migrants.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Develop and conduct intra- and cross-regional specialized human rights and trauma informed trainings for first responders and government officials, including law enforcement authorities, border officials, consular representatives and judicial bodies, to facilitate and standardize identification and referral of, as well as appropriate assistance and counselling in a culturally-sensitive way, to victims of trafficking in persons, migrants in situations of vulnerability, including children, in particular those unaccompanied or separated, and persons affected by any form of exploitation and abuse related to smuggling of migrants under aggravating circumstances.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Establish gender-responsive and child-sensitive referral mechanisms, including improved screening measures and individual assessments at borders and places of first arrival, by applying standardized operating procedures developed in coordination with local authorities, National Human Rights Institutions, international organizations and civil society.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Ensure that migrant children are promptly identified at places of first arrival in countries of transit and destination, and, if unaccompanied or separated, are swiftly referred to child protection authorities and other relevant services as well as appointed a competent and impartial legal guardian, that family unity is protected, and that anyone legitimately claiming to be a child is treated as such unless otherwise determined through a multi-disciplinary, independent and child-sensitive age assessment.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Ensure that, in the context of mixed movements, relevant information on rights and obligations under national laws and procedures, including on entry and stay requirements, available forms of protection, as well as options for return and reintegration, is appropriately, timely and effectively communicated, and accessible.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-13" class="level1">
+<h1>Objective 13</h1>
+<section id="title-use-migration-detention-only-as-a-measure-of-last-resort-and-work-towards-alternatives" class="level2">
+<h2 class="anchored" data-anchor-id="title-use-migration-detention-only-as-a-measure-of-last-resort-and-work-towards-alternatives">Title: Use Migration Detention Only As A Measure Of Last Resort And Work Towards Alternatives</h2>
+</section>
+<section id="associated-actions-12" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-12">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Use existing relevant human rights mechanisms to improve independent monitoring of migrant detention, ensuring that it is a measure of last resort, that human rights violations do not occur, and that States promote, implement and expand alternatives to detention, favouring non-custodial measures and community-based care arrangements, especially in the case of families and children.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Consolidate a comprehensive repository to disseminate best practices of human rights based alternatives to detention in the context of international migration, including by facilitating regular exchanges and the development of initiatives based on successful practices among States, and between States and relevant stakeholders.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Review and revise relevant legislation, policies and practices related to immigration detention to ensure that migrants are not detained arbitrarily, that decisions to detain are based on law, are proportionate, have a legitimate purpose, and are taken on an individual basis, in full compliance with due process and procedural safeguards, and that immigration detention is not promoted as a deterrent or used as a form of cruel, inhumane or degrading treatment to migrants, in accordance with international human rights law.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Provide access to justice for all migrants in countries of transit and destination that are or may be subject to detention, including by facilitating access to free or affordable legal advice and assistance of a qualified and independent lawyer, as well as access to information and the right to regular review of a detention order.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Ensure that all migrants in detention are informed about the reasons for their detention, in a language they understand, and facilitate the exercise of their rights, including to communicate with the respective consular or diplomatic missions without delay, legal representatives and family members, in accordance with international law and due process guarantees.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Reduce the negative and potentially lasting effects of detention on migrants by guaranteeing due process and proportionality, that it is for the shortest period of time, safeguards physical and mental integrity, and that, as a minimum, access to food, basic healthcare, legal orientation and assistance, information and communication, as well as adequate accommodation is granted, in accordance with international human rights law.</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Ensure that all governmental authorities and private actors duly charged with administering immigration detention do so in a way consistent with human rights and are trained on non-discrimination, the prevention of arbitrary arrest and detention in the context of international migration, and are held accountable for violations or abuses of human rights.</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Protect and respect the rights and best interests of the child at all times, regardless of their migration status, by ensuring availability and accessibility of a viable range of alternatives to detention in non-custodial contexts, favouring community-based care arrangements, that ensure access to education and healthcare, and respect their right to family life and family unity, and by working to end the practice of child detention in the context of international migration.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-14" class="level1">
+<h1>Objective 14</h1>
+<section id="title-enhance-consular-protection-assistance-and-cooperation-throughout-the-migration-cycle" class="level2">
+<h2 class="anchored" data-anchor-id="title-enhance-consular-protection-assistance-and-cooperation-throughout-the-migration-cycle">Title: Enhance Consular Protection, Assistance And Cooperation Throughout The Migration Cycle</h2>
+</section>
+<section id="associated-actions-13" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-13">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Cooperate to build consular capacities, train consular officers, promote arrangements for providing consular services collectively where individual States lack capacity, including through technical assistance, and to develop bilateral or regional agreements on various aspects of consular cooperation.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Involve relevant consular and immigration personnel in existing global and regional fora on migration in order to exchange information and best practices about issues of mutual concern that pertain to citizens abroad and contribute to comprehensive and evidence-based migration policy development.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Conclude bilateral or regional agreements on consular assistance and representation in places where States have an interest in strengthening effective consular services related to migration, but do not have a diplomatic or consular presence.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Strengthen consular capacities in order to identify, protect and assist our nationals abroad who are in a situation of vulnerability, including victims of human and labour rights violations or abuse, victims of crime, victims of trafficking in persons, migrants subject to smuggling under aggravating circumstances, and migrant workers exploited in the process of recruitment, by providing training to consular officers on human rights-based, gender-responsive and child-sensitive actions in this regard.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Provide our nationals abroad the opportunity to register with the country of origin, in close cooperation with consular, national and local authorities, as well as relevant migrant organizations, as a means to facilitate information, services and assistance to migrants in emergency situations and ensure migrants’ accessibility to relevant and timely information, such as by establishing helplines and consolidating national digital databases, while upholding the right to privacy and protecting personal data.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Provide consular support to our nationals through advice, including on local laws and customs, interaction with authorities, financial inclusion, and business establishment, as well as through the issuance of relevant documentation, such as travel documents, and consular identity documents that may facilitate access to services, assistance in emergency situations, the opening of a bank account, and access to remittance facilities.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-15" class="level1">
+<h1>Objective 15</h1>
+<section id="title-provide-access-to-basic-services-for-migrants" class="level2">
+<h2 class="anchored" data-anchor-id="title-provide-access-to-basic-services-for-migrants">Title: Provide access to basic services for migrants</h2>
+</section>
+<section id="associated-actions-14" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-14">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Enact laws and take measures to ensure that service delivery does not amount to discrimination against migrants on the grounds of race, colour, sex, language, religion, political or other opinion, national or social origin, property, birth, disability or other grounds irrespective of cases where differential provision of services based on migration status might apply.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Ensure that cooperation between service providers and immigration authorities does not exacerbate vulnerabilities of irregular migrants by compromising their safe access to basic services or unlawfully infringing upon the human rights to privacy, liberty and security of person at places of basic service delivery.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Establish and strengthen holistic and easily accessible service points at local level, that are migrant inclusive, offer relevant information on basic services in a gender and disability-responsive as well as child-sensitive manner, and facilitate safe access thereto.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Establish or mandate independent institutions at the national or local level, such as National Human Rights Institutions, to receive, investigate and monitor complaints about situations in which migrants’ access to basic services is systematically denied or hindered, facilitate access to redress, and work towards a change in practice.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Incorporate the health needs of migrants in national and local health care policies and plans, such as by strengthening capacities for service provision, facilitating affordable and non-discriminatory access, reducing communication barriers, and training health care providers on culturally-sensitive service delivery, in order to promote physical and mental health of migrants and communities overall, including by taking into consideration relevant recommendations from the WHO Framework of Priorities and Guiding Principles to Promote the Health of Refugees and Migrants.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Provide inclusive and equitable quality education to migrant children and youth, as well as facilitate access to lifelong learning opportunities, including by strengthening the capacities of education systems and by facilitating non-discriminatory access to early childhood development, formal schooling, non-formal education programmes for children for whom the formal system is inaccessible, on-the-job and vocational training, technical education, and language training, as well as by fostering partnerships with all stakeholders that can support this endeavour.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-16" class="level1">
+<h1>Objective 16</h1>
+<section id="title-empower-migrants-and-societies-to-realize-full-inclusion-and-social-cohesion" class="level2">
+<h2 class="anchored" data-anchor-id="title-empower-migrants-and-societies-to-realize-full-inclusion-and-social-cohesion">Title: Empower Migrants And Societies To Realize Full Inclusion And Social Cohesion</h2>
+</section>
+<section id="associated-actions-15" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-15">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Promote mutual respect for the cultures, traditions and customs of communities of destination and of migrants by exchanging and implementing best practices on integration policies, programmes and activities, including on ways to promote acceptance of diversity and facilitate social cohesion and inclusion.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Establish comprehensive and needs-based pre-departure and post-arrival programmes that may include rights and obligations, basic language training, as well as orientation about social norms and customs in the country of destination.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Develop national short, medium and long term policy goals regarding the inclusion of migrants in societies, including on labour market integration, family reunification, education, non-discrimination and health, including by fostering partnerships with relevant stakeholders.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Work towards inclusive labour markets and full participation of migrant workers in the formal economy by facilitating access to decent work and employment for which they are most qualified, in accordance with local and national labour market demands and skills supply.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Empower migrant women by eliminating gender-based discriminatory restrictions on formal employment, ensuring the right to freedom of association, and facilitating access to relevant basic services, as measures to promote their leadership and guarantee their full, free and equal participation in society and the economy.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Establish community centres or programmes at the local level to facilitate migrant participation in the receiving society by involving migrants, community members, diaspora organizations, migrant associations, and local authorities in intercultural dialogue, sharing of stories, mentorship programmes, and development of business ties that improve integration outcomes and foster mutual respect.</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Capitalize on the skills, cultural and language proficiency of migrants and receiving communities by developing and promoting peer-to-peer training exchanges, gender-responsive, vocational and civic integration courses and workshops.</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Support multicultural activities through sports, music, arts, culinary festivals, volunteering and other social events that will facilitate mutual understanding and appreciation of migrant cultures and those of destination communities.</li>
+</ol></li>
+<li><ol type="i">
+<li>Promote school environments that are welcoming and safe, and support the aspirations of migrant children by enhancing relationships within the school community, incorporating evidence-based information about migration in education curricula, and dedicating targeted resources to schools with a high concentration of migrant children for integration activities in order to promote respect for diversity and inclusion, and to prevent all forms discrimination, including racism, xenophobia and intolerance.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-17" class="level1">
+<h1>Objective 17</h1>
+<section id="title-eliminate-all-forms-of-discrimination-and-promote-evidence-based-public-discourse-to-shape-perceptions-of-migration" class="level2">
+<h2 class="anchored" data-anchor-id="title-eliminate-all-forms-of-discrimination-and-promote-evidence-based-public-discourse-to-shape-perceptions-of-migration">Title: Eliminate All Forms Of Discrimination And Promote Evidence-Based Public Discourse To Shape Perceptions Of Migration</h2>
+</section>
+<section id="associated-actions-16" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-16">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Enact, implement or maintain legislation that penalizes hate crimes and aggravated hate crimes targeting migrants, and train law enforcement and other public officials to identify, prevent and respond to such crimes and other acts of violence that target migrants, as well as to provide medical, legal and psychosocial assistance for victims.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Empower migrants and communities to denounce any acts of incitement to violence directed towards migrants by informing them of available mechanisms for redress, and ensure that those who actively participate in the commission of a hate crime targeting migrants are held accountable, in accordance with national legislation, while upholding international human rights law, in particular the right to freedom of expression.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Promote independent, objective and quality reporting of media outlets, including internet based information, including by sensitizing and educating media professionals on migration-related issues and terminology, investing in ethical reporting standards and advertising, and stopping allocation of public funding or material support to media outlets that systematically promote intolerance, xenophobia, racism and other forms of discrimination towards migrants, in full respect for the freedom of the media.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Establish mechanisms to prevent, detect and respond to racial, ethnic and religious profiling of migrants by public authorities, as well as systematic instances of intolerance, xenophobia, racism and all other multiple and intersecting forms of discrimination in partnership with National Human Rights Institutions, including by tracking and publishing trends analyses, and ensuring access to effective complaint and redress mechanisms.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Provide migrants, especially migrant women, with access to national and regional complaint and redress mechanisms with a view to promoting accountability and addressing governmental actions related to discriminatory acts and manifestations carried out against migrants and their families.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Promote awareness-raising campaigns targeted at communities of origin, transit and destination in order to inform public perceptions regarding the positive contributions of safe, orderly and regular migration, based on evidence and facts, and to end racism, xenophobia and stigmatization against all migrants.</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Engage migrants, political, religious and community leaders, as well as educators and service providers to detect and prevent incidences of intolerance, racism, xenophobia, and other forms of discrimination against migrants and diasporas and support activities in local communities to promote mutual respect, including in the context of electoral campaigns.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-18" class="level1">
+<h1>Objective 18</h1>
+<section id="title-invest-in-skills-development-and-facilitate-mutual-recognition-of-skills-qualifications-and-competences" class="level2">
+<h2 class="anchored" data-anchor-id="title-invest-in-skills-development-and-facilitate-mutual-recognition-of-skills-qualifications-and-competences">Title: Invest In Skills Development And Facilitate Mutual Recognition Of Skills, Qualifications And Competences</h2>
+</section>
+<section id="associated-actions-17" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-17">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Develop standards and guidelines for the mutual recognition of foreign qualifications and non-formally acquired skills in different sectors in collaboration with the respective industries with a view to ensuring worldwide compatibility based on existing models and best practices.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Promote transparency of certifications and compatibility of National Qualifications Frameworks by agreeing on standard criteria, indicators and assessment parameters, and by creating and strengthening national skills profiling tools, registries or institutions in order to facilitate effective and efficient mutual recognition procedures at all skills levels.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Conclude bilateral, regional or multilateral mutual recognition agreements or include recognition provisions in other agreements, such as labour mobility or trade agreements, in order to provide equivalence or comparability in national systems, such as automatic or managed mutual recognition mechanisms.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Use technology and digitalization to evaluate and mutually recognize skills more comprehensively based on formal credentials as well as non-formally acquired competences and professional experience at all skills levels.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Build global skills partnerships amongst countries that strengthen training capacities of national authorities and relevant stakeholders, including the private sector and trade unions, and foster skills development of workers in countries of origin and migrants in 26 countries of destination with a view to preparing trainees for employability in the labour markets of all participating countries.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Promote inter-institutional networks and collaborative programmes for partnerships between the private sector and educational institutions in countries of origin and destination to enable mutually beneficial skills development opportunities for migrants, communities and participating partners, including by building on the best practices of the Business Mechanism developed in the context of the Global Forum on Migration and Development.</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Engage in bilateral partnerships and programmes in cooperation with relevant stakeholders that promote skills development, mobility and circulation, such as student exchange programmes, scholarships, professional exchange programmes and trainee- or apprenticeships that include options for beneficiaries, after successful completion of these programmes, to seek employment and engage in entrepreneurship.</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Cooperate with the private sector and employers to make available easily accessible and gender-responsive remote or online skills development and matching programmes to migrants at all skills levels, including early and occupation-specific language training, on the-job training and access to advanced training programmes, to enhance their employability in sectors with demand for labour based on the industry’s knowledge of labour market dynamics, especially to promote the economic empowerment of women.</li>
+</ol></li>
+<li><ol type="i">
+<li>Enhance the ability of migrant workers to transition from a job or employer to another by making available documentation that recognizes skills acquired on the job or through training in order to optimize the benefits of upskilling.</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Develop and promote innovative ways to mutually recognize and assess formally and informally acquired skills, including through timely and complementary training to job seekers, mentoring, and internship programmes in order to fully recognize existing credentials and provide certificates of proficiency for the validation of newly acquired skills.</li>
+</ol></li>
+<li><ol start="11" type="a">
+<li>Establish screening mechanisms of credentials and offer information to migrants on how to get their skills and qualifications assessed and recognized prior to departure, including in recruitment processes or at an early stage after arrival to improve employability.</li>
+</ol></li>
+<li><ol start="12" type="a">
+<li>Cooperate to promote documentation and information tools, in partnership with relevant stakeholders, that provide an overview of a worker’s credentials, skills and qualifications, recognized in countries of origin, transit and destination, in order to enable employers to evaluate the suitability of migrant workers in job application processes.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-19" class="level1">
+<h1>Objective 19</h1>
+<section id="title-create-conditions-for-migrants-and-diasporas-to-fully-contribute-to-sustainable-development-in-all-countries" class="level2">
+<h2 class="anchored" data-anchor-id="title-create-conditions-for-migrants-and-diasporas-to-fully-contribute-to-sustainable-development-in-all-countries">Title: Create Conditions For Migrants And Diasporas To Fully Contribute To Sustainable Development In All Countries</h2>
+</section>
+<section id="associated-actions-18" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-18">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Ensure the full and effective implementation of the 2030 Agenda for Sustainable Development and the Addis Ababa Action Agenda by fostering and facilitating the positive effects of migration for the realization of all Sustainable Development Goals.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Integrate migration into development planning and sectoral policies at local, national, regional and global levels, taking into consideration relevant existing policy guidelines and recommendations, such as the GMG Handbook on Mainstreaming Migration into Development Planning, in order to strengthen policy coherence and effectiveness of development cooperation.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Invest in research on the impact of non-financial contributions of migrants and diasporas to sustainable development in countries of origin and destination, such as knowledge and skills transfer, social and civic engagement, and cultural exchange, with a view to developing evidence-based policies and strengthening global policy discussions.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Facilitate the contributions of migrants and diasporas to their countries of origin, including by establishing or strengthening government structures or mechanisms at all levels, such as dedicated diaspora offices or focal points, diaspora policy advisory boards for governments to account for the potential of migrants and diasporas in migration and development policy-making, and dedicated diaspora focal points in diplomatic or consular missions.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Develop targeted support programmes and financial products that facilitate migrant and diaspora investments and entrepreneurship, including by providing administrative and legal support in business creation, granting seed capital-matching, establish diaspora bonds and diaspora development funds, investment funds, and organize dedicated trade fairs.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Provide easily accessible information and guidance, including through digital platforms, as well as tailored mechanisms for the coordinated and effective financial, voluntary or philanthropic engagement of migrants and diasporas, especially in humanitarian emergencies in their countries of origin, including by involving consular missions.</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Enable political participation and engagement of migrants in their countries of origin, including in peace and reconciliation processes, in elections and political reforms, such as by establishing voting registries for citizens abroad, and by parliamentary representation, in accordance with national legislation.</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Promote migration policies that optimize the benefits of diasporas for countries of origin and destination and their communities, by facilitating flexible modalities to travel, work and invest with minimal administrative burdens, including by reviewing and revising visa, residency and citizenship regulations, as appropriate.</li>
+</ol></li>
+<li><ol type="i">
+<li>Cooperate with other States, the private sector and employers organizations to enable migrants and diasporas, especially those in highly technical fields and in high demand, to carry out some of their professional activities and engage in knowledge transfer in their home countries, without necessarily losing employment, residence status, or earned social benefits.</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Build partnerships between local authorities, local communities, the private sector, diasporas, hometown associations and migrant organizations to promote knowledge and skills transfer between their countries of origin and countries of destination, including by mapping the diasporas and their skills, as a means to maintain the link between diasporas and their country of origin.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-20" class="level1">
+<h1>Objective 20</h1>
+<section id="title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin-1" class="level2">
+<h2 class="anchored" data-anchor-id="title-minimize-the-adverse-drivers-and-structural-factors-that-compel-people-to-leave-their-country-of-origin-1">Title: Minimize the adverse drivers and structural factors that compel people to leave their country of origin</h2>
+</section>
+<section id="associated-actions-19" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-19">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Promote the implementation of the 2030 Agenda for Sustainable Development, including the Sustainable Development Goals and the Addis Ababa Action Agenda, and the commitment to reach the furthest behind first, as well as the Paris Agreement4 and the Sendai Framework for Disaster Risk Reduction 2015-2030.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Invest in programmes that accelerate States’ fulfilment of the Sustainable Development Goals with the aim of eliminating the adverse drivers and structural factors that compel people to leave their country of origin, including through poverty eradication, food security, health and sanitation, education, inclusive economic growth, infrastructure, urban and rural development, employment creation, decent work, gender equality and empowerment of women and girls, resilience and disaster risk reduction, climate change mitigation and adaptation, addressing the socioeconomic effects of all forms of violence, non-discrimination, rule of law and good governance access to justice and protection of human rights, as well as creating and maintaining peaceful and inclusive societies with effective, accountable and transparent institutions.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Establish or strengthen mechanisms to monitor and anticipate the development of risks and threats that might trigger or affect migration movements, strengthen early warning systems, develop emergency procedures and toolkits, launch emergency operations, and support post-emergency recovery, in close cooperation with and support of other States, relevant national and local authorities, National Human Rights Institutions, and civil society.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Invest in sustainable development at local and national levels in all regions allowing all people to improve their lives and meet their aspirations, by fostering sustained, inclusive and sustainable economic growth, including through private and foreign direct investment and trade preferences, to create conducive conditions that allow communities and individuals to take advantage of opportunities in their own countries and drive sustainable development.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Invest in human capital development by promoting entrepreneurship, education, vocational training and skills development programmes and partnerships, productive employment creation, in line with labour market needs, as well as in cooperation with the private sector and trade unions, with a view to reducing youth unemployment, avoiding brain drain and optimizing brain gain in countries of origin, and harnessing the demographic dividend.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Strengthen collaboration between humanitarian and development actors, including by promoting joint analysis, multi-donor approaches and multi-year funding cycles, in order to develop long-term responses and outcomes that ensure respect for the rights of affected individuals,resilience and coping capacities of populations, as well as economic and social self-reliance, and by ensuring these efforts take migration into account.</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Account for migrants in national emergency preparedness and response, including by taking into consideration relevant recommendations from State-led consultative processes, such as the Guidelines to Protect Migrants in Countries Experiencing Conflict or Natural Disaster (MICIC Guidelines),</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Strengthen joint analysis and sharing of information to better map, understand, predict and address migration movements, such as those that may result from sudden-onset and slow onset natural disasters, the adverse effects of climate change, environmental degradation, as well as other precarious situations, while ensuring the effective respect, protection and fulfilment of the human rights of all migrants.</li>
+</ol></li>
+<li><ol type="i">
+<li>Develop adaptation and resilience strategies to sudden-onset and slow-onset natural disasters, the adverse effects of climate change, and environmental degradation, such as desertification, land degradation, drought and sea level rise, taking into account the potential implications on migration, while recognizing that adaptation in the country of origin is a priority.</li>
+</ol></li>
+<li><ol start="10" type="a">
+<li>Integrate displacement considerations into disaster preparedness strategies and promote cooperation with neighbouring and other relevant countries to prepare for early warning, contingency planning, stockpiling, coordination mechanisms, evacuation planning, reception and assistance arrangements, and public information.</li>
+</ol></li>
+<li><ol start="11" type="a">
+<li>Harmonize and develop approaches and mechanisms at subregional and regional levels to address the vulnerabilities of persons affected by sudden-onset and slow-onset natural disasters, by ensuring they have access to humanitarian assistance that meets their essential needs with full respect for their rights wherever they are, and by promoting sustainable outcomes that increase resilience and self-reliance, taking into account the capacities of all countries involved.</li>
+</ol></li>
+<li><ol start="12" type="a">
+<li>Develop coherent approaches to address the challenges of migration movements in the context of sudden-onset and slow-onset natural disasters, including by taking into consideration relevant recommendations from State-led consultative processes, such as the Agenda for the Protection of Cross-Border Displaced Persons in the Context of Disasters and Climate Change, and the Platform on Disaster Displacement.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-21" class="level1">
+<h1>Objective 21</h1>
+<section id="title-cooperate-in-facilitating-safe-and-dignified-return-and-readmission-as-well-as-sustainable-reintegration" class="level2">
+<h2 class="anchored" data-anchor-id="title-cooperate-in-facilitating-safe-and-dignified-return-and-readmission-as-well-as-sustainable-reintegration">Title: Cooperate In Facilitating Safe And Dignified Return And Readmission, As Well As Sustainable Reintegration</h2>
+</section>
+<section id="associated-actions-20" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-20">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Develop and implement bilateral, regional and multilateral cooperation frameworks and agreements, including readmission agreements, ensuring that return and readmission of migrants to their own country is safe, dignified and in full compliance with international human rights law, including the rights of the child, by determining clear and mutually agreed procedures that uphold procedural safeguards, guarantee individual assessments and legal certainty, and by ensuring they also include provisions that facilitate sustainable reintegration.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Promote gender-responsive and child-sensitive return and reintegration programmes, that may include legal, social and financial support, guaranteeing that all returns in the context of such voluntary programmes effectively take place on the basis of the migrant’s free, prior and informed consent, and that returning migrants are assisted in their reintegration process through effective partnerships, including to avoid they become displaced in the country of origin upon return.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Cooperate on identification of nationals and issuance of travel documents for safe and dignified return and readmission in cases of persons that do not have the legal right to stay on another State’s territory, by establishing reliable and efficient means of identification of own nationals such as through the addition of biometric identifiers in population registries, and by digitalizing civil registry systems, with full respect to the right to privacy and protection of personal data.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Foster institutional contacts between consular authorities and relevant officials from countries of origin and destination, and provide adequate consular assistance to returning migrants prior to return by facilitating access to documentation, travel documents, and other services, in order to ensure predictability, safety and dignity in return and readmission.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Ensure that the return of migrants who do not have the legal right to stay on another State’s territory is safe and dignified, follows an individual assessment, is carried out by competent authorities through prompt and effective cooperation between countries of origin and destination, and allows all applicable legal remedies to be exhausted, in compliance with due process guarantees, and other obligations under international human rights law.</li>
+</ol></li>
+<li><ol start="6" type="a">
+<li>Establish or strengthen national monitoring mechanisms on return, in partnership with relevant stakeholders, that provide independent recommendations on ways and means to strengthen accountability, in order to guarantee the safety, dignity, and human rights of all returning migrants.</li>
+</ol></li>
+<li><ol start="7" type="a">
+<li>Ensure that return and readmission processes involving children are carried out only after a determination of the best interests of the child, take into account the right to family life, family unity, and that a parent, legal guardian or specialized official accompanies the child throughout the return process, ensuring that appropriate reception, care and reintegration arrangements for children are in place in the country of origin upon return.</li>
+</ol></li>
+<li><ol start="8" type="a">
+<li>Facilitate the sustainable reintegration of returning migrants into community life by providing them equal access to social protection and services, justice, psycho-social assistance, vocational training, employment opportunities and decent work, recognition of skills acquired abroad, and financial services, in order to fully build upon their entrepreneurship, skills and human capital as active members of society and contributors to sustainable development in the country of origin upon return.</li>
+</ol></li>
+<li><ol type="i">
+<li>Identify and address the needs of the communities to which migrants return including corresponding provisions in national and local development strategies, infrastructure planning, budget allocations and other relevant policy decisions and cooperating with local authorities and relevant stakeholders.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-22" class="level1">
+<h1>Objective 22</h1>
+<section id="title-establish-mechanisms-for-the-portability-of-social-security-entitlements-and-earned-benefits" class="level2">
+<h2 class="anchored" data-anchor-id="title-establish-mechanisms-for-the-portability-of-social-security-entitlements-and-earned-benefits">Title: Establish Mechanisms For The Portability Of Social Security Entitlements And Earned Benefits</h2>
+</section>
+<section id="associated-actions-21" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-21">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Establish or maintain non-discriminatory national social protection systems, including social protection floors for nationals and migrants, in line with the ILO Recommendation 202 on Social Protection Floors.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Conclude reciprocal bilateral, regional or multilateral social security agreements on the portability of earned benefits for migrant workers at all skills levels, which refer to applicable social protection floors in the respective States, applicable social security entitlements and provisions, such as pensions, healthcare or other earned benefits, or integrate such provisions into other relevant agreements, such as those on long-term and temporary labour migration.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Integrate provisions on the portability of entitlements and earned benefits into national social security frameworks, designate focal points in countries of origin, transit and destination that facilitate portability requests from migrants, address the difficulties women and older persons can face in accessing social protection, and establish dedicated instruments, such as migrant welfare funds in countries of origin that support migrant workers and their families.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="objective-23" class="level1">
+<h1>Objective 23</h1>
+<section id="title-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration" class="level2">
+<h2 class="anchored" data-anchor-id="title-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration">Title: Strengthen International Cooperation And Global Partnerships For Safe, Orderly And Regular Migration</h2>
+</section>
+<section id="associated-actions-22" class="level2">
+<h2 class="anchored" data-anchor-id="associated-actions-22">Associated actions</h2>
+<ul>
+<li><ol type="a">
+<li>Support other States as we collectively implement the Global Compact, including through the provision of financial and technical assistance, in line with national priorities, policies action plans and strategies, through a whole-of-government and whole-of-society approach.</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Increase international and regional cooperation to accelerate the implementation of the 2030 Agenda for Sustainable Development in geographic areas from where irregular migration systematically originates due to consistent impacts of poverty, unemployment, climate change and disasters, inequality, corruption, poor governance, among other structural factors, through appropriate cooperation frameworks, innovative partnerships and the involvement of all relevant stakeholders, while upholding national ownership and shared responsibility.</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Involve and support local authorities in the identification of needs and opportunities for international cooperation for the effective implementation of the Global Compact and integrate their perspectives and priorities into development strategies, programmes and planning on migration, as a means to ensure good governance as well as policy coherence across levels of government and policy sectors, and maximize the effectiveness and impact of international development cooperation.</li>
+</ol></li>
+<li><ol start="4" type="a">
+<li>Make use of the capacity-building mechanism and build upon other existing instruments to strengthen the capacities of relevant authorities by mobilizing technical, financial and human resources from States international financial institutions, the private sector, international organizations and other sources in order to assist all States in fulfilling the commitments outlined in this Global Compact.</li>
+</ol></li>
+<li><ol start="5" type="a">
+<li>Conclude bilateral, regional or multilateral mutually beneficial, tailored and transparent partnerships, in line with international law, that develop targeted solutions to migration policy issues of common interest and address opportunities and challenges of migration in accordance with the Global Compact.</li>
+</ol></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/franckalbinet\.github\.io\/iomeval");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

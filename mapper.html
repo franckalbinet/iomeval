@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Maps IOM evaluation report against evaluation frameworks">
+
+<title>Mapper – iomeval</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-000f0825b9c55ed21d14970d810c14a9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Mapper – iomeval">
+<meta property="og:description" content="Maps IOM evaluation report against evaluation frameworks">
+<meta property="og:site_name" content="iomeval">
+<meta name="twitter:title" content="Mapper – iomeval">
+<meta name="twitter:description" content="Maps IOM evaluation report against evaluation frameworks">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">iomeval</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readers.html">API</a></li><li class="breadcrumb-item"><a href="./mapper.html">Mapper</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOMEval</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis/eval_metadata_eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOM Reports Exploration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">API</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./readers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Readers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./downloaders.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Downloaders</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./extract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extract</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./themes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Themes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mapper.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Mapper</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#response-models" id="toc-response-models" class="nav-link active" data-scroll-target="#response-models">Response Models</a>
+  <ul class="collapse">
+  <li><a href="#themescore" id="toc-themescore" class="nav-link" data-scroll-target="#themescore">ThemeScore</a></li>
+  <li><a href="#themescores" id="toc-themescores" class="nav-link" data-scroll-target="#themescores">ThemeScores</a></li>
+  </ul></li>
+  <li><a href="#parsing" id="toc-parsing" class="nav-link" data-scroll-target="#parsing">Parsing</a>
+  <ul class="collapse">
+  <li><a href="#parse_json_response" id="toc-parse_json_response" class="nav-link" data-scroll-target="#parse_json_response">parse_json_response</a></li>
+  <li><a href="#sort_by_centrality" id="toc-sort_by_centrality" class="nav-link" data-scroll-target="#sort_by_centrality">sort_by_centrality</a></li>
+  <li><a href="#get_top_ids" id="toc-get_top_ids" class="nav-link" data-scroll-target="#get_top_ids">get_top_ids</a></li>
+  </ul></li>
+  <li><a href="#core-mapping" id="toc-core-mapping" class="nav-link" data-scroll-target="#core-mapping">Core Mapping</a>
+  <ul class="collapse">
+  <li><a href="#mk_system_blocks" id="toc-mk_system_blocks" class="nav-link" data-scroll-target="#mk_system_blocks">mk_system_blocks</a></li>
+  <li><a href="#map_themes" id="toc-map_themes" class="nav-link" data-scroll-target="#map_themes">map_themes</a></li>
+  </ul></li>
+  <li><a href="#pipeline" id="toc-pipeline" class="nav-link" data-scroll-target="#pipeline">Pipeline</a>
+  <ul class="collapse">
+  <li><a href="#load_prompts" id="toc-load_prompts" class="nav-link" data-scroll-target="#load_prompts">load_prompts</a></li>
+  <li><a href="#map_all" id="toc-map_all" class="nav-link" data-scroll-target="#map_all">map_all</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="mapper.html.md"><i class="bi bi-file-code"></i>CommonMark</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./readers.html">API</a></li><li class="breadcrumb-item"><a href="./mapper.html">Mapper</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Mapper</h1>
+</div>
+
+<div>
+  <div class="description">
+    Maps IOM evaluation report against evaluation frameworks
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<p>Maps evaluation reports to IOM’s SRF(Strategic Results Framework) and GCM (Global Compact for Migration UN General Assembly resolution) themes using LLM-based scoring. The module analyzes reports against four theme hierarchies (SRF Enablers, Cross-cutting Priorities, GCM Objectives, and SRF Outputs) using prompt caching for efficiency. Returns structured centrality scores with reasoning and confidence levels for each theme.</p>
+<section id="response-models" class="level2">
+<h2 class="anchored" data-anchor-id="response-models">Response Models</h2>
+<p><a href="https://franckalbinet.github.io/iomeval/mapper.html#themescore"><code>ThemeScore</code></a> and <a href="https://franckalbinet.github.io/iomeval/mapper.html#themescores"><code>ThemeScores</code></a> are Pydantic models for structured LLM output. The LLM returns scores for each theme with reasoning and confidence levels.</p>
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/mapper.py#L18" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="themescore" class="level3">
+<h3 class="anchored" data-anchor-id="themescore">ThemeScore</h3>
+<blockquote class="blockquote">
+<pre><code> ThemeScore (theme_id:str, theme_title:str, centrality_score:float,
+             reasoning:str, confidence:str)</code></pre>
+</blockquote>
+<p><em>Single theme’s centrality assessment with score, reasoning, and confidence</em></p>
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/mapper.py#L27" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="themescores" class="level3">
+<h3 class="anchored" data-anchor-id="themescores">ThemeScores</h3>
+<blockquote class="blockquote">
+<pre><code> ThemeScores (scores:list[__main__.ThemeScore])</code></pre>
+</blockquote>
+<p><em>Collection of theme centrality scores from a single mapping operation</em></p>
+</section>
+</section>
+<section id="parsing" class="level2">
+<h2 class="anchored" data-anchor-id="parsing">Parsing</h2>
+<p>Helper functions to extract and sort results from the LLM response.</p>
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/mapper.py#L32" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="parse_json_response" class="level3">
+<h3 class="anchored" data-anchor-id="parse_json_response">parse_json_response</h3>
+<blockquote class="blockquote">
+<pre><code> parse_json_response (res)</code></pre>
+</blockquote>
+<p><em>Extract and parse JSON content from LLM completion response</em></p>
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/mapper.py#L37" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="sort_by_centrality" class="level3">
+<h3 class="anchored" data-anchor-id="sort_by_centrality">sort_by_centrality</h3>
+<blockquote class="blockquote">
+<pre><code> sort_by_centrality (res)</code></pre>
+</blockquote>
+<p><em>Sort themes by centrality score, accepts raw response or parsed dict</em></p>
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/mapper.py#L43" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="get_top_ids" class="level3">
+<h3 class="anchored" data-anchor-id="get_top_ids">get_top_ids</h3>
+<blockquote class="blockquote">
+<pre><code> get_top_ids (res, min_score=0.7)</code></pre>
+</blockquote>
+<p><em>Get IDs of themes with centrality score &gt;= min_score, accepts raw response or parsed dict</em></p>
+</section>
+</section>
+<section id="core-mapping" class="level2">
+<h2 class="anchored" data-anchor-id="core-mapping">Core Mapping</h2>
+<p>The core mapping functions prepare the report for caching and call the LLM to score themes against the report content.</p>
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/mapper.py#L49" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="mk_system_blocks" class="level3">
+<h3 class="anchored" data-anchor-id="mk_system_blocks">mk_system_blocks</h3>
+<blockquote class="blockquote">
+<pre><code> mk_system_blocks (report:str)</code></pre>
+</blockquote>
+<p><em>Create cached system message blocks from report text</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 38%">
+<col style="width: 52%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>report</td>
+<td>str</td>
+<td>Full report text to analyze</td>
+</tr>
+<tr class="even">
+<td><strong>Returns</strong></td>
+<td><strong>list</strong></td>
+<td><strong>Anthropic-style content blocks with cache control</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/mapper.py#L55" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="map_themes" class="level3">
+<h3 class="anchored" data-anchor-id="map_themes">map_themes</h3>
+<blockquote class="blockquote">
+<pre><code> map_themes (system_blocks:list, themes:str, prompt:str,
+             model:str='claude-haiku-4-5', response_format=&lt;class
+             '__main__.ThemeScores'&gt;)</code></pre>
+</blockquote>
+<p><em>Map report against themes using cached system blocks</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>system_blocks</td>
+<td>list</td>
+<td></td>
+<td>Cached system blocks from mk_system_blocks</td>
+</tr>
+<tr class="even">
+<td>themes</td>
+<td>str</td>
+<td></td>
+<td>Formatted themes text to score against</td>
+</tr>
+<tr class="odd">
+<td>prompt</td>
+<td>str</td>
+<td></td>
+<td>Mapping instruction prompt</td>
+</tr>
+<tr class="even">
+<td>model</td>
+<td>str</td>
+<td>claude-haiku-4-5</td>
+<td>Model to use for completion</td>
+</tr>
+<tr class="odd">
+<td>response_format</td>
+<td>ModelMetaclass</td>
+<td>ThemeScores</td>
+<td>Pydantic model for structured output</td>
+</tr>
+</tbody>
+</table>
+<div id="eba8990d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> iomeval.extract <span class="im">import</span> extract_sections</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mistocr.core <span class="im">import</span> read_pgs</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>md <span class="op">=</span> read_pgs(<span class="st">'files/test/AAP</span><span class="sc">%20E</span><span class="st">valuation%20Report_final_'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>report <span class="op">=</span> extract_sections(md)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="8f2a5d2d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>n_tokens(report)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>8657</code></pre>
+</div>
+</div>
+<div id="da168153" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>system_blocks <span class="op">=</span> mk_system_blocks(report)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(system_blocks[<span class="dv">0</span>][<span class="st">'text'</span>][:<span class="dv">200</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## Report to Analyze
+
+## EXECUTIVE SUMMARY  ... page 6
+
+This external evaluation assessed whether or not IOM is delivering on its commitments to accountability to affected populations (AAP), ${ }^{1}$</code></pre>
+</div>
+</div>
+<div id="ba2a4f09" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>enablers <span class="op">=</span> load_enablers()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> load_prompt(<span class="st">'srf_enablers'</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> map_themes(system_blocks, fmt_enablers_ccp(enablers), prompt)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>sort_by_centrality(res)[:<span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[{'theme_id': 'Cross-cutting 3',
+  'theme_title': 'Funding',
+  'centrality_score': 0.81,
+  'reasoning': "Funding is a MAJOR COMPONENT throughout the evaluation. Executive Summary states 'Resources allocated to central AAP functions remain inadequate' and notes 'AAP Coordination Unit is largely funded with earmarked funds.' Conclusions emphasize inadequate resource allocation repeatedly: 'The opinion that resources allocated to AAP in IOM are inadequate was prevalent in both qualitative and quantitative data.' Recommendations 2, 4, and 5 directly address funding strategy and mechanisms (e.g., 'three-year plan connected to a funding strategy'; 'Establish a fund for supporting select country offices'). The Ethiopia case study exemplifies office-wide funding approach. Multiple findings address unsustainability risks from fragmented, project-specific funding models.",
+  'confidence': 'high'},
+ {'theme_id': 'Cross-cutting 4',
+  'theme_title': 'Data and evidence',
+  'centrality_score': 0.75,
+  'reasoning': "Data and evidence is a MAJOR COMPONENT, particularly regarding CFMs and feedback utilization. The evaluation identifies gaps: 'lack of technical resources and support to make full use of data gathered from affected people' (Executive Summary); Conclusions note 'need to structure or strengthen the processes that translate feedback into meaningful operational adjustments' and 'some informants perceived that not all data gathered from affected people were being used.' Recommendation 8 extensively addresses CFM system mapping, data standardization, and analysis ('CFM data analysis dashboards'). However, the evaluation does not address IOM's broader data for foresight, anticipatory action, or data as central to organizational decision-making.",
+  'confidence': 'high'},
+ {'theme_id': 'Cross-cutting 5',
+  'theme_title': 'Learning and Innovation',
+  'centrality_score': 0.68,
+  'reasoning': "Learning and innovation is a SIGNIFICANT/MAJOR element. Executive Summary identifies demand for 'learning and to proactively support IOM country offices.' Recommendation 7 addresses 'training opportunities and update capacity-building material with increased focus on practical AAP implementation,' with emphasis on knowledge sharing through 'communities of practice.' Recommendation 6 focuses on visibility and knowledge management for AAP good practices. Case studies document 'innovative' AAP approaches (e.g., IOM Türkiye's cross-border operations). However, the evaluation does not systematically address innovation as organizational capability, technology use, private sector collaboration, or learning as internal decision-making processes beyond AAP domain.",
+  'confidence': 'high'}]</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline">Pipeline</h2>
+<p>The full pipeline maps a report against all theme hierarchies: SRF Enablers → Cross-cutting Priorities → GCM Objectives → SRF Outputs. The GCM lookup table filters which outputs to score based on top GCM objectives.</p>
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/mapper.py#L66" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="load_prompts" class="level3">
+<h3 class="anchored" data-anchor-id="load_prompts">load_prompts</h3>
+<blockquote class="blockquote">
+<pre><code> load_prompts (path:str='files/prompts')</code></pre>
+</blockquote>
+<p><em>Load all mapping prompts</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>path</td>
+<td>str</td>
+<td>files/prompts</td>
+<td>Directory containing prompt files</td>
+</tr>
+<tr class="even">
+<td><strong>Returns</strong></td>
+<td><strong>AttrDict</strong></td>
+<td></td>
+<td><strong>Dict with srf_enablers, srf_ccps, gcm, srf_outputs prompts</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/mapper.py#L73" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="map_all" class="level3">
+<h3 class="anchored" data-anchor-id="map_all">map_all</h3>
+<blockquote class="blockquote">
+<pre><code> map_all (report:str, path:str='files/themes',
+          prompt_path:str='files/prompts', verbose:bool=True,
+          model:str='claude-haiku-4-5', response_format=&lt;class
+          '__main__.ThemeScores'&gt;)</code></pre>
+</blockquote>
+<p><em>Map report against all theme classes: enablers → CCP → GCM → outputs</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>report</td>
+<td>str</td>
+<td></td>
+<td>Full report text to analyze</td>
+</tr>
+<tr class="even">
+<td>path</td>
+<td>str</td>
+<td>files/themes</td>
+<td>Directory containing theme JSON files</td>
+</tr>
+<tr class="odd">
+<td>prompt_path</td>
+<td>str</td>
+<td>files/prompts</td>
+<td>Directory containing prompt files</td>
+</tr>
+<tr class="even">
+<td>verbose</td>
+<td>bool</td>
+<td>True</td>
+<td>Print progress messages</td>
+</tr>
+<tr class="odd">
+<td>model</td>
+<td>str</td>
+<td>claude-haiku-4-5</td>
+<td>Model to use for completion</td>
+</tr>
+<tr class="even">
+<td>response_format</td>
+<td>ModelMetaclass</td>
+<td>ThemeScores</td>
+<td>Pydantic model for structured output</td>
+</tr>
+<tr class="odd">
+<td><strong>Returns</strong></td>
+<td><strong>AttrDict</strong></td>
+<td></td>
+<td><strong>Dict with enablers, ccp, gcm, outputs results</strong></td>
+</tr>
+</tbody>
+</table>
+<div id="9b215d6d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> map_all(report)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mapping SRF Enablers...
+Mapping Cross-cutting Priorities...
+Mapping GCM Objectives...
+Top GCM: 7 (from 2 candidates)
+Mapping 26 filtered SRF Outputs...</code></pre>
+</div>
+</div>
+<div id="26709af5" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sort_by_centrality(res.enablers)[:<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[{'theme_id': 'Cross-cutting 3',
+  'theme_title': 'Funding',
+  'centrality_score': 0.82,
+  'reasoning': "Funding is a PRIMARY FOCUS. The evaluation identifies inadequate resource allocation as a central finding, appearing prominently in the Executive Summary: 'Resources allocated to central AAP functions remain inadequate.' Funding is addressed extensively across multiple sections: the AAP Coordination Unit lacks core funding and relies on 'earmarked funds'; country-level AAP is 'project-specific' creating fragmentation; there is 'no strategic approach to AAP funding' (Conclusions). Recommendations 2, 4, and 5 all directly address funding strategy and mechanisms. However, broader financing innovation, multi-year programming, and flexible funding—elements of the enabler description—are not explored, limiting it from 0.9.",
+  'confidence': 'high'},
+ {'theme_id': 'Cross-cutting 2',
+  'theme_title': 'Partnership',
+  'centrality_score': 0.68,
+  'reasoning': "Partnership is a major component of the AAP Framework itself. The evaluation emphasizes 'inter-agency AAP coordination spaces' and 'collective accountability' as critical themes (Conclusions section). Recommendation 9 explicitly addresses 'collaboration and engagement on collective accountability' and participation in IASC structures. The case studies reference partnerships with government and civil society. However, partnership development for broader IOM programming, equitable partnerships with national actors, and whole-of-society solutions receive limited analysis. Partnerships are discussed primarily within the narrow context of AAP coordination rather than as a strategic organizational capability.",
+  'confidence': 'high'}]</code></pre>
+</div>
+</div>
+<div id="208abdee" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sort_by_centrality(res.ccp)[:<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[{'theme_id': 'Cross-cutting 1',
+  'theme_title': 'Integrity, Transparency and Accountability',
+  'centrality_score': 0.95,
+  'reasoning': "This is a THEMATIC EVALUATION of AAP, which directly operationalizes accountability to affected populations. The entire evaluation assesses IOM's commitment to 'active commitment to use power responsibly by taking account of, giving account to, and being held to account by the people' (Executive Summary). Accountability appears in evaluation objectives, findings on 'collective accountability' (Conclusions), CFM mechanisms (Recommendation 8), and visibility/transparency (Recommendation 6). The evaluation systematically assesses accountability structures, transparency of feedback mechanisms, and institutional commitment to these principles across multiple sections and recommendations.",
+  'confidence': 'high'},
+ {'theme_id': 'Cross-cutting 3',
+  'theme_title': 'Protection-centred',
+  'centrality_score': 0.72,
+  'reasoning': "Protection is a MAJOR COMPONENT of this AAP-focused evaluation. Findings reference 'protection risks and needs of vulnerable populations' (Conclusions); the AAP Framework itself centers on rights-based approaches and placing affected populations' well-being in decision-making, aligning with Protection-centred priorities. CFM mechanisms (Recommendation 8) and participation structures (throughout) are protection-related accountability tools. PSEAH is mentioned in background documents (IN/234). However, dedicated assessment of child safeguarding, PSEAH mechanisms, or specific protection outcomes is limited. Protection underpins AAP's logic but is not independently evaluated.",
+  'confidence': 'medium'}]</code></pre>
+</div>
+</div>
+<div id="9b5995cc" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>get_top_ids(res.gcm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>['7', '23']</code></pre>
+</div>
+</div>
+<div id="edc1cf94" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>sort_by_centrality(res.outputs)[:<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[{'theme_id': '3d31',
+  'theme_title': 'Government and civil society stakeholders have improved knowledge, skills and resources to protect the rights of vulnerable migrants, including children and victims of trafficking, and are equipped to apply a survivor-centered, gender-sensitive, human-rights based approach.',
+  'centrality_score': 0.75,
+  'reasoning': "Directly relevant to AAP's human rights and vulnerable group protection focus. Report emphasizes AAP's grounding in human rights-based approaches (Conclusions, page 34: 'The desk review and consultations held confirmed that the IOM AAP approach considers the cross-cutting issues of human rights, gender equality and disability'). Findings address capacity gaps (Recommendations 4, 7 on training/support). However, evaluation does not assess actual vulnerable migrant protection outcomes or survivor-centered service delivery—focuses on organizational support capacity.",
+  'confidence': 'high'}]</code></pre>
+</div>
+</div>
+<p>Can you provide a title and a short description for this module?</p>
+<section id="reply" class="level5">
+<h5 class="anchored" data-anchor-id="reply">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<p>Based on the code, here’s a title and description:</p>
+<p><strong>Title:</strong> Theme Mapper</p>
+<p><strong>Description:</strong> Maps evaluation reports to IOM’s Strategic Results Framework themes using LLM-based scoring. The module analyzes reports against four theme hierarchies (SRF Enablers, Cross-cutting Priorities, GCM Objectives, and SRF Outputs) using prompt caching for efficiency. Returns structured centrality scores with reasoning and confidence levels for each theme.</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/franckalbinet\.github\.io\/iomeval");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

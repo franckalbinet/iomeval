@@ -1,0 +1,56 @@
+
+
+Finding 3.4. The institutional framework for monitoring the
+implementation of AAP policy is basic and predominantly focuses on
+outputs rather than outcomes and impacts. The IOM SRF (2024) is
+commendable in that it shifts its focus towards outcomes, including
+service and programme satisfaction revised according to feedback from
+affected people, but there is still a need for a specific and
+comprehensive monitoring framework for AAP.
+
+The monitoring of AAP in IOM is based on indicators included in other
+institutional monitoring tools rather than having its own dedicated
+logical framework based on a clear theory of change. The indicators used
+show that the focus of monitoring activities is predominantly on
+outputs, with targets not clearly defined and with an unclear
+distinction between outputs, outcomes and impacts, or objectives.
+
+In the IOM Strategic Plan 2024-2028 and the IOM SRF, new AAP indicators
+have been included (see Annex C) that can enhance reflection on the
+tangible benefits of AAP. Concerning the identification of good
+practices, some informants in field offices expressed uncertainty on how
+“success stories” were identified by IOM Headquarters.
+
+Finding 3.5. Engagement with and awareness of AAP among senior or
+leadership officers is unequal, with officers in field offices being
+more committed to AAP than those in central functions.
+
+Several IOM officers consulted believed that senior leadership was
+somewhat disengaged from AAP or only marginally attentive to it. This
+sentiment is also reflected by the resources allocated to AAP activities
+at the central level, which several informants considered to be
+inadequate. <sup>14</sup> The limited investment of core funding in
+AAP - with, at the time of this evaluation, the AAP Coordination Unit
+primarily being staffed by consultants funded by a specific USAID Bureau
+for Humanitarian Assistance initiative - is perceived as a sign that
+implementing AAP is not a top priority for IOM.
+
+Senior staff consulted in field offices generally appeared to be engaged
+with and aware of AAP. In the IOM Ethiopia Country Office, for instance,
+AAP was addressed at the highest organizational level, enabling the
+appointment of AAP focal points for all suboffices, setting up
+mechanisms to share data with external partners, and holding discussions
+with the United Nations Country Team (see Case study 1). Conversely, the
+engagement of leadership at the headquarters level seemed to be confined
+to the initial stages, during the design and launch of the AAP
+Framework. This evaluation attempted to consult senior IOM Headquarters
+officers on this matter, but interviews did not take place due to the
+unavailability of the individuals contacted. <sup>15</sup>
+
+\[^0\] \[^0\]: <sup>14</sup> This finding, gathered in 2024, backs up
+the 2023 MOPAN analysis regarding AAP, which concluded that IOM had not
+yet been able to consistently incorporate AAP across all its programmes
+and did not invest adequately in AAP, considering the scale of its
+operations. <sup>15</sup> The unavailability of senior IOM Headquarters
+staff to be interviewed for this evaluation was interpreted as a sign of
+limited engagement on the matter.
