@@ -1,0 +1,15 @@
+website:
+  sidebar:
+    contents:
+      - index.ipynb
+      - section: Analysis
+        contents: 
+          - eval_metadata_eda.ipynb
+      - section: API
+        contents:
+          - 01_readers.ipynb
+          - 02_downloaders.ipynb
+          - 03_extract.ipynb
+          - 04_themes.ipynb
+          - 05_mapper.ipynb
+          - 06_pipeline.ipynb
