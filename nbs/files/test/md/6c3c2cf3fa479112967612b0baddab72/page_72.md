@@ -1,16 +1,16 @@
-#### Effectiveness/impact  ... page 72
+72
+
+#### Effectiveness/impact ... page 72
 
 - What are the key results you identify from IOM's work on AAP? (in terms of information provided to Affected Populations, participation, complaints and feedback mechanisms and overall community empowerment and engagement)
-
 
 #### Efficiency ... page 72
 
 - What are the main challenges you see in the operation of AAP'S mechanisms? (e.g., Complaints and feedback mechanisms, participation, information etc)?
 
-Lessons learned and recommendations
+#### Lessons learned and recommendations ... page 72
 
 - What would be the key lessons learned in the work of AAP you have been engaged in and your recommendations for future initiatives to further expand the work of AAP at IOM?
-
 
 ### Global Survey ... page 72
 
@@ -25,11 +25,15 @@ d) Other
 #### Part II. Relevance and Coherence ... page 72
 
 1. Please, assess the work of IOM in Accountability to Affected Populations in the following items (consider 1 as the lowest and 5 as the highest grading):
-![img-10.jpeg](img-10.jpeg)
-AI-generated image description:
-___
-This is a criteria evaluation matrix table focused on 'Relevance' as the main criterion. The table has 5 columns: Criteria, Questions, IOM staff HQ, IOM staff reg/local, International partners, and Local partners. The table contains 6 evaluation questions related to IOM's AAP (Accountability to Affected Populations) approach. Each question is marked with 'x' indicators showing which stakeholder groups should be consulted. The questions cover: (1) alignment of AAP with IOM Member States and UN system needs, (2) relevance of AAP mechanisms for IOM offices, (3) consideration of cross-cutting issues like human rights and gender equality, (4) engagement of marginalized groups, (5) unique aspects of IOM's AAP implementation, and (6) consideration of power differences in project design. Most questions involve consultation with IOM staff HQ and regional/local staff, with select questions also involving international and local partners.
-___
+
+|  Question | 1 | 2 | 3 | 4 | 5 | 6 | I don't know/Not  |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|  Utility of AAP guidance and tools to help with programming at a regional and local level |  |  |  |  |  |  |   |
+|  Connection to the cross-cutting issues of human rights, gender equality, disability and environment |  |  |  |  |  |  |   |
+|  Coherence with other guidance, frameworks, and tools within IOM in other areas |  |  |  |  |  |  |   |
+|  Communication of AAP's framework and tools within IOM |  |  |  |  |  |  |   |
+|  Utility of IOM's guidance on AAP to establish partnerships and implement joint programmes |  |  |  |  |  |  |   |
+
 2. In your opinion, what is the comparative advantage of IOM in promoting Accountability to Affected Populations, considering its institutional mandate? What is IOM's unique characteristics in operating AAP that can be helpful to the learning of the wider humanitarian community?
 
 #### Part III. Effectiveness and Impact ... page 72

@@ -5,13 +5,13 @@ Table 3. Accountability to affected populations performance indicators used by I
 |  Indicators available in the annual reports* | 2019 | 2020 | 2022 | 2023  |
 | --- | --- | --- | --- | --- |
 |  Number of country-level crisis response plans that integrated AAP | 39 | 47 | N/A* | 47  |
-|  Number of offices engaged in crisisrelated responses with focal points participating in inter-agency coordination on AAP | 23 | 35 | 39 | 56  |
+|  Number of offices engaged in crisis-related responses with focal points participating in inter-agency coordination on AAP | 23 | 35 | 39 | 56  |
 |  Number of offices engaging with affected people in the design, planning, and implementation of responses | 61 | N/A* | 71 | 120  |
 
-- N/A: No data available for the relevant indicator in the annual report for the given year.
-
+* N/A: No data available for the relevant indicator in the annual report for the given year.
 Source: Data collected by AAP unit.
-Finding 3.2 Data gathered from affected people were seen to inform operational adjustments in several instances, but there is also a feeling that not all CFM data are used.
+
+Finding 3.2. Data gathered from affected people were seen to inform operational adjustments in several instances, but there is also a feeling that not all CFM data are used.
 
 This evaluation revealed numerous instances where complaints and feedback led to programme adjustments. Programme changes cited included enhancing training sessions, offering more suitable shelters, revising procurement procedures to engage cost-effective services, integrating psychosocial support, installing additional lighting, designating a food distribution day for individuals with disabilities, identifying safer and more accessible locations for WASH facilities for women, improving ground insulation, transitioning from in-kind aid to cash-based interventions, promoting additional communal spaces, adjusting communication practices and cash delivery methods for households with special needs, addressing vulnerabilities, and enhancing the quality of food provided as well as refining beneficiary targeting and selection.
 

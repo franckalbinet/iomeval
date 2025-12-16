@@ -1,8 +1,8 @@
 responsibilities and are chosen as AAP focal points based on their educational background, current roles and willingness to assume AAP duties on top of their regular ones.
 
-#### Key Findings  ... page 44
+### Key Findings ... page 44
 
-##### Relevance ... page 44
+#### Relevance ... page 44
 
 In Ethiopia, IOM implements operations of significant scale due to the high incidence of migration and displacement in the country, often in close collaboration with national and local authorities. This makes the AAP approaches highly relevant to ensure that affected people contribute to decision-making and are able to raise their concerns directly with the Organization.
 
@@ -13,3 +13,5 @@ Application of AAP approaches was also seen as key for functions such as displac
 In 2023, IOM Ethiopia's CCCM unit deployed an automated reporting system for its CFM. This system, called Zite Manager, is used by CCCM help desk officers to collect and register feedback and complaints, which are in turn centrally analysed and shared with the responsible staff in different units for follow-up. This system was perceived as offering various advantages, including easier processing of feedback, strengthened formal communication channels and greater adherence to data protection principles.
 
 Consulted IOM informants strongly believed that creating spaces and mechanisms for affected community members to come forward and communicate their complaints and challenges is important also for the prevention of sexual exploitation and abuse. The absence or weakness of AAP mechanisms was seen as highly detrimental to such prevention. At the same time, the effectiveness of AAP mechanisms in the prevention of sexual exploitation and abuse is conditional on the correct understanding, robustness and systematic implementation of those mechanisms, as well as on the extent to which these approaches can address power
+
+44

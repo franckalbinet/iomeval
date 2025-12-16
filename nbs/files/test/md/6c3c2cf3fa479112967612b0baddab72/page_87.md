@@ -1,4 +1,6 @@
-#### Coherence:  ... page 87
+87
+
+#### Coherence: ... page 87
 
 Which mechanisms are in place to guarantee internal coherence for the inclusion of AAP principles and commitment in relevant IOM areas of work?
 
@@ -16,7 +18,7 @@ Are IOM's approaches and interventions adapting and responding effectively and t
 
 Has IOM's decision making been effective in leading, coordinating and delivering institutional AAP approach, to make the best use of IOM's strengths and areas of expertise?
 
-To what extent have IOM's AAP instruments, feedback mechanisms and broader communitybased initiatives been effective to support the implementation of AAP principles and commitments for the most vulnerable and to ensure that no one is left behind?
+To what extent have IOM's AAP instruments, feedback mechanisms and broader community-based initiatives been effective to support the implementation of AAP principles and commitments for the most vulnerable and to ensure that no one is left behind?
 
 Have IOM's communication tools been effective to raise internal and external awareness on AAP and to properly integrate the views of affected populations?
 

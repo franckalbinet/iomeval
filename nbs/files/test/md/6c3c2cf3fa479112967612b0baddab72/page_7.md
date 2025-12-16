@@ -5,9 +5,11 @@ framework. There is clear progress in the implementation of AAP within IOM, but 
 
 In conclusion, the evaluation largely confirms the findings from the 2023 MOPAN assessment, while also drawing a more nuanced and detailed picture of how IOM is pursuing its institutional commitments regarding AAP. Nine recommendations are put forward for IOM senior management and for the AAP team, to address the gaps identified:
 
-1. Clarify that the scope and applicability of AAP extends beyond emergency response operations, reinforcing also the message on the mandatory nature of $\mathrm{IN} / 285$.
+1. Clarify that the scope and applicability of AAP extends beyond emergency response operations, reinforcing also the message on the mandatory nature of IN/285.
 2. Develop an operational medium- to longer-term strategy for AAP, to be negotiated at the highest leadership level, with a three-year plan connected to a funding strategy.
 3. In conjunction with Recommendation 2 (develop an AAP strategy), develop a theory of change and a dedicated monitoring and evaluation framework for AAP.
 4. Strengthen central AAP functions, ensuring that the size of the AAP unit in IOM Headquarters becomes adequate to meet AAP strategic objectives and that there is capacity to proactively support country offices to structure their approach to AAP implementation.
 5. Support country offices in developing office-wide approaches to AAP implementation and funding, reducing fragmentation.
 6. Increase the visibility of AAP activities, both internally and externally, on the basis of a clear visibility and knowledge management plan.
+
+7

@@ -2,14 +2,14 @@ sampling was selected for the case studies, to ensure comprehensive data gatheri
 
 Table 1. Data collection methods and number of respondents consulted
 
-|  Category | Number of individuals <br> consulted  |
+|  Category | Number of individuals consulted  |
 | --- | --- |
 |  Key informant interviews | 34 informants  |
 |  Focus group discussions | 30 participants  |
 |  Interviews and focus group discussions in the two case studies | 132 informants/participants  |
 |  Survey | 214 respondents  |
 
-### Limitations ... page 14
+## Limitations ... page 14
 
 Time constraints prevented all evaluation questions and perspectives from being examined with the same level of detail. The evaluators had a limited number of days to review the information, and the informants faced time and workload challenges in providing comprehensive responses and clarifications. As a result, not all of the evaluation questions could be addressed fully.
 

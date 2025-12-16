@@ -2,7 +2,7 @@ Recommendation 4: The senior management and the Protection Division should stren
 
 For the follow-up to this recommendation, the following activity should be considered:
 
-- Increase staff resources in regional offices, establishing AAP-dedicated positions or designating focal persons with both technical knowledge and time capacity, ${ }^{26}$ ensuring these have a clear mandate to undertake AAP tasks effectively and efficiently, and that technical reporting lines to AAP officers in IOM Headquarters are established.
+- Increase staff resources in regional offices, establishing AAP-dedicated positions or designating focal persons with both technical knowledge and time capacity,²⁶ ensuring these have a clear mandate to undertake AAP tasks effectively and efficiently, and that technical reporting lines to AAP officers in IOM Headquarters are established.
 
 Recommendation 5: The AAP team should support country offices in developing office-wide approaches to AAP implementation and funding, reducing fragmentation.
 
@@ -21,5 +21,4 @@ The desk review of AAP documentation clearly indicated that an insufficient amou
 
 It is key that efforts on AAP visibility are formalized in a dedicated plan, formulated by the AAP central unit in coordination with communication specialists, and that country offices are provided with guidance, tools and support on AAP best practices around documentation and visibility.
 
-[^0]
-[^0]:    ${ }^{26}$ Focal persons are intended to be staffers not fully dedicated to working on AAP, but rather staffers who have AAP responsibilities alongside other responsibilities.
+²⁶ Focal persons are intended to be staffers not fully dedicated to working on AAP, but rather staffers who have AAP responsibilities alongside other responsibilities.

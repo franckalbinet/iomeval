@@ -1,12 +1,14 @@
-## ANNEX A. CASE STUDIES  ... page 42
+42
 
-### A. 1 Accountability to Affected Populations in IOM Ethiopia ... page 42
+# ANNEX A. CASE STUDIES ... page 42
 
-#### Background ... page 42
+## A.1 Accountability to Affected Populations in IOM Ethiopia ... page 42
+
+### Background ... page 42
 
 The consultation in Ethiopia, conducted in February and March 2024, involved KIIs with a total of 30 informants and five FGDs with a total of 45 participants. Mehiret Habte led the consultations. This case study is intended to provide valuable information and insight into the global evaluation of AAP within IOM, by focusing on an IOM country office that has built a significant AAP portfolio, encompassing both emergency and non-emergency interventions. Acknowledgment is given to the engagement and support of the MEAL team of IOM Ethiopia, as well as the AAP focal points in the suboffices of the same IOM country office.
 
-#### Ethiopia Context ... page 42
+### Ethiopia Context ... page 42
 
 In IOM Ethiopia, the overall coordination of AAP rests with the MEAL unit. Three full-time personnel (one programme assistant and two hotline operators), directly supported by one National MEAL officer and the MEAL coordinator, dedicate about 25 per cent of their time to AAP. The other two MEAL officers in the unit are also actively engaged in AAP. The mission also established SOPs, AAP minimum requirements, and a complaints and feedback referral workflow to standardize AAP activities. These efforts aimed to enhance effective community participation and the agency of affected people regarding whether and how IOM works with them.
 

@@ -1,6 +1,12 @@
 Protection, PSEAH, and AAP when interacting with vulnerable groups." Ultimately, many informants attributed these challenges to the "projectized" nature of IOM, where individual initiatives proceed in a more or less autonomous manner.
 
-Informants located in field offices also noted that different policies and thematic initiatives in IOM are, de facto, in competition with each other, as the resources and staff time available for their implementation may often be severely constrained. More or less deliberate trade-offs have to be made concerning different policies, noting also how support coming from IOM Headquarters is generally specific to a single initiative or theme, ignoring the interrelationships with other frameworks.
+Informants located in field offices also noted that different policies and thematic initiatives in IOM are, de facto, in competition with each other, as the resources and staff time available for their implementation may often be severely constrained. More or less deliberate trade-offs have to be made concerning different policies, noting also how support coming from IOM Headquarters is generally
+
+"Technical solutions or guidance on cooperation and partnership for small missions could be reinforced."
+
+IOM staff.
+
+specific to a single initiative or theme, ignoring the interrelationships with other frameworks.
 
 A lack of coherence between AAP and the Data Protection Policy was mentioned by informants: obstacles to sharing AAP data (because such data include personal information) were noted in some cases, and a lack of support for the definition of data sharing agreements was noted in others. While the merit of these perceptions could not be verified as a technical analysis of the coherence between the AAP Framework and the Data Protection Policy goes beyond the scope of this evaluation, this instance is presented as an example of frameworks that may not have been fully coordinated in their development and in their implementation, for the further consideration of technical experts in IOM.
 

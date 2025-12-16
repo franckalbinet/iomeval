@@ -1,4 +1,4 @@
-### Efficiency  ... page 27
+## Efficiency ... page 27
 
 Evaluation questions and themes for the "efficiency" criterion:
 
@@ -7,7 +7,7 @@ Evaluation questions and themes for the "efficiency" criterion:
 - EQ18. Are the systems in place to support IOM offices in fundraising for AAP interventions efficient, adaptive, and cost-effective?
 - EQ20. Is IOM efficient in supporting and enhancing staff expertise and development in the field of AAP?
 
-Finding 4.1 The amount of resourcing allocated to AAP is inadequate to pursue institutional objectives, and the funding of AAP is not approached in strategic terms. The size of the AAP unit in IOM Headquarters increased but remained modest for the workload. ${ }^{10}$
+Finding 4.1. The amount of resourcing allocated to AAP is inadequate to pursue institutional objectives, and the funding of AAP is not approached in strategic terms. The size of the AAP unit in IOM Headquarters increased but remained modest for the workload.¹⁶
 
 IOM was found to have implemented a large number of systems for collecting data from affected people. The decentralized structure of IOM was widely recognized by informants as conducive to tailoring AAP approaches to different operational and cultural contexts. Discussions of the diversity of tools used to engage affected people (including SMS, WhatsApp, social media, house visits, complaints boxes, hotlines, calls, surveys, focus group discussions and community engagement projects) emphasized the adaptability of IOM, particularly in challenging environments.
 
@@ -15,5 +15,4 @@ At the same time, informants interviewed for this evaluation overwhelmingly felt
 
 The size of the AAP unit in IOM Headquarters has expanded over time, though it clearly remains disproportionately small when considering the size of the Organization, as well as the fact that AAP is a mandatory aspect of the work of IOM since the formalization of the AAP Framework into IN/285. At the time of writing these findings, only one full-time staffer was
 
-[^0]
-[^0]:    ${ }^{10}$ This finding should be read in conjunction with Finding 3.5.
+¹⁶ This finding should be read in conjunction with Finding 3.5.

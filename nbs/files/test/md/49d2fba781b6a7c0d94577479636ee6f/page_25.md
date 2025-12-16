@@ -1,10 +1,12 @@
-due to the urgency caused by the crisis in Libya, ${ }^{85}$ the top-up system was also necessary to widen the scope of the JI-HoA over time. On the other hand, the top-up budgeting system created uncertainties regarding the implementation budget, which hindered planning and budgeting.
+Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
 
-Based on the evaluated material, the human resources were mostly sufficient to meet the programme objectives. The Mid-term Review of the programme stated that there were staff shortages in the JI, and that staff among MRCs was not always distributed efficiently. ${ }^{86}$ However, the present evaluation found that improvements were made in the following years to ensure more available and more qualified staff to the programme. There were only a few limitations mentioned in interviews.
+due to the urgency caused by the crisis in Libya,⁸⁵ the top-up system was also necessary to widen the scope of the JI-HoA over time. On the other hand, the top-up budgeting system created uncertainties regarding the implementation budget, which hindered planning and budgeting.
 
-Although there were delays in some activities, almost all final results were met by the end of the implementation period of the programme. Note that the initial timeline was amended several times in the course of budget expansion. Beyond financial problems, and the lack of the inception planning, security issues were the major - and most important - reason for delays in Horn of Africa. The security risks remained high for the whole region at the time of the JI-HoA programme and showed a deteriorating trend. ${ }^{87}$
+Based on the evaluated material, the human resources were mostly sufficient to meet the programme objectives. The Mid-term Review of the programme stated that there were staff shortages in the JI, and that staff among MRCs was not always distributed efficiently.⁸⁶ However, the present evaluation found that improvements were made in the following years to ensure more available and more qualified staff to the programme. There were only a few limitations mentioned in interviews.
 
-#### 4.4.2. Cost-effectiveness and efficiency of the programme  ... page 25
+Although there were delays in some activities, almost all final results were met by the end of the implementation period of the programme. Note that the initial timeline was amended several times in the course of budget expansion. Beyond financial problems, and the lack of the inception planning, security issues were the major – and most important – reason for delays in Horn of Africa. The security risks remained high for the whole region at the time of the JI-HoA programme and showed a deteriorating trend.⁸⁷
+
+#### 4.4.2. Cost-effectiveness and efficiency of the programme ... page 25
 
 Based on the evaluated materials and the self-assessment of JI-HoA employees, the programme was cost-effective overall, and it also increased the efficiency of some services despite challenges with resource management. As there were not enough resources provided to precisely estimate the distribution of the budget and staff, the following conclusions rest on estimations.
 
@@ -14,7 +16,6 @@ Based on the evaluated material it can be concluded that although the JI-HoA was
 
 National referral systems were established in all countries, but they did not become fully effective and sustainable. This was mainly due to the lack of independent capacity in the region. The effective functioning of referral systems would have enabled IOM to hand over more services to state
 
-[^0]
-[^0]:    ${ }^{85}$ Mid-Term Review of EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-    ${ }^{86}$ Mid-Term Review of EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-    ${ }^{87}$ JI HoA Interim Narrative Report \#1 and \#4 to the European Union
+⁸⁵ Mid-Term Review of EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
+⁸⁶ Mid-Term Review of EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
+⁸⁷ JI HoA Interim Narrative Report #1 and #4 to the European Union

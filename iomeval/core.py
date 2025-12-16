@@ -41,7 +41,7 @@ def n_tokens(
 
 # %% ../nbs/00_core.ipynb 7
 def load_prompt(
-    name:str, # Name of the prompt file (without .md extension)
+    name:str, # Name of prompt file: 'gcm', 'select_sections', 'srf_ccps', 'srf_enablers', 'srf_outputs'
     path:Path|str|None=None # Directory containing prompt files, defaults to 'files/prompts'
     ) -> str:
     "Load a prompt template from a markdown file"

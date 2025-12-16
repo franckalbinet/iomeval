@@ -1,3 +1,5 @@
+Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
+
 - Desk research for data collection and analysis was carried out during the structured fieldwork stage. During this phase, the evaluation team focused on specific questions set out in the evaluation grid and focus on the triangulation of the secondary and primary data sources.
 
 To gather the insights of key stakeholders of the JI, the evaluation team conducted interviews at country-level (led by national experts) and with regional and global stakeholders, IOM staff, and donors (led by the core evaluation team).
