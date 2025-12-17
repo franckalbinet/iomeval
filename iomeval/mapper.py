@@ -68,13 +68,13 @@ def map_themes(system_blocks:list,   # Cached system blocks from mk_system_block
     return completion(model=model, system=system_blocks, messages=[mk_msg(f"{prompt}\n\n## Themes\n\n{themes}")], 
                      response_format=response_format, max_tokens=8192)
 
-# %% ../nbs/05_mapper.ipynb 20
+# %% ../nbs/05_mapper.ipynb 21
 def load_prompts(path:str='files/prompts'  # Directory containing prompt files
                 ) -> AttrDict:              # Dict with srf_enablers, srf_ccps, gcm, srf_outputs prompts
     "Load all mapping prompts"
     return AttrDict({k: load_prompt(k, path) for k in ['srf_enablers', 'srf_ccps', 'gcm', 'srf_outputs']})
 
-# %% ../nbs/05_mapper.ipynb 21
+# %% ../nbs/05_mapper.ipynb 22
 @delegates(map_themes)
 def map_all(report:str,                      # Full report text to analyze
             path:str='files/themes',         # Directory containing theme JSON files
