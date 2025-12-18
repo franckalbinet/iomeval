@@ -14,7 +14,9 @@ Migration
 (GCM)](https://www.un.org/en/development/desa/population/migration/generalassembly/docs/globalcompact/A_RES_73_195.pdf).
 It uses LLMs to process PDF reports, extract key sections, and tag/map
 them to framework components, turning dispersed, untagged evaluation
-documents into structured, searchable knowledge maps.
+documents into structured knowledge maps that can be searched by
+framework components—for example, finding all evaluation findings mapped
+to a specific GCM objective.
 
 ## Why This Matters
 
@@ -66,16 +68,17 @@ Which themes have enough evidence for a dedicated synthesis report?
 
 ## Key Features
 
-- **Automated PDF Processing**: Download and OCR evaluation reports with
-  proper heading hierarchy
+- **Automated PDF Processing**: Download and OCR evaluation reports
 - **Intelligent Section Extraction**: LLM-powered extraction of
   executive summaries, findings, conclusions, and recommendations
 - **Strategic Framework Mapping**: Map report content to IOM’s SRF
   Enablers, Cross-Cutting Priorities, GCM Objectives, and SRF Outputs
-- **Checkpoint/Resume**: Built-in state persistence - interrupt and
-  resume long-running pipelines
-- **Granular Control**: Use the full pipeline or individual components
-  as needed
+- **Checkpoint/Resume**: Stop processing at any time and pick up where
+  you left off without losing progress
+- **Granular Control**: Run the entire processing pipeline for a report
+  in one command, or execute individual steps (PDF extraction, section
+  identification, specific framework theme mapping) separately for more
+  flexibility
 
 ## Installation
 
@@ -129,9 +132,10 @@ respective API keys using either method.
 
 ## Quick Start
 
-First, prepare your evaluations data. Export evaluations from [IOM’s
-evaluation repository](https://evaluation.iom.int/evaluation-search-pdf)
-as CSV, then convert to JSON:
+First, prepare your evaluation report metadata. Export the CSV file from
+the [IOM Evaluation
+Repository](https://evaluation.iom.int/evaluation-search-pdf) containing
+report records and their associated PDF links, then convert to JSON:
 
 ``` python
 from iomeval.readers import IOMRepoReader
@@ -140,7 +144,7 @@ reader = IOMRepoReader('evaluation-search-export.csv')
 reader.to_json('evaluations.json')
 ```
 
-Now process an evaluation report end-to-end:
+Now process an evaluation report through the complete pipeline:
 
 ``` python
 from iomeval.readers import load_evals
@@ -158,10 +162,10 @@ report = await run_pipeline(url, evals,
 report
 ```
 
-The pipeline runs 7 steps:
-
-**download → OCR → extract → map SRF Enablers → map SRF Cross-cutting
-Priorities → map GCM Objectives → map SRF Outputs**
+The pipeline runs 7 steps: first processing the PDF (**download → OCR →
+extract**), then **mapping** extracted content **against each strategic
+framework** component (SRF Enablers, SRF Cross-cutting Priorities, GCM
+Objectives, and SRF Outputs).
 
 Progress is displayed as each step completes, and state is automatically
 saved after each stage for checkpoint/resume capability.
