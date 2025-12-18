@@ -15,7 +15,6 @@ The IOM Strategic Results Framework (SRF) enablers articulate the organizational
 - MUST score all 7 enablers (no omissions)
 - MUST use comparative judgment across all enablers simultaneously
 - MUST ensure only 1-2 enablers score ≥0.7 (recalibrate if more)
-- MUST frame reasoning as interpretation of evidence rather than definitive judgment. Acknowledge that thematic alignment involves subjective assessment. Avoid language that implies certainty beyond what the evidence supports.
 - DO NOT evaluate enablers in isolation
 - DO reference specific report sections in your reasoning
 - MUST round centrality_score to exactly 2 decimal places
@@ -26,19 +25,19 @@ Assign a centrality score from 0.0 to 1.0 to each enabler based on how fundament
 ### SCORING RUBRIC
 
 **0.9-1.0 (PRIMARY FOCUS)**
-- The enabler's theme appears to be the main subject of the evaluation
+- The enabler's theme is THE main subject of the evaluation
 - Appears explicitly in report title, stated evaluation objectives, or evaluation questions
 - Majority of findings and recommendations directly address this organizational capability
-- Multiple aspects of the enabler description are extensively discussed
+- Multiple aspects of the enabler description are extensively analyzed
 
 **0.7-0.85 (MAJOR COMPONENT)**
-- The enabler's theme appears to be a substantial pillar but not the sole focus
+- The enabler's theme is a substantial pillar but not the sole focus
 - Dedicated sections with in-depth analysis of this organizational capability
 - Several findings and recommendations directly address it
-- Key aspects of the enabler are present and analyzed
+- Key aspects of the enabler are clearly present and analyzed
 
 **0.5-0.65 (SIGNIFICANT ELEMENT)**
-- The enabler's theme is addressed but does not appear to be a primary driver
+- The enabler's theme is clearly addressed but not a primary driver
 - Appears in 2-3 sections with moderate detail
 - Some findings mention it; perhaps 1 recommendation relates to it
 - Some aspects of the enabler are discussed
@@ -70,33 +69,6 @@ Before finalizing your scores:
 1. Count how many enablers you've scored ≥0.7
 2. If more than 2, ask: "Which organizational capabilities are the absolute TOP 1-2 focus areas?"
 3. Adjust scores to reflect true hierarchy
-
-### EXAMPLE OUTPUT (Illustrative)
-```json
-[
-  {
-    "theme_id": "3",
-    "theme_title": "SRF Enabler 3: Effective partnerships and multi-level governance",
-    "centrality_score": 0.90,
-    "reasoning": "Based on the evidence reviewed, partnerships constitute the primary focus. The evaluation objectives explicitly center on coordination mechanisms, and the report dedicates substantial sections to analyzing inter-agency collaboration, government partnerships, and multi-stakeholder coordination. Multiple findings address partnership effectiveness, and several recommendations relate to strengthening coordination frameworks. That said, the assessment of partnership quality involves interpretation of stakeholder perspectives.",
-    "confidence": "high"
-  },
-  {
-    "theme_id": "5",
-    "theme_title": "SRF Enabler 5: Adequate and flexible resources",
-    "centrality_score": 0.72,
-    "reasoning": "Resource management appears to be a major component. The report discusses funding flexibility, budget allocation, and resource mobilization across multiple sections. Findings note challenges with earmarked funding and resource predictability, and recommendations address diversifying funding sources. However, this theme is addressed primarily within the broader operational context rather than as the central evaluation focus.",
-    "confidence": "high"
-  },
-  {
-    "theme_id": "1",
-    "theme_title": "SRF Enabler 1: Sufficient capacity",
-    "centrality_score": 0.55,
-    "reasoning": "Capacity features in the report. Staff skills, training needs, and technical expertise are discussed in the findings section, and one recommendation relates to capacity development. The evidence suggests this represents one element among several rather than a primary driver of the evaluation, appearing mainly in the context of implementation challenges.",
-    "confidence": "medium"
-  }
-]
-```
 
 ### OUTPUT FORMAT
 Return a JSON array with EXACTLY 7 objects, one per SRF Enabler, following this structure:

@@ -21,7 +21,6 @@ Your scoring must capture BOTH patterns.
 - MUST score all 4 cross-cutting priorities (no omissions)
 - MUST use comparative judgment across all priorities simultaneously
 - MUST ensure only 1-2 priorities score ≥0.7 (recalibrate if more)
-- MUST frame reasoning as interpretation of evidence rather than definitive judgment. Acknowledge that thematic alignment involves subjective assessment. Avoid language that implies certainty beyond what the evidence supports.
 - DO NOT evaluate priorities in isolation
 - DO reference specific report sections in your reasoning
 - MUST round centrality_score to exactly 2 decimal places
@@ -34,20 +33,20 @@ Assign a centrality score from 0.0 to 1.0 to each cross-cutting priority based o
 ### SCORING RUBRIC
 
 **0.9-1.0 (PRIMARY FOCUS)**
-- **Thematic evaluation**: The priority appears to be the main evaluation subject (e.g., AAP assessment, PSEA review, gender evaluation)
-- **Program evaluation**: This priority appears to be a core evaluation criterion with dedicated evaluation questions
+- **Thematic evaluation**: The priority IS the main evaluation subject (e.g., AAP assessment, PSEA review, gender evaluation)
+- **Program evaluation**: This priority is a core evaluation criterion with dedicated evaluation questions
 - Appears explicitly in report title, stated evaluation objectives, or evaluation questions
 - Majority of findings and recommendations directly address this theme
 - The priority's indicators or sub-components are systematically assessed
 
 **0.7-0.85 (MAJOR COMPONENT)**
-- **Thematic evaluation**: The priority appears to be a substantial pillar of a broader cross-cutting assessment
+- **Thematic evaluation**: The priority is a substantial pillar of a broader cross-cutting assessment
 - **Program evaluation**: Dedicated sections assess program performance against this priority
 - Several findings explicitly evaluate alignment with this priority
 - Multiple recommendations address strengthening this dimension
 
 **0.5-0.65 (SIGNIFICANT ELEMENT)**
-- The priority is addressed but does not appear to be a primary evaluation criterion
+- The priority is clearly addressed but not a primary evaluation criterion
 - Appears in 2-3 sections with moderate analysis
 - Some findings assess compliance; perhaps 1 recommendation relates to it
 - Recognized as relevant but not systematically evaluated
@@ -79,40 +78,6 @@ Before finalizing your scores:
 1. Count how many priorities you've scored ≥0.7
 2. If more than 2, ask: "Which cross-cutting theme is TRULY the evaluation focus or a primary evaluative criterion?"
 3. Adjust scores to reflect true hierarchy
-
-### EXAMPLE OUTPUT (Illustrative)
-```json
-[
-  {
-    "theme_id": "2",
-    "theme_title": "SRF CCP 2: Accountability to Affected Populations",
-    "centrality_score": 0.92,
-    "reasoning": "Based on the evidence reviewed, this appears to be a thematic evaluation where AAP is the primary subject. The evaluation title explicitly references accountability mechanisms, and the evaluation questions center on community feedback systems and participation. Findings systematically assess AAP pillars including information provision, consultation, and complaints mechanisms. Multiple recommendations address strengthening accountability structures. The depth and breadth of AAP coverage suggest this is the central evaluation focus.",
-    "confidence": "high"
-  },
-  {
-    "theme_id": "1",
-    "theme_title": "SRF CCP 1: Human rights-based approach",
-    "centrality_score": 0.58,
-    "reasoning": "Human rights considerations feature in the report but appear secondary to the AAP focus. The findings section includes discussion of rights-based principles in program design, and one recommendation touches on ensuring rights compliance. However, the evidence suggests human rights is addressed as a complementary lens rather than a standalone evaluation criterion, with limited systematic assessment against specific human rights indicators.",
-    "confidence": "medium"
-  },
-  {
-    "theme_id": "3",
-    "theme_title": "SRF CCP 3: Gender equality and inclusion",
-    "centrality_score": 0.40,
-    "reasoning": "Gender is mentioned in the context of disaggregated data and participation rates, but does not appear to be used as a primary evaluative lens. Limited depth of analysis.",
-    "confidence": "medium"
-  },
-  {
-    "theme_id": "4",
-    "theme_title": "SRF CCP 4: Environmental sustainability",
-    "centrality_score": 0.15,
-    "reasoning": "Minimal presence. Brief mention in program description only.",
-    "confidence": "high"
-  }
-]
-```
 
 ### OUTPUT FORMAT
 Return a JSON array with EXACTLY 4 objects, one per SRF Cross-Cutting Priority, following this structure:
