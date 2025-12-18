@@ -15,8 +15,8 @@ Migration
 It uses LLMs to process PDF reports, extract key sections, and tag/map
 them to framework components, turning dispersed, untagged evaluation
 documents into structured knowledge maps that can be searched by
-framework components—for example, finding all evaluation findings mapped
-to a specific GCM objective.
+framework components (for example, finding all evaluation findings
+mapped to a specific GCM objective).
 
 ## Why This Matters
 
