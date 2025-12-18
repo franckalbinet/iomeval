@@ -7,6 +7,7 @@ website:
           - analysis/eval_metadata_eda.ipynb
       - section: API
         contents:
+          - 00_core.ipynb
           - 01_readers.ipynb
           - 02_downloaders.ipynb
           - 03_extract.ipynb
