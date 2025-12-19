@@ -21,14 +21,14 @@ class CoreSectionsOutput(BaseModel):
     section_paths: list[list[str]]
     reasoning: str
 
-# %% ../nbs/03_extract.ipynb 9
+# %% ../nbs/03_extract.ipynb 16
 def get_text(ks:list[str], # List of exact key strings forming path through nested dict
              hdgs:dict # Nested dictionary of headings created by `create_heading_dict`
             ) -> str: # Extracted markdown text for the section
     "Navigate through nested heading levels and return the text content"
     return L(ks).reduce(getitem, hdgs).text
 
-# %% ../nbs/03_extract.ipynb 12
+# %% ../nbs/03_extract.ipynb 19
 def rm_nested(paths:list[list[str]] # List of section paths, where each path is a list of keys
              ) -> list[list[str]]: # Filtered list with nested paths removed
     "Remove paths that are children of other paths in the list"
@@ -38,7 +38,7 @@ def rm_nested(paths:list[list[str]] # List of section paths, where each path is 
         if not any(p[:len(k)] == k for k in keep): keep.append(p)
     return keep
 
-# %% ../nbs/03_extract.ipynb 15
+# %% ../nbs/03_extract.ipynb 22
 def identify_core_sections(
     hdgs:dict, # Nested dictionary of report headings from `create_heading_dict`
     sp:str=None, # System prompt for section identification
@@ -51,7 +51,7 @@ def identify_core_sections(
                      system=[{"type": "text", "text": sp}], response_format=response_format)
     return json.loads(res.choices[0].message.content)
 
-# %% ../nbs/03_extract.ipynb 18
+# %% ../nbs/03_extract.ipynb 25
 @delegates(identify_core_sections)
 def extract_sections(
     md:str, # Markdown text of full report
