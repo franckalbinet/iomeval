@@ -7,72 +7,59 @@
 [![PyPI](https://img.shields.io/pypi/v/iomeval.png)](https://pypi.org/project/iomeval/)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
-`iomeval` streamlines the mapping of [IOM](https://www.iom.int)
+`IOMEval` streamlines the mapping of [IOM](https://www.iom.int)
 evaluation reports against strategic frameworks like the [Strategic
-Results Framework (SRF)](https://srf.iom.int/) and [Global Compact for
-Migration
+Results Framework (SRF)](https://srf.iom.int/) and the [Global Compact
+for Migration
 (GCM)](https://www.un.org/en/development/desa/population/migration/generalassembly/docs/globalcompact/A_RES_73_195.pdf).
-It uses LLMs to process PDF reports, extract key sections, and tag/map
-them to framework components, turning dispersed, untagged evaluation
-documents into structured knowledge maps that can be searched by
-framework components (for example, finding all evaluation findings
+It uses LLMs to process PDF reports, extract key sections, and tags
+(matches) them to framework components, turning dispersed, untagged
+evaluation documents into structured evidence maps that can be searched
+by framework components (for example, finding all evaluation findings
 mapped to a specific GCM objective).
 
-## Why This Matters
+## The Challenge Addressed
 
-UN agencies produce extensive evaluation reports and other public
-documents. For IOM, this body of knowledge is extensive and variegated,
-but putting it to practical use becomes more challenging as volume
-increases, particularly when documentation is stored across different
-repositories with no single index available.
+UN agencies produce several evaluation reports. For IOM, this body of
+knowledge is extensive and variegated, but putting it to practical use
+becomes more challenging as volume increases. Critically, the metadata
+of IOM evaluation reports does not indicate which elements in the IOM
+[Strategic Results Framework (SRF)](https://srf.iom.int/), or in the
+[Global Compact for Migration
+(GCM)](https://www.un.org/en/development/desa/population/migration/generalassembly/docs/globalcompact/A_RES_73_195.pdf)),
+are addressed by the evaluation. This is a major gap that limits the
+ability to connect evaluation evidence with the two key strategic
+frameworks of the organization.
 
-**The Challenge for IOM**
+Manual tagging of evaluation reports against the IOM SRF and the GCM is
+extremely challenging due to the limited resources that IOM has at its
+disposal for evaluation in general. Time constraints of IOM evaluators
+and other staff are also exacerbated by the shrinkage of the
+organizations budget in the context of the broader “humanitarian reset”.
+In addition to this, tagging IOM evaluation reports against SRF elements
+is cognitively taxing due to the sheer amount of elements in these
+frameworks (the GCM has 23 objectives; the SRF has more than one hundred
+outputs).
 
-IOM’s evaluation production is highly decentralized, with reports stored
-across multiple repositories (the [IOM Evaluation
-Repository](https://evaluation.iom.int/evaluation-search-pdf), IOM
-Library, IOM Protection Platform). Quality varies greatly: quality
-control processes are not applied uniformly, and variation also reflects
-the inherent subjectivity in evaluation approaches and interpretations.
-Reports also vary significantly in structure: some follow common formats
-with executive summaries, findings, and recommendations, while others
-have different structures entirely. This inconsistency makes systematic
-mapping challenging.
+## What This Enables
 
-Critically, existing metadata doesn’t indicate which elements of IOM’s
-strategic frameworks (the [Strategic Results Framework
-(SRF)](https://srf.iom.int/) or the [Global Compact for Migration
-(GCM)](https://www.un.org/en/development/desa/population/migration/generalassembly/docs/globalcompact/A_RES_73_195.pdf))
-each report addresses. This is a major gap that limits the ability to
-connect evaluation evidence with key strategic frameworks.
-
-**Evidence Maps as a Solution**
-
-Evidence Maps display the extent and nature of research and evaluation
-available on a subject. Following the [2025 UNEG Eval
-Week](https://www.unevaluation.org/events/uneg-evaluation-week-2025),
-four primary use cases emerged: guiding future evidence generation,
-informing policy decisions, knowledge management, and enhancing
-collaboration. The maps created by `iomeval` serve primarily as
-**knowledge management tools**—structured repositories that make
-identifying relevant sources easier by organizing them against strategic
-framework components.
-
-**What This Enables**
-
-By tagging reports against SRF outputs, enablers, cross-cutting
-priorities, and GCM objectives, these maps help answer questions like:
-Which framework elements are well-covered by existing evaluations? Where
-are the knowledge gaps that should prioritize future evaluation work?
-Which themes have enough evidence for a dedicated synthesis report?
+Addressing the “tagging” challenge enables the creation of evidence maps
+(visual tools that systematically displays what evaluation and research
+exists for specific topics, and where evidence may be missing) that
+would have otherwise not been possible to produce. Maps in turn help
+answer questions like: Which framework elements are well-covered by
+existing evaluations? Where are the knowledge gaps that should
+prioritize future evaluation work? Which themes have enough evidence for
+a dedicated synthesis report?
 
 ## Key Features
 
 - **Automated PDF Processing**: Download and OCR evaluation reports
 - **Intelligent Section Extraction**: LLM-powered extraction of
   executive summaries, findings, conclusions, and recommendations
-- **Strategic Framework Mapping**: Map report content to IOM’s SRF
-  Enablers, Cross-Cutting Priorities, GCM Objectives, and SRF Outputs
+- **Strategic Framework Mapping**: Map report content against the IOM
+  Strategic Results Framework (outputs, enablers and cross-cutting
+  priorities) and the Global Compact for Migration (objectives)
 - **Checkpoint/Resume**: Stop processing at any time and pick up where
   you left off without losing progress
 - **Granular Control**: Run the entire processing pipeline for a report
