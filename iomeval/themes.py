@@ -30,6 +30,13 @@ load_srf_outs = partial(load_thm, 'srf_objectives.json')
 load_gcms = partial(load_thm, 'gcms_long.md', md=True)
 load_gcms_lut = partial(load_thm, 'gcm_to_srf_outputs.json')
 
+# %% ../nbs/04_themes.ipynb 4
+load_enbs = partial(load_thm, 'srf_enablers.json')
+load_ccps = partial(load_thm, 'crosscutting_priorities.json')
+load_srf_outs = partial(load_thm, 'srf_objectives.json')
+load_gcms = partial(load_thm, 'gcms_long.md', md=True)
+load_gcms_lut = partial(load_thm, 'gcm_to_srf_outputs.json')
+
 # %% ../nbs/04_themes.ipynb 16
 def fmt_enb_ccp(
     items:list # List of enabler/CCP dicts with id, title, description
