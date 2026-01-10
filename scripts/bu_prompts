@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Get current date in ddmmyy format
+DATE=$(date +%d%m%y)
+
+# Copy each .md file to legacy/ with date suffix
+for f in nbs/files/prompts/*.md; do
+    filename=$(basename "$f" .md)
+    cp "$f" "nbs/files/prompts/legacy/${filename}_${DATE}.md"
+done
+
+echo "Prompts backup complete!"
