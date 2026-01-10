@@ -26,7 +26,7 @@ becomes more challenging as volume increases. Critically, the metadata
 of IOM evaluation reports does not indicate which elements in the IOM
 [Strategic Results Framework (SRF)](https://srf.iom.int/), or in the
 [Global Compact for Migration
-(GCM)](https://www.un.org/en/development/desa/population/migration/generalassembly/docs/globalcompact/A_RES_73_195.pdf)),
+(GCM)](https://www.un.org/en/development/desa/population/migration/generalassembly/docs/globalcompact/A_RES_73_195.pdf),
 are addressed by the evaluation. This is a major gap that limits the
 ability to connect evaluation evidence with the two key strategic
 frameworks of the organization.
