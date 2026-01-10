@@ -13,7 +13,7 @@ from .core import n_tokens, load_prompt
 from .readers import load_evals, find_eval, Evaluation
 from .downloaders import download_eval
 from .extract import extract_sections
-from .themes import load_enablers, load_ccp, load_gcms, load_srf_outs, load_gcm_lut, fmt_enablers_ccp, fmt_srf_outs, get_srf_outs
+from .themes import load_enbs, load_ccps, load_gcms, load_srf_outs, load_gcms_lut, fmt_enb_ccp, fmt_srf_outs, get_srf_outs
 from .mapper import mk_system_blocks, map_themes, sort_by_relevance, get_top_ids, parse_json_response
 from mistocr.core import read_pgs
 from mistocr.pipeline import pdf_to_md
@@ -175,11 +175,11 @@ def _map_single(sys_blocks,                 # System blocks from mk_system_block
                 gcm_ids=None                # GCM IDs for output mapping
                ):
     "Map system blocks (Report) to a single theme type using appropriate prompts and formatting"
-    if theme_type == 'enablers': res = map_themes(sys_blocks, fmt_enablers_ccp(load_enablers(path)), load_prompt('srf_enablers'), model)
-    elif theme_type == 'ccps': res = map_themes(sys_blocks, fmt_enablers_ccp(load_ccp(path)), load_prompt('srf_ccps'), model)
+    if theme_type == 'enablers': res = map_themes(sys_blocks, fmt_enb_ccp(load_enbs(path)), load_prompt('srf_enablers'), model)
+    elif theme_type == 'ccps': res = map_themes(sys_blocks, fmt_enb_ccp(load_ccps(path)), load_prompt('srf_ccps'), model)
     elif theme_type == 'gcm': res = map_themes(sys_blocks, load_gcms(path), load_prompt('gcm'), model)
     elif theme_type == 'outputs':
-        srf_obj, gcm_lut = load_srf_outs(path), load_gcm_lut(path)
+        srf_obj, gcm_lut = load_srf_outs(path), load_gcms_lut(path)
         output_ids = get_srf_outs(gcm_lut, gcm_ids)
         res = map_themes(sys_blocks, fmt_srf_outs(srf_obj, output_ids), load_prompt('srf_outputs'), model)
     return parse_json_response(res)
