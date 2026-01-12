@@ -121,7 +121,7 @@ Return a JSON array for each SRF Output assessed following this structure:
 ```json
 [
   {
-    "theme_id": string,
+    "theme_id": string (output code only, e.g., "1a11", "2b3", "3c15")
     "theme_title": string,
     "relevance_score": float,
     "reasoning": string

@@ -120,7 +120,7 @@ Example: Score 0.18
 ```json
 [
   {
-    "theme_id": string,
+    "theme_id": string (numeric ID only, e.g., "1", "2", "4"),
     "theme_title": string,
     "relevance_score": float,
     "reasoning": string,

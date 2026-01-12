@@ -2,7 +2,7 @@ Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegr
 
 ##### 4.3.2.1 Achievement of outputs and results ... page 19
 
-Outreach and awareness ... page 19
+###### Outreach and awareness ... page 19
 
 According to IOM’s logframe, IOM conducted five times more awareness raising activities/events addressing migrants in target countries than expected.
 
@@ -10,7 +10,7 @@ A stakeholder in Djibouti noted that the JI was effective in providing migration
 
 The current evaluation did not find guidelines for awareness raising and outreach that would ensure a harmonized approach across countries. Additionally, no information was found in project documents and logframes on the exact objectives of awareness raising (i.e. this dimension did not have its own objectives, indicators and impact studies). It was not subject to specific evaluation under the JI-HoA.
 
-Assistance to stranded migrants ... page 19
+###### Assistance to stranded migrants ... page 19
 
 Three indicators were designed to measure achievements regarding AVR. The JI supported 9025 migrants to return voluntarily to their countries of origin (against a target of 8450), and provided 8960 migrants in transit with protection and direct assistance (against a target of 8450).
 

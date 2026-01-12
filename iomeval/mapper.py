@@ -11,7 +11,7 @@ from fastcore.all import *
 from pydantic import BaseModel
 from lisette.core import completion, mk_msg
 from .core import load_prompt, n_tokens
-from .themes import load_enbs, load_ccps, load_gcms, load_srf_outs, load_gcms_lut, fmt_enb_ccp, fmt_srf_outs, get_srf_outs, load_all_thms
+from .themes import load_enbs, load_ccps, load_gcms, load_srf_outs, load_gcms_lut, fmt_enbs, fmt_ccps, fmt_srf_outs, get_srf_outs, load_all_thms
 import json
 import logging
 
@@ -27,7 +27,7 @@ class ThemeScore(BaseModel):
     theme_title: str    # Human-readable theme name
     relevance_score: float  # 0-1 score indicating how relevant theme is to report
     reasoning: str      # LLM's explanation for the score
-    confidence: str     # high/medium/low confidence in assessment
+    #confidence: str     # high/medium/low confidence in assessment
 
 # %% ../nbs/05_mapper.ipynb 7
 class ThemeScores(BaseModel):
@@ -69,12 +69,15 @@ def map_themes(system_blocks:list,   # Cached system blocks from mk_system_block
                       response_format=response_format, max_tokens=8192)
 
 # %% ../nbs/05_mapper.ipynb 21
-def load_prompts(path:str='files/prompts'  # Directory containing prompt files
-                ) -> AttrDict:              # Dict with srf_enablers, srf_ccps, gcm, srf_outputs prompts
+def load_prompts(
+    path:Path|str|None=None # Directory containing prompt files, defaults to 'files/prompts'
+    ) -> AttrDict: # Dict with srf_enablers, srf_ccps, gcms, srf_outputs prompts
     "Load all mapping prompts"
-    return AttrDict({k: load_prompt(k, path) for k in ['srf_enablers', 'srf_ccps', 'gcms', 'srf_outputs']})
+    "Load all mapping prompts"
+    name_map = {'srf_enablers': 'enbs', 'srf_ccps': 'ccps', 'gcms': 'gcms', 'srf_outputs': 'outs'}
+    return AttrDict({short: load_prompt(file, path) for file, short in name_map.items()})
 
-# %% ../nbs/05_mapper.ipynb 22
+# %% ../nbs/05_mapper.ipynb 24
 @delegates(map_themes)
 def map_all(report:str,                      # Full report text to analyze
             path:str='files/themes',         # Directory containing theme JSON files
@@ -87,20 +90,20 @@ def map_all(report:str,                      # Full report text to analyze
     system_blocks = mk_system_blocks(report)
     
     if verbose: logger.info("Mapping SRF Enablers...")
-    enbs_res = map_themes(system_blocks, fmt_enb_ccp(themes.enablers), prompts.srf_enablers, **kwargs)
+    enbs_res = map_themes(system_blocks, fmt_enbs(themes.enbs), prompts.enbs, **kwargs)
     if verbose: logger.info("Mapping Cross-cutting Priorities...")
-    ccps_res = map_themes(system_blocks, fmt_enb_ccp(themes.ccp), prompts.srf_ccps, **kwargs)
+    ccps_res = map_themes(system_blocks, fmt_ccps(themes.ccps), prompts.ccps, **kwargs)
     if verbose: logger.info("Mapping GCM Objectives...")
-    gcms_res = map_themes(system_blocks, themes.gcms, prompts.gcm, **kwargs)
+    gcms_res = map_themes(system_blocks, themes.gcms, prompts.gcms, **kwargs)
     
     top_gcm_ids = get_top_ids(gcms_res)
     if not top_gcm_ids:
         if verbose: logger.info("No GCM objectives scored ≥0.7, skipping SRF Outputs")
-        return AttrDict(enablers=enbs_res, ccp=ccps_res, gcm=gcms_res, outputs=None)
+        return AttrDict(enbs=enbs_res, ccps=ccps_res, gcms=gcms_res, outs=None)
     
     if verbose: logger.info(f"Top GCM: {top_gcm_ids[0]} (from {len(top_gcm_ids)} candidates)")
     output_ids = get_srf_outs(themes.gcm_lut, [top_gcm_ids[0]])
     if verbose: logger.info(f"Mapping {len(output_ids)} filtered SRF Outputs...")
-    outs_res = map_themes(system_blocks, fmt_srf_outs(themes.srf_outs, output_ids), prompts.srf_outputs, **kwargs)
-    return AttrDict(enablers=enbs_res, ccp=ccps_res, gcm=gcms_res, outputs=outs_res)
+    outs_res = map_themes(system_blocks, fmt_srf_outs(themes.outs, output_ids), prompts.outs, **kwargs)
+    return AttrDict(enbs=enbs_res, ccps=ccps_res, gcms=gcms_res, outs=outs_res)
 

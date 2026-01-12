@@ -15,12 +15,12 @@ The financial resources were sufficient to meet the programme's objectives in te
 
 FIGURE 6: BUDGET ALLOCATED BY OBJECTIVES OR ADDITIONAL ACTIVITY AREAS (IN EUR)
 ![img-5.jpeg](img-5.jpeg)
-Source: Action Fiche for the implementation of the Horn of Africa Window To5-EUTF-HoA-REG-25
+Specific Objective 1
+Specific Objective 2
+Specific Objective 3
+Monitoring, learning, audit and evaluation
+Communications and visibility
 
-- Specific Objective 1
-- Specific Objective 2
-- Specific Objective 3
-- Monitoring, learning, audit and evaluation
-- Communications and visibility
+Source: Action Fiche for the implementation of the Horn of Africa Window To5-EUTF-HoA-REG-25
 
 Overall, the top-up system was necessary to finance services and reach the objectives of the JI. With the help of top-ups, the JI-HoA succeeded in scaling up the programme and developing psychosocial support, community projects and trainings. Because the project was lacking a proper inception phase

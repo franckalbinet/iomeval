@@ -122,7 +122,7 @@ Return a JSON array with EXACTLY 4 objects, one per SRF Cross-Cutting Priority, 
 ```json
 [
   {
-    "theme_id": string,
+    "theme_id": string (numeric ID only, e.g., "1", "12", "23"),
     "theme_title": string,
     "relevance_score": float,
     "reasoning": string

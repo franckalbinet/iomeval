@@ -122,7 +122,7 @@ Return a JSON array with EXACTLY 7 objects, one per SRF Enabler, following this 
 ```json
 [
   {
-    "theme_id": string,
+    "theme_id": string (numeric ID only, e.g., "1", "2", "7"),
     "theme_title": string,
     "relevance_score": float,
     "reasoning": string,

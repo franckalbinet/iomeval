@@ -4,7 +4,7 @@ economic reintegration. As mentioned above, many returnees were glad to receive 
 
 At the same time, community members who attended the FGDs noted that CBR projects contributed positively to economic and employment opportunities in the community. 92% of surveyed community members reported that they feel involved in the identification, design and/or implementation of community-based reintegration, exceeding the 70% target.
 
-Sustainability of reintegration ... page 23
+###### Sustainability of reintegration ... page 23
 
 Besides the extent of economic, social, and psychosocial reintegration of returnees as a result of the JI-HoA intervention, the IMPACT study also measured the sustainability of reintegration. The IMPACT study was the first impact evaluation to use IOM's metric of sustainable reintegration, the Reintegration Sustainability Index (RSI). The RSI was further adjusted based on literature reviews, which resulted in an enhanced version of the institutional questionnaire, called RSS+.84
 

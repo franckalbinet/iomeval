@@ -8,6 +8,7 @@ __all__ = ['n_tokens', 'load_prompt']
 # %% ../nbs/00_core.ipynb 2
 import os
 from pathlib import Path
+from fastcore.all import *
 import tiktoken
 
 # %% ../nbs/00_core.ipynb 3
@@ -41,7 +42,7 @@ def n_tokens(
 
 # %% ../nbs/00_core.ipynb 7
 def load_prompt(
-    name:str, # Name of prompt file: 'gcm', 'select_sections', 'srf_ccps', 'srf_enablers', 'srf_outputs'
+    name:str, # Name of prompt file: 'gcms', 'select_sections', 'srf_ccps', 'srf_enablers', 'srf_outputs'
     path:Path|str|None=None # Directory containing prompt files, defaults to 'files/prompts'
     ) -> str:
     "Load a prompt template from a markdown file"
