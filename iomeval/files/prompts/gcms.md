@@ -118,7 +118,7 @@ Example: Score 0.18
 "This report has minimal relevance for a synthesis on GCM Objective 3 (provide accurate information at all stages of migration). While the evaluation mentions information provision once in passing when describing program activities, there is no substantive analysis of information systems, dissemination effectiveness, or migrant access to information. No findings address information-related outcomes, and the topic does not appear in conclusions or recommendations. The report's focus is on emergency response coordination and operational partnerships—distinct themes with no meaningful connection to information provision programming. Recommend not reviewing this report for a synthesis on GCM Objective 3."
 
 ### OUTPUT FORMAT
-Return a JSON array with EXACTLY 4 objects, one per SRF Cross-Cutting Priority, following this structure:
+Return a JSON array with EXACTLY 23 objects, one per GCM Objective, following this structure:
 ```json
 [
   {

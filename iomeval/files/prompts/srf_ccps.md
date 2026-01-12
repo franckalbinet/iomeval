@@ -117,6 +117,10 @@ Example: Score 0.52
 ### NOT RELEVANT 
 Example: Score 0.18 
 "This report has minimal relevance for a synthesis on Cross-cutting Priority 4 (Environmental Sustainability). While the evaluation mentions operational logistics once in passing when describing program delivery, there is no substantive analysis of environmental considerations, sustainability practices, carbon footprint, waste management, or green procurement. No findings address environmental sustainability in IOM's operations or programming, and the topic does not appear in conclusions or recommendations. The report's focus is on humanitarian service delivery and beneficiary outcomes—distinct themes with no meaningful connection to environmental sustainability commitments. Recommend not reviewing this report for a synthesis on Cross-cutting Priority 4." 
+
+### OUTPUT FORMAT
+Return a JSON array with EXACTLY 4 objects, one per SRF Cross-Cutting Priority, following this structure:
+
 ```json
 [
   {
