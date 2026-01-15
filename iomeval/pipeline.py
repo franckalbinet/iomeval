@@ -54,7 +54,7 @@ class Report:
                  url:str,                         # URL of the evaluation PDF
                  evals:list,                      # List of `Evaluation` objects to search
                  results_path:str='data/results'  # Path to save/load results
-                 ) -> Report:                     # Report initialized from URL
+                 ):                               # Report initialized from URL
         return cls(find_eval(evals, url, by='url'), pdf_url=url, results_path=results_path)
 
     @classmethod
@@ -62,7 +62,7 @@ class Report:
                    title:str,                      # Title to search for
                    evals:list,                     # List of `Evaluation` objects to search
                    results_path:str='data/results' # Path to save/load results
-                   ) -> Report:                    # Report initialized from title
+                   ):                              # Report initialized from title
         return cls(find_eval(evals, title, by='title'), results_path=results_path)
 
 
