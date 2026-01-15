@@ -12,10 +12,10 @@ from pathlib import Path
 import json
 
 # %% ../nbs/04_themes.ipynb 4
-def load_thm(fname:str,  # Filename to load
+def load_thm(fname:str,         # Filename to load
                 path:str=None,  # Directory containing theme files
-                md:bool=False  # Return raw text instead of JSON?
-               ) -> dict|str:  # Theme data as dict or raw text
+                md:bool=False   # Return raw text instead of JSON?
+               ) -> dict|str:   # Theme data as dict or raw text
     "Load theme file from `path` (JSON by default, or raw text if `md=True`)"
     if path is None:
         try: path = Path(__file__).parent / 'files' / 'themes'
@@ -33,8 +33,8 @@ load_gcms_lut = partial(load_thm, 'gcm_to_srf_outputs.json')
 # %% ../nbs/04_themes.ipynb 17
 def fmt_enb_ccp(
     items:list, # List of enabler/CCP dicts with id, title, description
-    typ:str # Type of item (enabler or CCP)
-    ) -> str:
+    typ:str     # Type of item (enabler or CCP)
+    ) -> str:   # Formatted theme
     "Format enablers or cross-cutting priorities for LLM"
     return '\n\n'.join([f'## {o["title"]}\n**Type:** {typ}\n**ID:** {o["id"]}\n\n{o["description"]}' for o in items])
 
@@ -44,8 +44,8 @@ fmt_ccps = partial(fmt_enb_ccp, typ='SRF Cross-Cutting Priority')
 
 # %% ../nbs/04_themes.ipynb 20
 def get_srf_out(objectives:list, # SRF objectives structure
-                output_id:str # Output ID to find
-               ) -> dict|None:
+                output_id:str   # Output ID to find
+               ) -> dict|None:  # SRF Output of interest
     "Retrieve single SRF output with hierarchy"
     for obj in objectives:
         for lt_out in obj.get('long_term_outcomes', []):
@@ -55,8 +55,9 @@ def get_srf_out(objectives:list, # SRF objectives structure
                                 st_out_id=st_out['id'], st_out=st_out['title'], output=o)
 
 # %% ../nbs/04_themes.ipynb 22
-def fmt_srf_out(output_ctx:dict # Dict with obj, lt_out, st_out, and output fields
-               ) -> str:
+def fmt_srf_out(
+    output_ctx:dict # Dict with obj, lt_out, st_out, and output fields
+    ) -> str:       # Formatted SRF output
     "Format SRF output with hierarchical context for LLM"
     o = output_ctx
     return '\n'.join([
@@ -69,16 +70,16 @@ def fmt_srf_out(output_ctx:dict # Dict with obj, lt_out, st_out, and output fiel
 
 # %% ../nbs/04_themes.ipynb 24
 def fmt_srf_outs(objectives:list, # SRF objectives structure
-                 output_ids:list # List of output IDs to format
-                ) -> str:
+                 output_ids:list  # List of output IDs to format
+                ) -> str:         # Multiple SRF outputs formatted
     "Format multiple SRF outputs"
     return '\n\n'.join(fmt_srf_out(get_srf_out(objectives, i)) for i in output_ids)
 
 
 # %% ../nbs/04_themes.ipynb 27
-def get_srf_outs(lut:dict, # GCM to SRF lookup dict
-                 gcm_ids:list # List of GCM IDs to filter by
-                ) -> L:
+def get_srf_outs(lut:dict,      # GCM to SRF lookup dict
+                 gcm_ids:list   # List of GCM IDs to filter by
+                ) -> L:         # List of SRF output IDs
     "Get SRF output IDs filtered by GCM IDs"
     return L(v for k,v in lut.items() if k in gcm_ids).concat()
 

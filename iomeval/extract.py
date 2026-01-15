@@ -21,16 +21,16 @@ class CoreSectionsOutput(BaseModel):
     section_paths: list[list[str]]
     reasoning: str
 
-# %% ../nbs/03_extract.ipynb 16
+# %% ../nbs/03_extract.ipynb 15
 def get_text(ks:list[str], # List of exact key strings forming path through nested dict
-             hdgs:dict # Nested dictionary of headings created by `create_heading_dict`
-            ) -> str: # Extracted markdown text for the section
+             hdgs:dict     # Nested dictionary of headings created by `create_heading_dict`
+            ) -> str:      # Extracted markdown text for the section
     "Navigate through nested heading levels and return the text content"
     return L(ks).reduce(getitem, hdgs).text
 
-# %% ../nbs/03_extract.ipynb 19
+# %% ../nbs/03_extract.ipynb 18
 def rm_nested(paths:list[list[str]] # List of section paths, where each path is a list of keys
-             ) -> list[list[str]]: # Filtered list with nested paths removed
+             ) -> list[list[str]]:  # Filtered list with nested paths removed
     "Remove paths that are children of other paths in the list"
     paths = sorted(paths, key=len)
     keep = []
@@ -38,25 +38,25 @@ def rm_nested(paths:list[list[str]] # List of section paths, where each path is 
         if not any(p[:len(k)] == k for k in keep): keep.append(p)
     return keep
 
-# %% ../nbs/03_extract.ipynb 22
+# %% ../nbs/03_extract.ipynb 21
 def identify_core_sections(
-    hdgs:dict, # Nested dictionary of report headings from `create_heading_dict`
-    sp:str=None, # System prompt for section identification
+    hdgs:dict,                                          # Nested dictionary of report headings from `create_heading_dict`
+    sp:str=None,                                        # System prompt for section identification
     response_format:type[BaseModel]=CoreSectionsOutput, # Pydantic model for structured output
-    model:str='claude-sonnet-4-5' # LLM model to use for identification
-) -> dict: # Dictionary with 'section_paths' and 'reasoning' keys
+    model:str='claude-sonnet-4-5'                       # LLM model to use for identification
+) -> dict:                                              # Dictionary with 'section_paths' and 'reasoning' keys
     "Use LLM to identify core sections (exec summary, intro, conclusions, recommendations) from ToC"
     if sp is None: sp = load_prompt('select_sections')
     res = completion(model=model, messages=[mk_msg(f"Here is the table of contents as a nested dictionary:\n\n{hdgs}")], 
                      system=[{"type": "text", "text": sp}], response_format=response_format)
     return json.loads(res.choices[0].message.content)
 
-# %% ../nbs/03_extract.ipynb 25
+# %% ../nbs/03_extract.ipynb 24
 @delegates(identify_core_sections)
 def extract_sections(
-    md:str, # Markdown text of full report
+    md:str,  # Markdown text of full report
     **kwargs # Additional keyword arguments passed to `identify_core_sections`
-) -> str: # Concatenated text of all core sections
+) -> str:    # Concatenated text of all core sections
     "Extract and concatenate core sections (exec summary, intro, conclusions, recommendations) from report markdown"
     hdgs = create_heading_dict(md)
     sections = identify_core_sections(hdgs, **kwargs)

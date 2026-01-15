@@ -33,18 +33,18 @@ _load_dotenv()
 
 # %% ../nbs/00_core.ipynb 5
 def n_tokens(
-    text:str, # Text to count tokens in
+    text:str,         # Text to count tokens in
     model:str='gpt-4' # Model name for tokenizer
-    ) -> int:
+    ) -> int:         # Nb. of tokens
     "Count the number of tokens in a string"
     enc = tiktoken.encoding_for_model(model)
     return len(enc.encode(text))
 
 # %% ../nbs/00_core.ipynb 7
 def load_prompt(
-    name:str, # Name of prompt file: 'gcms', 'select_sections', 'srf_ccps', 'srf_enablers', 'srf_outputs'
+    name:str,               # Name of prompt file: 'gcms', 'select_sections', 'srf_ccps', 'srf_enablers', 'srf_outputs'
     path:Path|str|None=None # Directory containing prompt files, defaults to 'files/prompts'
-    ) -> str:
+    ) -> str:               # Prompt
     "Load a prompt template from a markdown file"
     if path is None:
         try: path = Path(__file__).parent / 'files' / 'prompts'

@@ -15,10 +15,10 @@ from .readers import load_evals, default_config, Evaluation
 
 # %% ../nbs/02_downloaders.ipynb 3
 def download_eval(
-    eval:Evaluation, # Evaluation object 
+    eval:Evaluation,                   # Evaluation object 
     dst:str='files/test/eval_reports', # Destination path to save files
-    cfg:dict=default_config # Configuration dictionary
-    ):
+    cfg:dict=default_config            # Configuration dictionary
+    )->Path:                           # Directory where files were saved
     "Download all documents for an evaluation to dst/eval_id/"
     eval_dir = Path(dst)/getattr(eval, cfg.id)
     eval_dir.mkdir(parents=True, exist_ok=True)
@@ -32,11 +32,11 @@ def download_eval(
 
 # %% ../nbs/02_downloaders.ipynb 7
 def download_evals(
-    evals:L, # list of evaluation records 
-    dst:str='files/test/eval_reports', # destination path to save documents
-    cfg:dict=default_config, # config dictionary
-    n_workers:int=4 # number of workers to use
-    ):
+    evals:L,                           # List of evaluation records 
+    dst:str='files/test/eval_reports', # Destination path to save documents
+    cfg:dict=default_config,           # Config dictionary
+    n_workers:int=4                    # Number of workers to use
+)->L:                                  # List of directories where files were saved
     "Download all documents for multiple evaluations in parallel"
     if not isinstance(evals, L): evals = L(evals) if isinstance(evals, list) else L([evals])
     return parallel(partial(download_eval, dst=dst, cfg=cfg), evals, n_workers=n_workers, progress=True)

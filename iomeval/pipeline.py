@@ -14,7 +14,8 @@ from .readers import load_evals, find_eval, Evaluation
 from .downloaders import download_eval
 from .extract import extract_sections
 from .themes import load_enbs, load_ccps, load_gcms, load_srf_outs, load_gcms_lut, fmt_enbs, fmt_ccps, fmt_srf_outs, get_srf_outs
-from .mapper import mk_system_blocks, map_themes, sort_by_relevance, get_top_ids, parse_json_response
+#from iomeval.mapper import mk_system_blocks, map_themes, sort_by_relevance, get_top_ids, parse_json_response
+from .mapper import mk_system_blocks, map_themes, sort_by_relevance, get_top_ids, parse_res
 from mistocr.core import read_pgs
 from mistocr.pipeline import pdf_to_md
 import json
@@ -53,18 +54,22 @@ class Report:
                  url:str,                         # URL of the evaluation PDF
                  evals:list,                      # List of `Evaluation` objects to search
                  results_path:str='data/results'  # Path to save/load results
-                ): return cls(find_eval(evals, url, by='url'), pdf_url=url, results_path=results_path)
-    
+                 ) -> Report:                     # Report initialized from URL
+        return cls(find_eval(evals, url, by='url'), pdf_url=url, results_path=results_path)
+
     @classmethod
     def from_title(cls,
                    title:str,                      # Title to search for
                    evals:list,                     # List of `Evaluation` objects to search
                    results_path:str='data/results' # Path to save/load results
-                  ): return cls(find_eval(evals, title, by='title'), results_path=results_path)
+                   ) -> Report:                    # Report initialized from title
+        return cls(find_eval(evals, title, by='title'), results_path=results_path)
+
 
 # %% ../nbs/06_pipeline.ipynb 7
 @patch
-def _repr_markdown_(self:Report):
+def _repr_markdown_(self:Report) -> str:  # Markdown formatted report summary
+    "Display report metadata and processing status in Jupyter notebooks"
     "Display report metadata and processing status in Jupyter notebooks"
     title = self.ev.meta.get('Title', 'Untitled')
     year = self.ev.meta.get('Year', 'n/a')
@@ -94,7 +99,7 @@ def _repr_markdown_(self:Report):
 @patch
 def save(self:Report,
          path:str=None  # Override default results path
-        ) -> Report:
+        ) -> Report:    # Reports self for method chaining
     "Save report state to JSON"
     p = Path(path or self.results_path)/f'{self.id}.json'
     p.parent.mkdir(parents=True, exist_ok=True)
@@ -107,7 +112,7 @@ def save(self:Report,
 # %% ../nbs/06_pipeline.ipynb 15
 def load_report(id:str,                  # Report ID (hash)
                 path:str='data/results'  # Results directory
-               ) -> Report:
+               ) -> Report:              # The loaded Report
     "Load a saved Report by id"
     data = json.loads((Path(path)/f'{id}.json').read_text())
     ev = Evaluation(id=data['id'], meta=data['ev_meta'], docs=data['ev_docs'])
@@ -121,8 +126,8 @@ def load_report(id:str,                  # Report ID (hash)
 @patch
 def download(self:Report,
              dst:str='data/pdfs',  # Destination directory for PDFs
-             force:bool=False     # Force re-download
-            ) -> Report:
+             force:bool=False      # Force re-download
+            ) -> Report:           # Self for chaining
     "Download evaluation PDF to `dst`/`eval_id`/"
     if self.pdf_path and not force: return self
     self.pdf_path = download_eval(self.ev, dst=dst)
@@ -136,7 +141,7 @@ async def ocr(self:Report,
               add_img_desc:bool=True,  # Whether to add image descriptions
               force:bool=False,        # Force re-OCR              
               **kwargs                 # Additional args passed to pdf_to_md
-             ) -> Report:
+             ) -> Report:              # Self for chaining
     "Run OCR on PDF and fix heading hierarchy"
     if self.md_path and not force: return self
     if self.pdf_path is None: raise ValueError("Call download() first")
@@ -150,9 +155,9 @@ async def ocr(self:Report,
 # %% ../nbs/06_pipeline.ipynb 29
 @patch
 def extract(self:Report, 
-            force:bool=False, # Force re-extraction
-            **kwargs
-            ):
+            force:bool=False,  # Force re-extraction
+            **kwargs           # Additional args passed to extract_sections
+           ) -> Report:        # Self for chaining
     "Extract core sections from markdown"
     if self.sections and not force: return self
     if self.md_path is None: raise ValueError("Call ocr() first")
@@ -163,36 +168,39 @@ def extract(self:Report,
 
 # %% ../nbs/06_pipeline.ipynb 33
 @patch
-def ensure_sys_blocks(self:Report):
+def ensure_sys_blocks(self:Report) -> None:  # Modifies self in place
     "Ensure system blocks are available"
     if self.sections is None: raise ValueError("Call extract() first")
     if not hasattr(self, '_sys_blocks'): self._sys_blocks = mk_system_blocks(self.sections)
 
+
 # %% ../nbs/06_pipeline.ipynb 34
+@delegates(map_themes)
 def map_single(sys_blocks,                 # System blocks from mk_system_blocks
-                theme_type,                 # One of: 'enbs', 'ccps', 'gcms', 'outs'
-                path=None,                  # Path to theme files
-                model='claude-haiku-4-5',   # Model to use for mapping
-                gcm_ids=None                # GCM IDs for output mapping
-               ):
+                theme_type,                # One of: 'enbs', 'ccps', 'gcms', 'outs'
+                path=None,                 # Path to theme files
+                model='claude-haiku-4-5',  # Model to use for mapping
+                gcm_ids=None,              # GCM IDs for output mapping
+                **kwargs                   # Additional args passed to map_themes
+               ) -> dict:                  # Mapping results
     "Map system blocks (Report) to a single theme type using appropriate prompts and formatting"
-    if theme_type == 'enbs': res = map_themes(sys_blocks, fmt_enbs(load_enbs(path)), load_prompt('srf_enablers'), model)
-    elif theme_type == 'ccps': res = map_themes(sys_blocks, fmt_ccps(load_ccps(path)), load_prompt('srf_ccps'), model)
-    elif theme_type == 'gcms': res = map_themes(sys_blocks, load_gcms(path), load_prompt('gcms'), model)
+    if theme_type == 'enbs': res = map_themes(sys_blocks, fmt_enbs(load_enbs(path)), load_prompt('srf_enablers'), model, **kwargs)
+    elif theme_type == 'ccps': res = map_themes(sys_blocks, fmt_ccps(load_ccps(path)), load_prompt('srf_ccps'), model, **kwargs)
+    elif theme_type == 'gcms': res = map_themes(sys_blocks, load_gcms(path), load_prompt('gcms'), model, **kwargs)
     elif theme_type == 'outs':
         srf_obj, gcm_lut = load_srf_outs(path), load_gcms_lut(path)
         output_ids = get_srf_outs(gcm_lut, gcm_ids)
-        res = map_themes(sys_blocks, fmt_srf_outs(srf_obj, output_ids), load_prompt('srf_outputs'), model)
-    return parse_json_response(res)
+        res = map_themes(sys_blocks, fmt_srf_outs(srf_obj, output_ids), load_prompt('srf_outputs'), model, **kwargs)
+    return parse_res(res)
 
 # %% ../nbs/06_pipeline.ipynb 36
 @patch
-def map_enbs(self:Report, 
-                 force:bool=False, # Re-run even if already completed
-                 **kwargs          # Additional args passed to _map_single (e.g. path, model)
-                ):
+def map_enbs(self:Report,
+             force:bool=False,  # Re-run even if already completed
+             **kwargs           # Additional args passed to map_single (e.g. path, model)
+            ) -> Report:        # Self for chaining
     "Map report sections to Strategic Results Framework enablers"
-    if 'enablers' in self.mappings and not force: return self
+    if 'enbs' in self.mappings and not force: return self
     self.ensure_sys_blocks()
     self.mappings['enbs'] = map_single(self._sys_blocks, 'enbs', **kwargs)
     self.save(self.results_path)
@@ -200,10 +208,10 @@ def map_enbs(self:Report,
 
 # %% ../nbs/06_pipeline.ipynb 41
 @patch
-def map_ccps(self:Report, 
-             force:bool=False, # Re-run even if already completed
-             **kwargs          # Additional args passed to _map_single (e.g. path, model)
-             ):
+def map_ccps(self:Report,
+             force:bool=False,  # Re-run even if already completed
+             **kwargs           # Additional args passed to map_single (e.g. path, model)
+            ) -> Report:        # Self for chaining
     "Map report sections to Strategic Results Framework cross-cutting priorities"
     if 'ccps' in self.mappings and not force: return self
     self.ensure_sys_blocks()
@@ -213,12 +221,12 @@ def map_ccps(self:Report,
 
 # %% ../nbs/06_pipeline.ipynb 45
 @patch
-def map_gcms(self:Report, 
-            force:bool=False, # Re-run even if already completed
-            **kwargs          # Additional args passed to _map_single (e.g. path, model)
-            ):
-    "Map report sections to Global Compact Mapping Objectives"
-    if 'gcm' in self.mappings and not force: return self
+def map_gcms(self:Report,
+             force:bool=False,  # Re-run even if already completed
+             **kwargs           # Additional args passed to map_single (e.g. path, model)
+            ) -> Report:        # Self for chaining
+    "Map report sections to Global Compact for Migration objectives"
+    if 'gcms' in self.mappings and not force: return self
     self.ensure_sys_blocks()
     self.mappings['gcms'] = map_single(self._sys_blocks, 'gcms', **kwargs)
     self.save(self.results_path)
@@ -226,27 +234,34 @@ def map_gcms(self:Report,
 
 # %% ../nbs/06_pipeline.ipynb 49
 @patch
-def map_outs(self:Report, 
-            gcm_ids=None,       # GCM IDs to filter SRF objectives
-            force:bool=False,   # Re-run even if already completed
-            **kwargs            # Additional args passed to _map_single (e.g. path, model)
-            ):
+def map_outs(self:Report,
+             gcm_ids=None,      # GCM IDs to filter SRF objectives
+             force:bool=False,  # Re-run even if already completed
+             **kwargs           # Additional args passed to map_single (e.g. path, model)
+            ) -> Report:        # Self for chaining
     "Map report sections to Strategic Results Framework outputs"
-    if 'outputs' in self.mappings and not force: return self
+    if 'outs' in self.mappings and not force: return self
     self.ensure_sys_blocks()
-    if gcm_ids is None: gcm_ids = [get_top_ids(self.mappings['gcms'])[0]] if self.mappings['gcms'] else []
+    if gcm_ids is None:
+        top_ids = get_top_ids(self.mappings.get('gcms', []))
+        if not top_ids: return self
+        gcm_ids = [top_ids[0]]
     self.mappings['outs'] = map_single(self._sys_blocks, 'outs', gcm_ids=gcm_ids, **kwargs)
     self.save(self.results_path)
     return self
 
 # %% ../nbs/06_pipeline.ipynb 53
 @patch
-def map_all(self:Report, **kwargs): return self.map_enbs(**kwargs).map_ccps(**kwargs).map_gcms(**kwargs).map_outs(**kwargs)
+def map_all(self:Report,
+            **kwargs  # Args passed to all mapping methods
+           ) -> Report:  # Self for chaining
+    "Run all theme mappings in sequence"
+    return self.map_enbs(**kwargs).map_ccps(**kwargs).map_gcms(**kwargs).map_outs(**kwargs)
 
 # %% ../nbs/06_pipeline.ipynb 55
-def should_force(force, # Bool to force all steps, or set of step names to force
-                  step   # Step name to check
-                 ):
+def should_force(force,     # Bool to force all steps, or set of step names to force
+                 step       # Step name to check
+                ) -> bool:  # Whether to force the step
     "Check if step should be forced - handles bool or set of step names"
     if isinstance(force, bool): return force
     return step in force
