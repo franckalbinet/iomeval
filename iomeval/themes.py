@@ -11,7 +11,7 @@ from fastcore.all import *
 from pathlib import Path
 import json
 
-# %% ../nbs/04_themes.ipynb 4
+# %% ../nbs/04_themes.ipynb 3
 def load_thm(fname:str,         # Filename to load
                 path:str=None,  # Directory containing theme files
                 md:bool=False   # Return raw text instead of JSON?
@@ -23,14 +23,14 @@ def load_thm(fname:str,         # Filename to load
     p = Path(path)/fname
     return p.read_text() if md else json.loads(p.read_text())
 
-# %% ../nbs/04_themes.ipynb 5
+# %% ../nbs/04_themes.ipynb 4
 load_enbs = partial(load_thm, 'srf_enablers.json')
 load_ccps = partial(load_thm, 'crosscutting_priorities.json')
 load_srf_outs = partial(load_thm, 'srf_objectives.json')
 load_gcms = partial(load_thm, 'gcms_long.md', md=True)
 load_gcms_lut = partial(load_thm, 'gcm_to_srf_outputs.json')
 
-# %% ../nbs/04_themes.ipynb 17
+# %% ../nbs/04_themes.ipynb 16
 def fmt_enb_ccp(
     items:list, # List of enabler/CCP dicts with id, title, description
     typ:str     # Type of item (enabler or CCP)
@@ -38,11 +38,11 @@ def fmt_enb_ccp(
     "Format enablers or cross-cutting priorities for LLM"
     return '\n\n'.join([f'## {o["title"]}\n**Type:** {typ}\n**ID:** {o["id"]}\n\n{o["description"]}' for o in items])
 
-# %% ../nbs/04_themes.ipynb 18
+# %% ../nbs/04_themes.ipynb 17
 fmt_enbs = partial(fmt_enb_ccp, typ='SRF Enabler')
 fmt_ccps = partial(fmt_enb_ccp, typ='SRF Cross-Cutting Priority')
 
-# %% ../nbs/04_themes.ipynb 20
+# %% ../nbs/04_themes.ipynb 19
 def get_srf_out(objectives:list, # SRF objectives structure
                 output_id:str   # Output ID to find
                ) -> dict|None:  # SRF Output of interest
@@ -54,7 +54,7 @@ def get_srf_out(objectives:list, # SRF objectives structure
                     return dict(obj_id=obj['id'], obj=obj['title'], lt_out_id=lt_out['id'], lt_out=lt_out['title'],
                                 st_out_id=st_out['id'], st_out=st_out['title'], output=o)
 
-# %% ../nbs/04_themes.ipynb 22
+# %% ../nbs/04_themes.ipynb 21
 def fmt_srf_out(
     output_ctx:dict # Dict with obj, lt_out, st_out, and output fields
     ) -> str:       # Formatted SRF output
@@ -68,7 +68,7 @@ def fmt_srf_out(
         f'**Short-term Outcome {o["st_out_id"]}:** {o["st_out"]}'
     ])
 
-# %% ../nbs/04_themes.ipynb 24
+# %% ../nbs/04_themes.ipynb 23
 def fmt_srf_outs(objectives:list, # SRF objectives structure
                  output_ids:list  # List of output IDs to format
                 ) -> str:         # Multiple SRF outputs formatted
@@ -76,14 +76,14 @@ def fmt_srf_outs(objectives:list, # SRF objectives structure
     return '\n\n'.join(fmt_srf_out(get_srf_out(objectives, i)) for i in output_ids)
 
 
-# %% ../nbs/04_themes.ipynb 27
+# %% ../nbs/04_themes.ipynb 26
 def get_srf_outs(lut:dict,      # GCM to SRF lookup dict
                  gcm_ids:list   # List of GCM IDs to filter by
                 ) -> L:         # List of SRF output IDs
     "Get SRF output IDs filtered by GCM IDs"
     return L(v for k,v in lut.items() if k in gcm_ids).concat()
 
-# %% ../nbs/04_themes.ipynb 30
+# %% ../nbs/04_themes.ipynb 29
 def load_all_thms(
     path:str=None  # Directory containing theme JSON files
     ) -> AttrDict: # Dict with enablers, ccp, gcms, srf_outs, gcm_lut
