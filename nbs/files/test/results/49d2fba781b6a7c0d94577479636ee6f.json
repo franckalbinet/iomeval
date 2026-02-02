@@ -69,8 +69,11 @@
       "desc": "Study of Case Management Practice"
     }
   ],
-  "curation_status": "headings_reviewed",
-  "selected_headings": [],
+  "curation_status": "pending",
+  "selected_headings": [
+    "## 1. Introduction ... page 4",
+    "## 2. Background of the JI-HoA ... page 5"
+  ],
   "mappings": {},
-  "timestamp": "2026-01-30T16:01:45.647303"
+  "timestamp": "2026-02-02T11:15:36.640319"
 }

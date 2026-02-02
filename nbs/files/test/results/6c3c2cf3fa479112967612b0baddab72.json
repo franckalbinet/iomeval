@@ -61,8 +61,10 @@
       "desc": "Management Response"
     }
   ],
-  "curation_status": "pending",
-  "selected_headings": [],
+  "curation_status": "sections_selected",
+  "selected_headings": [
+    "# 1. BACKGROUND ... page 9"
+  ],
   "mappings": {},
-  "timestamp": "2026-01-30T11:35:54.745953"
+  "timestamp": "2026-02-02T10:20:13.793758"
 }
