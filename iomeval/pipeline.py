@@ -38,7 +38,7 @@ class Report:
         ):
         store_attr()
         self.id = ev.id
-        self.pdf_path,self.md_path,self.sections = None,None,None
+        self.pdf_path,self.md_path = None,None
         self.mappings,self.selected_headings = {},[]
         self.curation_status = 'pending'
         self._load_existing()
@@ -54,7 +54,7 @@ class Report:
         ):
         store_attr()
         self.id = ev.id
-        self.pdf_path,self.md_path,self.sections = None,None,None
+        self.pdf_path,self.md_path = None,None
         self.mappings,self.selected_headings = {},[]
         self.curation_status = 'pending'
         self._load_existing()
@@ -106,19 +106,18 @@ def from_id(
     ev = find_eval(evals, id, by='id')
     return cls(ev, pdf_url=eval_url(ev), results_path=results_path)
 
-# %% ../nbs/07_pipeline.ipynb #12aa4c2a
+# %% ../nbs/07_pipeline.ipynb #ed425a53
 @patch
-def _repr_markdown_(self:Report) -> str: # Markdown formatted report summary
+def _repr_markdown_(self:Report) -> str:
     "Display report metadata and processing status in Jupyter notebooks"
     title = self.ev.meta.get('Title', 'Untitled')
     year = self.ev.meta.get('Year', 'n/a')
     org = self.ev.meta.get('Evaluation Commissioner', 'Unknown')
     
-    # Pipeline status
     pipeline = []
     if self.pdf_path: pipeline.append('✓ PDF')
     if self.md_path: pipeline.append('✓ MD')
-    if self.md_path and (self.md_path/'tag_sub.md').exists(): pipeline.append('✓ Sections')
+    if self.curation_status == 'sections_selected': pipeline.append(f'✓ Curated ({len(self.selected_headings)} headings)')
     if self.mappings:
         mapped = ', '.join(self.mappings.keys())
         pipeline.append(f'✓ Mappings ({mapped})')
@@ -134,7 +133,6 @@ def _repr_markdown_(self:Report) -> str: # Markdown formatted report summary
 
 **Report:** [View Evaluation Report]({self.pdf_url})
 """
-
 
 # %% ../nbs/07_pipeline.ipynb #6d634bf6
 @patch
@@ -211,27 +209,20 @@ async def ocr(self:Report,
     self.save(self.results_path)
     return self
 
-# %% ../nbs/07_pipeline.ipynb #7d6b6e51
+# %% ../nbs/07_pipeline.ipynb #f90d9203
 @patch
-def extract(self:Report, 
-            force:bool=False,  # Force re-extraction
-            **kwargs           # Additional args passed to extract_sections
-           ) -> Report:        # Self for chaining
-    "Extract core sections from markdown"
-    if self.sections and not force: return self
+def get_sections(self:Report) -> str:
+    "Extract sections on demand from selected headings"
     if self.md_path is None: raise ValueError("Call ocr() first")
-    md = read_pgs(self.md_path)
-    self.sections = extract_sections(md, **kwargs)
-    self.save(self.results_path)
-    return self
+    if self.curation_status != 'sections_selected': raise ValueError("Curation required: use curator app to select headings first")
+    if not self.selected_headings: raise ValueError("No headings selected")
+    return extract_sections(read_pgs(self.md_path), selected_headings=self.selected_headings)
 
-# %% ../nbs/07_pipeline.ipynb #a9594665
+# %% ../nbs/07_pipeline.ipynb #f7b5bf6c
 @patch
-def ensure_sys_blocks(self:Report) -> None:  # Modifies self in place
+def ensure_sys_blocks(self:Report) -> None:
     "Ensure system blocks are available"
-    if self.sections is None: raise ValueError("Call extract() first")
-    if not hasattr(self, '_sys_blocks'): self._sys_blocks = mk_system_blocks(self.sections)
-
+    if not hasattr(self, '_sys_blocks'): self._sys_blocks = mk_system_blocks(self.get_sections())
 
 # %% ../nbs/07_pipeline.ipynb #5f51ae13
 @delegates(map_themes)
@@ -325,35 +316,47 @@ def should_force(force,     # Bool to force all steps, or set of step names to f
     if isinstance(force, bool): return force
     return step in force
 
-# %% ../nbs/07_pipeline.ipynb #c1d54f01
-async def run_pipeline(url:str,                         # URL of the evaluation PDF
-                       evals:list,                      # List of `Evaluation` objects to search
-                       pdf_dst:str='data/pdf',         # Destination directory for PDFs
-                       md_dst:str='data/md',            # Destination directory for markdown files
-                       results_path:str='data/results', # Path to save/load results
-                       ocr_kwargs:dict=None,            # Additional arguments passed to ocr (e.g. add_img_desc, model)
-                       force:bool|set=False,            # Force re-run: True for all, or set of step names {'download','ocr','extract','enbs','ccps','gcms','outs'}
-                       **kwargs                         # Additional arguments passed to mapping functions
-                      ) -> Report:                      # Fully processed report with all mappings
-    "Run complete pipeline: download → ocr → extract → map_themes"
-    logger.info(f"Creating report from URL...")
-    report = Report.from_url(url, evals, results_path=results_path)
-    # Try to load existing checkpoint
-    try: report = load_report(report.id, path=results_path)
+# %% ../nbs/07_pipeline.ipynb #3d5e2b78
+async def run_pipeline(evals:list,                  # List of `Evaluation` objects to search
+                       url:str=None,                # URL of the evaluation PDF
+                       id:str=None,                 # Evaluation ID
+                       title:str=None,              # Evaluation title
+                       base_path:str='data',        # Base directory (contains pdf/, md/, results/)
+                       ocr_kwargs:dict=None,        # Additional arguments passed to ocr
+                       force:bool|set=False,        # Force re-run: True for all, or set of step names
+                       **kwargs                     # Additional arguments passed to mapping functions
+                      ) -> Report:                  # Processed report (partial if awaiting curation)
+    "Run pipeline as far as possible: download → ocr → [curate] → map_all"
+    if sum(x is not None for x in (url, id, title)) != 1: raise ValueError("Provide exactly one of: url, id, title")
+    base = Path(base_path)
+    pdf_dst, md_dst, results_path = base/'pdf', base/'md', base/'results'
+    
+    if url: report = Report.from_url(url, evals, results_path=results_path)
+    elif id: report = Report.from_id(id, evals, results_path=results_path)
+    else: report = Report.from_title(title, evals, results_path=results_path)
+    
+    try: report = load_report(report.id, base_path=base_path)
     except FileNotFoundError: pass
-    logger.info(f"Step 1/7: Downloading PDF...")
-    report.download(dst=pdf_dst, force=should_force(force, 'download'))
-    logger.info(f"Step 2/7: Running OCR...")
-    await report.ocr(dst=md_dst, force=should_force(force, 'ocr'), **(ocr_kwargs or {}))
-    logger.info(f"Step 3/7: Extracting sections...")
-    report.extract(force=should_force(force, 'extract'))
-    logger.info(f"Step 4/7: Mapping enablers...")
+    
+    if not report.pdf_path or should_force(force, 'download'):
+        logger.info(f"Downloading PDF...")
+        report.download(dst=pdf_dst, force=should_force(force, 'download'))
+    
+    if not report.md_path or should_force(force, 'ocr'):
+        logger.info(f"Running OCR...")
+        await report.ocr(dst=md_dst, force=should_force(force, 'ocr'), **(ocr_kwargs or {}))
+    
+    if report.curation_status != 'sections_selected':
+        logger.info(f"Awaiting curation. Use curator app to select headings, then re-run.")
+        return report
+    
+    logger.info(f"Mapping enablers...")
     report.map_enbs(force=should_force(force, 'enbs'), **kwargs)
-    logger.info(f"Step 5/7: Mapping CCPs...")
+    logger.info(f"Mapping CCPs...")
     report.map_ccps(force=should_force(force, 'ccps'), **kwargs)
-    logger.info(f"Step 6/7: Mapping GCM objectives...")
+    logger.info(f"Mapping GCM objectives...")
     report.map_gcms(force=should_force(force, 'gcms'), **kwargs)
-    logger.info(f"Step 7/7: Mapping outputs...")
+    logger.info(f"Mapping outputs...")
     report.map_outs(force=should_force(force, 'outs'), **kwargs)
     logger.info(f"Pipeline complete!")
     return report

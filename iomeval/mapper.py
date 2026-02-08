@@ -16,9 +16,6 @@ import json
 import logging
 from litellm.types.utils import ModelResponse
 
-from cachy import enable_cachy
-enable_cachy()
-
 # %% ../nbs/05_mapper.ipynb #e81afd30
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.WARNING, format='%(name)s - %(levelname)s - %(message)s')

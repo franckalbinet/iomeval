@@ -1,5 +1,7 @@
 _docs/
 _proc/
+/data/
+/data_tmp/
 
 *.bak
 .gitattributes
