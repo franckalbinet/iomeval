@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 national migration data management, but the initiative to be involved in its coordination processes is visible$^{55}$.
 
 The number of stakeholders (state and non-state) involved in return and reintegration assistance has also increased from 25 (baseline in 2017) to 180 by the end of the project in 2022.$^{56}$

@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 According to the RA Monitoring and Satisfaction surveys, 56% of the surveyed returnees were satisfied or very satisfied with the reintegration assistance support provided by the JI-HoA¹⁷.
 
 Focus Group Discussions highlighted the importance of the economic assistance to enable returnees to develop sources of income (e.g. through start-up businesses or employment). Since returnees are coming back usually "empty-handed", they are experiencing shame, guilt, and are stigmatised by their communities and relatives. The economic support offered by the JI-HoA not only provides them with resources to start their business but also restores their dignity and self-trust¹⁸.

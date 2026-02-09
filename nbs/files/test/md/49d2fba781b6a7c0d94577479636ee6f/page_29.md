@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 2. Strengthen community-based reintegration efforts to address drivers of irregular migration and provide economic opportunities that reduce the necessity to migrate.
 
 The current evaluation has demonstrated the great importance of CBR projects as a component of the integrated approach. However, gaps were found in the design, M&amp;E, and relevance of some of the projects. Therefore, migrant protection, return and reintegration programming should be focused on enhancing the quality of the CBR projects in relation to the needs of the community members. Possibly, this may require larger-scale projects by a smaller sample of Implementing Partners, to ensure IOM can keep a better oversight of the project design, needs analysis and implementation.

@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 components of support for reintegration, and would be significantly weakened if certain components were removed.
 
 The work of the Regional Data Hub was highly appreciated by stakeholders and the activities of the hub were effective in enhancing knowledge on migration, harmonizing methodologies and indicators, and building capacities for data collection and management. There is a clear interest of stakeholders to continue working with the RDH on improving research and data in the region.

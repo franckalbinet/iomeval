@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 ## 2. Background of the JI-HoA ... page 5
 
 ### 2.1. Context and design of the JI-HoA ... page 5

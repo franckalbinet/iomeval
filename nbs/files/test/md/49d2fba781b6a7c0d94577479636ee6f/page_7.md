@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 |  The Economic dimension covers aspects of reintegration that contributes to re-entering the economic life and sustained livelihoods. | The Social dimension addresses returning migrants' access to public services and infrastructure in their countries of origin, including access to health, education, housing, justice, and social protection schemes. | The Psychosocial dimension encompasses the reinsertion of returning migrants into personal support networks (friends, relatives, neighbours) and civil society structures, as well as re-engagement with the host society's values, principles and traditions  |
 | --- | --- | --- |
 

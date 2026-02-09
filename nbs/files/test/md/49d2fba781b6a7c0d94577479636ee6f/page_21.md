@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 origin. This target was exceeded in Somalia (80%) while it was not achieved in Sudan (44%) and Ethiopia (57%).
 
 FIGURE 5. LEVEL OF SATISFACTION WITH REINTEGRATION SUPPORT
@@ -12,7 +10,7 @@ Focus Groups with returnees demonstrate that the main factors causing dissatisfa
 
 Additionally, 54 community-based reintegration projects were initiated. These projects have supported approximately 76,348 community and returnee beneficiaries.[73] Itad's "Spot Analytical Report #1 - Community-based Reintegration Projects (CBRPs)" study found that the majority of the CBR projects were well-designed with plausible outcomes, focusing mainly on capacity building and livelihood support.[74]
 
-###### M&amp;E systems ... page 21
+M&amp;E systems ... page 21
 
 Under the JI, a total of 36 planning, monitoring, learning, data collection and analysis tools were set up, implemented and/or strengthened across the four countries, exceeding the target of 33. In total 29
 

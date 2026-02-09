@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 institutions were supported to establish or strengthen data collection, monitoring and/or learning tools, compared to the target of 27.
 
 Throughout the JI, the programme has implemented activities to harmonize the approach to monitoring and measuring the impact of return and reintegration assistance, and associated tools for data collection across the three countries of origin. Enumerators in IOM country offices (and universities in Ethiopia) conducted AVR, reintegration assistance, and reintegration sustainability surveys, the results of which were collected regionally in the MiMOSA database for analysis. The EU-IOM Joint Initiative also strengthened data collection, analysis, and dissemination on reintegration through development of database applications, provision of equipment and training to the relevant government institutions.75
@@ -8,7 +6,7 @@ The unmet targets regarding the support to institutions in Ethiopia are explaine
 
 ##### 4.3.3.2 Achievement of Specific Objective 3 ... page 22
 
-###### Overall achievement of reintegration ... page 22
+Overall achievement of reintegration ... page 22
 
 By September 2022, more than 99% of returnees referred to state and non-state actors were assisted by those actors, exceeding the target of 70%. At least 89% of returnees in all countries (with an overall average of 93%) reported sufficient levels of economic self-sufficiency, social stability and psychosocial wellbeing in their community of return (also exceeding the target of 70%).78
 

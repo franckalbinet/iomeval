@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 The JI-HoA programme is well aligned with the objectives of the key regional actors, such as IGAD and African Union and their frameworks and activities.
 
 The IGAD adopted a Regional Migration Policy Framework that aimed to comprehensively address the variety of issues related to unsupported migration in the IGAD region. The main goal of this framework was to provide advice and further strategies to support comprehensive migration management, to harmonise policies between countries, and to recommend and support formulating good policies in migration. The JI-HoA was aligned with the work of IGAD mainly in two pillars: gathering and disseminating quality data on migration and capacity building of the national governments⁴⁰.

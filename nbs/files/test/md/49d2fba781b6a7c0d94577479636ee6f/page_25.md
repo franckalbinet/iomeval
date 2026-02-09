@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 due to the urgency caused by the crisis in Libya,⁸⁵ the top-up system was also necessary to widen the scope of the JI-HoA over time. On the other hand, the top-up budgeting system created uncertainties regarding the implementation budget, which hindered planning and budgeting.
 
 Based on the evaluated material, the human resources were mostly sufficient to meet the programme objectives. The Mid-term Review of the programme stated that there were staff shortages in the JI, and that staff among MRCs was not always distributed efficiently.⁸⁶ However, the present evaluation found that improvements were made in the following years to ensure more available and more qualified staff to the programme. There were only a few limitations mentioned in interviews.

@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 organisations and strengthen national stakeholders' capacity to provide different types of return and reintegration support.
 
 ### 4.5. Sustainability ... page 26

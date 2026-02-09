@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 ## 4. Findings ... page 10
 
 ### 4.1. Relevance ... page 10

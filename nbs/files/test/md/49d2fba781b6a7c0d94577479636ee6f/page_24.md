@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 economic, social, and psychosocial reintegration is interlinked and that a gap in one dimension can influence the other.
 
 At structural level, the JI-HoA has certainly contributed to the introduction or strengthening of new policies, and enhanced the capacity of government officials, external factors such as conflict, COVID-19, competing government priorities and political instability have prevented this component of the integrated approach from functioning to its full extent. Government turnover as well as government priorities meant that the role of the government in the integrated approach was not optimized to its full extent. Another important factor influencing the structural level is the general availability of services and existing coordination structures.
@@ -15,12 +13,12 @@ The financial resources were sufficient to meet the programme's objectives in te
 
 FIGURE 6: BUDGET ALLOCATED BY OBJECTIVES OR ADDITIONAL ACTIVITY AREAS (IN EUR)
 ![img-5.jpeg](img-5.jpeg)
-Specific Objective 1
-Specific Objective 2
-Specific Objective 3
-Monitoring, learning, audit and evaluation
-Communications and visibility
-
 Source: Action Fiche for the implementation of the Horn of Africa Window To5-EUTF-HoA-REG-25
+
+- Specific Objective 1
+- Specific Objective 2
+- Specific Objective 3
+- Monitoring, learning, audit and evaluation
+- Communications and visibility
 
 Overall, the top-up system was necessary to finance services and reach the objectives of the JI. With the help of top-ups, the JI-HoA succeeded in scaling up the programme and developing psychosocial support, community projects and trainings. Because the project was lacking a proper inception phase

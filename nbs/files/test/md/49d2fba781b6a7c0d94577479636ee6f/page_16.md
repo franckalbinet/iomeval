@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 ### 4.3. Effectiveness ... page 16
 
 Overall performance score for effectiveness: 3.8/5
@@ -16,7 +14,7 @@ The first Specific Objective considers that the development of data and data col
 
 ##### 4.3.1.1 Achievement of outputs and results ... page 16
 
-###### Data availability ... page 16
+Data availability ... page 16
 
 The current evaluation concludes that the Horn of Africa faced significant gaps in data on human migration, towards which the JI made substantial progress. The IOM logframe shows that the JI exceeded the targets set for the “number of field studies, surveys and other research conducted under the programme” (20 instead of 19).46 The increased availability of migration data (result 1.1.) was achieved mainly through the production and the publication of migration data and research outputs by the Regional Data Hub and the RDH’s engagement with National Statistical Offices (NSOs) and key
 

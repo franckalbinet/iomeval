@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 ## 3. Methodology ... page 8
 
 The current evaluation comprises the final¹², external evaluation of the JI-HoA, as final component of the project closure. The primary users of the evaluation are IOM, the donor, and external partners engaged in future programming involving Assisted Voluntary Return and Reintegration. The evaluation has multiple purposes, namely accountability (summative evaluation, looking into the effectiveness of the JI) and learning (formative evaluation, looking to improve future programming). In particular, the evaluation provides recommendations for future migrant protection, return and reintegration programming.

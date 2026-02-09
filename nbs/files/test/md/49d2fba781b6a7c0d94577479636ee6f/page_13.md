@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 as COVID-19, security issues and economic crises prevented them from treating return migration as a priority throughout the implementation of the JI-HoA. Before the implementation of the JI-HoA programme, in most countries, there were limited frameworks or mechanism for migration, governments had no tools, and no national capacity building strategies which in turn led to limited capacity to facilitate return and reintegration. The JI-HoA programme addressed this gap through capacity building activities and tools such as the SOPs and various guidelines.³⁹
 
 Interviews revealed that the efforts of the JI-HoA regarding migration data were of particular relevance and importance to the stakeholders. Namely, there was a clear lack of data on migration and existing tools and methods to collect such data were not harmonized across the region. Therefore, data between countries could not be compared.³¹

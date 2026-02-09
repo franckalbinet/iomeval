@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 FIGURE 1. IOM'S INTEGRATED APPROACH TO REINTEGRATION
 ![img-0.jpeg](img-0.jpeg)
 Source: IOM Reintegration Handbook

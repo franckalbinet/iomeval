@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 #### 4.2.1. The JI-HoA's alignment with the objectives and standards of IOM, and objectives of the EU ... page 14
 
 The EU-IOM JI-HoA aligns with the purpose of IOM as described in its constitution. Providing assistance services for voluntary return migration is a core function of the organisation to ensure safe, orderly and dignified migration³⁶. IOM’s international norms and standards regarding AVRR are centred around protecting migrants’ rights (to a safe and dignified return) and achieving sustainable reintegration. One of the main principles for IOM regarding AVRR, namely voluntariness, was followed by organizing information sessions of the AVRR programme.³⁷.

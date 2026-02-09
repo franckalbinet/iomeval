@@ -1,5 +1,3 @@
-Final Evaluation for EU-IOM Joint Initiative for Migrant Protection and Reintegration in the Horn of Africa
-
 ## 1. Introduction ... page 4
 
 In 2016, the EU and IOM launched the EU-IOM Joint Initiative for Migrant Protection and Reintegration, with as overall objective “To contribute to facilitating orderly, safe, regular and rights-based migration through the facilitation of dignified voluntary return and the implementation of development-focused and sustainable reintegration policies and processes”. The EU-IOM Joint Initiative in the Horn of Africa (JI-HOA)¹ commenced in March 2017 in the Khartoum Process countries, with a focus on Djibouti, Ethiopia, Somalia, and Sudan.² The programme was coordinated by a Regional Coordination Unit (RCU) based in the IOM Regional Office for the East and Horn of Africa region (Nairobi, Kenya).
