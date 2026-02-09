@@ -10,5 +10,5 @@ The intended impact of the BMM Programme Phase III according to its Theory of Ch
 
 IOM has made substantial positive contributions to strengthening migration governance, border management, and migrant protection across the region. By enhancing governance frameworks, fostering cross-border cooperation, improving protection mechanisms, raising awareness, and building institutional capacity, IOM activities have contributed to safer, more orderly, and regular migration.
 
-The collected evaluation data confirms significant contributions that were made by IOM to improving migration governance, border management, and migrant protection in the region. While the long-term impact remains challenging to fully assess, the available evidence highlights meaningful progress towards the programme's objectives.
+The collected evaluation data confirms significant contributions that were made by IOM to improving migration governance, border management, and migrant protection in the region. While the long-term impact remains challenging to fully assess, the available evidence highlights meaningful progress towards the programme’s objectives.
 

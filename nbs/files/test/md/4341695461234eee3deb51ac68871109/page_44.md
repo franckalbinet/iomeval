@@ -16,7 +16,7 @@ Internal coordination can be further strengthened by enhancing communication bet
 
 Externally, IOM and partners could move beyond information-sharing meetings to more strategic planning sessions, as coordinated by GIZ the lead implementing partner, also ensuring cross-country cooperation:
 
-- Some stakeholders noted that monthly coordination meetings chaired by GIZ focused primarily on updates rather than substantive collaboration. To optimize coordination (when needed), these meetings could incorporate action-oriented discussions on joint activities (such as multi-agency simulations and joint training programs), geographic alignment of activities, and opportunities for shared resources.
+- Some stakeholders noted that monthly coordination meetings chaired by GIZ focused primarily on updates rather than substantive collaboration. To optimize coordination (when needed), these meetings could incorporate **action-oriented discussions** on joint activities (such as multi-agency simulations and joint training programs), geographic alignment of activities, and opportunities for shared resources.
 
 - Additionally, smaller, thematic working groups among implementing partners could be introduced to allow for more targeted collaboration and problem-solving (when needed). This can be proposed on an ad-hoc basis.
 
