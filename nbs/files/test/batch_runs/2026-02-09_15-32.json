@@ -1,0 +1,23 @@
+{
+  "__stored_args__": {
+    "completed": null,
+    "awaiting_curation": null,
+    "failed": null,
+    "skipped": null
+  },
+  "completed": [],
+  "awaiting_curation": [],
+  "failed": [
+    {
+      "id": "4341695461234eee3deb51ac68871109",
+      "step": "ocr",
+      "error": "argument of type 'NoneType' is not iterable"
+    },
+    {
+      "id": "6c3c2cf3fa479112967612b0baddab72",
+      "step": "mapping",
+      "error": "argument of type 'NoneType' is not iterable"
+    }
+  ],
+  "skipped": []
+}
