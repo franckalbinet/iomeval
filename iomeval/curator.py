@@ -2,7 +2,7 @@
 
 # %% auto #0
 __all__ = ['esc_behaviour', 'app', 'rt', 'BASE_PATH', 'status_colors', 'get_reports', 'fmt_status', 'count_selected_tokens',
-           'get_progress', 'get_headings', 'ReportCard', 'StatusSteps', 'HeadingsEditor', 'token_display',
+           'get_progress', 'get_headings', 'ReportCard', 'ReportList', 'StatusSteps', 'HeadingsEditor', 'token_display',
            'SectionsSelector', 'ProgressBar', 'StatusFilter', 'get', 'post', 'main']
 
 # %% ../nbs/06_curator.ipynb #1206285c
@@ -34,7 +34,8 @@ app, rt = fast_app(
 )
 
 # %% ../nbs/06_curator.ipynb #e5173925
-BASE_PATH = 'files/test'
+#BASE_PATH = 'files/test'
+BASE_PATH = '../data'
 
 # %% ../nbs/06_curator.ipynb #21d952fe
 def get_reports(base_path=BASE_PATH, status=None):
@@ -97,6 +98,15 @@ def ReportCard(r:Report, selected:bool=False, status:str='all'):
                 cls='h-6 px-2 ' + TextT.xs + ButtonT.primary)
         ),
         cls=f'mb-2 {highlight}', body_cls='p-3'
+    )
+
+# %% ../nbs/06_curator.ipynb #a0b83b3b
+def ReportList(reports, selected_id=None, status='all', oob=False):
+    return Div(
+        *[ReportCard(r, selected=(r.id == selected_id), status=status) for r in reports],
+        id='report-list',
+        cls='overflow-y-auto max-h-[80vh]',
+        hx_swap_oob='true' if oob else None
     )
 
 # %% ../nbs/06_curator.ipynb #6628a7c7
@@ -223,7 +233,8 @@ def get():
                     cls='items-center'
                 ),
                 DivCentered(Div(StatusFilter(), id='status-filter'), cls='w-2/3 mx-auto'),
-                Div(*[ReportCard(r) for r in reports], id='report-list', cls='overflow-y-auto max-h-[80vh]')),
+                #Div(*[ReportCard(r) for r in reports], id='report-list', cls='overflow-y-auto max-h-[80vh]')),
+                ReportList(reports)),
             Card(
                 H4("Editor"), 
                 Div(id='editor', cls='p-2')(
@@ -245,8 +256,9 @@ def get(id:str, status:str='all'):
     editor = HeadingsEditor(r) if r.curation_status == 'pending' else SectionsSelector(r)
     
     return (
-        Div(*[ReportCard(rp, selected=(rp.id == id), status=status) for rp in reports], 
-            id='report-list', hx_swap_oob='true'),
+        #Div(*[ReportCard(rp, selected=(rp.id == id), status=status) for rp in reports], 
+        #    id='report-list', hx_swap_oob='true'),
+        ReportList(reports, selected_id=id, status=status, oob=True),
         editor
     )
 
@@ -264,8 +276,7 @@ async def post(id:str, req:Request):
         if edited != orig: lut_fixes[orig] = edited
     
     #print("Lookup table (changes only):")
-    for old, new in lut_fixes.items():
-        print(f"  '{old}' → '{new}'")
+    #for old, new in lut_fixes.items(): print(f"  '{old}' → '{new}'")
     
     # Apply fixes to each page if there are changes
     if lut_fixes:
@@ -281,7 +292,8 @@ async def post(id:str, req:Request):
     # Refresh both panels
     reports = get_reports()
     return (
-        Div(*[ReportCard(rp, selected=(rp.id == id)) for rp in reports], id='report-list', hx_swap_oob='true'),
+        #Div(*[ReportCard(rp, selected=(rp.id == id)) for rp in reports], id='report-list', hx_swap_oob='true'),
+        ReportList(reports, selected_id=id, oob=True),
         SectionsSelector(r)  # Next step UI
     )
 
@@ -296,7 +308,8 @@ def post(id:str):
     
     reports = get_reports()
     return (
-        Div(*[ReportCard(rp, selected=(rp.id == id)) for rp in reports], id='report-list', hx_swap_oob='true'),
+        #Div(*[ReportCard(rp, selected=(rp.id == id)) for rp in reports], id='report-list', hx_swap_oob='true'),
+        ReportList(reports, selected_id=id, oob=True),
         HeadingsEditor(r),
         ProgressBar(reports, oob=True)
     )
@@ -333,7 +346,8 @@ async def post(id:str, req:Request):
     reports = get_reports()
 
     return (
-        Div(*[ReportCard(rp) for rp in reports], id='report-list', hx_swap_oob='true'),
+        #Div(*[ReportCard(rp) for rp in reports], id='report-list', hx_swap_oob='true'),
+        ReportList(reports, selected_id=id, oob=True),
         DivCentered(P('Click "Curate" to select a report', cls="font-normal"), cls='h-40'),
         ProgressBar(reports, oob=True)
     )
@@ -343,7 +357,8 @@ async def post(id:str, req:Request):
 def get(status:str='all'):
     reports = get_reports(status=status)
     return (
-        Div(*[ReportCard(r, status=status) for r in reports], id='report-list'),
+        #Div(*[ReportCard(r, status=status) for r in reports], id='report-list'),
+        ReportList(reports, status=status),
         Div(StatusFilter(current=status), id='status-filter', hx_swap_oob='true'),
         Div(
             DivCentered(P('Click "Curate" to select a report', cls="font-normal"), cls='h-40'),
@@ -356,7 +371,8 @@ def get(status:str='all'):
 def get():
     reports = get_reports()
     return (
-        Div(*[ReportCard(r) for r in reports], id='report-list', hx_swap_oob='true'),
+        #Div(*[ReportCard(r) for r in reports], id='report-list', hx_swap_oob='true'),
+        ReportList(reports, oob=True),
         DivCentered(P('Click "Curate" to select a report', cls="font-normal"), cls='h-40')
     )
 
