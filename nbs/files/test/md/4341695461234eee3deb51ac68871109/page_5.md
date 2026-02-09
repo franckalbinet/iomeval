@@ -1,0 +1,17 @@
+programme objectives remained strong, adjustments were necessary to accommodate changing government priorities.
+
+IOM's Regional Office effectively coordinated IOM activities, ensuring smooth multi-country implementation and responsiveness through a well-structured management approach and country focal points. Internally, there was strong coherence with other IOM projects and frameworks which facilitated cost-sharing and expanded reach. The external coordination with other implementing partners fell primarily under GIZ responsibility as lead implementer of the BMM programme. In this regard, the dual role of GIZ as both a grant giver and an implementing partner added additional complexity in coordination and communication, but active and cooperative relationship between GIZ and the IOM Regional Office helped mitigate potential challenges.
+
+IOM largely met or exceeded Phase III programme targets, contributing to strengthened migration governance, improved integrated border governance, and enhanced protection services for vulnerable migrants. Despite financial constraints, bureaucratic delays, and political instability, the programme effectively utilized resources, though initial delays led to spending pressures in later phases.
+
+Sustainability remains a key concern, as continued reliance on donor funding poses risks to maintaining programme achievements. Ensuring national ownership and securing budget allocations will be critical in BMM Phase IV to sustain progress. The transition to BMM Phase IV presents an opportunity to reinforce sustainability measures, but risks remain if funding gaps and staffing disparities are not addressed. BMM Phase IV's lower budget and potentially stricter scope will make sustained investment and coordination even more critical.
+
+The table below briefly summarizes key findings along the summarized evaluation questions:
+
+|  Evaluation criteria and questions | Findings  |
+| --- | --- |
+|  Relevance  |   |
+|  Were IOM activities relevant to the needs of the countries and their stakeholders? | IOM activities under BMM Phase III were highly relevant as they addressed key migration challenges in the East and Horn of Africa, including irregular migration, human trafficking, weak migration governance, and limited protection mechanisms for vulnerable migrants. National stakeholders confirmed that IOM’s interventions aligned with country priorities and regional migration frameworks.  |
+|  Did IOM’s activities remain valid and pertinent as originally planned, or were they subsequently modified? | While IOM’s activities remained largely aligned with the original objectives, some modifications were made in response to emerging challenges. For instance, the conflict in Sudan necessitated a shift in focus toward strengthening border management in South Sudan, and national government priorities required adjustments, such as reallocating funding from the Migration Information and Data Analysis System (MIDAS) to an e-visa system in Djibouti.  |
+|  Coherence  |   |
+|  To what extent IOM activities were internally aligned with other efforts of IOM? | IOM demonstrated strong internal coherence by integrating BMM activities with other migration-related programs, enabling cost-sharing and cross-program collaboration. Examples include co-funding initiatives and the alignment of BMM with the Regional Migrant Response Plan to ensure consistency in migration governance efforts.  |

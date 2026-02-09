@@ -65,6 +65,231 @@
   "selected_headings": [
     "# 1. BACKGROUND ... page 9"
   ],
-  "mappings": {},
-  "timestamp": "2026-02-02T10:20:13.793758"
+  "mappings": {
+    "enbs": [
+      {
+        "theme_id": "1",
+        "theme_title": "Workforce",
+        "relevance_score": 0.38,
+        "reasoning": "The report mentions workforce considerations tangentially in the context of the AAP Coordination Unit's staffing (four team members) and notes that some key officers involved in AAP Framework development had moved to other roles, affecting evaluation participation. However, there is no substantive analysis of IOM's workforce planning, people management, professional development, workplace experience, security posture, or leadership capacity. The report's focus is on accountability to affected populations as a programmatic and institutional commitment, not on organizational workforce systems or human resource management. While staffing constraints are mentioned as a limitation, this does not constitute meaningful evidence on IOM's workforce organizational capacity. A synthesis specialist focused on workforce enablers would likely not prioritize this report."
+      },
+      {
+        "theme_id": "2",
+        "theme_title": "Partnership",
+        "relevance_score": 0.72,
+        "reasoning": "This report would likely contribute relevant evidence to a synthesis on Enabler 2 (Partnership). The evaluation explicitly examines IOM's engagement with partner organizations\u2014including UN agencies, local NGOs, government entities, and civil society organizations\u2014as part of the AAP Framework implementation. The evaluation objectives specifically include 'external alignment with United Nations agencies, other organizations and governments' and 'partner coordination' appears as one of the five AAP Framework objectives. The methodology includes interviews with 'individuals from partner organizations' and 'IOM local partners from the case studies,' and the report discusses 'inter-agency AAP coordination spaces.' The case studies in Ethiopia and T\u00fcrkiye provide field-based examination of IOM's partnership approaches and coordination mechanisms. However, partnership is one of several themes covered (alongside information-sharing, participation, and complaints mechanisms); the report does not focus primarily on partnership development, equity, or organizational partnership capacity as distinct themes. The findings on partner coordination and inter-agency collaboration would add value to a synthesis, particularly the case study sections examining how IOM works with local and international partners on AAP implementation, though specialists would likely prioritize reports where partnership systems and capacity are the central focus."
+      },
+      {
+        "theme_id": "3",
+        "theme_title": "Funding",
+        "relevance_score": 0.15,
+        "reasoning": "This report has minimal relevance for a synthesis on Enabler 3 (Funding). While the evaluation mentions that IOM introduced the AAP Framework in 2020 and made it mandatory in 2021, there is no substantive analysis of IOM's funding mechanisms, resource mobilization, funding flexibility, or financial management systems. The report does not examine how funding structures support or constrain AAP implementation, nor does it address innovative financing, multi-year funding, or the relationship between funding and organizational capacity. Funding does not appear in the evaluation objectives, findings, conclusions, or recommendations. The report's focus is on accountability mechanisms and programmatic approaches to engaging affected populations\u2014distinct from organizational funding capacity. Recommend not reviewing this report for a synthesis on Enabler 3."
+      },
+      {
+        "theme_id": "4",
+        "theme_title": "Data and evidence",
+        "relevance_score": 0.68,
+        "reasoning": "This report would likely contribute relevant evidence to a synthesis on Enabler 4 (Data and Evidence). The evaluation explicitly examines IOM's data collection and monitoring systems related to AAP implementation. The report notes that 'The AAP Coordination Unit is tasked with monitoring AAP implementation within IOM. It coordinates data collection and consolidation for the assessment of these indicators' and that 'qualitative data collection was also being carried out to complement these quantitative indicators.' The evaluation methodology itself is grounded in mixed-methods data collection (desk reviews, KIIs, FGDs, surveys, case studies), and the report discusses how 'quantitative and qualitative data collected were analysed and presented against a definition of the four main areas of activity related to AAP.' The findings section likely contains analysis of how IOM collects, analyzes, and uses data to monitor and improve AAP implementation. However, data systems are not the primary focus of the evaluation\u2014they are discussed as a mechanism for tracking AAP progress rather than as an organizational capacity area in itself. The report would be valuable for understanding how IOM uses data for internal decision-making and monitoring of a specific institutional commitment, but specialists focused on broader data and evidence systems would likely find limited depth. The sections on data collection methodology and monitoring frameworks would warrant review."
+      },
+      {
+        "theme_id": "5",
+        "theme_title": "Learning and Innovation",
+        "relevance_score": 0.55,
+        "reasoning": "Some content in this report may have supplementary relevance for a synthesis on Enabler 5 (Learning and Innovation). The evaluation examines IOM's approach to AAP as an institutional innovation and commitment, and the report discusses how IOM has evolved its AAP approach through learning from pilot countries (T\u00fcrkiye was one of three pilot countries where AAP activities were tracked over three years). The report mentions that the AAP Coordination Unit engages in 'developing normative guidance, creating toolkits, conducting training sessions, providing technical support, disseminating information, managing knowledge and establishing an internal AAP community of practice'\u2014activities that relate to organizational learning and knowledge management. The case studies in Ethiopia and T\u00fcrkiye are described as identifying 'effective and ineffective practices' and 'lessons learned,' suggesting some focus on learning from implementation. However, learning and innovation are not analyzed as distinct organizational capacities; they appear as context when discussing AAP implementation mechanisms. The report does not substantively address IOM's broader innovation systems, technology adoption, collaboration with private sector or academic partners, or organizational learning infrastructure. A synthesis specialist focused on IOM's learning and innovation capacities might note the discussion of knowledge management activities and lessons learned from pilot countries, but would likely prioritize sources with more explicit focus on organizational learning systems and innovation capacity."
+      },
+      {
+        "theme_id": "6",
+        "theme_title": "Communication",
+        "relevance_score": 0.74,
+        "reasoning": "This report would likely contribute relevant evidence to a synthesis on Enabler 6 (Communication). The evaluation explicitly examines 'information-sharing and transparency' as one of the five AAP Framework objectives, and the report discusses IOM's commitment to 'provide information to affected people' as a main area of AAP activity. The evaluation methodology includes focus group discussions with 'representatives from affected people and from civil society organizations at the local level,' which would generate evidence on how IOM communicates with and provides information to affected populations. The case studies in Ethiopia and T\u00fcrkiye likely contain findings on IOM's communication practices with beneficiaries and stakeholders. The report notes that the AAP Framework includes activities related to 'information-sharing and transparency' and discusses how IOM disseminates information as part of its AAP coordination activities. However, communication is one of several AAP themes covered (alongside participation, complaints mechanisms, and partner coordination); the report does not focus primarily on IOM's broader communication strategy, internal communication systems, or narrative-shaping approaches. The findings on information provision to affected populations and transparency practices would add value to a synthesis, particularly sections examining how IOM communicates AAP commitments and information to beneficiaries, though specialists would likely prioritize reports where communication systems and organizational communication capacity are the central focus."
+      },
+      {
+        "theme_id": "7",
+        "theme_title": "Internal systems",
+        "relevance_score": 0.48,
+        "reasoning": "Some content in this report may have supplementary relevance for a synthesis on Enabler 7 (Internal Systems). The evaluation discusses IOM's organizational restructuring, noting that 'responsibility for AAP initially fell to the Department of Operations and Emergencies, which was recently restructured into the Department of Humanitarian Response and Recovery (DHRR)' and that 'responsibility for AAP was transferred to the Protection Division' in 2024. The report also mentions the AAP Framework becoming 'a mandatory instruction (IN/285) in 2021,' suggesting formalization of internal processes and procedures. The evaluation methodology section describes the mixed-methods approach and data management practices, and the report notes that the AAP Coordination Unit 'coordinates data collection and consolidation,' implying some internal systems for information management. However, internal systems are not analyzed as a distinct organizational capacity area; they appear only as context when discussing AAP institutional arrangements. The report does not substantively address digital technologies, digitized processes, compliance standards, risk management practices, security systems, or fraud prevention mechanisms. The limitations section mentions 'time constraints' and 'workload challenges' but does not analyze underlying internal system capacity. A synthesis specialist focused on IOM's internal systems and organizational infrastructure would find minimal substantive content; the brief mentions of organizational restructuring and mandatory instructions would not constitute meaningful evidence on internal systems capacity."
+      }
+    ],
+    "ccps": [
+      {
+        "theme_id": "1",
+        "theme_title": "Integrity, Transparency and Accountability",
+        "relevance_score": 0.78,
+        "reasoning": "This report would likely contribute meaningful evidence to a synthesis on Cross-cutting Priority 1 (Integrity, Transparency and Accountability). The evaluation explicitly examines IOM's Accountability to Affected Populations (AAP) framework, which is fundamentally rooted in transparency, accountability, and responsiveness to the people IOM serves. The report's primary focus is on 'taking account of, giving account to, and being held to account by the people humanitarian organisations seek to assist' (IASC definition cited in the report). Key institutional commitments evaluated include: information-sharing and transparency mechanisms; complaints and feedback mechanisms; and participation frameworks\u2014all core accountability infrastructure. The evaluation assesses IOM's progress on the 2019 MOPAN recommendations related to AAP and IASC commitments, directly examining accountability systems. Multiple findings likely address the functionality of feedback mechanisms, transparency in communication with affected populations, and the extent to which IOM is held accountable by communities. However, while accountability to affected populations is the central theme, the report does not appear to examine broader organizational integrity frameworks, ethical conduct systems, or internal accountability mechanisms with equal depth. For a synthesis specialist, the analysis of AAP implementation, feedback mechanisms, and community accountability would be particularly valuable, especially sections on 'complaints and feedback mechanisms' and findings on transparency in information-sharing. The report's examination of how IOM communicates results and takes corrective actions based on community input would directly inform understanding of IOM's accountability commitments, though the scope is primarily external accountability rather than comprehensive organizational integrity systems."
+      },
+      {
+        "theme_id": "2",
+        "theme_title": "Equality, Diversity & Inclusion",
+        "relevance_score": 0.58,
+        "reasoning": "Some content in this report may have supplementary relevance for a synthesis on Cross-cutting Priority 2 (Equality, Diversity & Inclusion). The evaluation methodology section explicitly notes that the evaluation 'incorporated an analysis of the cross-cutting themes of gender, disability, environment and human rights-based approaches, as they intersected with AAP within IOM.' This indicates that gender and disability inclusion were examined as dimensions of AAP implementation. The report mentions that the AAP Framework is grounded in strategic documents including the Gender Equality Policy (C/106/INF/8/REV.1), suggesting that gender considerations are embedded in the accountability approach. However, from the excerpts provided, there is limited substantive analysis of how IOM specifically addresses equality, diversity, and inclusion in its AAP work. The report does not appear to dedicate a primary section to examining gender mainstreaming, disability inclusion, or diversity in participation mechanisms\u2014these themes appear as contextual cross-cutting considerations rather than as primary evaluation foci. A synthesis specialist focused on IOM's EDI implementation would likely note the mention of gender and disability as cross-cutting themes and the reference to the Gender Equality Policy, but would probably prioritize sources with more dedicated analysis of inclusion barriers, participation of marginalized groups, and outcomes for diverse populations. The limited treatment suggests this report would be useful primarily if evidence on EDI in accountability contexts is scarce."
+      },
+      {
+        "theme_id": "3",
+        "theme_title": "Protection-centred",
+        "relevance_score": 0.81,
+        "reasoning": "This report would likely contribute relevant and substantial evidence to a synthesis on Cross-cutting Priority 3 (Protection-centred). The evaluation of IOM's AAP framework directly addresses protection-centred commitments, as AAP is fundamentally about placing affected populations at the centre of decision-making and protecting them from harm. The report explicitly examines: (1) participation of affected people in decision-making and program design; (2) complaints and feedback mechanisms, which are essential safeguarding infrastructure; (3) information-sharing and transparency, which enable informed participation and protection; and (4) inter-agency coordination on AAP, which relates to system-wide protection approaches. The evaluation's methodology notes incorporation of 'human rights-based approaches' as a cross-cutting theme intersecting with AAP, directly aligning with protection-centred principles. The AAP Framework itself is grounded in the Humanitarian Policy and references to preventing Sexual Exploitation and Abuse (PSEAH) appear in the footnotes, indicating that protection from harm is embedded in the accountability approach. The case studies in Ethiopia and T\u00fcrkiye likely provide field-level evidence on how protection-centred approaches are operationalized through AAP mechanisms. However, protection-centred approaches are examined primarily through the lens of accountability and participation rather than as a standalone protection framework\u2014the report does not appear to evaluate child safeguarding, PSEAH systems, or vulnerability-focused programming with equal depth. For a synthesis specialist, the findings on community participation in decision-making, feedback mechanisms for reporting concerns, and the integration of rights-based approaches would be particularly valuable. Key sections to review would include the findings on participation mechanisms and the case study analyses of how AAP is implemented in practice."
+      },
+      {
+        "theme_id": "4",
+        "theme_title": "Environmental Sustainability",
+        "relevance_score": 0.05,
+        "reasoning": "This report has minimal relevance for a synthesis on Cross-cutting Priority 4 (Environmental Sustainability). While the evaluation methodology mentions that 'cross-cutting themes of gender, disability, environment and human rights-based approaches' were incorporated into the analysis, there is no substantive discussion of environmental sustainability in the excerpts provided. The report's focus is entirely on Accountability to Affected Populations\u2014examining transparency, participation, feedback mechanisms, and community engagement. No findings, conclusions, or recommendations address environmental considerations, sustainability practices, green operations, or environmental governance. The single mention of 'environment' appears only as a methodological note that it was considered as a cross-cutting theme, but no actual analysis of environmental sustainability is evident in the report content. Recommend not reviewing this report for a synthesis on Cross-cutting Priority 4."
+      }
+    ],
+    "gcms": [
+      {
+        "theme_id": "1",
+        "theme_title": "Collect and utilize accurate and disaggregated data as a basis for evidence-based policies",
+        "relevance_score": 0.72,
+        "reasoning": "This report would likely contribute relevant evidence to a synthesis on GCM Objective 1. The evaluation explicitly examines data collection and monitoring of AAP implementation within IOM, with substantive discussion of quantitative and qualitative data collection methods, indicator development, and challenges in assessing progress. The methodology section details data sources and collection approaches (desk reviews, KIIs, FGDs, surveys, case studies), and the report discusses the AAP Coordination Unit's role in 'coordinating data collection and consolidation for the assessment of these indicators.' However, data collection is not the primary focus\u2014it serves as a methodological foundation for evaluating AAP strategy rather than examining migration data systems or evidence-based policy development more broadly. The report's analysis of data challenges (e.g., 'qualitative data collection was also being carried out to complement these quantitative indicators') and the mention of IASC working groups developing standard indicators touch on Action 1a and 1c, but these are secondary to the evaluation's main AAP assessment focus. A synthesis specialist on migration data systems would find the methodological discussion useful but would likely prioritize reports more directly focused on national data collection systems, migration statistics, or capacity-building for data."
+      },
+      {
+        "theme_id": "2",
+        "theme_title": "Minimize the adverse drivers and structural factors that compel people to leave their country of origin",
+        "relevance_score": 0.15,
+        "reasoning": "This report has minimal relevance for a synthesis on GCM Objective 2. The evaluation focuses on IOM's accountability to affected populations (AAP) strategy and implementation, not on addressing root causes of migration or sustainable development drivers. While the report mentions that IOM's AAP Framework is 'rooted in several key IOM strategic documents' including the Humanitarian Policy, there is no substantive analysis of poverty eradication, economic development, climate change adaptation, or other structural factors that compel migration. The report does not examine development programming, SDG implementation, or early warning systems for migration risks. Recommend not reviewing this report for a synthesis on GCM Objective 2."
+      },
+      {
+        "theme_id": "3",
+        "theme_title": "Provide accurate and timely information at all stages of migration",
+        "relevance_score": 0.68,
+        "reasoning": "This report would likely contribute relevant evidence to a synthesis on GCM Objective 3, particularly regarding information provision to affected populations. The AAP Framework explicitly includes 'information-sharing and transparency' as one of five key objectives, and the report discusses IOM's approach to 'provide information to affected people' as one of four main areas of AAP activity. The evaluation examines how IOM communicates with and provides information to affected populations, which aligns with Actions 3a-3e on information provision, accessibility, and awareness-raising. However, information provision is examined primarily through the lens of accountability and participation rather than as a standalone information system. The report does not deeply analyze specific information campaigns, website accessibility, pre-departure orientation programs, or multi-lingual information materials\u2014topics central to a comprehensive synthesis on GCM Objective 3. The findings section would likely contain relevant observations on information-sharing practices, but the report's primary focus on AAP strategy means information is one component among several. A synthesis specialist on information provision would find some useful content but would prioritize reports with more dedicated analysis of information systems and campaigns."
+      },
+      {
+        "theme_id": "4",
+        "theme_title": "Ensure that all migrants have proof of legal identity and adequate documentation",
+        "relevance_score": 0.12,
+        "reasoning": "This report has minimal relevance for a synthesis on GCM Objective 4. The evaluation does not address civil registry systems, travel documents, identity documentation, statelessness reduction, or consular documentation services. While the report mentions that IOM's AAP Framework is grounded in strategic documents including the Humanitarian Policy, there is no substantive discussion of documentation systems or identity verification. The focus is on accountability mechanisms and affected population engagement, not on documentation provision. Recommend not reviewing this report for a synthesis on GCM Objective 4."
+      },
+      {
+        "theme_id": "5",
+        "theme_title": "Enhance availability and flexibility of pathways for regular migration",
+        "relevance_score": 0.1,
+        "reasoning": "This report has minimal relevance for a synthesis on GCM Objective 5. The evaluation does not examine labour mobility agreements, visa pathways, skills matching, family reunification procedures, or other mechanisms to enhance regular migration pathways. The report's focus on accountability to affected populations does not extend to migration policy design or pathway development. Recommend not reviewing this report for a synthesis on GCM Objective 5."
+      },
+      {
+        "theme_id": "6",
+        "theme_title": "Facilitate fair and ethical recruitment and safeguard conditions that ensure decent work",
+        "relevance_score": 0.14,
+        "reasoning": "This report has minimal relevance for a synthesis on GCM Objective 6. While the evaluation mentions that IOM's AAP Framework is grounded in strategic documents including the Humanitarian Policy and references to protection, there is no substantive analysis of recruitment practices, labour rights, fair recruitment standards, or decent work conditions. The report does not examine recruitment agency regulation, worker protection mechanisms, or labour inspection. The focus is on accountability mechanisms and affected population engagement in humanitarian contexts, not on fair recruitment or labour standards. Recommend not reviewing this report for a synthesis on GCM Objective 6."
+      },
+      {
+        "theme_id": "7",
+        "theme_title": "Address and reduce vulnerabilities in migration",
+        "relevance_score": 0.74,
+        "reasoning": "This report would likely contribute relevant evidence to a synthesis on GCM Objective 7. The evaluation explicitly examines IOM's approach to addressing vulnerabilities through its AAP Framework, with substantive discussion of how IOM identifies and assists migrants in vulnerable situations. The report discusses 'migrants in a situation of vulnerability' as a key focus area and mentions that the AAP Framework incorporates cross-cutting themes including 'gender, disability, environment and human rights-based approaches.' The evaluation's examination of participation, feedback mechanisms, and protection-related activities relates to Actions 7a-7l on vulnerability identification, assistance, and protection. The case studies in Ethiopia and T\u00fcrkiye likely provide field-based evidence on vulnerability assessment and response. However, vulnerability reduction is examined primarily through the lens of accountability and participation rather than as a comprehensive vulnerability management system. The report does not deeply analyze specific vulnerability screening tools, protection protocols for trafficking victims, or specialized services for particular vulnerable groups. A synthesis specialist on vulnerability would find the discussion of AAP approaches to vulnerable populations useful, particularly the findings on how IOM identifies and engages vulnerable groups, but would likely prioritize reports with more dedicated analysis of vulnerability assessment and response mechanisms."
+      },
+      {
+        "theme_id": "8",
+        "theme_title": "Save lives and establish coordinated international efforts on missing migrants",
+        "relevance_score": 0.11,
+        "reasoning": "This report has minimal relevance for a synthesis on GCM Objective 8. The evaluation does not address search and rescue operations, missing migrant data collection, family tracing mechanisms, or coordination on migrant deaths. While the report mentions humanitarian response and protection, there is no substantive discussion of life-saving measures or missing migrant coordination. Recommend not reviewing this report for a synthesis on GCM Objective 8."
+      },
+      {
+        "theme_id": "9",
+        "theme_title": "Strengthen the transnational response to smuggling of migrants",
+        "relevance_score": 0.13,
+        "reasoning": "This report has minimal relevance for a synthesis on GCM Objective 9. The evaluation does not examine smuggling networks, counter-smuggling cooperation, or law enforcement responses to migrant smuggling. While the report mentions that IOM's AAP Framework addresses protection and assistance to migrants, there is no substantive analysis of smuggling prevention or transnational cooperation on smuggling. Recommend not reviewing this report for a synthesis on GCM Objective 9."
+      },
+      {
+        "theme_id": "10",
+        "theme_title": "Prevent, combat and eradicate trafficking in persons in the context of international migration",
+        "relevance_score": 0.16,
+        "reasoning": "This report has minimal relevance for a synthesis on GCM Objective 10. While the evaluation mentions that IOM's AAP Framework is grounded in strategic documents including the 'Policy and Procedures for Preventing and Responding to Sexual Exploitation and Abuse (IN/234),' there is no substantive analysis of trafficking prevention, victim identification, prosecution of traffickers, or trafficking-specific protection and assistance. The report does not examine trafficking networks, financial flows, or victim recovery programs. The focus is on accountability mechanisms and affected population engagement, not on trafficking prevention and response. Recommend not reviewing this report for a synthesis on GCM Objective 10."
+      },
+      {
+        "theme_id": "11",
+        "theme_title": "Manage borders in an integrated, secure and coordinated manner",
+        "relevance_score": 0.19,
+        "reasoning": "This report has limited relevance for a synthesis on GCM Objective 11. While the evaluation mentions that IOM operates in both emergency and non-emergency situations and references border-related contexts (particularly in the T\u00fcrkiye case study, which involves 'cross-border operations with Syria'), there is no substantive analysis of border management procedures, screening mechanisms, or integrated border coordination. The report's focus on accountability to affected populations does not extend to border management systems or procedures. Some marginal content may exist regarding how IOM engages affected populations at borders, but this would be peripheral to a comprehensive synthesis on border management. A synthesis specialist on border management would likely skip this report."
+      },
+      {
+        "theme_id": "12",
+        "theme_title": "Strengthen certainty and predictability in migration procedures for appropriate screening, assessment and referral",
+        "relevance_score": 0.65,
+        "reasoning": "This report appears to have supplementary relevance for a synthesis on GCM Objective 12, with some content potentially useful depending on evidence availability. The evaluation examines IOM's approach to screening, assessment, and referral of vulnerable migrants through its AAP Framework, particularly regarding 'identification and assistance' of migrants in vulnerable situations. The report discusses how IOM identifies vulnerable populations and establishes referral mechanisms, which relates to Actions 12c-12e on referral mechanisms and individual assessments. The case studies likely provide field-based evidence on screening and referral procedures. However, procedural certainty and predictability are not primary focuses\u2014the report emphasizes accountability and participation rather than standardization of procedures. The analysis of screening and referral appears limited to how these processes engage affected populations rather than examining the procedures themselves. A synthesis specialist on migration procedures would find the discussion of IOM's identification and referral approaches marginally useful but would likely prioritize reports with more dedicated analysis of procedural frameworks and standardization."
+      },
+      {
+        "theme_id": "13",
+        "theme_title": "Use immigration detention only as a measure of last resort and work towards alternatives",
+        "relevance_score": 0.18,
+        "reasoning": "This report has minimal relevance for a synthesis on GCM Objective 13. While the evaluation mentions that IOM's AAP Framework is grounded in protection-related strategic documents, there is no substantive analysis of detention practices, alternatives to detention, detention monitoring, or detention conditions. The report does not examine detention facilities, legal safeguards for detainees, or community-based alternatives. Recommend not reviewing this report for a synthesis on GCM Objective 13."
+      },
+      {
+        "theme_id": "14",
+        "theme_title": "Enhance consular protection, assistance and cooperation throughout the migration cycle",
+        "relevance_score": 0.17,
+        "reasoning": "This report has minimal relevance for a synthesis on GCM Objective 14. The evaluation does not examine consular services, consular cooperation agreements, or consular assistance to nationals abroad. While the report mentions that IOM operates in various contexts and engages with government partners, there is no substantive discussion of consular protection or assistance mechanisms. Recommend not reviewing this report for a synthesis on GCM Objective 14."
+      },
+      {
+        "theme_id": "15",
+        "theme_title": "Provide access to basic services for migrants",
+        "relevance_score": 0.62,
+        "reasoning": "This report appears to have supplementary relevance for a synthesis on GCM Objective 15, with limited but potentially useful content. The evaluation examines IOM's approach to ensuring affected populations have access to information and services through its AAP Framework. The report discusses how IOM provides 'information to affected people' and establishes 'feedback mechanisms to improve programming,' which relates to ensuring migrants can access and benefit from services. The case studies likely provide field-based evidence on service access and provision. However, basic services provision is not a primary focus\u2014the report emphasizes accountability and participation rather than service delivery systems. The analysis appears limited to how IOM engages affected populations regarding services rather than examining service provision comprehensively. A synthesis specialist on basic services would find the discussion of IOM's engagement with affected populations on service access marginally useful but would likely prioritize reports with more dedicated analysis of service delivery, health care, education, and other basic services."
+      },
+      {
+        "theme_id": "16",
+        "theme_title": "Empower migrants and societies to realize full inclusion and social cohesion",
+        "relevance_score": 0.7,
+        "reasoning": "This report would likely contribute relevant evidence to a synthesis on GCM Objective 16. The evaluation explicitly examines IOM's approach to empowering affected populations and promoting inclusion through its AAP Framework, with substantive discussion of 'participation' as a core objective. The report discusses how IOM 'encourage[s] and enhance[s] participation from affected people' and engages communities in decision-making, which relates to Actions 16a-16i on promoting inclusion, social cohesion, and community participation. The evaluation's focus on affected population engagement, feedback mechanisms, and community-based approaches aligns with empowerment and inclusion themes. The case studies likely provide field-based evidence on community participation and social cohesion initiatives. However, inclusion and social cohesion are examined primarily through the lens of accountability and participation in humanitarian programming rather than broader integration policies or social cohesion strategies. The report does not deeply analyze integration programs, employment integration, education access, or cultural integration activities. A synthesis specialist on inclusion and social cohesion would find the discussion of community participation and affected population engagement useful, particularly regarding how IOM empowers communities, but would likely prioritize reports with more comprehensive analysis of integration policies and social cohesion programming."
+      },
+      {
+        "theme_id": "17",
+        "theme_title": "Eliminate all forms of discrimination and promote evidence-based public discourse to shape perceptions of migration",
+        "relevance_score": 0.2,
+        "reasoning": "This report has minimal relevance for a synthesis on GCM Objective 17. While the evaluation mentions that the AAP Framework incorporates cross-cutting themes including 'gender, disability, environment and human rights-based approaches,' there is no substantive analysis of discrimination prevention, hate crime legislation, media reporting on migration, or public discourse shaping. The report does not examine xenophobia, racism, or evidence-based communication campaigns. Recommend not reviewing this report for a synthesis on GCM Objective 17."
+      },
+      {
+        "theme_id": "18",
+        "theme_title": "Invest in skills development and facilitate mutual recognition of skills, qualifications and competences",
+        "relevance_score": 0.11,
+        "reasoning": "This report has minimal relevance for a synthesis on GCM Objective 18. The evaluation does not address skills development, skills recognition, qualifications frameworks, or mutual recognition agreements. While the report mentions that IOM operates in various contexts, there is no substantive discussion of skills development or recognition mechanisms. Recommend not reviewing this report for a synthesis on GCM Objective 18."
+      },
+      {
+        "theme_id": "19",
+        "theme_title": "Create conditions for migrants and diasporas to fully contribute to sustainable development in all countries",
+        "relevance_score": 0.24,
+        "reasoning": "This report has minimal relevance for a synthesis on GCM Objective 19. While the evaluation mentions that IOM's AAP Framework is grounded in strategic documents and references the 2030 Agenda, there is no substantive analysis of migrant contributions to sustainable development, diaspora engagement, or development integration. The report does not examine diaspora offices, diaspora investments, knowledge transfer, or sustainable development outcomes. The focus is on accountability mechanisms in humanitarian contexts, not on development contributions. Recommend not reviewing this report for a synthesis on GCM Objective 19."
+      },
+      {
+        "theme_id": "20",
+        "theme_title": "Promote faster, safer and cheaper transfer of remittances and foster financial inclusion of migrants",
+        "relevance_score": 0.09,
+        "reasoning": "This report has minimal relevance for a synthesis on GCM Objective 20. The evaluation does not address remittance transfer systems, remittance costs, financial inclusion, or banking services for migrants. Recommend not reviewing this report for a synthesis on GCM Objective 20."
+      },
+      {
+        "theme_id": "21",
+        "theme_title": "Cooperate in facilitating safe and dignified return and readmission, as well as sustainable reintegration",
+        "relevance_score": 0.22,
+        "reasoning": "This report has minimal relevance for a synthesis on GCM Objective 21. While the evaluation mentions that IOM operates in both emergency and non-emergency situations and references reintegration in the context of IOM's broader mandate, there is no substantive analysis of return and readmission procedures, reintegration programs, or sustainable reintegration support. The report does not examine return agreements, reintegration assistance, or community reintegration. Recommend not reviewing this report for a synthesis on GCM Objective 21."
+      },
+      {
+        "theme_id": "22",
+        "theme_title": "Establish mechanisms for the portability of social security entitlements and earned benefits",
+        "relevance_score": 0.08,
+        "reasoning": "This report has minimal relevance for a synthesis on GCM Objective 22. The evaluation does not address social security systems, portability of benefits, social protection agreements, or migrant welfare mechanisms. Recommend not reviewing this report for a synthesis on GCM Objective 22."
+      },
+      {
+        "theme_id": "23",
+        "theme_title": "Strengthen international cooperation and global partnerships for safe, orderly and regular migration",
+        "relevance_score": 0.76,
+        "reasoning": "This report would likely contribute relevant evidence to a synthesis on GCM Objective 23. The evaluation explicitly examines IOM's international cooperation and partnerships in implementing its AAP strategy, with substantive discussion of 'partner coordination' as one of five key AAP objectives. The report discusses how IOM 'participate[s] in inter-agency AAP coordination spaces' and coordinates with partners at global, regional, and national levels. The evaluation examines IOM's engagement with IASC, other UN agencies, governments, civil society, and local partners\u2014all central to Actions 23a-23e on international cooperation and partnerships. The case studies provide field-based evidence on partnership implementation in Ethiopia and T\u00fcrkiye. The report discusses how IOM coordinates AAP activities across organizational levels and with external stakeholders, which relates to strengthening partnerships for migration governance. However, international cooperation is examined primarily through the lens of AAP implementation rather than broader migration governance or development cooperation. The report does not deeply analyze bilateral agreements, capacity-building mechanisms, or tailored partnership frameworks for migration policy. A synthesis specialist on international cooperation would find the discussion of IOM's partnership approaches and inter-agency coordination useful, particularly regarding how organizations coordinate on accountability and affected population engagement, but would likely prioritize reports with more comprehensive analysis of bilateral agreements, capacity-building, and strategic partnerships."
+      }
+    ],
+    "outs": [
+      {
+        "theme_id": "3c42",
+        "theme_title": "Regional and international policy coordination mechanisms, including Intergovernmental Organizations (IGOs) and Inter-State Coordination Mechanisms (ISCMs) are supported to foster coherence, promote adherence to international conventions and protocols, and encourage more effective migration governance.",
+        "relevance_score": 0.28,
+        "reasoning": "This report has minimal relevance for a synthesis on Output 3c42 (regional and international policy coordination mechanisms for migration governance). The evaluation focuses on IOM's Accountability to Affected Populations (AAP) strategy\u2014examining how IOM engages with and responds to the populations it serves, including mechanisms for information-sharing, participation, feedback, and complaints. While the report briefly mentions IOM's engagement with IASC forums and inter-agency coordination spaces (as part of AAP activities), there is no substantive analysis of regional or international migration policy coordination mechanisms, IGOs, ISCMs, or migration governance frameworks. The report does not address policy coherence, adherence to international migration conventions, or government-level policy coordination on migration. The IASC coordination mentioned relates to humanitarian response coordination, not migration governance. Recommend not reviewing this report for a synthesis on Output 3c42."
+      },
+      {
+        "theme_id": "3c52",
+        "theme_title": "Governments, through the UN Network on Migration and, receive effective, coordinated and whole-of-system support to develop and implement migration policies and mainstream migration into related public policy domains, in line with the 2030 Agenda, the GCM and other relevant frameworks in humanitarian, environment and related fields.",
+        "relevance_score": 0.19,
+        "reasoning": "This report has minimal relevance for a synthesis on Output 3c52 (government support for migration policy development and mainstreaming across sectors). The evaluation examines IOM's AAP strategy and implementation, with no substantive focus on migration policy development, government policy support, or policy mainstreaming across humanitarian, environmental, or other public policy domains. While the report mentions IOM's humanitarian policy and strategic frameworks, these are referenced only as foundational documents for AAP implementation, not as evidence of policy coordination or government support mechanisms. There is no analysis of the UN Network on Migration, whole-of-system approaches to migration policy, or integration of migration into related policy domains. The report's scope is explicitly limited to AAP activities and mechanisms\u2014distinct from migration policy governance. Recommend not reviewing this report for a synthesis on Output 3c52."
+      }
+    ]
+  },
+  "timestamp": "2026-02-09T15:41:06.583701"
 }

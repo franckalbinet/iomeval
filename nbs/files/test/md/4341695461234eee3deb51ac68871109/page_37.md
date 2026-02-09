@@ -1,0 +1,17 @@
+"We have saved some amount because another project contributed to the activity as well, namely conference room renting. The savings have been shifted to another urgent, prioritized activity where we had less funding".41
+
+Three challenges regarding resources were highlighted42:
+
+- Firstly, the staffing differed among the programme countries. While in Kenya, Phase III was implemented by three dedicated specialists (one per component), the BMM in South Sudan was implemented by two project assistants, which created a high workload and complications in terms of decision-making (support and approval from the RO was necessary). Other IOM teams also mentioned that they needed to rely on staff from other projects or that the workload was quite high for them.
+- Secondly, while the resources aligned with the activities, the needs and volume of migrants vastly exceeded the scope of the programme. To support all vulnerable migrants, and address all their needs more holistically, vastly more resources would be needed.
+- Finally, interview partners both within and outside IOM referred to the inconsistencies related to Daily Subsistence Allowance rates and procedures across different implementing partners in each country (apart from Kenya where the UN has harmonised DSA rates with the Government of Kenya), leading to varying allowances for participants. This lack of standardization sometimes created confusion and dissatisfaction, particularly when some allowances were too low to cover actual costs, such as transportation, or were perceived as too high and distorting reasons for stakeholder engagement. Additionally, DSA disbursement procedures when relatively large sums of cash were withdrawn and distributed at conference venues were flagged as security and efficiency concern. This issue was addressed by providing DSA prior to and after temporary duty, ensuring a more secure and efficient disbursement process while minimizing risks associated with handling large amounts of cash on-site. Another measure that could be taken is providing reduced DSA by arranging accommodation and meals directly, which would further enhanced financial security and administrative efficiency.
+
+## 3.4.2. Efficiency of coordination and reporting ... page 37
+
+Effective coordination was a critical aspect of BMM Phase III, ensuring synergy between IOM's internal operations and its collaboration with external partners. While IOM maintained structured coordination mechanisms at both national and regional levels, challenges persisted for IOM in achieving a fully integrated approach across all implementing partners across different countries. Reporting processes were clear and well managed.
+
+In terms of internal coordination among IOM staff, activities under BMM Phase III were managed by IOM's Regional Office for the EHoA BMM management team, through a combination of structured meetings, online collaboration tools, and engagement with national offices. IOM held regular biweekly coordination meetings between the Regional Office and each country office to monitor programme activities and ensure alignment with the overarching objectives.43 These management and coordination efforts were led by the Senior and Deputy Regional Programme Managers, backed by a team based at IOM's Regional Office for East, Horn, and
+
+41 Interview with IOM staff
+42 Interviews with IOM staff
+43 For instance, a planning workshop in May 2023 brought together regional and national offices to share insights and address coordination challenges.
