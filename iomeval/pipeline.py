@@ -199,18 +199,18 @@ async def ocr(self:Report,
               add_img_desc:bool=True,  # Whether to add image descriptions
               force:bool=False,        # Force re-OCR
               progress:bool=False,     # Show OCR progress messages
-              **kwargs                 # Additional args passed to pdf_to_md
+              fix_kwargs:dict=None,    # Extra kwargs for fix_hdgs
+              desc_kwargs:dict=None    # Extra kwargs for add_img_descs
              ) -> Report:              # Self for chaining
     "Run OCR on PDF and fix heading hierarchy"
     if self.md_path and not force: return self
     if self.pdf_path is None: raise ValueError("Call download() first")
     if self.pdf_url: pdf_file = self.pdf_path/Path(self.pdf_url).name
     else: pdf_file = first(self.pdf_path.glob('*.pdf'))
-    await pdf_to_md(pdf_file, Path(dst)/self.id, add_img_desc=add_img_desc, progress=progress, **kwargs)
+    await pdf_to_md(pdf_file, Path(dst)/self.id, add_img_desc=add_img_desc, progress=progress, fix_kwargs=fix_kwargs, desc_kwargs=desc_kwargs)
     self.md_path = Path(dst)/self.id
     self.save(self.results_path)
     return self
-
 
 # %% ../nbs/07_pipeline.ipynb #f90d9203
 @patch
@@ -337,7 +337,9 @@ async def run_pipeline(evals:list,                  # List of `Evaluation` objec
                        id:str=None,                 # Evaluation ID
                        title:str=None,              # Evaluation title
                        base_path:str='data',        # Base directory (contains pdf/, md/, results/)
-                       ocr_kwargs:dict=None,        # Additional arguments passed to ocr
+                       add_img_desc:bool=True,      # Whether to add image descriptions during OCR
+                       fix_kwargs:dict=None,        # Extra kwargs for fix_hdgs in OCR
+                       desc_kwargs:dict=None,       # Extra kwargs for add_img_descs in OCR
                        force:bool|set=False,        # Force re-run: True for all, or set of step names
                        delete_pdf:bool=True,        # Delete PDF after OCR
                        verbose:bool=False,          # Print progress messages
@@ -363,8 +365,13 @@ async def run_pipeline(evals:list,                  # List of `Evaluation` objec
                 log("Downloading PDF...")
                 report.download(dst=pdf_dst, force=should_force(force, 'download'))
             log("Running OCR...")
-            await report.ocr(dst=md_dst, force=should_force(force, 'ocr'), progress=verbose, **(ocr_kwargs or {}))
-
+            await report.ocr(
+                dst=md_dst, 
+                add_img_desc=add_img_desc, 
+                force=should_force(force, 'ocr'), 
+                progress=verbose, 
+                fix_kwargs=fix_kwargs, 
+                desc_kwargs=desc_kwargs)
 
         if delete_pdf and report.pdf_path:
             shutil.rmtree(report.pdf_path)
@@ -389,6 +396,7 @@ async def run_pipeline(evals:list,                  # List of `Evaluation` objec
         step = _get_current_step(report)
         return PipelineResult(report, 'failed', error=str(e), step=step)
 
+
 # %% ../nbs/07_pipeline.ipynb #8e0a0ac9
 def get_report_urls():
     "Get all report URLs from IOM Evaluation API"
@@ -405,7 +413,7 @@ def get_eval_report_url(
     ): # Report URL
     "Get report URL from evaluation"
     for d in r.docs:
-        if d['url'] in report_urls:
+        if d['url'] in report_urls: 
             return d['url']
     return None
 
@@ -457,6 +465,9 @@ async def batch_run(
     force:bool|set=False,         # Force re-run: True for all, or set of step names
     stop_after:int=None,          # Stop after processing N reports (not yet implemented)
     delete_pdf:bool=False,        # Delete PDFs after OCR to save space
+    add_img_desc:bool=True,       # Whether to add image descriptions during OCR
+    fix_kwargs:dict=None,         # Extra kwargs for fix_hdgs in OCR
+    desc_kwargs:dict=None,        # Extra kwargs for add_img_descs in OCR
     **kwargs                      # Additional arguments passed to run_pipeline function
 ) -> BatchResult:                 # Contains completed, awaiting_curation, failed, skipped lists
     "Run pipeline on a batch of reports"
@@ -478,7 +489,8 @@ async def batch_run(
             result.failed.append({'id': ev.id, 'step': 'url_lookup', 'error': 'Report URL not found'})
             continue
         
-        pr = await run_pipeline(evals, url=url, base_path=base_path, force=force, delete_pdf=delete_pdf, **kwargs)
+        pr = await run_pipeline(evals, url=url, base_path=base_path, force=force, delete_pdf=delete_pdf,
+                                add_img_desc=add_img_desc, fix_kwargs=fix_kwargs, desc_kwargs=desc_kwargs, **kwargs)
         logger.info(f"{ev.id[:8]}... {pr.status}")
         
         if pr.status == 'completed': result.completed.append(ev.id)
@@ -489,3 +501,4 @@ async def batch_run(
     save_path = Path(base_path)/'batch_runs'/f'{timestamp}.json'
     result.save(save_path)
     return result
+

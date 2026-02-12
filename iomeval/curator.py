@@ -70,7 +70,7 @@ status_colors = dict(pending='amber', headings_reviewed='blue', sections_selecte
 # %% ../nbs/06_curator.ipynb #9dda5bbe
 def ReportCard(r:Report, selected:bool=False, status:str='all'):
     title = r.ev.meta.get('Title', 'Untitled')
-    title_short = title[:50] + '...' if len(title) > 50 else title
+    title_short = title[:40] + '...' if len(title) > 40 else title
     year = r.ev.meta.get('Year', 'n/a')
     status_cls = {
         'pending': 'bg-red-500 text-white',
@@ -105,7 +105,7 @@ def ReportList(reports, selected_id=None, status='all', oob=False):
     return Div(
         *[ReportCard(r, selected=(r.id == selected_id), status=status) for r in reports],
         id='report-list',
-        cls='overflow-y-auto max-h-[80vh]',
+        cls='overflow-y-auto max-h-[80vh] p-3',
         hx_swap_oob='true' if oob else None
     )
 
@@ -214,7 +214,7 @@ def ProgressBar(reports, oob=False):
 def StatusFilter(current='all'):
     statuses = [('all', 'All'), ('pending', 'Pending'), ('headings_reviewed', 'Reviewed'), ('sections_selected', 'Selected')]
     return TabContainer(*[
-        Li(A(label, hx_get=f'/filter?status={key}', hx_target='#report-list', hx_swap='innerHTML'),
+        Li(A(label, hx_get=f'/filter?status={key}', hx_target='#report-list', hx_swap='outerHTML'),
            cls='uk-active' if key == current else '')
         for key, label in statuses
     ], alt=True, cls=TextT.sm)
@@ -256,8 +256,6 @@ def get(id:str, status:str='all'):
     editor = HeadingsEditor(r) if r.curation_status == 'pending' else SectionsSelector(r)
     
     return (
-        #Div(*[ReportCard(rp, selected=(rp.id == id), status=status) for rp in reports], 
-        #    id='report-list', hx_swap_oob='true'),
         ReportList(reports, selected_id=id, status=status, oob=True),
         editor
     )
@@ -325,7 +323,7 @@ async def post(id:str, req:Request):
     selected = [int(k.split('_')[1]) for k in form.keys() if k.startswith('hdg_')]
     headings = get_headings(r.md_path)
     selected_hdgs = [headings[i] for i in selected]
-    print(selected_hdgs)
+    #print(selected_hdgs)
     
     tokens = count_selected_tokens(r, selected_hdgs)
 
