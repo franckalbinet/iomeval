@@ -1,3 +1,32 @@
 [build-system]
-requires = ["setuptools>=64.0"]
+requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "iomeval"
+dynamic = ["version"]
+description = "Streamline evaluation evidence mapping at scale with LLMs"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "Apache-2.0"}
+authors = [{name = "Franck Albinet", email = "franckalbinet@pm.me"}]
+keywords = ['nbdev', 'jupyter', 'notebook', 'python']
+classifiers = ["Natural Language :: English", "Intended Audience :: Developers", "Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3 :: Only"]
+dependencies = ['fastcore', 'pandas', 'lisette', 'pydantic', 'tiktoken', 'mistocr', 'python-dotenv', 'pycachy']
+
+[project.urls]
+Repository = "https://github.com/franckalbinet/iomeval"
+Documentation = "https://franckalbinet.github.io/iomeval"
+
+[project.entry-points.nbdev]
+iomeval = "iomeval._modidx:d"
+
+[tool.setuptools.dynamic]
+version = {attr = "iomeval.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["iomeval"]
+
+[tool.nbdev]
+custom_sidebar = true
+tst_flags = "notest"

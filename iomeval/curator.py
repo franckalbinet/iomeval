@@ -43,6 +43,7 @@ def get_reports(base_path=BASE_PATH, status=None):
     reports = [load_report(p.stem, base_path) for p in results_dir.glob('*.json')]
     if status and status != 'all':
         reports = [r for r in reports if r.curation_status == status]
+    reports.sort(key=lambda r: r.ev.meta.get('Year', '0'), reverse=True)
     return reports
 
 # %% ../nbs/06_curator.ipynb #64052a19
@@ -95,6 +96,7 @@ def ReportCard(r:Report, selected:bool=False, status:str='all'):
                 "Curate", 
                 hx_get=f'/report/{r.id}?status={status}', 
                 hx_target='#editor', 
+                hx_swap='innerHTML show:none',
                 cls='h-6 px-2 ' + TextT.xs + ButtonT.primary)
         ),
         cls=f'mb-2 {highlight}', body_cls='p-3'
@@ -106,7 +108,9 @@ def ReportList(reports, selected_id=None, status='all', oob=False):
         *[ReportCard(r, selected=(r.id == selected_id), status=status) for r in reports],
         id='report-list',
         cls='overflow-y-auto max-h-[80vh] p-3',
-        hx_swap_oob='true' if oob else None
+        #hx_swap_oob='true' if oob else None
+        hx_swap_oob='morph' if oob else None
+        #hx_swap_oob='true show:none' if oob else None
     )
 
 # %% ../nbs/06_curator.ipynb #6628a7c7
