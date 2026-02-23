@@ -25,6 +25,7 @@ import httpx
 import shutil
 import logging
 import traceback
+from html import unescape
 
 # %% ../nbs/07_pipeline.ipynb #047209cb
 logger = logging.getLogger(__name__)
@@ -399,25 +400,25 @@ async def run_pipeline(evals:list,                  # List of `Evaluation` objec
         return PipelineResult(report, 'failed', error=str(e), step=step)
 
 
-# %% ../nbs/07_pipeline.ipynb #8e0a0ac9
+# %% ../nbs/07_pipeline.ipynb #b216b221
 def get_report_urls():
-    "Get all report URLs from IOM Evaluation API"
+    "Get title->URL lookup dict from IOM Evaluation API"
     data = httpx.get('https://evaluation.iom.int/json/api/evaluation').json()
-    return {f"https://evaluation.iom.int{e['download_url']}" for e in data['Evaluations']}
+    return {unescape(d['evaluation_title']).replace('\xa0', ' ').strip():
+            f"https://evaluation.iom.int{d['download_url']}"
+            for d in data['Evaluations']}
 
 # %% ../nbs/07_pipeline.ipynb #2c212743
 report_urls = get_report_urls()
 
-# %% ../nbs/07_pipeline.ipynb #173a54be
+# %% ../nbs/07_pipeline.ipynb #2ba1c7f6
 def get_eval_report_url(
     r, # Evaluation
-    report_urls # Set of report URLs
-    ): # Report URL
-    "Get report URL from evaluation"
-    for d in r.docs:
-        if d['url'] in report_urls: 
-            return d['url']
-    return None
+    report_urls # title -> url lut
+    ):
+    "Get report URL from evaluation title lookup"
+    title = r.meta['Title'].replace('\xa0', ' ').strip()
+    return report_urls.get(title)
 
 # %% ../nbs/07_pipeline.ipynb #b002bb4c
 class BatchResult:
@@ -460,7 +461,7 @@ def is_completed(report):
 # %% ../nbs/07_pipeline.ipynb #9a36dbcc
 async def batch_run(
     evals,                        # List of Evaluation objects to process
-    report_urls,                  # Set of valid report URLs from IOM API
+    report_urls,                  # Title->URL lookup dict from IOM API
     base_path:str='../../data',   # Base directory (contains pdf/, md/, results/)
     year:str=None,                # Filter evaluations by year (e.g. '2023')
     ids:list=None,                # Filter evaluations by specific IDs
