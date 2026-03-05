@@ -153,3 +153,4 @@ checklink/cookies.txt
 # Quarto
 .quarto
 .ssekey
+data.tar.gz
