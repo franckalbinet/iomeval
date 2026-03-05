@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Load and format SRF, GCM, and cross-cutting priority data for LLM consumption">
+
+<title>Themes – iomeval</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-baedc78cbf92349237790bf011c153e8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Themes – iomeval">
+<meta property="og:description" content="Load and format SRF, GCM, and cross-cutting priority data for LLM consumption">
+<meta property="og:site_name" content="iomeval">
+<meta name="twitter:title" content="Themes – iomeval">
+<meta name="twitter:description" content="Load and format SRF, GCM, and cross-cutting priority data for LLM consumption">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">iomeval</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./core.html">API</a></li><li class="breadcrumb-item"><a href="./themes.html">Themes</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOMEval</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis/eval_metadata_eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOM Reports Exploration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">API</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./core.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Core</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./readers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Readers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./downloaders.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Downloaders</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./extract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extract</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./themes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Themes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mapper.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapper</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./curator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curator</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#load_thm" id="toc-load_thm" class="nav-link active" data-scroll-target="#load_thm">load_thm</a></li>
+  <li><a href="#srf-formatting" id="toc-srf-formatting" class="nav-link" data-scroll-target="#srf-formatting">SRF Formatting</a>
+  <ul class="collapse">
+  <li><a href="#fmt_enb_ccp" id="toc-fmt_enb_ccp" class="nav-link" data-scroll-target="#fmt_enb_ccp">fmt_enb_ccp</a></li>
+  <li><a href="#get_srf_out" id="toc-get_srf_out" class="nav-link" data-scroll-target="#get_srf_out">get_srf_out</a></li>
+  <li><a href="#fmt_srf_out" id="toc-fmt_srf_out" class="nav-link" data-scroll-target="#fmt_srf_out">fmt_srf_out</a></li>
+  <li><a href="#fmt_srf_outs" id="toc-fmt_srf_outs" class="nav-link" data-scroll-target="#fmt_srf_outs">fmt_srf_outs</a></li>
+  </ul></li>
+  <li><a href="#gcm-functions" id="toc-gcm-functions" class="nav-link" data-scroll-target="#gcm-functions">GCM Functions</a>
+  <ul class="collapse">
+  <li><a href="#get_srf_outs" id="toc-get_srf_outs" class="nav-link" data-scroll-target="#get_srf_outs">get_srf_outs</a></li>
+  </ul></li>
+  <li><a href="#convenience-functions" id="toc-convenience-functions" class="nav-link" data-scroll-target="#convenience-functions">Convenience Functions</a>
+  <ul class="collapse">
+  <li><a href="#load_all_thms" id="toc-load_all_thms" class="nav-link" data-scroll-target="#load_all_thms">load_all_thms</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="themes.html.md"><i class="bi bi-file-code"></i>CommonMark</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./core.html">API</a></li><li class="breadcrumb-item"><a href="./themes.html">Themes</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Themes</h1>
+</div>
+
+<div>
+  <div class="description">
+    Load and format SRF, GCM, and cross-cutting priority data for LLM consumption
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/themes.py#L15" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="load_thm" class="level3">
+<h3 class="anchored" data-anchor-id="load_thm">load_thm</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_thm(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    fname:<span class="bu">str</span>, <span class="co"># Filename to load</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    path:<span class="bu">str</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Directory containing theme files</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    md:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># Return raw text instead of JSON?</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span><span class="bu">dict</span> <span class="op">|</span> <span class="bu">str</span>: <span class="co"># Theme data as dict or raw text</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Load theme file from <code>path</code> (JSON by default, or raw text if <code>md=True</code>)</em></p>
+<div id="6ee482c4" class="cell">
+<details open="" class="code-fold">
+<summary>Exported source</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>load_enbs <span class="op">=</span> partial(load_thm, <span class="st">'srf_enablers.json'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>load_ccps <span class="op">=</span> partial(load_thm, <span class="st">'crosscutting_priorities.json'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>load_srf_outs <span class="op">=</span> partial(load_thm, <span class="st">'srf_objectives.json'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>load_gcms <span class="op">=</span> partial(load_thm, <span class="st">'gcms_long.md'</span>, md<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>load_gcms_lut <span class="op">=</span> partial(load_thm, <span class="st">'gcm_to_srf_outputs.json'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>For instance, to get:</p>
+<ul>
+<li><a href="https://srf.iom.int/oee">IOM Strategic Results Framework (SRF) Enablers</a></li>
+</ul>
+<div id="a9517ba5" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> load_enbs()[<span class="dv">0</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>{k: v <span class="cf">for</span> k, v <span class="kw">in</span> e.items() <span class="cf">if</span> k <span class="op">!=</span> <span class="st">'indicators'</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>{'id': '1',
+ 'title': 'Workforce',
+ 'description': 'IOM’s diverse and capable people are our most valued asset. Through investing in better workforce planning and people management, we will facilitate their professional development and improve their daily workplace experience. IOM will have flexible systems and procedures in place to ensure it can adapt to the future of work while ensuring the safety, security and well-being of its staff. IOM will strengthen its security posture and foster an inclusive and enabling work environment. Our leadership will have the ability to connect, motivate and inspire a sense of our shared vision and values.'}</code></pre>
+</div>
+</div>
+<ul>
+<li><a href="https://srf.iom.int/ccp">SRF Cross-Cutting Priorities</a></li>
+</ul>
+<div id="24168d7c" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> load_ccps()[<span class="dv">0</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>{k: v <span class="cf">for</span> k, v <span class="kw">in</span> e.items() <span class="cf">if</span> k <span class="op">!=</span> <span class="st">'indicators'</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>{'id': '1',
+ 'title': 'Integrity, Transparency and Accountability',
+ 'description': 'Our leadership will oversee an organizational culture and internal systems that promote integrity, accountability and transparency. We will measure our progress against clearly defined goals and objectives, which will improve the visibility of our results for Member States and the people we serve. IOM will facilitate transparent discussions about our results and take corrective actions where necessary. We continue to strengthen our response to ethical challenges faced by our workforce and the individuals and communities with which we work.'}</code></pre>
+</div>
+</div>
+<ul>
+<li><a href="https://srf.iom.int/objectives">SRF Outputs</a> nested under SRF Objectives, Long- and Short-Term Outcomes</li>
+</ul>
+<div id="9e020a60" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>o <span class="op">=</span> load_srf_outs()[<span class="dv">0</span>]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>{k: v <span class="cf">for</span> k, v <span class="kw">in</span> o.items()}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>{'id': '1',
+ 'title': 'Saving lives and protecting people on the move.',
+ 'long_term_outcomes': [{'id': '1a',
+   'title': 'Human suffering is alleviated while the dignity and rights of people affected by crises are upheld.',
+   'short_term_outcomes': [{'id': '1a1',
+     'title': 'Crisis-affected populations have their basic needs met and have minimum living conditions with reduced barriers to access for marginalized and vulnerable individuals.',
+     'outputs': [{'id': '1a11',
+       'title': 'Crisis-affected populations in-need receive dignified shelter and settlement support.'},
+      {'id': '1a12',
+       'title': 'Government and local actors have resources, skills and tools to ensure assistance is delivered in an equitable manner, without barriers based on ethnicity, religion, gender, ability, migration status or other factors.'},
+      {'id': '1a13',
+       'title': 'Crisis-affected populations have access to cash and market-based interventions, whenever appropriate.'},
+      {'id': '1a14',
+       'title': 'Crisis-affected populations receive quality, comprehensive WASH programming at scale, ensuring the human right to water and sanitation and empowering them to meet their needs.'},
+      {'id': '1a15',
+       'title': 'Crisis-affected populations receive quality health and mental health and psychosocial support (MHPSS) services in a timely manner.'},
+      {'id': '1a16',
+       'title': 'Crisis-affected populations in-need receive movement assistance.'},
+      {'id': '1a17',
+       'title': 'Crisis-affected populations in camps and camp-like settings have equitable access to assistance, protection, and services in displacement sites, [to improve their quality of life and dignity during displacement while seeking and advocating for durable solutions.]'},
+      {'id': '1a18',
+       'title': 'Health service providers and systems have the knowledge, skills and resources to continue to provide essential health services in crisis-affected settings.'},
+      {'id': '1a19',
+       'title': 'Victims of human rights violations in the context of reparations and restitution mechanisms have improved living conditions and wellbeing.'}]},
+    {'id': '1a2',
+     'title': 'Humanitarian assistance is provided in a manner that actively contributes to immediate and longer-term needs of affected populations.',
+     'outputs': [{'id': '1a21',
+       'title': 'Humanitarian actors at all levels have knowledge and tools to formulate interventions that address both the immediate and longer-term needs of affected populations, including climate-sensitive considerations.'},
+      {'id': '1a22',
+       'title': 'Local stakeholders have capacity to actively contribute to the immediate and longer-term response.'}]},
+    {'id': '1a3',
+     'title': 'Decision makers and responders responsibly use data and its analysis to inform the delivery of assistance to crisis-affected populations.',
+     'outputs': [{'id': '1a31',
+       'title': 'Guidelines on data and information collection, sharing and management are in place that adhere to data protection standards, principles of confidentiality and a defined purpose, to protect the individuals and groups providing information from harm.'},
+      {'id': '1a32',
+       'title': 'Robust data on mobility and displacement is available, disaggregated by age, sex and disability using appropriate methodologies.'}]}]},
+  {'id': '1b',
+   'title': 'Threats and vulnerabilities are reduced or mitigated through humanitarian protection.',
+   'short_term_outcomes': [{'id': '1b1',
+     'title': 'Governments and humanitarian actors work with crisis-affected populations to identify and respond to their vulnerabilities and needs.',
+     'outputs': [{'id': '1b11',
+       'title': 'Governments and humanitarian actors have improved access to timely disaggregated data on the specific vulnerabilities and needs of all crisis-affected populations to inform evidence-based response.'},
+      {'id': '1b12',
+       'title': 'Crisis-affected populations participate in decision-making for the design, planning and implementation of humanitarian programming.'}]},
+    {'id': '1b2',
+     'title': 'Governments and humanitarian actors at all levels design and implement activities that reduce risks and threats associated with humanitarian crises.',
+     'outputs': [{'id': '1b21',
+       'title': 'Governments and humanitarian actors have knowledge, capacity and tools to effectively mainstream and implement protection in a way that upholds rights and dignity of crisis affected populations, including gender, age and disability related risks across all sectors of humanitarian response.'},
+      {'id': '1b22',
+       'title': 'Local actors are trained on how to address the protection needs of the most vulnerable.'},
+      {'id': '1b23',
+       'title': 'Appropriate and safe to access feedback and complaint mechanisms are established.'},
+      {'id': '1b24',
+       'title': 'Immigration and border authorities are trained on gender- and protection-sensitive humanitarian border management to address vulnerabilities and protection needs in crisis affected situations.'}]},
+    {'id': '1b3',
+     'title': 'Governments and humanitarian actors ensure that vulnerable groups who face exacerbated protection risks and threats have meaningful access to humanitarian protection.',
+     'outputs': [{'id': '1b31',
+       'title': 'Vulnerable groups and persons at risk in a humanitarian context receive quality health care services that respond to their needs.'},
+      {'id': '1b32',
+       'title': 'Governments and humanitarian actors have strengthened protection referral pathways to promote and facilitate access to humanitarian services and assistance.'},
+      {'id': '1b33',
+       'title': 'Vulnerable and at-risk persons are protected through their sustained and meaningful participation within humanitarian protection.'}]}]},
+  {'id': '1c',
+   'title': 'The quality of humanitarian assistance and response is enhanced',
+   'short_term_outcomes': [{'id': '1c1',
+     'title': 'Humanitarian actors have robust systems in place to effectively support operations and cope with operational needs.',
+     'outputs': [{'id': '1c11',
+       'title': 'Mechanisms for the procurement and movement of quality and cost-effective supplies are established and maintained.'}]},
+    {'id': '1c2',
+     'title': 'The quality of interagency coordination is enhanced, including IOM Cluster leadership, partnership and participation.',
+     'outputs': [{'id': '1c21',
+       'title': 'Humanitarian coordination mechanisms are established and strengthened to ensure the efficiency and effectiveness of humanitarian response.'},
+      {'id': '1c22',
+       'title': 'Humanitarian actors have knowledge, capacity, and resources to engage in the IASC system and multi-agency joint initiatives to ensure a holistic response to multifaceted impact of crisis.'},
+      {'id': '1c23',
+       'title': 'Humanitarian actors are supported to ensure that affected populations and local actors, especially marginalized groups, are fully consulted and can actively participate in humanitarian response.'}]}]}]}</code></pre>
+</div>
+</div>
+<ul>
+<li><a href="https://www.un.org/en/development/desa/population/migration/generalassembly/docs/globalcompact/A_RES_73_195.pdf">Global Compact for Migration (GCM) UN General Assembly Resolution</a></li>
+</ul>
+<div id="87772935" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(load_gcms()[:<span class="dv">1000</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Objective 1
+## Title: Collect and utilize accurate and disaggregated data as a basis for evidence-based policies
+## Associated actions
+- a. Elaborate and implement a comprehensive strategy for improving migration data at local, national, regional and global levels, with the participation of all relevant stakeholders, under the guidance of the United Nations Statistical Commission, by harmonizing methodologies for data collection, and strengthening analysis and dissemination of migration-related data and indicators.
+- b. Improve international comparability and compatibility of migration statistics and national data systems,including by further developing and applying the statistical definition of an international migrant, elaborating a set of standards to measure migrant stocks and flows, and documenting migration patterns and trends, characteristics of migrants,as well as drivers and impacts of migration.
+- c. Develop a global programme to build and enhance national capacities in dat</code></pre>
+</div>
+</div>
+<ul>
+<li>Lookup table relating GCM Objectives to SRF Outputs. For instance, given a particular GCM Objective:</li>
+</ul>
+<div id="698332e5" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>load_gcms_lut()[<span class="st">'1'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>['1a31',
+ '1a32',
+ '1b11',
+ '3b31',
+ '3c13',
+ '3c21',
+ '3c22',
+ '3c31',
+ '3c32',
+ '3c41',
+ '3c43',
+ '3d11']</code></pre>
+</div>
+</div>
+</section>
+<section id="srf-formatting" class="level2">
+<h2 class="anchored" data-anchor-id="srf-formatting">SRF Formatting</h2>
+<p>Format SRF enablers, cross-cutting priorities, and outputs for LLM consumption with full hierarchical context. These functions produce markdown with headers and descriptions suitable for including in prompts.</p>
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/themes.py#L34" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="fmt_enb_ccp" class="level3">
+<h3 class="anchored" data-anchor-id="fmt_enb_ccp">fmt_enb_ccp</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fmt_enb_ccp(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    items:<span class="bu">list</span>, <span class="co"># List of enabler/CCP dicts with id, title, description</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    typ:<span class="bu">str</span>, <span class="co"># Type of item (enabler or CCP)</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span><span class="bu">str</span>: <span class="co"># Formatted theme</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Format enablers or cross-cutting priorities for LLM</em></p>
+<div id="a9e63c8b" class="cell">
+<details open="" class="code-fold">
+<summary>Exported source</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>fmt_enbs <span class="op">=</span> partial(fmt_enb_ccp, typ<span class="op">=</span><span class="st">'SRF Enabler'</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>fmt_ccps <span class="op">=</span> partial(fmt_enb_ccp, typ<span class="op">=</span><span class="st">'SRF Cross-Cutting Priority'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="75b79b07" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fmt_enbs(load_enbs()[:<span class="dv">1</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## Workforce
+**Type:** SRF Enabler
+**ID:** 1
+
+IOM’s diverse and capable people are our most valued asset. Through investing in better workforce planning and people management, we will facilitate their professional development and improve their daily workplace experience. IOM will have flexible systems and procedures in place to ensure it can adapt to the future of work while ensuring the safety, security and well-being of its staff. IOM will strengthen its security posture and foster an inclusive and enabling work environment. Our leadership will have the ability to connect, motivate and inspire a sense of our shared vision and values.</code></pre>
+</div>
+</div>
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/themes.py#L46" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="get_srf_out" class="level3">
+<h3 class="anchored" data-anchor-id="get_srf_out">get_srf_out</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_srf_out(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    objectives:<span class="bu">list</span>, <span class="co"># SRF objectives structure</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    output_id:<span class="bu">str</span>, <span class="co"># Output ID to find</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span><span class="bu">dict</span> <span class="op">|</span> <span class="va">None</span>: <span class="co"># SRF Output of interest</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Retrieve single SRF output with hierarchy</em></p>
+<div id="ef98a879" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>srf_outs <span class="op">=</span> load_srf_outs()</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>out <span class="op">=</span> get_srf_out(srf_outs, <span class="st">'1a11'</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>out[<span class="st">'output'</span>][<span class="st">'title'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>'Crisis-affected populations in-need receive dignified shelter and settlement support.'</code></pre>
+</div>
+</div>
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/themes.py#L58" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="fmt_srf_out" class="level3">
+<h3 class="anchored" data-anchor-id="fmt_srf_out">fmt_srf_out</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fmt_srf_out(</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    output_ctx:<span class="bu">dict</span>, <span class="co"># Dict with obj, lt_out, st_out, and output fields</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span><span class="bu">str</span>: <span class="co"># Formatted SRF output</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Format SRF output with hierarchical context for LLM</em></p>
+<div id="0cab49e7" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fmt_srf_out(out))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## SRF Output 1a11: Crisis-affected populations in-need receive dignified shelter and settlement support.
+### Hierarchical Context
+**Objective 1**: Saving lives and protecting people on the move.
+**Long-term Outcome 1a:** Human suffering is alleviated while the dignity and rights of people affected by crises are upheld.
+**Short-term Outcome 1a1:** Crisis-affected populations have their basic needs met and have minimum living conditions with reduced barriers to access for marginalized and vulnerable individuals.</code></pre>
+</div>
+</div>
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/themes.py#L72" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="fmt_srf_outs" class="level3">
+<h3 class="anchored" data-anchor-id="fmt_srf_outs">fmt_srf_outs</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fmt_srf_outs(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    objectives:<span class="bu">list</span>, <span class="co"># SRF objectives structure</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    output_ids:<span class="bu">list</span>, <span class="co"># List of output IDs to format</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span><span class="bu">str</span>: <span class="co"># Multiple SRF outputs formatted</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Format multiple SRF outputs</em></p>
+<div id="b5178331" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fmt_srf_outs(srf_outs, [<span class="st">'1a11'</span>, <span class="st">'1a31'</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>## SRF Output 1a11: Crisis-affected populations in-need receive dignified shelter and settlement support.
+### Hierarchical Context
+**Objective 1**: Saving lives and protecting people on the move.
+**Long-term Outcome 1a:** Human suffering is alleviated while the dignity and rights of people affected by crises are upheld.
+**Short-term Outcome 1a1:** Crisis-affected populations have their basic needs met and have minimum living conditions with reduced barriers to access for marginalized and vulnerable individuals.
+
+## SRF Output 1a31: Guidelines on data and information collection, sharing and management are in place that adhere to data protection standards, principles of confidentiality and a defined purpose, to protect the individuals and groups providing information from harm.
+### Hierarchical Context
+**Objective 1**: Saving lives and protecting people on the move.
+**Long-term Outcome 1a:** Human suffering is alleviated while the dignity and rights of people affected by crises are upheld.
+**Short-term Outcome 1a3:** Decision makers and responders responsibly use data and its analysis to inform the delivery of assistance to crisis-affected populations.</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="gcm-functions" class="level2">
+<h2 class="anchored" data-anchor-id="gcm-functions">GCM Functions</h2>
+<p>Link Global Compact for Migration (GCM) objectives to SRF outputs. The lookup table maps GCM objective IDs to their corresponding SRF output IDs.</p>
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/themes.py#L80" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="get_srf_outs" class="level3">
+<h3 class="anchored" data-anchor-id="get_srf_outs">get_srf_outs</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_srf_outs(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    lut:<span class="bu">dict</span>, <span class="co"># GCM to SRF lookup dict</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    gcm_ids:<span class="bu">list</span>, <span class="co"># List of GCM IDs to filter by</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>L: <span class="co"># List of SRF output IDs</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Get SRF output IDs filtered by GCM IDs</em></p>
+<div id="e820ebb8" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>gcm_lut <span class="op">=</span> load_gcms_lut()</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>out_ids <span class="op">=</span> get_srf_outs(gcm_lut, [<span class="st">'1'</span>, <span class="st">'4'</span>])</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>out_ids[:<span class="dv">5</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>['1a31', '1a32', '1b11', '3b31', '3c13']</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="convenience-functions" class="level2">
+<h2 class="anchored" data-anchor-id="convenience-functions">Convenience Functions</h2>
+<p>Load all themes at once for quick setup.</p>
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/themes.py#L87" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="load_all_thms" class="level3">
+<h3 class="anchored" data-anchor-id="load_all_thms">load_all_thms</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_all_thms(</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    path:<span class="bu">str</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Directory containing theme JSON files</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>AttrDict: <span class="co"># Dict with enablers, ccp, gcms, srf_outs, gcm_lut</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Load all theme data from path</em></p>
+<div id="9bfbed46" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>all_themes <span class="op">=</span> load_all_thms()</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>all_themes.keys()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>dict_keys(['enbs', 'ccps', 'gcms', 'outs', 'gcm_lut'])</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/franckalbinet\.github\.io\/iomeval");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

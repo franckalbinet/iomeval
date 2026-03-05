@@ -1,0 +1,36 @@
+
+
+dedicated to AAP in IOM Headquarters, with the rest of the team
+consisting of five consultants (funded by the USAID Bureau for
+Humanitarian Assistance based on a project agreement).
+
+Finding 4.2. Training and learning resources made available by the AAP
+unit in IOM Headquarters function to increase awareness of AAP and
+capacity, but there is still unmet demand for learning, especially when
+it comes to resources and support for bridging theory and practice.
+
+Data collected for this evaluation clearly show that awareness and
+understanding of AAP concepts within IOM have increased since 2021.
+According to the evaluation survey, 56 per cent of respondents confirmed
+their awareness of AAP had grown since 2021, while 80 per cent reports
+very high to moderate improvement in their knowledge and technical
+capacity regarding APP over the same period (Figure 5).
+
+Informants generally recognized that this progress was, at least in
+part, due to the training initiatives led by the AAP unit in IOM
+Headquarters. Informants involved in the facilitation or design of these
+trainings perceived them as “popular” among IOM staff based on how the
+response of trainees and their participation was perceived (however,
+neither exact figures on attendance, nor pre-training and post-training
+assessments were reviewed as part of this evaluation). At the same time,
+several informants, especially those operating in country offices,
+mentioned that capacity gaps persisted and lamented an often
+“superficial” understanding of AAP principles and concepts among the
+“average” IOM staffer, due to lack of practical knowledge on how to
+implement AAP in actual operational settings and in a nonimprovisational
+manner. Informants interviewed for both the IOM Türkiye and the IOM
+Ethiopia case studies provided similar remarks on a gap between
+understanding AAP and ability to implement it.
+
+Figure 5. Perceived growth of capacity and awareness of IOM staff since
+the launch of IN/285 in 2021 ![](img-5.jpeg)

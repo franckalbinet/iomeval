@@ -1,0 +1,28 @@
+
+
+dependence on donor funding poses a risk to sustaining these
+achievements. Government commitment to continuing migration governance
+efforts was noted, but securing national budget allocations remains a
+challenge. The transition to BMM Phase IV presents both an opportunity
+to reinforce sustainability and a risk of setbacks if funding and
+staffing gaps arise between phases. Moving forward, greater national
+ownership and co-funding mechanisms will be critical to ensuring that
+the programme’s achievements endure beyond donor support.
+
+In terms of **lessons learned**, the evaluation found that **adaptive
+management style** was crucial for IOM to successfully adjusted to
+evolving migration dynamics, such as shifting government priorities or
+evolving conflicts. It was necessary to have mechanisms in place for
+rapid response to emerging migration trends by reflecting whole of
+routes approach, for instance, through established contingency funds
+that allow for swift resource reallocation in response to political or
+security developments. This might, however, be more challenging during
+BMM Phase IV considering its lower budget and potentially stricter
+scope. Furthermore, **community engagement** works best when it is
+**long-term**: short-term awareness campaigns had limited impact on
+behavioral change. Also, **digital data platforms** (both GIZ data
+platform and IOM online SharePoint) improved monitoring and coordination
+and using technology for tracking migration trends enhanced data
+quality. Finally, maintaining cooperative, **cordial relationships with
+implementing partners’ staff** proved to be an effective strategy for
+better inter-agency collaboration.

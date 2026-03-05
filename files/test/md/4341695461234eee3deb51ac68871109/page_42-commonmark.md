@@ -1,0 +1,67 @@
+
+
+weakening well-established relationships and partnerships built by
+current IOM staff. One implementing partner, facing a similar situation,
+described this uncertainty as their “biggest concern.”
+
+## 4. CONCLUSIONS … page 42
+
+The evaluation found that IOM activities under the BMM Phase III
+programme were highly relevant to the needs of the target countries and
+their stakeholders. The programme effectively addressed key migration
+challenges in the East and Horn of Africa region, including irregular
+migration, human trafficking, and weak institutional capacities.
+National officials and stakeholders widely acknowledged IOM’s
+contributions, particularly in shaping migration policies, strengthening
+border management, and providing direct assistance to vulnerable
+migrants.
+
+The programme was largely effective in achieving its expected
+objectives. IOM successfully supported the development and revision of
+national migration policies, enhanced cross-border cooperation, and
+improved protection services for vulnerable migrants. Government
+officials credited IOM with elevating migration governance as a priority
+issue. IOM activities remained largely aligned with the programme’s
+initial design, though adjustments had to be made to reflect shifting
+government priorities and further challenges such as procurement delays
+and security issues in some countries which hindered full
+implementation. Nevertheless, IOM met or exceeded most programme targets
+and the programme’s flexible approach enabled IOM to reallocate
+resources and modify activities as needed.
+
+The effective coordination and management of BMM Phase III by IOM’s
+Regional Office for the East and Horn of Africa played a crucial role in
+ensuring the smooth implementation of programme activities across
+multiple countries. A well-organized approach, supported by focal points
+in each BMM country, allowed IOM to remain responsive to the specific
+needs of different operational contexts while benefiting from the
+expertise of experienced managers at both regional and country levels.
+The programme demonstrated adaptability to evolving contexts, such as
+the conflict in Sudan and Somalia’s accession to the East African
+Community, ensuring its continued relevance.
+
+IOM activities under BMM Phase III demonstrated strong internal
+coherence by leveraging synergies with other IOM projects or frameworks,
+such as the Regional Migrant Response Plan, enabling cost-sharing and
+expanded reach. Externally, IOM collaborated with BMM implementing
+partners UNODC, GIZ, CIVIPOL, and the British Council. While some joint
+activities were undertaken to create synergies, external coordination
+remained primarily under GIZ’s responsibility. Its dual role as both
+grant provider and implementing partner added complexity to
+communication and planning, but active engagement and a cooperative
+relationship between GIZ and the IOM Regional Office helped mitigate
+potential challenges.
+
+From an efficiency perspective, IOM managed its resources effectively
+despite initial delays in programme implementation, which led to
+increased spending pressure in later phases. Cost-sharing with other IOM
+projects helped maximize impact, but procurement challenges, including
+internal system transitions and security concerns, also delayed some
+activities. Nevertheless, IOM’s structured monitoring and reporting
+systems ensured accountability and adaptive management, though
+qualitative assessments could be better integrated to capture broader
+programme impacts.
+
+While BMM Phase III has made tangible progress, long-term sustainability
+remains a key concern. The programme helped institutionalize migration
+management structures and build national capacities, but financial

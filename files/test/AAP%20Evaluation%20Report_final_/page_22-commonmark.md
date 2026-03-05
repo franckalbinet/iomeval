@@ -1,0 +1,59 @@
+
+
+Protection, PSEAH, and AAP when interacting with vulnerable groups.”
+Ultimately, many informants attributed these challenges to the
+“projectized” nature of IOM, where individual initiatives proceed in a
+more or less autonomous manner.
+
+Informants located in field offices also noted that different policies
+and thematic initiatives in IOM are, de facto, in competition with each
+other, as the resources and staff time available for their
+implementation may often be severely constrained. More or less
+deliberate trade-offs have to be made concerning different policies,
+noting also how support coming from IOM Headquarters is generally
+specific to a single initiative or theme, ignoring the
+interrelationships with other frameworks.
+
+A lack of coherence between AAP and the Data Protection Policy was
+mentioned by informants: obstacles to sharing AAP data (because such
+data include personal information) were noted in some cases, and a lack
+of support for the definition of data sharing agreements was noted in
+others. While the merit of these perceptions could not be verified as a
+technical analysis of the coherence between the AAP Framework and the
+Data Protection Policy goes beyond the scope of this evaluation, this
+instance is presented as an example of frameworks that may not have been
+fully coordinated in their development and in their implementation, for
+the further consideration of technical experts in IOM.
+
+Finding 2.2. There are instances where IOM promoted or supported
+collective accountability through its AAP initiatives, but there are
+also instances where coordination or collaboration with other actors was
+lacking. “Collective accountability” emerged as a central theme in the
+narrations of the informants and is an area where there may be an unmet
+demand for additional guidance, support and monitoring.
+
+In Ethiopia, a joint platform exists where United Nations agencies and
+various organizations involved in the AAP working group can input data
+for shared use amidst the ongoing crisis. In this context, the IOM
+Ethiopia Chief of Mission provided direct reports to the United Nations
+Country Team on the feedback from affected people (see Case study 1). An
+additional significant case shared was the Response for Venezuela
+coordination platform, created by the Office of the Special Envoy for
+the Venezuela Response, with IOM acting as inter-agency AAP coordinator
+since 2021. According to IOM informants, the platform was crucial in
+orchestrating efforts across South America to assist Venezuelan
+migrants. In both examples, unified platforms were created for agencies
+to use AAP data collectively and conduct shared initiatives (such as
+AAP-related training courses), with perceived benefits to coherence and
+efficiency.
+
+At the same time, informants also indicated the presence of significant
+obstacles and missed opportunities related to collaboration with other
+United Nations agencies and other organizations in terms of AAP. Almost
+all informants based in field locations that were consulted for this
+evaluation mentioned how, very often, feedback collected through CFMs
+cannot be fully acted upon by IOM alone, lamenting also the lack of a
+collective accountability approach by which different humanitarian and
+development actors could provide a coordinated and consolidated response
+to the issues raised. Informants noted that the fragmentation of AAP
+systems (across separate organizations) sometimes means that multiple
