@@ -1,5 +1,7 @@
 # Objective 1
 ## Title: Collect and utilize accurate and disaggregated data as a basis for evidence-based policies
+We commit to strengthen the global evidence base on international migration by improving and investing in the collection, analysis and dissemination of accurate , reliable and comparable data, disaggregated by sex, age, migration status and other characteristics relevant in national contexts, while upholding the right to privacy under international human rights law and protecting personal data. We further commit to ensure that this data fosters research, guides coherent and evidence-based policymaking and well-informed public discourse, and allows for effective monitoring and evaluation of the implementation of commitments over time. 
+To realize this commitment, we will draw from the following actions:
 ## Associated actions
 - a. Elaborate and implement a comprehensive strategy for improving migration data at local, national, regional and global levels, with the participation of all relevant stakeholders, under the guidance of the United Nations Statistical Commission, by harmonizing methodologies for data collection, and strengthening analysis and dissemination of migration-related data and indicators.
 - b. Improve international comparability and compatibility of migration statistics and national data systems,including by further developing and applying the statistical definition of an international migrant, elaborating a set of standards to measure migrant stocks and flows, and documenting migration patterns and trends, characteristics of migrants,as well as drivers and impacts of migration.
@@ -15,6 +17,8 @@
 
 # Objective 2
 ## Title: Minimize the adverse drivers and structural factors that compel people to leave their country of origin
+We commit to create conducive political, economic, social and environmental conditions for people to lead peaceful, productive and sustainable lives in their own country and to fulfil their personal aspirations, while ensuring that desperation and deteriorating environments do not compel them to seek a livelihood elsewhere through irregular migration. We further commit to ensure timely and full implementation of the 2030 Agenda for Sustainable Development, as well as to build upon and invest in the implementation of other existing frameworks, in order to enhance the overall impact of the Global Compact to facilitate safe, orderly and regular migration. 
+To realize this commitment, we will draw from the following actions: 
 ## Associated actions
 - a. Promote the implementation of the 2030 Agenda for Sustainable Development, including the Sustainable Development Goals and the Addis Ababa Action Agenda, and the commitment to reach the furthest behind first, as well as the Paris Agreement4 and the Sendai Framework for Disaster Risk Reduction 2015-2030.
 - b. Invest in programmes that accelerate States' fulfilment of the Sustainable Development Goals with the aim of eliminating the adverse drivers and structural factors that compel people to leave their country of origin, including through poverty eradication, food security, health and sanitation, education, inclusive economic growth, infrastructure, urban and rural development, employment creation, decent work, gender equality and empowerment of women and girls, resilience and disaster risk reduction, climate change mitigation and adaptation, addressing the socioeconomic effects of all forms of violence, non-discrimination, rule of law and good governance access to justice and protection of human rights, as well as creating and maintaining peaceful and inclusive societies with effective, accountable and transparent institutions.
@@ -23,6 +27,7 @@
 - e. Invest in human capital development by promoting entrepreneurship, education, vocational training and skills development programmes and partnerships, productive employment creation, in line with labour market needs, as well as in cooperation with the private sector and trade unions, with a view to reducing youth unemployment, avoiding brain drain and optimizing brain gain in countries of origin, and harnessing the demographic dividend.
 - f. Strengthen collaboration between humanitarian and development actors, including by promoting joint analysis, multi-donor approaches and multi-year funding cycles, in order to develop long-term responses and outcomes that ensure respect for the rights of affected individuals,resilience and coping capacities of populations, as well as economic and social self-reliance, and by ensuring these efforts take migration into account.
 - g. Account for migrants in national emergency preparedness and response, including by taking into consideration relevant recommendations from State-led consultative processes, such as the Guidelines to Protect Migrants in Countries Experiencing Conflict or Natural Disaster (MICIC Guidelines),
+Natural disasters, the adverse effects of climate change, and environmental degradation:
 - h. Strengthen joint analysis and sharing of information to better map, understand, predict and address migration movements, such as those that may result from sudden-onset and slow onset natural disasters, the adverse effects of climate change, environmental degradation, as well as other precarious situations, while ensuring the effective respect, protection and fulfilment of the human rights of all migrants.
 - i. Develop adaptation and resilience strategies to sudden-onset and slow-onset natural disasters, the adverse effects of climate change, and environmental degradation, such as desertification, land degradation, drought and sea level rise, taking into account the potential implications on migration, while recognizing that adaptation in the country of origin is a priority.
 - j. Integrate displacement considerations into disaster preparedness strategies and promote cooperation with neighbouring and other relevant countries to prepare for early warning, contingency planning, stockpiling, coordination mechanisms, evacuation planning, reception and assistance arrangements, and public information.
@@ -31,6 +36,8 @@
 
 # Objective 3
 ## Title: Provide accurate and timely information at all stages of migration
+We commit to strengthen our efforts to provide, make available and disseminate accurate, timely, accessible and transparent information on migration-related aspects for and between States, communities and migrants at all stages of migration. We further commit to use this information to develop migration policies that provide a high degree of predictability and certainty for all actors involved. 
+To realize this commitment, we will draw from the following actions: 
 ## Associated actions
 - a. Launch and publicize a centralized and publicly accessible national website to make information available on regular migration options, such as on country-specific immigration laws and policies, visa requirements, application formalities, fees and conversion criteria, employment permit requirements, professional qualification requirements, credential assessment and equivalences, training and study opportunities, and living costs and conditions, in order to inform the decisions of migrants.
 - b. Promote and improve systematic bilateral, regional and international cooperation and dialogue to exchange information on migration-related trends, including through joint databases, online training centres and liaison networks, while upholding the right to privacy and protecting personal data.
@@ -40,6 +47,8 @@
 
 # Objective 4
 ## Title: Ensure that all migrants have proof of legal identity and adequate documentation
+We commit to fulfil the right of all individuals to a legal identity by providing all our nationals with proof of nationality and relevant documentation, allowing national and local authorities to ascertain a migrant’s legal identity upon entry, during stay and for return, as well as to ensure effective migration procedures, efficient service provision and improved public safety. We further commit to ensure, through appropriate measures, that migrants are issued adequate documentation and civil registry documents, such as birth, marriage and death certificates, at all stages of migration, as a means to empower migrants to effectively exercise their human rights.
+To realize this commitment, we will draw from the following actions: 
 ## Associated actions
 - a. Improve civil registry systems, with a particular focus on reaching unregistered persons and our nationals residing in other countries, including by providing relevant identity and civil registry documents, strengthening capacities, and investing in information and communication technology solutions, while upholding the right to privacy and protecting personal data.
 - b. Harmonize travel documents in line with the specifications of the International Civil Aviation Organization to facilitate interoperable and universal recognition of travel documents, as well as to combat identity fraud and document forgery, including by investing in digitalization, and strengthening mechanisms for biometric data-sharing, while upholding the right to privacy and protecting personal data.
@@ -51,6 +60,8 @@
 
 # Objective 5
 ## Title: Enhance availability and flexibility of pathways for regular migration
+We commit to adapt options and pathways for regular migration in a manner that facilitates labour mobility and decent work reflecting demographic and labour market realities, optimizes education opportunities, upholds the right to family life, and responds to the needs of migrants in a situation of vulnerability, with a view to expanding and diversifying availability of pathways for safe, orderly and regular migration.
+To realize this commitment, we will draw from the following actions:
 ## Associated actions
 - a. Develop human rights-based and gender-responsive bilateral, regional and multilateral labour mobility agreements with sector-specific standard terms of employment in cooperation with relevant stakeholders, drawing on relevant ILO standards, guidelines and principles, in compliance with international human rights and labour law.
 - b. Facilitate regional and cross-regional labour mobility through international and bilateral cooperation arrangements, such as free movement regimes, visa liberalization or multiple country visas, and labour mobility cooperation frameworks, in accordance with national priorities, local market needs and skills supply.
@@ -65,6 +76,8 @@
 
 # Objective 6
 ## Title: Facilitate fair and ethical recruitment and safeguard conditions that ensure decent work
+We commit to review existing recruitment mechanisms to guarantee that they are fair and ethical, and to protect all migrant workers against all forms of exploitation and abuse in order to guarantee decent work and maximize the socioeconomic contributions of migrants in both their countries of origin and destination. 
+To realize this commitment, we will draw from the following actions:
 ## Associated actions
 - a. Promote signature, ratification, accession and implementation of relevant international instruments related to international labour migration, labour rights, decent work and forced labour.
 - b. Build upon the work of existing bilateral, subregional and regional platforms that have overcome obstacles and identified best practices in labour mobility, by facilitating cross-regional dialogue to share this knowledge, and to promote the full respect for the human and labour rights of migrant workers at all skills levels, including migrant domestic workers.
@@ -81,6 +94,8 @@
 
 # Objective 7
 ## Title: Address and reduce vulnerabilities in migration
+We commit to respond to the needs of migrants who face situations of vulnerability, which may arise from the circumstances in which they travel or the conditions they face in countries of origin, transit and destination, by assisting them and protecting their human rights, in accordance with our obligations under international law. We further commit to uphold the best interests of the child at all times, as a primary consideration in situations where children are concerned, and to apply a gender-responsive approach in addressing vulnerabilities, including in responses to mixed movements.
+To realize this commitment, we will draw from the following actions:
 ## Associated actions
 - a. Review relevant policies and practices to ensure they do not create, exacerbate or unintentionally increase vulnerabilities of migrants, including by applying a human rights-based, gender- and disability-responsive, as well as an age- and child-sensitive approach.
 - b. Establish comprehensive policies and develop partnerships that provide migrants in a situation of vulnerability, regardless of their migration status, with necessary support at all stages of migration, through identification and assistance, as well as protection of their human rights, in particular in cases related to women at risk, children, especially those unaccompanied or separated from their families, members of ethnic and religious minorities, victims of violence, including sexual and gender-based violence, older persons, persons with disabilities, persons who are discriminated against on any basis, indigenous peoples, workers facing exploitation and abuse, domestic workers, victims of trafficking in persons, and migrants subject to exploitation and abuse in the context of smuggling of migrants.
@@ -97,6 +112,8 @@
 
 # Objective 8
 ## Title: Save lives and establish coordinated international efforts on missing migrants
+We commit to cooperate internationally to save lives and prevent migrant deaths and injuries through individual or joint search and rescue operations, standardized collection and exchange of relevant information, assuming collective responsibility to preserve the lives of all migrants, in accordance with international law. We further commit to identify those who have died or gone missing, and to facilitate communication with affected families.
+To realize this commitment, we will draw from the following actions:
 ## Associated actions
 - a. Develop procedures and agreements on search and rescue of migrants, with the primary objective to protect migrants' right to life that uphold the prohibition of collective expulsion, guarantee due process and individual assessments, enhance reception and assistance capacities, and ensure that the provision of assistance of an exclusively humanitarian nature for migrants is not considered unlawful.
 - b. Review the impacts of migration-related policies and laws to ensure that these do not raise or create the risk of migrants going missing, including by identifying dangerous transit routes used by migrants, by working with other States as well as relevant stakeholders and international organizations to identify contextual risks and establishing mechanisms for preventing and responding to such situations, with particular attention to migrant children, especially those unaccompanied or separated.
@@ -107,6 +124,8 @@
 
 # Objective 9
 ## Title: Strengthen the transnational response to smuggling of migrants
+We commit to intensify joint efforts to prevent and counter smuggling of migrants by strengthening capacities and international cooperation to prevent, investigate, prosecute and penalize the smuggling of migrants in order to end the impunity of smuggling networks. We further commit to ensure that migrants shall not become liable to criminal prosecution for the fact of having been the object of smuggling, notwithstanding potential prosecution for other violations of national law. We also commit to identify smuggled migrants to protect their human rights, taking into consideration the special needs of women and children, and assisting in particular those migrants subject to smuggling under aggravating circumstances, in accordance with international law.
+To realize this commitment, we will draw from the following actions:
 ## Associated actions
 - a. Promote ratification, accession and implementation of the Protocol against the Smuggling of Migrants by Land, Sea and Air, supplementing the United Nations Convention against Transnational Organised Crime (UNTOC).
 - b. Use transnational, regional and bilateral mechanisms to share relevant information and intelligence on smuggling routes, modus operandi and financial transactions of smuggling networks, vulnerabilities faced by smuggled migrants, and other data to dismantle the smuggling networks and enhance joint responses.
@@ -117,6 +136,8 @@
 
 # Objective 10
 ## Title: Prevent, combat and eradicate trafficking in persons in the context of international migration
+We commit to take legislative or other measures to prevent, combat and eradicate trafficking in persons in the context of international migration by strengthening capacities and international cooperation to investigate, prosecute and penalize trafficking in persons, discouraging demand that fosters exploitation leading to trafficking, and ending impunity of trafficking networks. We further commit to enhance the identification and protection of, and assistance to, migrants who have become victims of trafficking, paying particular attention to women and children.
+To realize this commitment, we will draw from the following actions:
 ## Associated actions
 - a. Promote, ratification, accession and implementation of the Protocol to Prevent, Suppress and Punish Trafficking in Persons Especially Women and Children, supplementing the United Nations Convention against Transnational Organized Crime (UNTOC).
 - b. Promote the implementation of the Global Plan of Action to Combat Trafficking in Persons and take into consideration relevant recommendations of the UNODC Toolkit to Combat Trafficking in Persons and other relevant UNODC documents when developing and implementing national and regional policies and measures relating to trafficking in persons.
@@ -131,6 +152,8 @@
 
 # Objective 11
 ## Title: Manage borders in an integrated, secure and coordinated manner
+We commit to manage our national borders in a coordinated manner, promoting bilateral and regional cooperation, ensuring security for States, communities and migrants, and facilitating safe and regular cross-border movements of people while preventing irregular migration. We further commit to implement border management policies that respect national sovereignty, the rule of law, obligations under international law, and the human rights of all migrants, regardless of their migration status, and are non-discriminatory, gender-responsive and child-sensitive.
+To realize this commitment, we will draw from the following actions:
 ## Associated actions
 - a. Enhance international, regional and cross-regional border management cooperation, taking into consideration the particular situation of countries of transit, on proper identification, timely and efficient referral, assistance and appropriate protection of migrants in situations of vulnerability at or near international borders, in compliance with international human rights law, by adopting whole-of-government approaches, implementing joint cross-border trainings, and fostering capacity-building measures.
 - b. Establish appropriate structures and mechanisms for effective integrated border management by ensuring comprehensive and efficient border crossing procedures, including through pre-screening of arriving persons, pre-reporting by carriers of passengers, and use of information and communication technology, while upholding the principle of non-discrimination, respecting the right to privacy and protecting personal data.
@@ -142,6 +165,8 @@
 
 # Objective 12
 ## Title: Strengthen certainty and predictability in migration procedures for appropriate screening, assessment and referral
+We commit to increase legal certainty and predictability of migration procedures by developing and strengthening effective and human rights-based mechanisms for the adequate and timely screening and individual assessment of all migrants for the purpose of identifying and facilitating access to the appropriate referral procedures, in accordance with international law.
+To realize this commitment, we will draw from the following actions: 
 ## Associated actions
 - a. Increase transparency and accessibility of migration procedures by communicating the requirements for entry, admission, stay, work, study or other activities, and introducing technology to simplify application procedures, in order to avoid unnecessary delays and expenses for States and migrants.
 - b. Develop and conduct intra- and cross-regional specialized human rights and trauma informed trainings for first responders and government officials, including law enforcement authorities, border officials, consular representatives and judicial bodies, to facilitate and standardize identification and referral of, as well as appropriate assistance and counselling in a culturally-sensitive way, to victims of trafficking in persons, migrants in situations of vulnerability, including children, in particular those unaccompanied or separated, and persons affected by any form of exploitation and abuse related to smuggling of migrants under aggravating circumstances.
@@ -151,6 +176,8 @@
 
 # Objective 13
 ## Title: Use immigration detention only as a measure of last resort and work towards alternatives
+We commit to ensure that any detention in the context of international migration follows due process, is non-arbitrary, is based on law, necessity, proportionality and individual assessments, is carried out by authorized officials and is for the shortest possible period of time, irrespective of whether detention occurs at the moment of entry, in transit or in proceedings of return, and regardless of the type of place where the detention occurs. We further commit to prioritize non-custodial alternatives to detention that are in line with international law, and to take a human rights-based approach to any detention of migrants, using detention as a measure of last resort only.
+To realize this commitment, we will draw from the following actions:
 ## Associated actions
 - a. Use existing relevant human rights mechanisms to improve independent monitoring of migrant detention, ensuring that it is a measure of last resort, that human rights violations do not occur, and that States promote, implement and expand alternatives to detention, favouring non-custodial measures and community-based care arrangements, especially in the case of families and children.
 - b. Consolidate a comprehensive repository to disseminate best practices of human rights based alternatives to detention in the context of international migration, including by facilitating regular exchanges and the development of initiatives based on successful practices among States, and between States and relevant stakeholders.
@@ -163,6 +190,8 @@
 
 # Objective 14
 ## Title: Enhance consular protection, assistance and cooperation throughout the migration cycle
+We commit to strengthen consular protection of and assistance to our nationals abroad, as well as consular cooperation between States, in order to better safeguard the rights and interests of all migrants at all times, and to build upon the functions of consular missions to enhance interactions between migrants and State authorities of countries of origin, transit and destination, in accordance with international law.
+To realize this commitment, we will draw from the following actions: 
 ## Associated actions
 - a. Cooperate to build consular capacities, train consular officers, promote arrangements for providing consular services collectively where individual States lack capacity, including through technical assistance, and to develop bilateral or regional agreements on various aspects of consular cooperation.
 - b. Involve relevant consular and immigration personnel in existing global and regional fora on migration in order to exchange information and best practices about issues of mutual concern that pertain to citizens abroad and contribute to comprehensive and evidence-based migration policy development.
@@ -173,6 +202,8 @@
 
 # Objective 15
 ## Title: Provide access to basic services for migrants
+We commit to ensure that all migrants, regardless of their migration status, can exercise their human rights through safe access to basic services. We further commit to strengthen migrant-inclusive service delivery systems, notwithstanding that nationals and regular migrants may be entitled to more comprehensive service provision, while ensuring that any differential treatment must be based on law, be  proportionate and pursue a legitimate aim, in accordance with international human rights law.
+To realize this commitment, we will draw from the following actions:
 ## Associated actions
 - a. Enact laws and take measures to ensure that service delivery does not amount to discrimination against migrants on the grounds of race, colour, sex, language, religion, political or other opinion, national or social origin, property, birth, disability or other grounds irrespective of cases where differential provision of services based on migration status might apply.
 - b. Ensure that cooperation between service providers and immigration authorities does not exacerbate vulnerabilities of irregular migrants by compromising their safe access to basic services or unlawfully infringing upon the human rights to privacy, liberty and security of person at places of basic service delivery.
@@ -183,6 +214,8 @@
 
 # Objective 16
 ## Title: Empower migrants and societies to realize full inclusion and social cohesion
+We commit to foster inclusive and cohesive societies by empowering migrants to become active members of society and promoting the reciprocal engagement of receiving communities and migrants in the exercise of their rights and obligations towards each other, including observance of national laws and respect for customs of the country of destination. We further commit to strengthen the welfare of all members of societies by minimizing disparities, avoiding polarization and increasing public confidence in policies and institutions related to migration, in line with the acknowledgement that fully integrated migrants are better positioned to contribute to prosperity. 
+To realize this commitment, we will draw from the following actions: 
 ## Associated actions
 - a. Promote mutual respect for the cultures, traditions and customs of communities of destination and of migrants by exchanging and implementing best practices on integration policies, programmes and activities, including on ways to promote acceptance of diversity and facilitate social cohesion and inclusion.
 - b. Establish comprehensive and needs-based pre-departure and post-arrival programmes that may include rights and obligations, basic language training, as well as orientation about social norms and customs in the country of destination.
@@ -196,6 +229,8 @@
 
 # Objective 17
 ## Title: Eliminate all forms of discrimination and promote evidence-based public discourse to shape perceptions of migration
+We commit to eliminate all forms of discrimination, condemn and counter expressions, acts and manifestations of racism, racial discrimination, violence, xenophobia and related intolerance against all migrants in conformity with international human rights law. We further commit to promote an open and evidence-based public discourse on migration and migrants in partnership with all parts of society, that generates a more realistic, humane and constructive perception in this regard. We also commit to protect freedom of expression in accordance with  international law, recognizing that an open and free debate contributes to a comprehensive understanding of all aspects of migration.
+To realize this commitment, we will draw from the following actions: 
 ## Associated actions
 - a. Enact, implement or maintain legislation that penalizes hate crimes and aggravated hate crimes targeting migrants, and train law enforcement and other public officials to identify, prevent and respond to such crimes and other acts of violence that target migrants, as well as to provide medical, legal and psychosocial assistance for victims.
 - b. Empower migrants and communities to denounce any acts of incitement to violence directed towards migrants by informing them of available mechanisms for redress, and ensure that those who actively participate in the commission of a hate crime targeting migrants are held accountable, in accordance with national legislation, while upholding international human rights law, in particular the right to freedom of expression.
@@ -207,6 +242,8 @@
 
 # Objective 18
 ## Title: Invest in skills development and facilitate mutual recognition of skills, qualifications and competences
+We commit to invest in innovative solutions that facilitate mutual recognition of skills, qualifications and competences of migrant workers at all skills levels, and promote demand-driven skills development to optimize the employability of migrants in formal labour markets in countries of destination and in countries of origin upon return, as well as to ensure decent work in labour migration. 
+To realize this commitment, we will draw from the following actions:
 ## Associated actions
 - a. Develop standards and guidelines for the mutual recognition of foreign qualifications and non-formally acquired skills in different sectors in collaboration with the respective industries with a view to ensuring worldwide compatibility based on existing models and best practices.
 - b. Promote transparency of certifications and compatibility of National Qualifications Frameworks by agreeing on standard criteria, indicators and assessment parameters, and by creating and strengthening national skills profiling tools, registries or institutions in order to facilitate effective and efficient mutual recognition procedures at all skills levels.
@@ -223,6 +260,8 @@
 
 # Objective 19
 ## Title: Create conditions for migrants and diasporas to fully contribute to sustainable development in all countries
+We commit to empower migrants and diasporas to catalyse their development contributions, and to harness the benefits of migration as a source of sustainable development, reaffirming that migration is a multidimensional reality of major relevance to the sustainable development of countries of origin, transit and destination.
+To realize this commitment, we will draw from the following actions: 
 ## Associated actions
 - a. Ensure the full and effective implementation of the 2030 Agenda for Sustainable Development and the Addis Ababa Action Agenda by fostering and facilitating the positive effects of migration for the realization of all Sustainable Development Goals.
 - b. Integrate migration into development planning and sectoral policies at local, national, regional and global levels, taking into consideration relevant existing policy guidelines and recommendations, such as the GMG Handbook on Mainstreaming Migration into Development Planning, in order to strengthen policy coherence and effectiveness of development cooperation.
@@ -237,6 +276,8 @@
 
 # Objective 20
 ## Title: Promote faster, safer and cheaper transfer of remittances and foster financial inclusion of migrants
+We commit to promote faster, safer and cheaper remittances by further developing existing conducive policy and regulatory environments that enable competition, regulation and innovation on the remittance market and by providing gender-responsive programmes and instruments that enhance the financial inclusion of migrants and their families. We further commit to optimize the transformative impact of remittances on the well-being of migrant workers and their families, as well as on the sustainable development of countries, while respecting that remittances constitute an important source of private capital and cannot be equated to other international financial flows, such as foreign direct investment, official development assistance or other public sources of financing for development.
+To realize this commitment, we will draw from the following actions: 
 ## Associated actions
 - a. Develop a road map to reduce the transaction costs of migrant remittances to less than 3 per cent and eliminate remittance corridors with costs higher than 5 per cent by 2030 in line with target 10.c of the 2030 Agenda for Sustainable Development.
 - b. Promote and support the United Nations International Day of Family Remittances and the International Fund for Agricultural Development Global Forum on Remittances, Investment and Development as an important platform to build and strengthen partnerships for innovative solutions on cheaper, faster and safer transfer of remittances with all relevant stakeholders.
@@ -250,6 +291,8 @@
 
 # Objective 21
 ## Title: Cooperate in facilitating safe and dignified return and readmission, as well as sustainable reintegration
+We commit to facilitate and cooperate for safe and dignified return and to guarantee due process, individual assessment and effective remedy, by upholding the prohibition of collective expulsion and of returning migrants when there is a real and foreseeable risk of death, torture and other cruel, inhuman and degrading treatment or punishment, or other irreparable harm, in accordance with our obligations under international human rights law. We further commit to ensure that our nationals are duly received and readmitted, in full respect for the human right to return to one ’s own country and the obligation of States to readmit their own nationals. We also commit to create conducive conditions for personal safety, economic empowerment, inclusion and social cohesion in communities, in order to ensure that reintegration of migrants upon return to their countries of origin is sustainable.
+To realize this commitment, we will draw from the following actions:
 ## Associated actions
 - a. Develop and implement bilateral, regional and multilateral cooperation frameworks and agreements, including readmission agreements, ensuring that return and readmission of migrants to their own country is safe, dignified and in full compliance with international human rights law, including the rights of the child, by determining clear and mutually agreed procedures that uphold procedural safeguards, guarantee individual assessments and legal certainty, and by ensuring they also include provisions that facilitate sustainable reintegration.
 - b. Promote gender-responsive and child-sensitive return and reintegration programmes, that may include legal, social and financial support, guaranteeing that all returns in the context of such voluntary programmes effectively take place on the basis of the migrant's free, prior and informed consent, and that returning migrants are assisted in their reintegration process through effective partnerships, including to avoid they become displaced in the country of origin upon return.
@@ -263,6 +306,8 @@
 
 # Objective 22
 ## Title: Establish mechanisms for the portability of social security entitlements and earned benefits
+We commit to assist migrant workers at all skills levels to have access to social protection in countries of destination and profit from the portability of applicable social security entitlements and earned benefits in their countries of origin or when they decide to take up work in another country. 
+To realize this commitment, we will draw from the following actions:
 ## Associated actions
 - a. Establish or maintain non-discriminatory national social protection systems, including social protection floors for nationals and migrants, in line with the ILO Recommendation 202 on Social Protection Floors.
 - b. Conclude reciprocal bilateral, regional or multilateral social security agreements on the portability of earned benefits for migrant workers at all skills levels, which refer to applicable social protection floors in the respective States, applicable social security entitlements and provisions, such as pensions, healthcare or other earned benefits, or integrate such provisions into other relevant agreements, such as those on long-term and temporary labour migration.
@@ -270,6 +315,8 @@
 
 # Objective 23
 ## Title: Strengthen international cooperation and global partnerships for safe, orderly and regular migration
+We commit to support each other in the realization of the objectives and commitments laid out in this Global Compact through enhanced international cooperation, a revitalized global partnership and, in the spirit of solidarity, reaffirming the centrality of a comprehensive and integrated approach to facilitate safe, orderly and regular migration and recognizing that we are all countries of origin, transit and destination. We further commit to take joint action, in addressing the challenges faced by each country, to implement this Global Compact, underscoring the specific challenges faced in particular by African countries, least developed countries, landlocked developing countries, small island developing States and middle-income countries. We also commit to promote the mutually reinforcing nature between the Global Compact and existing international legal and policy frameworks, by aligning the implementation of this Global Compact with such frameworks, particularly the 2030 Agenda for Sustainable Development as well as the Addis Ababa Action Agenda, and their recognition that migration and sustainable development are multidimensional and interdependent.
+To realize this commitment, we will draw from the following actions:
 ## Associated actions
 - a. Support other States as we collectively implement the Global Compact, including through the provision of financial and technical assistance, in line with national priorities, policies action plans and strategies, through a whole-of-government and whole-of-society approach.
 - b. Increase international and regional cooperation to accelerate the implementation of the 2030 Agenda for Sustainable Development in geographic areas from where irregular migration systematically originates due to consistent impacts of poverty, unemployment, climate change and disasters, inequality, corruption, poor governance, among other structural factors, through appropriate cooperation frameworks, innovative partnerships and the involvement of all relevant stakeholders, while upholding national ownership and shared responsibility.

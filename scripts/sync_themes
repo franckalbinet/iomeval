@@ -1,0 +1,3 @@
+#!/bin/bash
+cp nbs/files/themes/* iomeval/files/themes/
+echo "Themes synced to iomeval/files/themes/"
