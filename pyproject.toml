@@ -12,7 +12,7 @@ license = {text = "Apache-2.0"}
 authors = [{name = "Franck Albinet", email = "franckalbinet@pm.me"}]
 keywords = ['nbdev', 'jupyter', 'notebook', 'python']
 classifiers = ["Natural Language :: English", "Intended Audience :: Developers", "Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3 :: Only"]
-dependencies = ['fastcore', 'pandas', 'lisette', 'pydantic', 'tiktoken', 'mistocr', 'python-dotenv', 'pycachy', 'python-fasthtml', 'MonsterUI']
+dependencies = ['fastcore', 'pandas', 'lisette', 'pydantic', 'tiktoken', 'mistocr', 'python-dotenv', 'pycachy', 'python-fasthtml', 'MonsterUI', 'dialoghelper']
 
 [project.urls]
 Repository = "https://github.com/franckalbinet/iomeval"
