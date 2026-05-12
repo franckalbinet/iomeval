@@ -50,9 +50,9 @@ def sort_by_relevance(scores           # list of score dicts with 'relevance_sco
     return sorted(scores, key=lambda x: x['relevance_score'], reverse=True)
 
 # %% ../nbs/05_mapper.ipynb #2d37167e
-def get_top_ids(scores,            # list of score dicts with 'theme_id' and 'relevance_score'
-                min_score=0.7      # minimum relevance threshold
-               ) -> list[str]:     # list of theme IDs above threshold
+def get_top_ids(scores,             # list of score dicts with 'theme_id' and 'relevance_score'
+                min_score=0.66      # minimum relevance threshold
+               ) -> list[str]:      # list of theme IDs above threshold
     "Get IDs of themes with relevance score >= min_score, sorted by relevance"
     return [o['theme_id'] for o in sort_by_relevance(scores) if o['relevance_score'] >= min_score]
 

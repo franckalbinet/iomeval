@@ -293,7 +293,6 @@ async def post(id:str, req:Request):
     # Refresh both panels
     reports = get_reports()
     return (
-        #Div(*[ReportCard(rp, selected=(rp.id == id)) for rp in reports], id='report-list', hx_swap_oob='true'),
         ReportList(reports, selected_id=id, oob=True),
         SectionsSelector(r)  # Next step UI
     )  
@@ -307,7 +306,6 @@ def post(id:str):
     
     reports = get_reports()
     return (
-        #Div(*[ReportCard(rp, selected=(rp.id == id)) for rp in reports], id='report-list', hx_swap_oob='true'),
         ReportList(reports, selected_id=id, oob=True),
         HeadingsEditor(r),
         ProgressBar(reports, oob=True)
@@ -324,7 +322,6 @@ async def post(id:str, req:Request):
     selected = [int(k.split('_')[1]) for k in form.keys() if k.startswith('hdg_')]
     headings = get_headings(r.md_path)
     selected_hdgs = [headings[i] for i in selected]
-    #print(selected_hdgs)
     
     tokens = count_selected_tokens(r, selected_hdgs)
 
@@ -345,7 +342,6 @@ async def post(id:str, req:Request):
     reports = get_reports()
 
     return (
-        #Div(*[ReportCard(rp) for rp in reports], id='report-list', hx_swap_oob='true'),
         ReportList(reports, selected_id=id, oob=True),
         DivCentered(P('Click "Curate" to select a report', cls="font-normal"), cls='h-40'),
         ProgressBar(reports, oob=True)
@@ -370,7 +366,6 @@ def get(status:str='all'):
 def get():
     reports = get_reports()
     return (
-        #Div(*[ReportCard(r) for r in reports], id='report-list', hx_swap_oob='true'),
         ReportList(reports, oob=True),
         DivCentered(P('Click "Curate" to select a report', cls="font-normal"), cls='h-40')
     )
