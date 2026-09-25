@@ -7,65 +7,25 @@
 [![PyPI](https://img.shields.io/pypi/v/iomeval.png)](https://pypi.org/project/iomeval/)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
-`IOMEval` streamlines the mapping of [IOM](https://www.iom.int)
-evaluation reports against strategic frameworks like the [Strategic
-Results Framework (SRF)](https://srf.iom.int/) and the [Global Compact
-for Migration
-(GCM)](https://www.un.org/en/development/desa/population/migration/generalassembly/docs/globalcompact/A_RES_73_195.pdf).
-It uses LLMs to process PDF reports, extract key sections, and tags
-(matches) them to framework components, turning dispersed, untagged
-evaluation documents into structured evidence maps that can be searched
-by framework components (for example, finding all evaluation findings
-mapped to a specific GCM objective).
+`IOMEval` streamlines the mapping of [IOM](https://www.iom.int) evaluation reports against strategic frameworks like the [Strategic Results Framework (SRF)](https://srf.iom.int/) and the [Global Compact for Migration (GCM)](https://www.un.org/en/development/desa/population/migration/generalassembly/docs/globalcompact/A_RES_73_195.pdf). It uses LLMs to process PDF reports, extract key sections, and tags (matches) them to framework components, turning dispersed, untagged evaluation documents into structured evidence maps that can be searched by framework components (for example, finding all evaluation findings mapped to a specific GCM objective).
 
 ## The Challenge Addressed
 
-UN agencies produce several evaluation reports. For IOM, this body of
-knowledge is extensive and variegated, but putting it to practical use
-becomes more challenging as volume increases. Critically, the metadata
-of IOM evaluation reports does not indicate which elements in the IOM
-[Strategic Results Framework (SRF)](https://srf.iom.int/), or in the
-[Global Compact for Migration
-(GCM)](https://www.un.org/en/development/desa/population/migration/generalassembly/docs/globalcompact/A_RES_73_195.pdf),
-are addressed by the evaluation. This is a major gap that limits the
-ability to connect evaluation evidence with the two key strategic
-frameworks of the organization.
+UN agencies produce several evaluation reports. For IOM, this body of knowledge is extensive and variegated, but putting it to practical use becomes more challenging as volume increases. Critically, the metadata of IOM evaluation reports does not indicate which elements in the IOM [Strategic Results Framework (SRF)](https://srf.iom.int/), or in the [Global Compact for Migration (GCM)](https://unece.org/DAM/commission/EXCOM/Agenda/2018/97EXCOM-19-March-18/Migration_compact_zero_draft_1.pdf), are addressed by the evaluation. This is a major gap that limits the ability to connect evaluation evidence with the two key strategic frameworks of the organization.
 
-Manual tagging of evaluation reports against the IOM SRF and the GCM is
-extremely challenging due to the limited resources that IOM has at its
-disposal for evaluation in general. Time constraints of IOM evaluators
-and other staff are also exacerbated by the shrinkage of the
-organizations budget in the context of the broader “humanitarian reset”.
-In addition to this, tagging IOM evaluation reports against SRF elements
-is cognitively taxing due to the sheer amount of elements in these
-frameworks (the GCM has 23 objectives; the SRF has more than one hundred
-outputs).
+Manual tagging of evaluation reports against the IOM SRF and the GCM is extremely challenging due to the limited resources that IOM has at its disposal for evaluation in general. Time constraints of IOM evaluators and other staff are also exacerbated by the shrinkage of the organizations budget in the context of the broader “humanitarian reset”. In addition to this, tagging IOM evaluation reports against SRF elements is cognitively taxing due to the sheer amount of elements in these frameworks (the GCM has 23 objectives; the SRF has more than one hundred outputs).
 
 ## What This Enables
 
-Addressing the “tagging” challenge enables the creation of evidence maps
-(visual tools that systematically displays what evaluation and research
-exists for specific topics, and where evidence may be missing) that
-would have otherwise not been possible to produce. Maps in turn help
-answer questions like: Which framework elements are well-covered by
-existing evaluations? Where are the knowledge gaps that should
-prioritize future evaluation work? Which themes have enough evidence for
-a dedicated synthesis report?
+Addressing the “tagging” challenge enables the creation of evidence maps (visual tools that systematically displays what evaluation and research exists for specific topics, and where evidence may be missing) that would have otherwise not been possible to produce. Maps in turn help answer questions like: Which framework elements are well-covered by existing evaluations? Where are the knowledge gaps that should prioritize future evaluation work? Which themes have enough evidence for a dedicated synthesis report?
 
 ## Key Features
 
 - **Automated PDF Processing**: Download and OCR evaluation reports
-- **Intelligent Section Extraction**: LLM-powered extraction of
-  executive summaries, findings, conclusions, and recommendations
-- **Strategic Framework Mapping**: Map report content against the IOM
-  Strategic Results Framework (outputs, enablers and cross-cutting
-  priorities) and the Global Compact for Migration (objectives)
-- **Checkpoint/Resume**: Stop processing at any time and pick up where
-  you left off without losing progress
-- **Granular Control**: Run the entire processing pipeline for a report
-  in one command, or execute individual steps (PDF extraction, section
-  identification, specific framework theme mapping) separately for more
-  flexibility
+- **Intelligent Section Extraction**: LLM-powered extraction of executive summaries, findings, conclusions, and recommendations
+- **Strategic Framework Mapping**: Map report content against the IOM Strategic Results Framework (outputs, enablers and cross-cutting priorities) and the Global Compact for Migration (objectives)
+- **Checkpoint/Resume**: Stop processing at any time and pick up where you left off without losing progress
+- **Granular Control**: Run the entire processing pipeline for a report in one command, or execute individual steps (PDF extraction, section identification, specific framework theme mapping) separately for more flexibility
 
 ## Installation
 
@@ -87,13 +47,8 @@ pip install git+https://github.com/franckalbinet/iomeval.git
 
 iomeval relies on two key libraries:
 
-- **[mistocr](https://fr.anckalbi.net/mistocr)**: Powers the
-  PDF-to-markdown conversion with intelligent OCR and heading hierarchy
-  detection
-- **[lisette](https://lisette.answer.ai)**: A thin wrapper around
-  [litellm](https://www.litellm.ai/) that provides access to all major
-  LLM providers. By default, iomeval uses Anthropic models (Haiku for
-  debugging, Sonnet for production)
+- **[mistocr](https://fr.anckalbi.net/mistocr)**: Powers the PDF-to-markdown conversion with intelligent OCR and heading hierarchy detection
+- **[lisette](https://lisette.answer.ai)**: A thin wrapper around [litellm](https://www.litellm.ai/) that provides access to all major LLM providers. By default, iomeval uses Anthropic models (Haiku for debugging, Sonnet for production)
 
 ### API Keys
 
@@ -113,16 +68,11 @@ Create a `.env` file in your project root:
     ANTHROPIC_API_KEY=your-key-here
     MISTRAL_API_KEY=your-key-here
 
-Since lisette supports all major LLM providers via litellm, you can
-configure other providers (OpenAI, Google, etc.) by setting their
-respective API keys using either method.
+Since lisette supports all major LLM providers via litellm, you can configure other providers (OpenAI, Google, etc.) by setting their respective API keys using either method.
 
 ## Quick Start
 
-First, prepare your evaluation report metadata. Export the CSV file from
-the [IOM Evaluation
-Repository](https://evaluation.iom.int/evaluation-search-pdf) containing
-report records and their associated PDF links, then convert to JSON:
+First, prepare your evaluation report metadata. Export the CSV file from the [IOM Evaluation Repository](https://evaluation.iom.int/evaluation-search-pdf) containing report records and their associated PDF links, then convert to JSON:
 
 ``` python
 from iomeval.readers import IOMRepoReader
@@ -149,47 +99,27 @@ report = await run_pipeline(url, evals,
 report
 ```
 
-The pipeline runs 7 steps: first processing the PDF (**download → OCR →
-extract**), then **mapping** extracted content **against each strategic
-framework** component (SRF Enablers, SRF Cross-cutting Priorities, GCM
-Objectives, and SRF Outputs).
+The pipeline runs 7 steps: first processing the PDF (**download → OCR → extract**), then **mapping** extracted content **against each strategic framework** component (SRF Enablers, SRF Cross-cutting Priorities, GCM Objectives, and SRF Outputs).
 
-Progress is displayed as each step completes, and state is automatically
-saved after each stage for checkpoint/resume capability.
+Progress is displayed as each step completes, and state is automatically saved after each stage for checkpoint/resume capability.
 
 > [!NOTE]
 >
-> The prompts used for extraction and framework mapping are available in
-> the [prompts
-> directory](https://github.com/franckalbinet/iomeval/tree/master/nbs/files/prompts).
+> The prompts used for extraction and framework mapping are available in the [prompts directory](https://github.com/franckalbinet/iomeval/tree/master/nbs/files/prompts).
 
 ## Detailed Workflow
 
-For more control over individual pipeline stages, see the module
-documentation:
+For more control over individual pipeline stages, see the module documentation:
 
-- **Loading evaluation metadata**: See
-  [readers](https://fr.anckalbi.net/iomeval/readers.html) for working
-  with IOM evaluation data
-- **Downloading and OCR**: See
-  [downloaders](https://fr.anckalbi.net/iomeval/downloaders.html) and
-  [core](https://fr.anckalbi.net/iomeval/core.html) for PDF processing
-- **Section extraction**: See
-  [extract](https://fr.anckalbi.net/iomeval/extract.html) for extracting
-  executive summaries, findings, conclusions, and recommendations
-- **Framework mapping**: See
-  [mapper](https://fr.anckalbi.net/iomeval/mapper.html) for mapping to
-  SRF enablers, cross-cutting priorities, GCM objectives, and SRF
-  outputs
-- **Pipeline control**: See
-  [pipeline](https://fr.anckalbi.net/iomeval/pipeline.html) for granular
-  control over the full pipeline and checkpoint/resume functionality
+- **Loading evaluation metadata**: See [readers](https://fr.anckalbi.net/iomeval/readers.html) for working with IOM evaluation data
+- **Downloading and OCR**: See [downloaders](https://fr.anckalbi.net/iomeval/downloaders.html) and [core](https://fr.anckalbi.net/iomeval/core.html) for PDF processing
+- **Section extraction**: See [extract](https://fr.anckalbi.net/iomeval/extract.html) for extracting executive summaries, findings, conclusions, and recommendations
+- **Framework mapping**: See [mapper](https://fr.anckalbi.net/iomeval/mapper.html) for mapping to SRF enablers, cross-cutting priorities, GCM objectives, and SRF outputs
+- **Pipeline control**: See [pipeline](https://fr.anckalbi.net/iomeval/pipeline.html) for granular control over the full pipeline and checkpoint/resume functionality
 
 ## Development
 
-iomeval is built with [nbdev](https://nbdev.fast.ai/), which means the
-entire library is developed in Jupyter notebooks. The notebooks serve as
-both documentation and source code.
+iomeval is built with [nbdev](https://nbdev.fast.ai/), which means the entire library is developed in Jupyter notebooks. The notebooks serve as both documentation and source code.
 
 ### Setup for development
 
@@ -215,10 +145,10 @@ nbdev_prepare       # Export, test, and clean notebooks (run before committing)
 3.  Commit both notebooks and exported Python files
 4.  Documentation is automatically generated from the notebooks
 
-Learn more about nbdev’s literate programming approach in the [nbdev
-documentation](https://nbdev.fast.ai/).
+Learn more about nbdev’s literate programming approach in the [nbdev documentation](https://nbdev.fast.ai/).
 
 ### Contributing
 
-Contributions are welcome! Please: - Follow the existing notebook
-structure - Run `nbdev_prepare` before submitting PRs
+Contributions are welcome! Please:
+- Follow the existing notebook structure
+- Run `nbdev_prepare` before submitting PRs
