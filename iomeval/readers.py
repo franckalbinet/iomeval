@@ -6,7 +6,7 @@ Docs: https://franckalbinet.github.io/iomeval/readers.html.md"""
 
 # %% auto #0
 __all__ = ['logger', 'default_config', 'EvalReader', 'iom_input_cfg', 'Evaluation', 'IOMRepoReader', 'get_report_urls',
-           'load_evals', 'in_docs', 'find_eval', 'eval_url']
+           'get_uneg_url', 'load_evals', 'in_docs', 'find_eval', 'eval_url']
 
 # %% ../nbs/01_readers.ipynb #f0acbe4e
 from pathlib import Path
@@ -168,6 +168,11 @@ def get_report_urls():
         if doc: res[title] = f"https://evaluation.iom.int{doc['document_url']}"
     return res
 
+# %% ../nbs/01_readers.ipynb #c4b7b47b
+def get_uneg_url(ev, report_urls):
+    "Get UNEG report URL for an evaluation"
+    return report_urls.get(ev.meta['Title'].replace('\xa0', ' ').strip())
+
 # %% ../nbs/01_readers.ipynb #cb347fab
 @patch
 def to_json(self:IOMRepoReader,
@@ -199,17 +204,6 @@ def in_docs(
     ) -> bool:     # Whether any document of `ev` has this URL
     "Check whether `url` is one of the documents of `ev`"
     return any(L(ev.docs).filter(lambda x: x['url'] == url))
-
-# %% ../nbs/01_readers.ipynb #d27a51c1
-def find_eval(
-    evals:list,    # Evaluations to search
-    query:str,     # Title, document URL or ID to look for
-    by:str='title' # What `query` is: `'title'`, `'url'` or `'id'`
-    ) -> Evaluation: # The first matching evaluation, or `None`
-    "Find an evaluation by title, document URL or ID"
-    if by == 'title': return first([o for o in evals if o.meta['Title'] == query])
-    if by == 'url': return first([o for o in evals if in_docs(o, query)])
-    if by == 'id': return first([o for o in evals if o.id == query])
 
 # %% ../nbs/01_readers.ipynb #d27a51c1
 def find_eval(
