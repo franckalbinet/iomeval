@@ -1,4 +1,4 @@
-"""Downloaders are responsible for downloading evaluation repositories from various sources (e.g. IOM, UNHCR).
+"""Download the documents of IOM evaluations, one folder per evaluation
 
 Docs: https://franckalbinet.github.io/iomeval/downloaders.html.md"""
 
@@ -17,11 +17,11 @@ from .readers import load_evals, default_config, Evaluation
 
 # %% ../nbs/02_downloaders.ipynb #b8bfe569
 def download_eval(
-    eval:Evaluation,                   # Evaluation object 
-    dst:str='files/test/eval_reports', # Destination path to save files
-    cfg:dict=default_config            # Configuration dictionary
-    )->Path:                           # Directory where files were saved
-    "Download all documents for an evaluation to dst/eval_id/"
+    eval:Evaluation,                   # Evaluation whose documents to download
+    dst:str='files/test/eval_reports', # Folder to create the evaluation's folder in
+    cfg:dict=default_config            # Names of the `id`, `docs` and `url` fields
+    )->Path:                           # The evaluation's folder, `dst/<id>/`
+    "Download every document of `eval` to `dst/<id>/`, overwriting files with the same name"
     eval_dir = Path(dst)/getattr(eval, cfg.id)
     eval_dir.mkdir(parents=True, exist_ok=True)
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
@@ -34,11 +34,11 @@ def download_eval(
 
 # %% ../nbs/02_downloaders.ipynb #f8f41ecb
 def download_evals(
-    evals:L,                           # List of evaluation records 
-    dst:str='files/test/eval_reports', # Destination path to save documents
-    cfg:dict=default_config,           # Config dictionary
-    n_workers:int=4                    # Number of workers to use
-)->L:                                  # List of directories where files were saved
-    "Download all documents for multiple evaluations in parallel"
+    evals:L,                           # Evaluations, or a single `Evaluation`
+    dst:str='files/test/eval_reports', # Folder to create the evaluations' folders in
+    cfg:dict=default_config,           # Names of the `id`, `docs` and `url` fields
+    n_workers:int=4                    # Number of parallel downloads
+)->L:                                  # The evaluations' folders
+    "Download the documents of `evals` in parallel, one folder per evaluation"
     if not isinstance(evals, L): evals = L(evals) if isinstance(evals, list) else L([evals])
     return parallel(partial(download_eval, dst=dst, cfg=cfg), evals, n_workers=n_workers, progress=True)
