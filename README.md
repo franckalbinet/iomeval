@@ -102,6 +102,27 @@ State is saved under `base_path` after each stage, so a re-run resumes where it 
 >
 > The prompts used for extraction and framework mapping are available in the [prompts directory](https://github.com/franckalbinet/iomeval/tree/main/nbs/files/prompts).
 
+## Curating Reports
+
+Before mapping, a person reviews each OCR’d report in the curator app, a small local web app. It works in two steps:
+
+1.  **Clean headings.** OCR can get heading text or levels wrong. You correct them in a form, and saving rewrites the report’s Markdown pages.
+2.  **Select sections.** You tick the sections to map, usually the executive summary, introduction, conclusions and recommendations. A counter shows their size against a 15,000-token budget.
+
+The selection is saved with the report’s results, with status `'sections_selected'`. The next [`run_pipeline`](https://franckalbinet.github.io/iomeval/pipeline.html#run_pipeline) call maps those sections.
+
+Why a person does this: OCR headings need checking before they can be trusted, and mapping only the core sections costs less and keeps scores focused on the report’s findings.
+
+Why it runs locally: the app edits the OCR’d Markdown files in place, so it runs on the machine that holds the reports. It reads them from `BASE_PATH` in `iomeval.curator`, which is `../data` relative to the folder you start it from. That folder has the same layout as the `base_path` given to [`run_pipeline`](https://franckalbinet.github.io/iomeval/pipeline.html#run_pipeline), with `md/` and `results/` inside.
+
+To serve it, start it from a folder next to your `data` folder:
+
+``` sh
+python -m iomeval.curator --port 5001
+```
+
+Then open http://localhost:5001. You can also serve it from `06_curator.ipynb` with `srv = JupyUvi(app)`.
+
 ## Detailed Workflow
 
 For more control over individual pipeline stages, see the module documentation:

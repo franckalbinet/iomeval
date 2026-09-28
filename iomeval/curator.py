@@ -375,7 +375,5 @@ def get():
 # %% ../nbs/06_curator.ipynb #6343bba3
 @call_parse
 def main(host:str='0.0.0.0', port:int=5001):
-    "Run the curator app"
-    serve(host=host, port=port)
-
-if __name__ == "__main__": main()
+    "Serve the curator app, reading reports from `BASE_PATH`"
+    serve(appname="iomeval.curator", host=host, port=port)
