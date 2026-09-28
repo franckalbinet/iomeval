@@ -1,4 +1,4 @@
-"""Report Sections Extraction
+"""Parse a report's headings, choose its core sections from a list of headings or with an LLM, and extract their text
 
 Docs: https://franckalbinet.github.io/iomeval/extract.html.md"""
 
@@ -44,14 +44,14 @@ def create_heading_dict(md:str # Markdown text of full report
 # %% ../nbs/03_extract.ipynb #42dcbe92
 def heading_to_key(hdg:str # Raw markdown heading like "## 1. Intro ..."
                   ) -> str: # Heading text without markdown prefix
-    "Strip markdown heading prefix: '## 1. Intro ...' → '1. Intro ...'"
+    "Title of the raw heading `hdg`, without its `#` prefix"
     return hdg.lstrip('#').strip()
 
 # %% ../nbs/03_extract.ipynb #dd600bdc
-def find_path(hdgs:dict, # Nested dictionary of headings
-              key:str    # Heading key to find
-             ) -> list[str]: # Full path to key, or empty list if not found
-    "Find full path to a heading key in nested dict"
+def find_path(hdgs:dict, # Nested dict from `create_heading_dict`
+              key:str    # Heading title to find
+             ) -> list[str]: # Titles from the top level down to `key`; empty if `key` is not in `hdgs`
+    "Find the path of titles to the heading `key` in `hdgs`"
     for k in hdgs.keys():
         if k == key: return [k]
         res = find_path(hdgs[k], key)
@@ -59,9 +59,9 @@ def find_path(hdgs:dict, # Nested dictionary of headings
     return []
 
 # %% ../nbs/03_extract.ipynb #7b6ffa03
-def rm_nested(paths:list[list[str]] # List of section paths, where each path is a list of keys
-             ) -> list[list[str]]:  # Filtered list with nested paths removed
-    "Remove paths that are children of other paths in the list"
+def rm_nested(paths:list[list[str]] # Section paths, each a list of titles
+             ) -> list[list[str]]:  # The paths that don't extend another path, shortest first
+    "Drop the paths that extend another path in `paths`"
     paths = sorted(paths, key=len)
     keep = []
     for p in paths:
@@ -69,40 +69,41 @@ def rm_nested(paths:list[list[str]] # List of section paths, where each path is 
     return keep
 
 # %% ../nbs/03_extract.ipynb #84e7a79e
-def headings_to_paths(hdgs:dict,                  # Nested dictionary of headings
-                      selected_headings:list[str] # Raw markdown headings like ["## 1. Intro ...", ...]
-                     ) -> list[list[str]]:        # Deduplicated paths through heading hierarchy
-    "Convert raw headings to deduplicated paths"
+def headings_to_paths(hdgs:dict,                  # Nested dict from `create_heading_dict`
+                      selected_headings:list[str] # Raw headings like `"## 1. Intro ..."`
+                     ) -> list[list[str]]:        # Paths to the selected sections, without nested ones
+    "Find the paths to `selected_headings`, skipping headings that are not in `hdgs`"
     paths = [find_path(hdgs, heading_to_key(h)) for h in selected_headings]
-    paths = [p for p in paths if p]  # remove empty (not found)
+    paths = [p for p in paths if p]
     return rm_nested(paths)
 
 # %% ../nbs/03_extract.ipynb #518d5333
-def get_text(ks:list[str], # List of exact key strings forming path through nested dict
-             hdgs:dict     # Nested dictionary of headings created by `create_heading_dict`
-            ) -> str:      # Extracted markdown text for the section
-    "Navigate through nested heading levels and return the text content"
+def get_text(ks:list[str], # Titles from the top level down to the section
+             hdgs:dict     # Nested dict from `create_heading_dict`
+            ) -> str:      # The section's Markdown, subsections included
+    "Get the Markdown of the section at path `ks` in `hdgs`"
     return L(ks).reduce(getitem, hdgs).text
 
 # %% ../nbs/03_extract.ipynb #e7c1a140
 async def identify_core_sections(
-    hdgs:dict,                                          # Nested dictionary of report headings from `create_heading_dict`
-    sp:str=None,                                        # System prompt for section identification
-    response_format:type[BaseModel]=CoreSectionsOutput, # Pydantic model for structured output
-    model:str='claude-sonnet-4-5'                       # LLM model to use for identification
-) -> dict:                                              # Dictionary with 'section_paths' and 'reasoning' keys
-    "Use LLM to identify core sections (exec summary, intro, conclusions, recommendations) from ToC"
+    hdgs:dict,                                          # Nested dict from `create_heading_dict`
+    sp:str=None,                                        # System prompt; `None` uses the `select_sections` prompt
+    response_format:type[BaseModel]=CoreSectionsOutput, # Pydantic model the reply must follow
+    model:str='claude-sonnet-4-5'                       # LLM to use
+) -> dict:                                              # `section_paths` and `reasoning`
+    "Ask an LLM for the paths to the core sections of the report outlined by `hdgs`"
     if sp is None: sp = load_prompt('select_sections')
     msg = mk_msg(f"Here is the table of contents as a nested dictionary:\n\n{hdgs}")
     return (await structured_llm(model, [msg], response_format, system=sp)).model_dump()
 
 # %% ../nbs/03_extract.ipynb #438e0148
-def get_h1_title(hdgs:dict) -> str:
-    "Get the main title (first h1 heading) from heading dict"
+def get_h1_title(hdgs:dict # Nested dict from `create_heading_dict`
+                ) -> str:  # The first top-level title as a Markdown H1; empty if there are no headings
+    "Get the report title from `hdgs`"
     return f"# {first(hdgs.keys())}" if hdgs else ""
 
 # %% ../nbs/03_extract.ipynb #f51f071d
-def join_sections(hdgs:dict,             # Nested dictionary of headings created by `create_heading_dict`
+def join_sections(hdgs:dict,             # Nested dict from `create_heading_dict`
                   paths:list[list[str]]  # Paths to the sections to extract
                  ) -> str:               # Report title followed by each section's text; empty if no paths
     "Concatenate the report title and the text of each section in `paths`"
@@ -115,9 +116,9 @@ def join_sections(hdgs:dict,             # Nested dictionary of headings created
 
 
 # %% ../nbs/03_extract.ipynb #f519b66c
-def extract_selected(md:str,                     # Markdown text of full report
-                     selected_headings:list[str] # Raw headings like ["## 1. Intro ...", ...]
-                    ) -> str:                    # Concatenated text of the selected sections
+def extract_selected(md:str,                     # Markdown text of the full report
+                     selected_headings:list[str] # Raw headings like `"## 1. Intro ..."`
+                    ) -> str:                    # Report title and the text of each selected section
     "Extract the sections under `selected_headings`, such as those chosen in the curator app"
     hdgs = create_heading_dict(md)
     return join_sections(hdgs, headings_to_paths(hdgs, selected_headings))
@@ -126,11 +127,11 @@ def extract_selected(md:str,                     # Markdown text of full report
 # %% ../nbs/03_extract.ipynb #cb6dd783
 @delegates(identify_core_sections)
 async def extract_sections(
-    md:str,                            # Markdown text of full report
-    selected_headings:list[str]=None,  # Raw headings like ["## 1. Intro ...", ...]; if None, uses LLM
-    **kwargs                           # Additional kwargs passed to `identify_core_sections`
-) -> str:                              # Concatenated text of all core sections
-    "Extract core sections from report. Uses LLM auto-detection if `selected_headings` is None, otherwise uses provided headings."
+    md:str,                            # Markdown text of the full report
+    selected_headings:list[str]=None,  # Raw headings like `"## 1. Intro ..."`; `None` asks the LLM
+    **kwargs                           # Passed to `identify_core_sections`
+) -> str:                              # Report title and the text of each core section
+    "Extract the core sections of `md`, chosen by an LLM unless you pass `selected_headings`"
     if selected_headings is not None: return extract_selected(md, selected_headings)
     hdgs = create_heading_dict(md)
     sections = await identify_core_sections(hdgs, **kwargs)
