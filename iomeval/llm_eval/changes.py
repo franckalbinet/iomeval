@@ -1,4 +1,4 @@
-"""Utils to monitor and report changes to domain experts across iterations (prompt, pipeline, ...)
+"""Compare two versions of the saved mappings, such as before and after a prompt change, and report the changes to domain experts
 
 Docs: https://franckalbinet.github.io/iomeval/llm_eval/changes.html.md"""
 
@@ -56,9 +56,9 @@ def is_remapped(
 
 # %% ../../nbs/llm_eval/08_changes.ipynb #53631547
 def info_evl(
-    evl_id # evaluation report id
-    ): 
-    "Return information about an evaluation"
+    evl_id # Evaluation ID
+    ):
+    "Find the evaluation `evl_id` in the notebook's `evals`"
     return first([o for o in evals if o.id == evl_id])
 
 # %% ../../nbs/llm_eval/08_changes.ipynb #71893fe6
@@ -139,9 +139,9 @@ def theme_stats(
 
 # %% ../../nbs/llm_eval/08_changes.ipynb #6591fbda
 def plot_score_diffs_bar(
-    df:pd.DataFrame # input DataFrame
+    df:pd.DataFrame # Deltas from `all_deltas`, for one report
     ):
-    "Bar chart of score diffs (new − old) per theme, coloured by direction, faceted by mapping type"
+    "Bar chart of score diffs (new - old) per theme, coloured by direction, one panel per mapping type"
     fig, axes = plt.subplots(1, df.mapping_type.nunique(), figsize=(20, 8), sharey=False)
     for ax, (mt, grp) in zip(axes, df.groupby('mapping_type')):
         ax.barh(grp.theme_id.astype(str), grp.score_diff, color=['#d9534f' if x > 0 else 'steelblue' for x in grp.score_diff])
@@ -152,11 +152,11 @@ def plot_score_diffs_bar(
 
 # %% ../../nbs/llm_eval/08_changes.ipynb #ad428465
 def plot_rank_changes(
-    df:pd.DataFrame, # input DataFrame, 
-    ignore:str|list='outs', # list of mapping types to exclude 'outs', ['outs', 'ccps']
-    **kwargs # passed to plt.subplots (e.g. figsize, dpi)
+    df:pd.DataFrame, # Deltas from `all_deltas`, for one report
+    ignore:str|list='outs', # Mapping types to leave out, such as `'outs'` or `['outs', 'ccps']`
+    **kwargs # Passed to `plt.subplots`, such as `figsize` or `dpi`
     ):
-    "Slope chart of rank changes (old → new) per mapping type, coloured by direction"
+    "Slope chart of rank changes (old -> new) per mapping type, coloured by direction"
     if ignore is not None: df = df[~df.mapping_type.isin(L(ignore))]
     fig, axes = plt.subplots(1, df.mapping_type.nunique(), sharey=False, **kwargs)
     for ax, (mt, grp) in zip(axes, df.groupby('mapping_type')):
@@ -182,15 +182,19 @@ def plot_rank_changes(
 FUNDAMENTAL = 0.84
 
 # %% ../../nbs/llm_eval/08_changes.ipynb #b3876f2b
-def score_band(score):
-    "Map a relevance score to its category label."
+def score_band(
+    score # Relevance score, from 0 to 1
+    ) -> str: # `'FUNDAMENTAL'`, `'RELEVANT'`, `'PERIPHERAL'` or `'NOT RELEVANT'`
+    "Name the band of `score`"
     if score >= FUNDAMENTAL: return 'FUNDAMENTAL'
     if score >= 0.66: return 'RELEVANT'
     if score >= 0.34: return 'PERIPHERAL'
     return 'NOT RELEVANT'
 
 # %% ../../nbs/llm_eval/08_changes.ipynb #087b4ede
-def is_fundamental(score): return score >= FUNDAMENTAL
+def is_fundamental(score): # Relevance score, from 0 to 1
+    "Check whether `score` is in the FUNDAMENTAL band"
+    return score >= FUNDAMENTAL
 
 # %% ../../nbs/llm_eval/08_changes.ipynb #5810457c
 BANDS = ['NOT RELEVANT', 'PERIPHERAL', 'RELEVANT', 'FUNDAMENTAL']
@@ -198,8 +202,13 @@ BAND_LABELS = ['NOT REL.', 'PERI.', 'REL.', 'FUND.']
 BAND_X = {b: i for i, b in enumerate(BANDS)}
 
 # %% ../../nbs/llm_eval/08_changes.ipynb #aadfde70
-def plot_band_changes(df, evl_id=None, ignore='outs', **kwargs):
-    "Dot-arrow plot of score band changes (old → new) per theme, one subplot per mapping type"
+def plot_band_changes(
+    df, # Deltas from `all_deltas`
+    evl_id=None, # Report to plot; `None` plots every row of `df`
+    ignore='outs', # Mapping types to leave out
+    **kwargs # Passed to `plt.subplots`, such as `figsize` or `dpi`
+    ):
+    "Dot-arrow plot of score band changes (old -> new) per theme, one panel per mapping type"
     if evl_id is not None: df = df[df.evl_id == evl_id]
     if ignore is not None: df = df[~df.mapping_type.isin(L(ignore))]
     mts = sorted(df.mapping_type.unique())
@@ -231,13 +240,13 @@ def plot_band_changes(df, evl_id=None, ignore='outs', **kwargs):
 
 # %% ../../nbs/llm_eval/08_changes.ipynb #1e04c8be
 def plot_score_diffs(
-    dfs: pd.DataFrame, # DataFrame of deltas from all_deltas 
-    mapping_type, # mapping type to plot (gcms, enbs, ...)
+    dfs: pd.DataFrame, # Deltas from `all_deltas`
+    mapping_type, # Mapping type with integer theme IDs, such as `'gcms'`
     xlabel='Theme', # x-axis label
-    col='score_diff', # column to plot
-    **kwargs # passed to plt.subplots (e.g. figsize, dpi)
+    col='score_diff', # Column to plot
+    **kwargs # Passed to `plt.subplots`, such as `figsize` or `dpi`
     ):
-    "Violin plot of score diffs (new − old) per theme for a given mapping type"
+    "Violin plot of score diffs (new - old) per theme, for one mapping type"
     d = dfs[dfs.mapping_type==mapping_type].copy()
     d['theme_id'] = d['theme_id'].astype(int)
     d = d.sort_values('theme_id')
@@ -283,13 +292,13 @@ def get_theme(
 
 # %% ../../nbs/llm_eval/08_changes.ipynb #b41a28b5
 def theme_md(
-    mapping_type:str, # 'gcms', 'enbs', 'ccps', 'outs' 
-    theme_id:str, # theme ID 
-    old_r:dict, # old taggingresult 
-    new_r:dict, # new tagging result
-    row:pd.Series # row from df of delta between old and new
+    mapping_type:str, # `'gcms'`, `'enbs'`, `'ccps'` or `'outs'`
+    theme_id:str, # Theme ID
+    old_r:dict, # Old result, from `load_result`
+    new_r:dict, # New result, from `load_result`
+    row:pd.Series # The theme's row in the deltas
     ):
-    "Render a single theme comparison as markdown with collapsible reasoning"
+    "Render one theme's old and new scores, ranks and reasoning as Markdown"
     o,n = get_theme(old_r, mapping_type, theme_id), get_theme(new_r, mapping_type, theme_id)
     return f"""#### {mapping_type.upper()} {n['theme_id']}: {n['theme_title']}
 
@@ -315,21 +324,37 @@ def fundamental_transitions(
     return d[d.was & ~d.now], d[~d.was & d.now]
 
 # %% ../../nbs/llm_eval/08_changes.ipynb #74588430
-async def add_theme_cells(mid, label, rows, old_r, new_r):
-    "Post label header + one cell per theme row to the dialog."
+async def add_theme_cells(
+    mid, # ID of the dialog message to add after
+    label, # Heading for the group of themes
+    rows, # `(mapping_type, theme_id, row)` tuples, one per theme
+    old_r, # Old result, from `load_result`
+    new_r # New result, from `load_result`
+    ) -> str: # ID of the last message added
+    "Add a heading, then one `theme_md` cell per theme, to the dialog"
     mid = await add_msg(f"**{label}**", placement='add_after', id=mid)
     for mt,tid,row in rows: mid = await add_msg(theme_md(mt, tid, old_r, new_r, row), placement='add_after', id=mid)
     return mid
 
 # %% ../../nbs/llm_eval/08_changes.ipynb #42947dc8
-def fundamental_themes(df, score_col, exclude_types):
-    "List fundamental themes for a given score column."
+def fundamental_themes(
+    df, # Deltas for one report
+    score_col, # `'score_old'` or `'score_new'`
+    exclude_types # Mapping types to leave out
+    ) -> list: # `(mapping_type, theme_id, theme_title)` tuples
+    "List the themes whose `score_col` is in the FUNDAMENTAL band"
     d = df[~df.mapping_type.isin(exclude_types) & df[score_col].map(is_fundamental)]
     return [(row.mapping_type, str(row.theme_id), row.theme_title_x if 'theme_title_x' in d.columns else row.theme_title) for _,row in d.iterrows()]
 
 # %% ../../nbs/llm_eval/08_changes.ipynb #41c4f03d
-async def add_fundamental_summary(mid, df, exclude_types, old_r, new_r):
-    "Post a summary table of fundamental themes (old vs new) to the dialog."
+async def add_fundamental_summary(
+    mid, # ID of the dialog message to add after
+    df, # Deltas for one report
+    exclude_types, # Mapping types to leave out
+    old_r, # Old result, from `load_result`
+    new_r # New result, from `load_result`
+    ) -> str: # ID of the message added
+    "Add a table of the fundamental themes, old and new, to the dialog"
     rows_old = fundamental_themes(df, 'score_old', exclude_types)
     rows_new = fundamental_themes(df, 'score_new', exclude_types)
     lines = ['**Fundamental Themes**', '| | Mapping | Theme | Score |', '|---|---|---|---|']
@@ -339,14 +364,14 @@ async def add_fundamental_summary(mid, df, exclude_types, old_r, new_r):
 
 # %% ../../nbs/llm_eval/08_changes.ipynb #f82f3e11
 async def gen_report_cells(
-    rpt_id,                   # report ID
-    dfs,                      # combined deltas DataFrame from all_deltas
-    old_results_path,         # path to old/backup results
-    new_results_path,         # path to new results
-    exclude_types=('outs',),  # mapping types to exclude
-    plot_kwargs=None          # kwargs passed to plot_rank_changes
+    rpt_id,                   # Report ID
+    dfs,                      # Deltas of every report, from `all_deltas`
+    old_results_path,         # Folder of the old results
+    new_results_path,         # Folder of the new results
+    exclude_types=('outs',),  # Mapping types to leave out
+    plot_kwargs=None          # Passed to `plot_band_changes`, such as `figsize`
 ):
-    "Generate dialog cells comparing old vs new mappings for a report."
+    "Add cells to the current dialog that compare the old and new mappings of report `rpt_id`"
     old_r,new_r = load_result(rpt_id, old_results_path), load_result(rpt_id, new_results_path)
     mid = await add_msg(f"### {new_r['meta']['Title']}", placement='at_end')
     pkw = ifnone(plot_kwargs, dict(figsize=(10,5), dpi=77))
