@@ -1,4 +1,4 @@
-"""End-to-end pipeline for processing IOM evaluation reports
+"""Take IOM evaluation reports from PDF to SRF and GCM mappings, saving the state at each stage
 
 Docs: https://franckalbinet.github.io/iomeval/pipeline.html.md"""
 
@@ -32,12 +32,12 @@ logger.setLevel(logging.DEBUG)
 
 # %% ../nbs/07_pipeline.ipynb #73009447
 class Report:
-    "An evaluation report with full pipeline support"
+    "An evaluation report and its pipeline state"
     def __init__(
         self,
-        ev:Evaluation,                   # The evaluation metadata object
-        pdf_url:str=None,                # Optional direct URL to PDF
-        results_path:str='data/results'  # Path to save/load results
+        ev:Evaluation,                   # The evaluation
+        pdf_url:str=None,                # URL of the report PDF
+        results_path:str='data/results'  # Folder of the saved report JSON files
         ):
         store_attr()
         self.id = ev.id
@@ -62,22 +62,22 @@ def _load_existing(self:Report):
 @patch(cls_method=True)
 def from_url(
     cls:Report,
-    url:str,                         # URL of the evaluation PDF
-    evals:list,                      # List of `Evaluation` objects to search
-    results_path:str='data/results'  # Path to save/load results
-    ):                               # Report initialized from URL
-    "Create a Report by finding an evaluation matching the given URL"
+    url:str,                         # URL of the report PDF, one of the evaluation's documents
+    evals:list,                      # Evaluations to search
+    results_path:str='data/results'  # Folder of the saved report JSON files
+    ) -> Report:                     # Report with `pdf_url` set to `url`
+    "Create a report for the evaluation that has a document at `url`"
     return cls(find_eval(evals, url, by='url'), pdf_url=url, results_path=results_path)
 
 # %% ../nbs/07_pipeline.ipynb #6bccec97
 @patch(cls_method=True)
 def from_title(
     cls:Report,
-    title:str,                      # Title to search for
-    evals:list,                     # List of `Evaluation` objects to search
-    results_path:str='data/results' # Path to save/load results
-    ):                               # Report initialized from title
-    "Create a Report by finding an evaluation matching the given title"
+    title:str,                      # Evaluation title
+    evals:list,                     # Evaluations to search
+    results_path:str='data/results' # Folder of the saved report JSON files
+    ) -> Report:                    # Report with `pdf_url` from `eval_url`
+    "Create a report for the evaluation titled `title`"
     ev = find_eval(evals, title, by='title')
     url = eval_url(ev)
     if not url: raise ValueError(f"{ev.id}: No report URL found")
@@ -87,11 +87,11 @@ def from_title(
 @patch(cls_method=True)
 def from_id(
     cls:Report,
-    id:str,                         # id to search for
-    evals:list,                     # List of `Evaluation` objects to search
-    results_path:str='data/results' # Path to save/load results
-    ):                              # Report initialized from id
-    "Create a Report by finding an evaluation matching the given id"
+    id:str,                         # Evaluation ID
+    evals:list,                     # Evaluations to search
+    results_path:str='data/results' # Folder of the saved report JSON files
+    ) -> Report:                    # Report with `pdf_url` from `eval_url`
+    "Create a report for the evaluation with ID `id`"
     ev = find_eval(evals, id, by='id')
     url = eval_url(ev)
     if not url: raise ValueError(f"{ev.id}: No report URL found")
@@ -127,9 +127,9 @@ def _repr_markdown_(self:Report) -> str:
 # %% ../nbs/07_pipeline.ipynb #6d634bf6
 @patch
 def save(self:Report,
-         path:str=None  # Override default results path
-        ) -> Report:    # Reports self for method chaining
-    "Save report state to JSON"
+         path:str=None  # Folder to write to; `None` uses `results_path`
+        ) -> Report:    # The report, for chaining
+    "Save the report's state to `<id>.json`"
     p = Path(path or self.results_path)/f'{self.id}.json'
     p.parent.mkdir(parents=True, exist_ok=True)
     data = dict(
@@ -146,23 +146,21 @@ def save(self:Report,
     return self
 
 # %% ../nbs/07_pipeline.ipynb #3a58454f
-def load_report(id:str,                  # Report ID (hash)
-                base_path:str='data'     # Base directory containing pdf/, md/, results/
-               ) -> Report:              # The loaded Report
-    "Load a saved Report by id"
+def load_report(id:str,                  # Evaluation ID
+                base_path:str='data'     # Folder holding `pdf/`, `md/` and `results/`
+               ) -> Report:              # The report, with its saved state
+    "Load the report `id` saved under `base_path`"
     results_path = Path(base_path)/'results'
     data = json.loads((results_path/f'{id}.json').read_text())
     
     ev = Evaluation(id=data['id'], meta=data['meta'], docs=data['docs'])
     report = Report(ev, pdf_url=data.get('report_url'), results_path=results_path)
     
-    # Infer paths from convention
     pdf_dir = Path(base_path)/'pdf'/id
     md_dir = Path(base_path)/'md'/id
     report.pdf_path = pdf_dir if pdf_dir.exists() else None
     report.md_path = md_dir if md_dir.exists() else None
     
-    # Restore new attributes
     report.curation_status = data.get('curation_status', 'pending')
     report.selected_headings = data.get('selected_headings', [])
     report.mappings = data.get('mappings', {})
@@ -172,10 +170,10 @@ def load_report(id:str,                  # Report ID (hash)
 # %% ../nbs/07_pipeline.ipynb #3cfe4b55
 @patch
 def download(self:Report,
-             dst:str='data/pdf',  # Destination directory for PDFs
-             force:bool=False      # Force re-download
-            ) -> Report:           # Self for chaining
-    "Download evaluation PDF to `dst`/`eval_id`/"
+             dst:str='data/pdf',  # Folder to create the report's folder in
+             force:bool=False      # Download again when `pdf_path` is set
+            ) -> Report:           # The report, for chaining
+    "Download the evaluation's documents to `dst/<id>/`"
     if self.pdf_path and not force: return self
     self.pdf_path = download_eval(self.ev, dst=dst)
     return self
@@ -183,14 +181,14 @@ def download(self:Report,
 # %% ../nbs/07_pipeline.ipynb #9fc305a0
 @patch
 async def ocr(self:Report,
-              dst:str='data/md',       # Destination directory for markdown files
-              add_img_desc:bool=True,  # Whether to add image descriptions
-              force:bool=False,        # Force re-OCR
-              progress:bool=False,     # Show OCR progress messages
-              fix_kwargs:dict=None,    # Extra kwargs for fix_hdgs
-              desc_kwargs:dict=None    # Extra kwargs for add_img_descs
-             ) -> Report:              # Self for chaining
-    "Run OCR on PDF and fix heading hierarchy"
+              dst:str='data/md',       # Folder to create the report's Markdown folder in
+              add_img_desc:bool=True,  # Add a description of each image, written by an LLM
+              force:bool=False,        # OCR again when `dst/<id>/` exists
+              progress:bool=False,     # Log mistocr's progress
+              fix_kwargs:dict=None,    # Passed to mistocr's `fix_hdgs`
+              desc_kwargs:dict=None    # Passed to mistocr's `add_img_descs`
+             ) -> Report:              # The report, for chaining
+    "OCR the report PDF into Markdown pages in `dst/<id>/`, and save the report"
     if (Path(dst)/self.id).exists() and not force: return self
     if self.pdf_path is None: raise ValueError("Call download() first")
     if self.pdf_url: pdf_file = self.pdf_path/Path(self.pdf_url).name
@@ -202,8 +200,8 @@ async def ocr(self:Report,
 
 # %% ../nbs/07_pipeline.ipynb #f90d9203
 @patch
-def get_sections(self:Report) -> str:
-    "Extract sections on demand from selected headings"
+def get_sections(self:Report) -> str: # Report title and the text of each selected section
+    "Extract the sections under `selected_headings` from the OCR'd pages"
     if self.md_path is None: raise ValueError("Call ocr() first")
     if self.curation_status != 'sections_selected': raise ValueError("Curation required: use curator app to select headings first")
     if not self.selected_headings: raise ValueError("No headings selected")
@@ -212,19 +210,19 @@ def get_sections(self:Report) -> str:
 # %% ../nbs/07_pipeline.ipynb #f7b5bf6c
 @patch
 def ensure_sp(self:Report) -> None:
-    "Ensure the report system prompt, built from the selected sections, is available"
+    "Build the report system prompt from the selected sections, unless the report already has one"
     if not hasattr(self, '_sp'): self._sp = mk_system_prompt(self.get_sections())
 
 # %% ../nbs/07_pipeline.ipynb #5f51ae13
 @delegates(map_themes)
 async def map_single(sp,                         # Report system prompt from `mk_system_prompt`
-                     theme_type,                 # One of: 'enbs', 'ccps', 'gcms', 'outs'
-                     path=None,                  # Path to theme files
-                     model='claude-haiku-4-5',   # Model to use for mapping
-                     gcm_ids=None,               # GCM IDs for output mapping
-                     **kwargs                    # Additional args passed to map_themes
-                    ) -> list[dict]:             # Mapping results
-    "Map the report system prompt to a single theme type using appropriate prompts and formatting"
+                     theme_type,                 # `'enbs'`, `'ccps'`, `'gcms'` or `'outs'`
+                     path=None,                  # Folder of theme files; `None` uses the files shipped with the package
+                     model='claude-haiku-4-5',   # LLM to use
+                     gcm_ids=None,               # GCM objective IDs whose linked outputs to map, for `'outs'`
+                     **kwargs                    # Passed to `map_themes`
+                    ) -> list[dict]:             # Score dicts from `parse_res`
+    "Map the report in `sp` against one theme set, with its prompt and formatting"
     if theme_type == 'enbs': res = await map_themes(sp, fmt_enbs(load_enbs(path)), load_prompt('srf_enablers'), model, **kwargs)
     elif theme_type == 'ccps': res = await map_themes(sp, fmt_ccps(load_ccps(path)), load_prompt('srf_ccps'), model, **kwargs)
     elif theme_type == 'gcms': res = await map_themes(sp, load_gcms(path), load_prompt('gcms'), model, **kwargs)
@@ -237,10 +235,10 @@ async def map_single(sp,                         # Report system prompt from `mk
 # %% ../nbs/07_pipeline.ipynb #4c1885d3
 @patch
 async def map_enbs(self:Report,
-                   force:bool=False,  # Re-run even if already completed
-                   **kwargs           # Additional args passed to map_single (e.g. path, model)
-                  ) -> Report:        # Self for chaining
-    "Map report sections to Strategic Results Framework enablers"
+                   force:bool=False,  # Map again when the theme set is in `mappings`
+                   **kwargs           # Passed to `map_single`, such as `path` or `model`
+                  ) -> Report:        # The report, for chaining
+    "Map the selected sections against the SRF enablers, and save the report"
     if 'enbs' in self.mappings and not force: return self
     self.ensure_sp()
     self.mappings['enbs'] = await map_single(self._sp, 'enbs', **kwargs)
@@ -250,10 +248,10 @@ async def map_enbs(self:Report,
 # %% ../nbs/07_pipeline.ipynb #67574163
 @patch
 async def map_ccps(self:Report,
-                   force:bool=False,  # Re-run even if already completed
-                   **kwargs           # Additional args passed to map_single (e.g. path, model)
-                  ) -> Report:        # Self for chaining
-    "Map report sections to Strategic Results Framework cross-cutting priorities"
+                   force:bool=False,  # Map again when the theme set is in `mappings`
+                   **kwargs           # Passed to `map_single`, such as `path` or `model`
+                  ) -> Report:        # The report, for chaining
+    "Map the selected sections against the SRF cross-cutting priorities, and save the report"
     if 'ccps' in self.mappings and not force: return self
     self.ensure_sp()
     self.mappings['ccps'] = await map_single(self._sp, 'ccps', **kwargs)
@@ -263,10 +261,10 @@ async def map_ccps(self:Report,
 # %% ../nbs/07_pipeline.ipynb #5253ce14
 @patch
 async def map_gcms(self:Report,
-                   force:bool=False,  # Re-run even if already completed
-                   **kwargs           # Additional args passed to map_single (e.g. path, model)
-                  ) -> Report:        # Self for chaining
-    "Map report sections to Global Compact for Migration objectives"
+                   force:bool=False,  # Map again when the theme set is in `mappings`
+                   **kwargs           # Passed to `map_single`, such as `path` or `model`
+                  ) -> Report:        # The report, for chaining
+    "Map the selected sections against the GCM objectives, and save the report"
     if 'gcms' in self.mappings and not force: return self
     self.ensure_sp()
     self.mappings['gcms'] = await map_single(self._sp, 'gcms', **kwargs)
@@ -276,11 +274,11 @@ async def map_gcms(self:Report,
 # %% ../nbs/07_pipeline.ipynb #c9110a90
 @patch
 async def map_outs(self:Report,
-                   gcm_ids=None,      # GCM IDs to filter SRF objectives
-                   force:bool=False,  # Re-run even if already completed
-                   **kwargs           # Additional args passed to map_single (e.g. path, model)
-                  ) -> Report:        # Self for chaining
-    "Map report sections to Strategic Results Framework outputs"
+                   gcm_ids=None,      # GCM objective IDs whose linked outputs to map; `None` uses the top GCM objective
+                   force:bool=False,  # Map again when the outputs are in `mappings`
+                   **kwargs           # Passed to `map_single`, such as `path` or `model`
+                  ) -> Report:        # The report, for chaining
+    "Map the selected sections against the SRF outputs linked to `gcm_ids`, and save the report"
     if 'outs' in self.mappings and not force: return self
     self.ensure_sp()
     if gcm_ids is None:
@@ -294,47 +292,54 @@ async def map_outs(self:Report,
 # %% ../nbs/07_pipeline.ipynb #fc37da1c
 @patch
 async def map_all(self:Report,
-                  **kwargs  # Args passed to all mapping methods
-                 ) -> Report:  # Self for chaining
-    "Run all theme mappings in sequence"
+                  **kwargs  # Passed to each `map_*` method
+                 ) -> Report:  # The report, for chaining
+    "Run `map_enbs`, `map_ccps`, `map_gcms` and `map_outs` in order"
     for f in (self.map_enbs, self.map_ccps, self.map_gcms, self.map_outs): await f(**kwargs)
     return self
 
 # %% ../nbs/07_pipeline.ipynb #b63be3f5
-def should_force(force,     # Bool to force all steps, or set of step names to force
-                 step       # Step name to check
-                ) -> bool:  # Whether to force the step
-    "Check if step should be forced - handles bool or set of step names"
+def should_force(force,     # `True` or `False` for every step, or a set of step names
+                 step       # Step name, such as `'ocr'`
+                ) -> bool:  # Whether to run `step` again
+    "Check whether `force` applies to `step`"
     if isinstance(force, bool): return force
     return step in force
 
 # %% ../nbs/07_pipeline.ipynb #8cf30346
 class PipelineResult:
-    def __init__(self, report, status, error=None, step=None):
+    "Outcome of `run_pipeline` for one report"
+    def __init__(self,
+                 report,     # The report, in its final state
+                 status,     # `'completed'`, `'awaiting_curation'` or `'failed'`
+                 error=None, # Error message, when `status` is `'failed'`
+                 step=None   # Stage the run stopped at, when it did not complete
+                ):
         store_attr()
 
 # %% ../nbs/07_pipeline.ipynb #51cc0271
-def get_current_step(report):
-    "Infer which step the report is at based on its state"
+def get_current_step(report # Report to check
+                    ) -> str: # `'ocr'`, `'curation'` or `'mapping'`
+    "Infer the stage `report` is at from its state"
     if not report.md_path: return 'ocr'
     if report.curation_status != 'sections_selected': return 'curation'
     return 'mapping'
 
 # %% ../nbs/07_pipeline.ipynb #0dd9587d
-async def run_pipeline(evals:list,                  # List of `Evaluation` objects to search
-                       url:str=None,                # URL of the evaluation PDF
+async def run_pipeline(evals:list,                  # Evaluations to search
+                       url:str=None,                # URL of the report PDF
                        id:str=None,                 # Evaluation ID
                        title:str=None,              # Evaluation title
-                       base_path:str='data',        # Base directory (contains pdf/, md/, results/)
-                       add_img_desc:bool=True,      # Whether to add image descriptions during OCR
-                       fix_kwargs:dict=None,        # Extra kwargs for fix_hdgs in OCR
-                       desc_kwargs:dict=None,       # Extra kwargs for add_img_descs in OCR
-                       force:bool|set=False,        # Force re-run: True for all, or set of step names
-                       delete_pdf:bool=True,        # Delete PDF after OCR
-                       verbose:bool=False,          # Print progress messages
-                       **kwargs                     # Additional arguments passed to mapping functions
-                      ) -> PipelineResult:          # Pipeline result with status and report
-    "Run pipeline as far as possible: download → ocr → [curate] → map_all"
+                       base_path:str='data',        # Folder holding `pdf/`, `md/` and `results/`
+                       add_img_desc:bool=True,      # Add image descriptions during OCR
+                       fix_kwargs:dict=None,        # Passed to mistocr's `fix_hdgs`
+                       desc_kwargs:dict=None,       # Passed to mistocr's `add_img_descs`
+                       force:bool|set=False,        # `True` to run every step again, or a set of step names
+                       delete_pdf:bool=True,        # Delete the PDF folder after OCR
+                       verbose:bool=False,          # Log each step
+                       **kwargs                     # Passed to the `map_*` methods, such as `model`
+                      ) -> PipelineResult:          # The report and how far the run got
+    "Run the pipeline on one evaluation as far as it can go"
     if sum(x is not None for x in (url, id, title)) != 1:
         raise ValueError("Provide exactly one of: url, id, title")
     base = Path(base_path)
@@ -391,10 +396,10 @@ async def run_pipeline(evals:list,                  # List of `Evaluation` objec
 class BatchResult:
     "Result of running pipeline on a batch of evaluations"
     def __init__(self,
-                 completed=None,         # List of successfully completed report IDs
-                 awaiting_curation=None, # List of report IDs awaiting curation
-                 failed=None,            # List of (report_id, error) tuples
-                 skipped=None            # List of skipped report IDs (no report URL found)
+                 completed=None,         # IDs of the reports that completed
+                 awaiting_curation=None, # IDs of the reports that wait for curation
+                 failed=None,            # One dict per failure, with `id`, `step` and `error`
+                 skipped=None            # IDs of the reports skipped because they were already complete
                 ):
         store_attr()
         self.completed = completed or []
@@ -403,43 +408,45 @@ class BatchResult:
         self.skipped = skipped or []
     
     def save(self, path):
+        "Save the result as JSON at `path`"
         Path(path).parent.mkdir(parents=True, exist_ok=True)
         data = dict(completed=self.completed, awaiting_curation=self.awaiting_curation, 
                     failed=self.failed, skipped=self.skipped)
         Path(path).write_text(json.dumps(data, indent=2))
 
 # %% ../nbs/07_pipeline.ipynb #f72b5d42
-def filter_evals(evals,      # List of Evaluation objects
-                 year=None,  # Filter by year
-                 ids=None    # Filter by list of IDs
-                ):           # Filtered list of evaluations
-    "Filter evaluations by year or list of IDs"
+def filter_evals(evals,      # Evaluations to filter
+                 year=None,  # Keep the evaluations of this `Year`, such as `'2023'`
+                 ids=None    # Keep the evaluations with these IDs; takes precedence over `year`
+                ) -> list:   # The kept evaluations, or `evals` when neither filter is set
+    "Keep the evaluations in `ids`, or else those of `year`"
     if ids: return [e for e in evals if e.id in ids]
     if year: return [e for e in evals if e.meta.get('Year') == year]
     return evals
 
 
 # %% ../nbs/07_pipeline.ipynb #7c691f19
-def is_completed(report):
-    "Check if report is completed"
+def is_completed(report # Report to check
+                ) -> bool: # Whether `mappings` has all four theme sets
+    "Check whether `report` has been mapped against every theme set"
     required = {'enbs', 'ccps', 'gcms', 'outs'}
     return required.issubset(report.mappings.keys()) if report.mappings else False
 
 # %% ../nbs/07_pipeline.ipynb #9a36dbcc
 async def batch_run(
-    evals,                        # List of Evaluation objects to process
-    base_path:str='../../data',   # Base directory (contains pdf/, md/, results/)
-    year:str=None,                # Filter evaluations by year (e.g. '2023')
-    ids:list=None,                # Filter evaluations by specific IDs
-    force:bool|set=False,         # Force re-run: True for all, or set of step names
-    stop_after:int=None,          # Stop after processing N reports (not yet implemented)
-    delete_pdf:bool=False,        # Delete PDFs after OCR to save space
-    add_img_desc:bool=True,       # Whether to add image descriptions during OCR
-    fix_kwargs:dict=None,         # Extra kwargs for fix_hdgs in OCR
-    desc_kwargs:dict=None,        # Extra kwargs for add_img_descs in OCR
-    **kwargs                      # Additional arguments passed to run_pipeline function
-) -> BatchResult:                 # Contains completed, awaiting_curation, failed, skipped lists
-    "Run pipeline on a batch of reports"
+    evals,                        # Evaluations to run
+    base_path:str='../../data',   # Folder holding `pdf/`, `md/` and `results/`
+    year:str=None,                # Keep the evaluations of this year, such as `'2023'`
+    ids:list=None,                # Keep the evaluations with these IDs; takes precedence over `year`
+    force:bool|set=False,         # `True` to run every step again, or a set of step names
+    stop_after:int=None,          # Stop after N reports; not implemented yet
+    delete_pdf:bool=False,        # Delete each report's PDF folder after OCR
+    add_img_desc:bool=True,       # Add image descriptions during OCR
+    fix_kwargs:dict=None,         # Passed to mistocr's `fix_hdgs`
+    desc_kwargs:dict=None,        # Passed to mistocr's `add_img_descs`
+    **kwargs                      # Passed to `run_pipeline`, such as `model`
+) -> BatchResult:                 # IDs of the evaluations, grouped by outcome
+    "Run the pipeline on each evaluation, and save a summary of the run"
     filtered = filter_evals(evals, year=year, ids=ids)
     result = BatchResult()
     
