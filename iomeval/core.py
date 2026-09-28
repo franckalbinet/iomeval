@@ -1,4 +1,4 @@
-"""Utilities function
+"""Load API keys from `.env`, count tokens, and read the packaged prompts
 
 Docs: https://franckalbinet.github.io/iomeval/core.html.md"""
 
@@ -15,40 +15,34 @@ import tiktoken
 
 # %% ../nbs/00_core.ipynb #92892976
 def _load_dotenv():
-    """Load .env file if it exists and env vars aren't already set"""
-    # Check if key env vars already exist
-    if os.getenv('ANTHROPIC_API_KEY') or os.getenv('MISTRAL_API_KEY'):
-        return  # Already set via export, don't override
-    
+    "Load `.env` from the project root, unless the environment sets `ANTHROPIC_API_KEY` or `MISTRAL_API_KEY`"
+    if os.getenv('ANTHROPIC_API_KEY') or os.getenv('MISTRAL_API_KEY'): return
     try:
         from dotenv import load_dotenv
-        # For dev: look in project root (one level up from nbs/)
         env_path = Path(__file__).parent.parent / '.env'
         if env_path.exists():
             load_dotenv(env_path)
-    except (ImportError, NameError):
-        pass  # dotenv not installed or __file__ not available
+    except (ImportError, NameError): pass  # NameError: a notebook has no `__file__`
 
 # %% ../nbs/00_core.ipynb #3b03aa33
-# Auto-load on import
 _load_dotenv()
 
 # %% ../nbs/00_core.ipynb #5b13d7c8
 def n_tokens(
     text:str,         # Text to count tokens in
-    model:str='gpt-4' # Model name for tokenizer
-    ) -> int:         # Nb. of tokens
-    "Count the number of tokens in a string"
+    model:str='gpt-4' # OpenAI model whose tiktoken encoding to use
+    ) -> int:         # Number of tokens
+    "Count the tokens in `text` with tiktoken"
     enc = tiktoken.encoding_for_model(model)
     return len(enc.encode(text))
 
 # %% ../nbs/00_core.ipynb #38e58cd5
 def load_prompt(
-    name:str,               # Name of prompt file: 'gcms', 'select_sections', 'srf_ccps', 'srf_enablers', 'srf_outputs'
-    path:Path|str|None=None # Directory containing prompt files, defaults to 'files/prompts'
-    ) -> str:               # Prompt
-    "Load a prompt template from a markdown file"
+    name:str,               # Prompt file name without `.md`, such as `'srf_ccps'`
+    path:Path|str|None=None # Folder of prompt files; `None` uses the prompts shipped with the package
+    ) -> str:               # Prompt text
+    "Read the prompt `name` from `path`"
     if path is None:
         try: path = Path(__file__).parent / 'files' / 'prompts'
-        except NameError: path = Path('files/prompts')  # notebook fallback
+        except NameError: path = Path('files/prompts')  # A notebook has no `__file__`
     return (Path(path)/f'{name}.md').read_text()
