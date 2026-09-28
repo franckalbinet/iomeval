@@ -1,4 +1,4 @@
-"""Load and format SRF, GCM, and cross-cutting priority data for LLM consumption
+"""Load the SRF and GCM theme files, and format themes as Markdown for the mapping prompts
 
 Docs: https://franckalbinet.github.io/iomeval/themes.html.md"""
 
@@ -14,11 +14,11 @@ from pathlib import Path
 import json
 
 # %% ../nbs/04_themes.ipynb #3d0837df
-def load_thm(fname:str,         # Filename to load
-                path:str=None,  # Directory containing theme files
-                md:bool=False   # Return raw text instead of JSON?
-               ) -> dict|str:   # Theme data as dict or raw text
-    "Load theme file from `path` (JSON by default, or raw text if `md=True`)"
+def load_thm(fname:str,      # File name, such as `'srf_enablers.json'`
+             path:str=None,  # Folder of theme files; `None` uses the files shipped with the package
+             md:bool=False   # Return the file's text instead of parsing it as JSON?
+            ) -> dict|str:   # Parsed JSON, or the text with `md=True`
+    "Load the theme file `fname` from `path`"
     if path is None:
         try: path = Path(__file__).parent / 'files' / 'themes'
         except NameError: path = Path('files/themes')
@@ -34,10 +34,10 @@ load_gcms_lut = partial(load_thm, 'gcm_to_srf_outputs.json')
 
 # %% ../nbs/04_themes.ipynb #a96eb0b2
 def fmt_enb_ccp(
-    items:list, # List of enabler/CCP dicts with id, title, description
-    typ:str     # Type of item (enabler or CCP)
-    ) -> str:   # Formatted theme
-    "Format enablers or cross-cutting priorities for LLM"
+    items:list, # Enablers or priorities, each a dict with `id`, `title` and `description`
+    typ:str     # Label for the `Type:` line, such as `'SRF Enabler'`
+    ) -> str:   # One Markdown section per item
+    "Format enablers or cross-cutting priorities as Markdown"
     return '\n\n'.join([f'## {o["title"]}\n**Type:** {typ}\n**ID:** {o["id"]}\n\n{o["description"]}' for o in items])
 
 # %% ../nbs/04_themes.ipynb #a9e63c8b
@@ -45,10 +45,10 @@ fmt_enbs = partial(fmt_enb_ccp, typ='SRF Enabler')
 fmt_ccps = partial(fmt_enb_ccp, typ='SRF Cross-Cutting Priority')
 
 # %% ../nbs/04_themes.ipynb #3eb3bc09
-def get_srf_out(objectives:list, # SRF objectives structure
-                output_id:str   # Output ID to find
-               ) -> dict|None:  # SRF Output of interest
-    "Retrieve single SRF output with hierarchy"
+def get_srf_out(objectives:list, # SRF objectives from `load_srf_outs`
+                output_id:str    # Output ID, such as `'1a11'`
+               ) -> dict|None:   # The output with its objective and outcomes; `None` if not found
+    "Find the SRF output `output_id` and the objective and outcomes above it"
     for obj in objectives:
         for lt_out in obj.get('long_term_outcomes', []):
             for st_out in lt_out.get('short_term_outcomes', []):
@@ -58,9 +58,9 @@ def get_srf_out(objectives:list, # SRF objectives structure
 
 # %% ../nbs/04_themes.ipynb #0845cf48
 def fmt_srf_out(
-    output_ctx:dict # Dict with obj, lt_out, st_out, and output fields
-    ) -> str:       # Formatted SRF output
-    "Format SRF output with hierarchical context for LLM"
+    output_ctx:dict # Output and its context, from `get_srf_out`
+    ) -> str:       # Markdown section for the output
+    "Format an SRF output as Markdown, with the titles of its objective and outcomes"
     o = output_ctx
     return '\n'.join([
         f'## SRF Output {o["output"]["id"]}: {o["output"]["title"]}',
@@ -71,24 +71,24 @@ def fmt_srf_out(
     ])
 
 # %% ../nbs/04_themes.ipynb #b1c924fb
-def fmt_srf_outs(objectives:list, # SRF objectives structure
-                 output_ids:list  # List of output IDs to format
-                ) -> str:         # Multiple SRF outputs formatted
-    "Format multiple SRF outputs"
+def fmt_srf_outs(objectives:list, # SRF objectives from `load_srf_outs`
+                 output_ids:list  # Output IDs; each must exist in `objectives`
+                ) -> str:         # One Markdown section per output
+    "Format the SRF outputs `output_ids` as Markdown"
     return '\n\n'.join(fmt_srf_out(get_srf_out(objectives, i)) for i in output_ids)
 
 
 # %% ../nbs/04_themes.ipynb #c2c801cf
-def get_srf_outs(lut:dict,      # GCM to SRF lookup dict
-                 gcm_ids:list   # List of GCM IDs to filter by
-                ) -> L:         # List of SRF output IDs
-    "Get SRF output IDs filtered by GCM IDs"
+def get_srf_outs(lut:dict,      # GCM objective ID to SRF output IDs, from `load_gcms_lut`
+                 gcm_ids:list   # GCM objective IDs
+                ) -> L:         # SRF output IDs, in table order; an output linked to two objectives appears twice
+    "Get the IDs of the SRF outputs linked to `gcm_ids`"
     return L(v for k,v in lut.items() if k in gcm_ids).concat()
 
 # %% ../nbs/04_themes.ipynb #28f583ae
 def load_all_thms(
-    path:str=None  # Directory containing theme JSON files
-    ) -> AttrDict: # Dict with enablers, ccp, gcms, srf_outs, gcm_lut
-    "Load all theme data from path"
+    path:str=None  # Folder of theme files; `None` uses the files shipped with the package
+    ) -> AttrDict: # `enbs`, `ccps`, `gcms`, `outs` and `gcm_lut`
+    "Load every theme file from `path`"
     return AttrDict(enbs=load_enbs(path), ccps=load_ccps(path), gcms=load_gcms(path), 
                     outs=load_srf_outs(path), gcm_lut=load_gcms_lut(path))
