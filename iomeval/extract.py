@@ -6,15 +6,15 @@ Docs: https://franckalbinet.github.io/iomeval/extract.html.md"""
 
 # %% auto #0
 __all__ = ['CoreSectionsOutput', 'heading_to_key', 'find_path', 'rm_nested', 'headings_to_paths', 'get_text',
-           'identify_core_sections', 'get_h1_title', 'extract_sections']
+           'identify_core_sections', 'get_h1_title', 'join_sections', 'extract_selected', 'extract_sections']
 
 # %% ../nbs/03_extract.ipynb #bb2a3b4d
 from fastcore.all import *
 from operator import getitem
 from pydantic import BaseModel
-from lisette.core import completion, mk_msg
+from mistocr.refine import structured_llm
+from aidialog.msg_parts import mk_msg
 from toolslm.md_hier import create_heading_dict
-import json
 import logging
 from .core import load_prompt
 
@@ -68,7 +68,7 @@ def get_text(ks:list[str], # List of exact key strings forming path through nest
     return L(ks).reduce(getitem, hdgs).text
 
 # %% ../nbs/03_extract.ipynb #e7c1a140
-def identify_core_sections(
+async def identify_core_sections(
     hdgs:dict,                                          # Nested dictionary of report headings from `create_heading_dict`
     sp:str=None,                                        # System prompt for section identification
     response_format:type[BaseModel]=CoreSectionsOutput, # Pydantic model for structured output
@@ -76,33 +76,45 @@ def identify_core_sections(
 ) -> dict:                                              # Dictionary with 'section_paths' and 'reasoning' keys
     "Use LLM to identify core sections (exec summary, intro, conclusions, recommendations) from ToC"
     if sp is None: sp = load_prompt('select_sections')
-    res = completion(model=model, messages=[mk_msg(f"Here is the table of contents as a nested dictionary:\n\n{hdgs}")], 
-                     system=[{"type": "text", "text": sp}], response_format=response_format)
-    return json.loads(res.choices[0].message.content)
+    msg = mk_msg(f"Here is the table of contents as a nested dictionary:\n\n{hdgs}")
+    return (await structured_llm(model, [msg], response_format, system=sp)).model_dump()
 
 # %% ../nbs/03_extract.ipynb #438e0148
 def get_h1_title(hdgs:dict) -> str:
     "Get the main title (first h1 heading) from heading dict"
     return f"# {first(hdgs.keys())}" if hdgs else ""
 
-# %% ../nbs/03_extract.ipynb #cb6dd783
-@delegates(identify_core_sections)
-def extract_sections(
-    md:str,                            # Markdown text of full report
-    selected_headings:list[str]=None,  # Raw headings like ["## 1. Intro ...", ...]; if None, uses LLM
-    **kwargs                           # Additional kwargs passed to `identify_core_sections`
-) -> str:                              # Concatenated text of all core sections
-    "Extract core sections from report. Uses LLM auto-detection if `selected_headings` is None, otherwise uses provided headings."
-    hdgs = create_heading_dict(md)
-    
-    if selected_headings is not None: paths = headings_to_paths(hdgs, selected_headings)
-    else:
-        sections = identify_core_sections(hdgs, **kwargs)
-        paths = rm_nested(sections['section_paths'])
-
+# %% ../nbs/03_extract.ipynb #f51f071d
+def join_sections(hdgs:dict,             # Nested dictionary of headings created by `create_heading_dict`
+                  paths:list[list[str]]  # Paths to the sections to extract
+                 ) -> str:               # Report title followed by each section's text; empty if no paths
+    "Concatenate the report title and the text of each section in `paths`"
     if not paths: return ""
     texts = [get_h1_title(hdgs)]
     for p in paths:
         try: texts.append(get_text(p, hdgs))
         except (KeyError, AttributeError) as e: logging.warning(f"Path not found, skipping: {p}")
     return '\n'.join(texts)
+
+
+# %% ../nbs/03_extract.ipynb #f519b66c
+def extract_selected(md:str,                     # Markdown text of full report
+                     selected_headings:list[str] # Raw headings like ["## 1. Intro ...", ...]
+                    ) -> str:                    # Concatenated text of the selected sections
+    "Extract the sections under `selected_headings`, such as those chosen in the curator app"
+    hdgs = create_heading_dict(md)
+    return join_sections(hdgs, headings_to_paths(hdgs, selected_headings))
+
+
+# %% ../nbs/03_extract.ipynb #cb6dd783
+@delegates(identify_core_sections)
+async def extract_sections(
+    md:str,                            # Markdown text of full report
+    selected_headings:list[str]=None,  # Raw headings like ["## 1. Intro ...", ...]; if None, uses LLM
+    **kwargs                           # Additional kwargs passed to `identify_core_sections`
+) -> str:                              # Concatenated text of all core sections
+    "Extract core sections from report. Uses LLM auto-detection if `selected_headings` is None, otherwise uses provided headings."
+    if selected_headings is not None: return extract_selected(md, selected_headings)
+    hdgs = create_heading_dict(md)
+    sections = await identify_core_sections(hdgs, **kwargs)
+    return join_sections(hdgs, rm_nested(sections["section_paths"]))

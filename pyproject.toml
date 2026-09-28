@@ -7,12 +7,12 @@ name = "iomeval"
 dynamic = ["version"]
 description = "Streamline evaluation evidence mapping at scale with LLMs"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = {text = "Apache-2.0"}
 authors = [{name = "Franck Albinet", email = "franckalbinet@pm.me"}]
 keywords = ['nbdev', 'jupyter', 'notebook', 'python']
 classifiers = ["Natural Language :: English", "Intended Audience :: Developers", "Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3 :: Only"]
-dependencies = ['fastcore', 'pandas', 'lisette', 'pydantic', 'tiktoken', 'mistocr', 'python-dotenv', 'pycachy', 'python-fasthtml', 'MonsterUI', 'dialoghelper']
+dependencies = ['fastcore', 'pandas', 'python-fastllm', 'aidialog', 'toolslm<0.3.45', 'pydantic', 'tiktoken', 'mistocr>=0.7.0', 'python-dotenv', 'pycachy', 'python-fasthtml', 'MonsterUI', 'dialoghelper']
 
 [project.urls]
 Repository = "https://github.com/franckalbinet/iomeval"

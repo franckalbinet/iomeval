@@ -14,9 +14,9 @@ from pathlib import Path
 from .core import n_tokens, load_prompt
 from .readers import load_evals, find_eval, Evaluation, eval_url
 from .downloaders import download_eval
-from .extract import extract_sections
+from .extract import extract_selected
 from .themes import load_enbs, load_ccps, load_gcms, load_srf_outs, load_gcms_lut, fmt_enbs, fmt_ccps, fmt_srf_outs, get_srf_outs
-from .mapper import mk_system_blocks, map_themes, sort_by_relevance, get_top_ids, parse_res
+from .mapper import mk_system_prompt, map_themes, sort_by_relevance, get_top_ids, parse_res
 from mistocr.core import read_pgs
 from mistocr.pipeline import pdf_to_md
 from datetime import datetime
@@ -223,97 +223,98 @@ def get_sections(self:Report) -> str:
     if self.md_path is None: raise ValueError("Call ocr() first")
     if self.curation_status != 'sections_selected': raise ValueError("Curation required: use curator app to select headings first")
     if not self.selected_headings: raise ValueError("No headings selected")
-    return extract_sections(read_pgs(self.md_path), selected_headings=self.selected_headings)
+    return extract_selected(read_pgs(self.md_path), self.selected_headings)
 
 # %% ../nbs/07_pipeline.ipynb #f7b5bf6c
 @patch
-def ensure_sys_blocks(self:Report) -> None:
-    "Ensure system blocks are available"
-    if not hasattr(self, '_sys_blocks'): self._sys_blocks = mk_system_blocks(self.get_sections())
+def ensure_sp(self:Report) -> None:
+    "Ensure the report system prompt, built from the selected sections, is available"
+    if not hasattr(self, '_sp'): self._sp = mk_system_prompt(self.get_sections())
 
 # %% ../nbs/07_pipeline.ipynb #5f51ae13
 @delegates(map_themes)
-def map_single(sys_blocks,                 # System blocks from mk_system_blocks
-                theme_type,                # One of: 'enbs', 'ccps', 'gcms', 'outs'
-                path=None,                 # Path to theme files
-                model='claude-haiku-4-5',  # Model to use for mapping
-                gcm_ids=None,              # GCM IDs for output mapping
-                **kwargs                   # Additional args passed to map_themes
-               ) -> dict:                  # Mapping results
-    "Map system blocks (Report) to a single theme type using appropriate prompts and formatting"
-    if theme_type == 'enbs': res = map_themes(sys_blocks, fmt_enbs(load_enbs(path)), load_prompt('srf_enablers'), model, **kwargs)
-    elif theme_type == 'ccps': res = map_themes(sys_blocks, fmt_ccps(load_ccps(path)), load_prompt('srf_ccps'), model, **kwargs)
-    elif theme_type == 'gcms': res = map_themes(sys_blocks, load_gcms(path), load_prompt('gcms'), model, **kwargs)
+async def map_single(sp,                         # Report system prompt from `mk_system_prompt`
+                     theme_type,                 # One of: 'enbs', 'ccps', 'gcms', 'outs'
+                     path=None,                  # Path to theme files
+                     model='claude-haiku-4-5',   # Model to use for mapping
+                     gcm_ids=None,               # GCM IDs for output mapping
+                     **kwargs                    # Additional args passed to map_themes
+                    ) -> list[dict]:             # Mapping results
+    "Map the report system prompt to a single theme type using appropriate prompts and formatting"
+    if theme_type == 'enbs': res = await map_themes(sp, fmt_enbs(load_enbs(path)), load_prompt('srf_enablers'), model, **kwargs)
+    elif theme_type == 'ccps': res = await map_themes(sp, fmt_ccps(load_ccps(path)), load_prompt('srf_ccps'), model, **kwargs)
+    elif theme_type == 'gcms': res = await map_themes(sp, load_gcms(path), load_prompt('gcms'), model, **kwargs)
     elif theme_type == 'outs':
         srf_obj, gcm_lut = load_srf_outs(path), load_gcms_lut(path)
         output_ids = get_srf_outs(gcm_lut, gcm_ids)
-        res = map_themes(sys_blocks, fmt_srf_outs(srf_obj, output_ids), load_prompt('srf_outputs'), model, **kwargs)
+        res = await map_themes(sp, fmt_srf_outs(srf_obj, output_ids), load_prompt('srf_outputs'), model, **kwargs)
     return parse_res(res)
 
 # %% ../nbs/07_pipeline.ipynb #4c1885d3
 @patch
-def map_enbs(self:Report,
-             force:bool=False,  # Re-run even if already completed
-             **kwargs           # Additional args passed to map_single (e.g. path, model)
-            ) -> Report:        # Self for chaining
+async def map_enbs(self:Report,
+                   force:bool=False,  # Re-run even if already completed
+                   **kwargs           # Additional args passed to map_single (e.g. path, model)
+                  ) -> Report:        # Self for chaining
     "Map report sections to Strategic Results Framework enablers"
     if 'enbs' in self.mappings and not force: return self
-    self.ensure_sys_blocks()
-    self.mappings['enbs'] = map_single(self._sys_blocks, 'enbs', **kwargs)
+    self.ensure_sp()
+    self.mappings['enbs'] = await map_single(self._sp, 'enbs', **kwargs)
     self.save(self.results_path)
     return self
 
 # %% ../nbs/07_pipeline.ipynb #67574163
 @patch
-def map_ccps(self:Report,
-             force:bool=False,  # Re-run even if already completed
-             **kwargs           # Additional args passed to map_single (e.g. path, model)
-            ) -> Report:        # Self for chaining
+async def map_ccps(self:Report,
+                   force:bool=False,  # Re-run even if already completed
+                   **kwargs           # Additional args passed to map_single (e.g. path, model)
+                  ) -> Report:        # Self for chaining
     "Map report sections to Strategic Results Framework cross-cutting priorities"
     if 'ccps' in self.mappings and not force: return self
-    self.ensure_sys_blocks()
-    self.mappings['ccps'] = map_single(self._sys_blocks, 'ccps', **kwargs)
+    self.ensure_sp()
+    self.mappings['ccps'] = await map_single(self._sp, 'ccps', **kwargs)
     self.save(self.results_path)
     return self
 
 # %% ../nbs/07_pipeline.ipynb #5253ce14
 @patch
-def map_gcms(self:Report,
-             force:bool=False,  # Re-run even if already completed
-             **kwargs           # Additional args passed to map_single (e.g. path, model)
-            ) -> Report:        # Self for chaining
+async def map_gcms(self:Report,
+                   force:bool=False,  # Re-run even if already completed
+                   **kwargs           # Additional args passed to map_single (e.g. path, model)
+                  ) -> Report:        # Self for chaining
     "Map report sections to Global Compact for Migration objectives"
     if 'gcms' in self.mappings and not force: return self
-    self.ensure_sys_blocks()
-    self.mappings['gcms'] = map_single(self._sys_blocks, 'gcms', **kwargs)
+    self.ensure_sp()
+    self.mappings['gcms'] = await map_single(self._sp, 'gcms', **kwargs)
     self.save(self.results_path)
     return self
 
 # %% ../nbs/07_pipeline.ipynb #c9110a90
 @patch
-def map_outs(self:Report,
-             gcm_ids=None,      # GCM IDs to filter SRF objectives
-             force:bool=False,  # Re-run even if already completed
-             **kwargs           # Additional args passed to map_single (e.g. path, model)
-            ) -> Report:        # Self for chaining
+async def map_outs(self:Report,
+                   gcm_ids=None,      # GCM IDs to filter SRF objectives
+                   force:bool=False,  # Re-run even if already completed
+                   **kwargs           # Additional args passed to map_single (e.g. path, model)
+                  ) -> Report:        # Self for chaining
     "Map report sections to Strategic Results Framework outputs"
     if 'outs' in self.mappings and not force: return self
-    self.ensure_sys_blocks()
+    self.ensure_sp()
     if gcm_ids is None:
         top_ids = get_top_ids(self.mappings.get('gcms', []))
         if not top_ids: return self
         gcm_ids = [top_ids[0]]
-    self.mappings['outs'] = map_single(self._sys_blocks, 'outs', gcm_ids=gcm_ids, **kwargs)
+    self.mappings['outs'] = await map_single(self._sp, 'outs', gcm_ids=gcm_ids, **kwargs)
     self.save(self.results_path)
     return self
 
 # %% ../nbs/07_pipeline.ipynb #fc37da1c
 @patch
-def map_all(self:Report,
-            **kwargs  # Args passed to all mapping methods
-           ) -> Report:  # Self for chaining
+async def map_all(self:Report,
+                  **kwargs  # Args passed to all mapping methods
+                 ) -> Report:  # Self for chaining
     "Run all theme mappings in sequence"
-    return self.map_enbs(**kwargs).map_ccps(**kwargs).map_gcms(**kwargs).map_outs(**kwargs)
+    for f in (self.map_enbs, self.map_ccps, self.map_gcms, self.map_outs): await f(**kwargs)
+    return self
 
 # %% ../nbs/07_pipeline.ipynb #b63be3f5
 def should_force(force,     # Bool to force all steps, or set of step names to force
@@ -387,13 +388,13 @@ async def run_pipeline(evals:list,                  # List of `Evaluation` objec
             return PipelineResult(report, 'awaiting_curation', step='curation')
         
         log("Mapping enablers...")
-        report.map_enbs(force=should_force(force, 'enbs'), **kwargs)
+        await report.map_enbs(force=should_force(force, 'enbs'), **kwargs)
         log("Mapping CCPs...")
-        report.map_ccps(force=should_force(force, 'ccps'), **kwargs)
+        await report.map_ccps(force=should_force(force, 'ccps'), **kwargs)
         log("Mapping GCM objectives...")
-        report.map_gcms(force=should_force(force, 'gcms'), **kwargs)
+        await report.map_gcms(force=should_force(force, 'gcms'), **kwargs)
         log("Mapping outputs...")
-        report.map_outs(force=should_force(force, 'outs'), **kwargs)
+        await report.map_outs(force=should_force(force, 'outs'), **kwargs)
         log("Pipeline complete!")
         return PipelineResult(report, 'completed')
     

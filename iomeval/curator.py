@@ -15,7 +15,7 @@ from fasthtml.jupyter import *
 from monsterui.all import *
 from fastcore.script import call_parse
 from .pipeline import Report, load_report
-from .extract import extract_sections
+from .extract import extract_selected
 from .core import n_tokens
 from pathlib import Path
 from mistocr.core import read_pgs
@@ -57,7 +57,7 @@ def fmt_status(status): return status.replace('_', ' ').title()
 def count_selected_tokens(r, selected_hdgs):
     if not selected_hdgs: return 0
     md = read_pgs(r.md_path)
-    return n_tokens(extract_sections(md, selected_headings=selected_hdgs))
+    return n_tokens(extract_selected(md, selected_hdgs))
 
 # %% ../nbs/06_curator.ipynb #c2875879
 def get_progress(reports):
