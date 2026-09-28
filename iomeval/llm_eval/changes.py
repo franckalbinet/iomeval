@@ -23,7 +23,7 @@ import numpy as np
 
 from matplotlib.lines import Line2D
 from matplotlib.patheffects import withStroke
-from dialoghelper.stdtools import *
+from dialoghelper import add_msg
 
 pd.set_option('display.max_colwidth', None)
 
