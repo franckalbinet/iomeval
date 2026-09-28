@@ -46,22 +46,6 @@ class Report:
         self.curation_status = 'pending'
         self._load_existing()
 
-# %% ../nbs/07_pipeline.ipynb #73009447
-class Report:
-    "An evaluation report with full pipeline support"
-    def __init__(
-        self,
-        ev:Evaluation,                   # The evaluation metadata object
-        pdf_url:str=None,                # Optional direct URL to PDF
-        results_path:str='data/results'  # Path to save/load results
-        ):
-        store_attr()
-        self.id = ev.id
-        self.pdf_path,self.md_path = None,None
-        self.mappings,self.selected_headings = {},[]
-        self.curation_status = 'pending'
-        self._load_existing()
-
 # %% ../nbs/07_pipeline.ipynb #6e1a2613
 @patch
 def _load_existing(self:Report):
