@@ -2,6 +2,17 @@
 
 <!-- do not remove -->
 
+## 0.4.1
+
+### New Features
+
+- Rewrite the library notebooks' prose, docstrings and docments ([#10](https://github.com/franckalbinet/iomeval/issues/10))
+
+### Bugs Squashed
+
+- IOMRepoReader.to_json fails: get_uneg_url is not exported ([#9](https://github.com/franckalbinet/iomeval/issues/9))
+
+
 ## 0.4.0
 
 ### Breaking Changes
