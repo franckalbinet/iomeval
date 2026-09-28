@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>fix-regions – iomeval</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f2788e636de456f6409e966386820849.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="iomeval">
+<meta property="og:description" content="Streamline evaluation evidence mapping at scale with LLMs">
+<meta property="og:site_name" content="iomeval">
+<meta name="twitter:title" content="iomeval">
+<meta name="twitter:description" content="Streamline evaluation evidence mapping at scale with LLMs">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">iomeval</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOMEval</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/eval_metadata_eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOM Reports Exploration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">API</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../core.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Core</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../readers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Readers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../downloaders.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Downloaders</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../extract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extract</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../themes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Themes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mapper.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapper</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../curator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curator</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="fix-regions.html.md"><i class="bi bi-file-code"></i>Markdown</a></li></ul></div></div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<div id="c5568472" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> iomeval.readers <span class="im">import</span> find_eval, load_evals, eval_url, get_report_urls</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mistocr.core <span class="im">import</span> read_pgs</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> iomeval.pipeline <span class="im">import</span> run_pipeline, batch_run</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.max_colwidth'</span>, <span class="va">None</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="cd3e2226" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>DATA_PATH <span class="op">=</span> Path().home() <span class="op">/</span> <span class="st">'iomeval/data'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="5bcf4e75" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>EVALS_PATH <span class="op">=</span> Path().home() <span class="op">/</span> <span class="st">'iomeval/nbs/files/test/evaluations.json'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="fb987575" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>evals <span class="op">=</span> load_evals(EVALS_PATH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="78e1d025" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>((DATA_PATH <span class="op">/</span> <span class="st">'results'</span>).ls())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>570</code></pre>
+</div>
+</div>
+<div id="83990243" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>rpt <span class="op">=</span> (DATA_PATH <span class="op">/</span> <span class="st">'results'</span>).ls()[<span class="dv">1</span>]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>rpt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>Path('/app/data/iomeval/data/results/4e876fcb0154da174141c7fc7440cfee.json')</code></pre>
+</div>
+</div>
+<div id="4468c60e" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_mapped(o): <span class="cf">return</span> <span class="bu">bool</span>(o.read_json().get(<span class="st">'mappings'</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_ready(o): <span class="cf">return</span> o.read_json().get(<span class="st">'curation_status'</span>) <span class="op">==</span> <span class="st">'sections_selected'</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_rpts(rpts_path, filt<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    rpts <span class="op">=</span> rpts_path.ls()</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> filt: rpts <span class="op">=</span> L(o <span class="cf">for</span> o <span class="kw">in</span> rpts <span class="cf">if</span> filt(o))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> rpts.<span class="bu">sorted</span>(key<span class="op">=</span><span class="kw">lambda</span> x: x.read_json()[<span class="st">'meta'</span>].get(<span class="st">'Date of Publication'</span>, <span class="st">''</span>), reverse<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="423910ac" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> DATA_PATH <span class="op">/</span> <span class="st">'results'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="9c744d37" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reports already tagged</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(get_rpts(path, is_mapped))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>526</code></pre>
+</div>
+</div>
+<div id="9d1115bc" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reports not yet tagged</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(get_rpts(path, <span class="kw">lambda</span> o: <span class="kw">not</span> is_mapped(o)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>44</code></pre>
+</div>
+</div>
+<div id="b13627af" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ready to be tagged</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(get_rpts(path, <span class="kw">lambda</span> o: <span class="kw">not</span> is_mapped(o) <span class="kw">and</span> is_ready(o)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>4</code></pre>
+</div>
+</div>
+<div id="1dd92f29" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tagged but also ready (for re-tagging?)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(get_rpts(path, <span class="kw">lambda</span> o: is_mapped(o) <span class="kw">and</span> is_ready(o)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>526</code></pre>
+</div>
+</div>
+<div id="e75d1bfb" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_result(eval_id, base_path):</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Load a result JSON by eval_id from base_path"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (Path(base_path)<span class="op">/</span><span class="ss">f'</span><span class="sc">{</span>eval_id<span class="sc">}</span><span class="ss">.json'</span>).read_json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="9d592aa3" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>rpt.read_json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>{'id': '4e876fcb0154da174141c7fc7440cfee',
+ 'report_url': 'https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/25_%2010_2020_SD10%20TC.0970_Final%20Evaluation%20Report_0.pdf',
+ 'meta': {'Title': 'EX– POST EVALUATION OF THE PROJECT “PROVIDING TECHNICAL SUPPORT TO IMPROVE BORDER AND MIGRATION MANAGEMENT IN SUDAN”',
+  'Year': 2020,
+  'Author': 'Theogene Nshimiyimana',
+  'Best Practicesor Lessons Learnt': 'Yes',
+  'Date of Publication': '2020-04-07',
+  'Donor': 'IOM Development Fund',
+  'Evaluation Brief': 'Yes',
+  'Evaluation Commissioner': 'IOM',
+  'Evaluation Coverage': 'Country',
+  'Evaluation Period From Date': '2016-12-01',
+  'Evaluation Period To Date': '2018-11-30',
+  'Executive Summary': 'Yes',
+  'External Version of the Report': 'No',
+  'Languages': 'English',
+  'Migration Thematic Areas': 'Border and identity solutions (border management, security, border assessment etc)',
+  'Name of Project(s) Being Evaluated': nan,
+  'Number of Pages Excluding annexes': 23.0,
+  'Other Documents Included': nan,
+  'Project Code': 'TC.0970',
+  'Countries Covered': ['Sudan'],
+  'Regions Covered': ['RO for East Horn and Southern Africa'],
+  'Relevant Crosscutting Themes': nan,
+  'Report Published': 'Yes',
+  'Terms of Reference': 'Yes',
+  'Type of Evaluation Scope': 'Programme/Project',
+  'Type of Evaluation Timing': 'Ex-post (after the end of the project/programme)',
+  'Type of Evaluator': 'Internal',
+  'Level of Evaluation': 'Decentralized',
+  'Document Subtype': 'Evaluation report, Evaluation brief, Management response',
+  'File URL': 'https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/25_%2010_2020_SD10%20TC.0970_Final%20Evaluation%20Report_0.pdf,   https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Evaluation%20Brief_IBTC0970%20_%20final.pdf,   https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Management%20response_Final%20IDF-IBM%20Sudan_Theogene%20NSHIMIYIMAN.docx',
+  'File description': 'Evaluation Report , Evaluation Brief, Management Response',
+  'Management response': 'No',
+  'Date added': 'Tue, 03/09/2021 - 00:06',
+  'report_url': 'https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/25_%2010_2020_SD10%20TC.0970_Final%20Evaluation%20Report_0.pdf'},
+ 'docs': [{'subtype': 'Evaluation report (UNEG)',
+   'url': 'https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/25_%2010_2020_SD10%20TC.0970_Final%20Evaluation%20Report_0.pdf',
+   'desc': 'Evaluation report (UNEG)'},
+  {'subtype': 'Evaluation report',
+   'url': 'https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/25_%2010_2020_SD10%20TC.0970_Final%20Evaluation%20Report_0.pdf',
+   'desc': 'Evaluation Report'},
+  {'subtype': 'Evaluation brief',
+   'url': 'https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Evaluation%20Brief_IBTC0970%20_%20final.pdf',
+   'desc': 'Evaluation Brief'},
+  {'subtype': 'Management response',
+   'url': 'https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Management%20response_Final%20IDF-IBM%20Sudan_Theogene%20NSHIMIYIMAN.docx',
+   'desc': 'Management Response'}],
+ 'curation_status': 'sections_selected',
+ 'selected_headings': ['## EXECUTIVE SUMMARY ... page 3',
+  '## LIST OF ACRRONYMS ... page 7',
+  '## 1. INTRODUCTION ... page 9',
+  '## 2. EVALUATION CONTEXT ... page 9',
+  '## 5. CONCLUSIONS AND RECOMMENDATIONS ... page 29'],
+ 'mappings': {'enbs': [{'theme_id': '1',
+    'theme_title': 'Workforce',
+    'relevance_score': 0.35,
+    'reasoning': "The excerpts reviewed contain some content that touches on workforce-related themes, but primarily in a programmatic rather than institutional capacity sense. The project trained master trainers on document examination and fraud detection — a capacity-building intervention targeting government staff rather than an evaluation of IOM's own workforce systems or people management practices. The sustainability section does note concerns about trained staff being rotated or leaving, and recommendations address building a national training academy, but these relate to the GoS workforce, not IOM's internal workforce capacity. There is no substantive analysis of IOM's workforce planning, staff development systems, or people management practices visible in the excerpts. A synthesis specialist focused on IOM's Workforce Enabler would find very limited institutional evidence here — the content is programmatic in nature. The only marginally relevant angle, if evidence is scarce, might be the implicit reliance on IOM staff expertise to deliver technical assistance, but this is not analyzed as an organizational capacity in the excerpts reviewed."},
+   {'theme_id': '2',
+    'theme_title': 'Partnership',
+    'relevance_score': 0.62,
+    'reasoning': "The excerpts reviewed contain substantive discussion of IOM's engagement with government partners — particularly the Ministry of Interior, Ministry of Foreign Affairs, and Ministry of Tourism and Trade — as a central feature of the project's design and implementation. The relevance section explicitly highlights the participatory approach involving line ministries as a key positive feature, and the conclusions note that stakeholder consultation was both a strength and a weakness of the project. However, on closer examination, these partnerships appear primarily as a delivery mechanism for the border management programme rather than as an object of institutional evaluation. The evaluation does not appear to assess IOM's partnership frameworks, equity with local actors, or organizational partnership systems at an institutional level. That said, the analysis of how IOM engaged government counterparts — including the political dimensions of stakeholder consultation, ownership, and sustainability — contains some content that could marginally inform a synthesis on IOM's partnership practices with national governments. Recommendation 1 on needs assessment conducted in collaboration with stakeholders, and the discussion of project champions being lost during political transitions, may offer peripheral insights. A synthesis specialist might find selective sections worth reviewing, particularly around government ownership and multi-ministry engagement, but should note the primarily programmatic framing."},
+   {'theme_id': '3',
+    'theme_title': 'Funding',
+    'relevance_score': 0.42,
+    'reasoning': "The excerpts reviewed contain some discussion of funding that goes slightly beyond mere contextual mention, touching on aspects relevant to IOM's funding strategy. The efficiency section notes that this low-budget project (100,000 USD) served as a foundation for a scaled-up follow-on phase of nearly 2 million USD, suggesting a catalytic funding model. The report also references cost-sharing with other donor-funded projects as a cost-effective strategy, and Recommendation 5 explicitly calls on IOM Sudan to make a case with IDF and other donors for follow-up funding. These elements touch on resource mobilization and the transition from project to programme funding — themes relevant to the Funding Enabler. However, the evaluation does not examine IOM's funding mechanisms, innovative financing capacity, or resource mobilization systems at an institutional level. Funding appears primarily as project context and efficiency evidence rather than as the object of evaluation. A synthesis specialist focused on IOM's Funding Enabler would find only limited and indirect evidence here, primarily around the catalytic role of small IDF grants in mobilizing larger follow-on funding — potentially useful if evidence on this specific dynamic is scarce elsewhere."},
+   {'theme_id': '4',
+    'theme_title': 'Data and evidence',
+    'relevance_score': 0.15,
+    'reasoning': "The excerpts reviewed show no substantive analysis of IOM's data and evidence systems as an organizational capacity. While the evaluation methodology section mentions use of Atlas.ti for qualitative data analysis, this is a methodological tool for the evaluation itself rather than evidence about IOM's institutional data systems. The project's focus on immigration and border management — including visa systems and document examination — does not translate into an examination of IOM's data collection, storage, or evidence-use capacities at an organizational level. No findings or recommendations in the excerpts address IOM's data fluency, data repositories, or evidence-based decision-making systems. Recommend not reviewing this report for a synthesis on Enabler 4."},
+   {'theme_id': '5',
+    'theme_title': 'Learning and Innovation',
+    'relevance_score': 0.67,
+    'reasoning': "Based on the excerpts reviewed, this report would likely contribute some meaningful evidence to a synthesis on Enabler 5 (Learning and Innovation), though with important caveats about the programmatic framing. The evaluation explicitly examines the M&amp;E systems and learning mechanisms of an IOM project — including the adequacy of the results framework, the use of PRIMA for monitoring, and the quality of needs assessment processes. Recommendation 2 (on strengthening M&amp;E systems) and Recommendation 1 (on improving needs assessment methodology) directly address IOM's organizational learning practices at a project and mission level. The discussion of how weak stakeholder consultation led to misdiagnosis of needs and four years of delay reflects on IOM's institutional learning and adaptive management capacity. The evaluation also touches on knowledge management through the master trainer model and its sustainability challenges. However, the innovation dimension of this Enabler is largely absent, and the learning analysis is embedded within a programmatic evaluation rather than an institutional assessment of IOM's knowledge management systems. Synthesis specialists would likely find the M&amp;E strengthening recommendations and the needs assessment methodology discussion — particularly in the Relevance and Effectiveness conclusions sections — most worth reviewing as pointers to IOM's organizational learning practices."},
+   {'theme_id': '6',
+    'theme_title': 'Communication',
+    'relevance_score': 0.08,
+    'reasoning': "The excerpts reviewed contain no substantive discussion of IOM's communication capacity as an organizational or institutional function. Communication does not appear as a theme in the evaluation objectives, findings, conclusions, or recommendations. The report focuses on immigration and border management technical assistance, and any communication-related activities (such as stakeholder consultations) appear as project delivery mechanisms rather than as evidence about IOM's institutional communication systems or narrative-shaping capacity. Recommend not reviewing this report for a synthesis on Enabler 6."},
+   {'theme_id': '7',
+    'theme_title': 'Internal systems',
+    'relevance_score': 0.38,
+    'reasoning': "The excerpts reviewed contain some content tangentially relevant to IOM's internal systems, primarily through the discussion of project management tools and compliance mechanisms. Recommendation 2 explicitly references PRIMA (IOM's project results monitoring system) and the IOM Project Handbook as standards against which the project's M&amp;E performance is assessed — suggesting some engagement with IOM's internal project management infrastructure. The efficiency section's discussion of No Cost Extensions, budget management, and cost-sharing arrangements also touches on internal project administration systems. However, these references appear as contextual benchmarks for evaluating a specific project rather than as a systematic examination of IOM's internal systems as an organizational capacity. There is no analysis of IOM's digital infrastructure, risk management frameworks, fraud prevention systems, or compliance architecture at an institutional level. A synthesis specialist focused on IOM's Internal Systems Enabler would find only marginal and indirect evidence here, primarily around PRIMA usage and project handbook compliance — potentially worth a brief look if evidence on IOM's project management systems is scarce, but the programmatic framing limits its institutional value."}],
+  'ccps': [{'theme_id': '1',
+    'theme_title': 'Integrity, Transparency and Accountability',
+    'relevance_score': 0.52,
+    'reasoning': "The excerpts reviewed contain some content that may have peripheral relevance for a synthesis on Cross-cutting Priority 1 (Integrity, Transparency and Accountability). The evaluation appears to engage substantively with monitoring and evaluation (M&amp;E) systems, results measurement, and accountability mechanisms — particularly in the context of IOM's project management practices. Recommendation 3 explicitly calls for strengthening the M&amp;E system, completing the project result monitoring plan in PRIMA in line with the IOM Project Handbook, and integrating M&amp;E-specific activities with clearly defined roles and responsibilities. These touch on IOM's internal accountability and transparency commitments. The evaluation also discusses the absence of clearly defined short-, medium-, and long-term results as a weakness, which relates to the organizational commitment to measuring progress against clearly defined goals. However, based on the excerpts reviewed, these themes appear to surface primarily as project management quality issues rather than as a dedicated examination of IOM's institutional integrity, transparency, or accountability systems. There is no substantive analysis of ethical challenges, anti-corruption measures, or organizational culture visible in the excerpts. A synthesis specialist might find the M&amp;E-related recommendations and the discussion of results articulation weaknesses marginally useful, but would likely prioritize sources with more direct treatment of IOM's accountability frameworks. It is possible the full report contains more on this topic than the excerpts suggest."},
+   {'theme_id': '2',
+    'theme_title': 'Equality, Diversity &amp; Inclusion',
+    'relevance_score': 0.15,
+    'reasoning': "The excerpts reviewed indicate minimal relevance for a synthesis on Cross-cutting Priority 2 (Equality, Diversity &amp; Inclusion). The report focuses on immigration and border management capacity development in Sudan, with no substantive discussion of gender equality, disability inclusion, age-responsiveness, or diversity and representation visible in the excerpts. The only tangential reference to vulnerable populations appears in the context of Sudan's obligations to protect vulnerable migrants — framed as a national policy gap rather than an analysis of IOM's EDI implementation. No findings, conclusions, or recommendations in the excerpts address IOM's practices related to equality, diversity, or inclusion. Recommend not reviewing this report for a synthesis on Cross-cutting Priority 2."},
+   {'theme_id': '3',
+    'theme_title': 'Protection-centred',
+    'relevance_score': 0.3,
+    'reasoning': "The excerpts reviewed suggest limited relevance for a synthesis on Cross-cutting Priority 3 (Protection-centred). The report does reference the protection of vulnerable migrants — including asylum seekers, irregular migrants, and displaced persons — as part of the broader context for Sudan's border management challenges. The introduction notes Sudan's ratification of the 1951 UN Refugee Convention and its obligations to protect vulnerable persons, and the project's stated aim includes balancing national security with protection commitments. However, based on the excerpts reviewed, these references appear to serve as contextual framing for the border management intervention rather than as substantive analysis of IOM's rights-based approaches, child safeguarding, PSEAH measures, or community participation in decision-making. There is no dedicated analysis of protection-centred programming practices visible in the excerpts. The connection to this Cross-cutting Priority is present but thin. Recommend not prioritizing this report for a synthesis on Cross-cutting Priority 3, unless evidence from other sources is scarce."},
+   {'theme_id': '4',
+    'theme_title': 'Environmental Sustainability',
+    'relevance_score': 0.0,
+    'reasoning': 'The excerpts reviewed indicate no relevance for a synthesis on Cross-cutting Priority 4 (Environmental Sustainability). The report focuses entirely on immigration and border management capacity development, visa system reform, and document examination training in Sudan. There is no mention of environmental considerations, sustainability practices, carbon footprint, waste management, green procurement, or any related theme in the excerpts. Environmental sustainability does not appear in the project objectives, evaluation questions, findings, conclusions, or recommendations. Recommend not reviewing this report for a synthesis on Cross-cutting Priority 4.'}],
+  'gcms': [{'theme_id': '1',
+    'theme_title': 'Collect and utilize accurate and disaggregated data as a basis for evidence-based policies',
+    'relevance_score': 0.2,
+    'reasoning': "The excerpts reviewed show minimal relevance for a synthesis on GCM Objective 1. While the report mentions M&amp;E weaknesses and recommends strengthening monitoring systems (including completing result monitoring plans and defining quality indicators), this is framed as a project management concern rather than substantive engagement with migration data collection, disaggregation, or statistical systems. There is no discussion of migration data infrastructure, national statistics, or data dissemination systems. The report's focus is on border management capacity-building, not migration data governance."},
+   {'theme_id': '2',
+    'theme_title': 'Minimize the adverse drivers and structural factors that compel people to leave their country of origin',
+    'relevance_score': 0.15,
+    'reasoning': "The excerpts briefly mention Sudan's context of conflict, displacement, and economic distress as background, but these are framed as contextual factors rather than subjects of analysis. The project does not appear to address structural drivers of migration or development interventions aimed at reducing irregular migration. No findings or recommendations relate to GCM Objective 2's associated actions. Not relevant for a synthesis on this objective."},
+   {'theme_id': '3',
+    'theme_title': 'Provide accurate and timely information at all stages of migration',
+    'relevance_score': 0.12,
+    'reasoning': "The excerpts do not substantively address information provision to migrants at any stage of migration. There is a brief mention of a visa system reform and making Sudan accessible to investors and tourists, but this is not analyzed through the lens of migrant information access. No findings or recommendations relate to GCM Objective 3's associated actions on information dissemination, pre-departure orientation, or information points along migration routes."},
+   {'theme_id': '4',
+    'theme_title': 'Ensure that all migrants have proof of legal identity and adequate documentation',
+    'relevance_score': 0.72,
+    'reasoning': "Based on the excerpts reviewed, this report would likely contribute meaningful evidence to a synthesis on GCM Objective 4, particularly around document security and identity verification systems. The project explicitly focused on training frontline officers in document examination and fraud detection, developing a Passport Examination Procedures' Manual (PEPM), and certifying master trainers at Khartoum International Airport's Forensic Lab. These activities relate closely to Action 4b (harmonizing travel documents and combating identity fraud) and Action 4d (facilitating access to personal documentation). The executive summary and conclusions sections appear most relevant, particularly the discussion of the training component's outputs and sustainability challenges (master trainers being rotated or leaving), as well as Recommendations 3 and 4 on strengthening document examination training and the Immigration Training Centre. A synthesis specialist examining document integrity systems and capacity-building for identity verification would likely find this report worth reviewing, though border management governance is the broader frame rather than migrant documentation rights per se."},
+   {'theme_id': '5',
+    'theme_title': 'Enhance availability and flexibility of pathways for regular migration',
+    'relevance_score': 0.35,
+    'reasoning': "The excerpts touch peripherally on visa system reform — specifically the e-visa reform roadmap and revision of the Visa Application Form (VAF) — which relates loosely to Action 5d (flexible visa and permit options) and Action 5f (reducing visa processing timeframes). The project's stated long-term goal of making Sudan accessible to investors, traders, and tourists through a traveller-friendly visa system has some conceptual overlap with this objective. However, the analysis in the excerpts is thin on this dimension; the visa reform is discussed mainly as an output (recommendations produced) rather than as a substantive examination of regular migration pathways. A synthesis specialist might note the visa reform content in the effectiveness and sustainability sections, but would likely prioritize sources with more direct treatment of regular migration pathways."},
+   {'theme_id': '6',
+    'theme_title': 'Facilitate fair and ethical recruitment and safeguard conditions that ensure decent work',
+    'relevance_score': 0.05,
+    'reasoning': 'No substantive discussion of fair recruitment, labour rights, or decent work appears in the excerpts. The report focuses on border management and immigration systems, not labour migration or recruitment practices. Not relevant for a synthesis on GCM Objective 6.'},
+   {'theme_id': '7',
+    'theme_title': 'Address and reduce vulnerabilities in migration',
+    'relevance_score': 0.28,
+    'reasoning': "The excerpts briefly mention Sudan's mixed migration flows including asylum seekers, irregular migrants, and vulnerable populations, and note that weak border management makes vulnerable populations more susceptible to trafficking and smuggling. However, vulnerability is framed as contextual background rather than a subject of analysis. The project's focus was on institutional capacity-building for border management, not on identifying or assisting vulnerable migrants. No findings or recommendations directly address vulnerability reduction mechanisms. Marginally relevant at best for a synthesis on GCM Objective 7."},
+   {'theme_id': '8',
+    'theme_title': 'Save lives and establish coordinated international efforts on missing migrants',
+    'relevance_score': 0.05,
+    'reasoning': "No discussion of search and rescue, missing migrants, or related themes appears in the excerpts. The report's focus is on immigration management systems and document security. Not relevant for a synthesis on GCM Objective 8."},
+   {'theme_id': '9',
+    'theme_title': 'Strengthen the transnational response to smuggling of migrants',
+    'relevance_score': 0.22,
+    'reasoning': 'The excerpts mention smuggling tangentially — noting that weak border management makes vulnerable populations susceptible to trafficking and smuggling — but this is contextual framing rather than substantive analysis. The project did not appear to directly address smuggling networks, counter-smuggling cooperation, or related legal frameworks. One recommendation mentions counter-trafficking training as a potential topic for the Immigration Training Centre, but this is aspirational rather than analytical. Minimal relevance for a synthesis on GCM Objective 9.'},
+   {'theme_id': '10',
+    'theme_title': 'Prevent, combat and eradicate trafficking in persons in the context of international migration',
+    'relevance_score': 0.25,
+    'reasoning': 'Similar to Objective 9, trafficking is mentioned as a contextual concern — weak border management increases vulnerability to trafficking — but is not a subject of substantive analysis in the excerpts. Recommendation 6 mentions counter-trafficking as a potential training topic for the Immigration Training Centre, but this is a brief aspirational mention rather than evidence on anti-trafficking systems or outcomes. Not sufficiently substantive for a synthesis on GCM Objective 10, though a specialist scraping for evidence in low-evidence contexts might note the training capacity-building angle.'},
+   {'theme_id': '11',
+    'theme_title': 'Manage borders in an integrated, secure and coordinated manner',
+    'relevance_score': 0.88,
+    'reasoning': "Based on the excerpts reviewed, this report appears to be fundamentally relevant for a synthesis on GCM Objective 11. Border and migration management is the explicit primary subject of the evaluated project, as reflected in the project title ('Providing Technical Support to Improve Border and Migration Management in Sudan'). The excerpts suggest substantive analysis across multiple dimensions directly related to this objective: capacity-building for frontline border officers (Action 11a), infrastructure and equipment at Khartoum International Airport (Action 11b), document fraud detection training (Action 11b), and the broader rationalization of Sudan's immigration and border management system. The evaluation covers all five OECD-DAC criteria applied to these border management interventions, with findings on effectiveness of training, sustainability of capacity gains, and institutional strengthening. Actions 11a (border management cooperation and capacity-building), 11b (integrated border management structures and procedures), and 11g (cross-border collaboration) appear most directly addressed. For a synthesis specialist, the sections on effectiveness (training outcomes, master trainer certification), sustainability (fragility of institutional gains post-political transition), and recommendations on the Immigration Training Centre would appear particularly valuable as starting points. The report also offers insights on the challenges of sustaining border management capacity in politically volatile contexts — a dimension with broader synthesis value."},
+   {'theme_id': '12',
+    'theme_title': 'Strengthen certainty and predictability in migration procedures for appropriate screening, assessment and referral',
+    'relevance_score': 0.68,
+    'reasoning': "Based on the excerpts reviewed, this report would likely contribute some evidence to a synthesis on GCM Objective 12, particularly around screening procedures and training of border officials. The project explicitly addressed training frontline staff on document examination and fraud detection — relating to Action 12b (specialized training for first responders and border officials) and Action 12c (referral mechanisms and screening measures). The visa system reform component also touches on Action 12a (transparency and accessibility of migration procedures, including technology to simplify application procedures). The effectiveness section discusses training outcomes and the master trainer certification programme, while the sustainability section raises concerns about the durability of these capacity gains. A synthesis specialist examining training systems for border officials and screening procedure standardization would likely find the training component analysis and the recommendations on the Immigration Training Centre (Recommendations 3 and 4) worth reviewing. However, the report's primary frame is border management governance broadly, with screening and referral as one component rather than the central focus."},
+   {'theme_id': '13',
+    'theme_title': 'Use immigration detention only as a measure of last resort and work towards alternatives',
+    'relevance_score': 0.04,
+    'reasoning': 'No discussion of immigration detention, alternatives to detention, or related due process concerns appears in the excerpts. The report focuses on border management capacity-building and visa systems. Not relevant for a synthesis on GCM Objective 13.'},
+   {'theme_id': '14',
+    'theme_title': 'Enhance consular protection, assistance and cooperation throughout the migration cycle',
+    'relevance_score': 0.15,
+    'reasoning': "The Ministry of Foreign Affairs (MFA) is mentioned as a stakeholder involved in the project's participatory approach, and consular documentation is tangentially related to the visa reform component. However, consular protection or assistance to nationals abroad is not a subject of analysis in the excerpts. The project focused on Sudan's domestic border management capacity, not consular services. Minimal relevance for a synthesis on GCM Objective 14."},
+   {'theme_id': '15',
+    'theme_title': 'Provide access to basic services for migrants',
+    'relevance_score': 0.05,
+    'reasoning': "No substantive discussion of migrant access to basic services appears in the excerpts. The report's focus is on border management systems and immigration procedures. Not relevant for a synthesis on GCM Objective 15."},
+   {'theme_id': '16',
+    'theme_title': 'Empower migrants and societies to realize full inclusion and social cohesion',
+    'relevance_score': 0.04,
+    'reasoning': 'No discussion of social inclusion, integration, or social cohesion appears in the excerpts. The report focuses on border management institutional capacity. Not relevant for a synthesis on GCM Objective 16.'},
+   {'theme_id': '17',
+    'theme_title': 'Eliminate all forms of discrimination and promote evidence-based public discourse to shape perceptions of migration',
+    'relevance_score': 0.05,
+    'reasoning': 'No substantive discussion of discrimination, xenophobia, or public discourse on migration appears in the excerpts. The report focuses on technical border management capacity-building. Not relevant for a synthesis on GCM Objective 17.'},
+   {'theme_id': '18',
+    'theme_title': 'Invest in skills development and facilitate mutual recognition of skills, qualifications and competences',
+    'relevance_score': 0.08,
+    'reasoning': 'The report discusses training and capacity-building for border officials, but this is institutional capacity development for government staff rather than skills development and recognition for migrant workers — the focus of GCM Objective 18. No discussion of skills recognition frameworks, qualifications portability, or labour market integration appears in the excerpts. Not relevant for a synthesis on GCM Objective 18.'},
+   {'theme_id': '19',
+    'theme_title': 'Create conditions for migrants and diasporas to fully contribute to sustainable development in all countries',
+    'relevance_score': 0.18,
+    'reasoning': "The excerpts mention that the project's long-term goal was to stimulate national economic growth through improved border and migration management — opening Sudan to trade, investment, and tourism. This loosely connects to the development contributions framing of GCM Objective 19. However, there is no substantive analysis of diaspora contributions, remittances, or migrant development impacts. The economic growth framing is aspirational context rather than analyzed evidence. Not sufficiently substantive for a synthesis on GCM Objective 19."},
+   {'theme_id': '20',
+    'theme_title': 'Promote faster, safer and cheaper transfer of remittances and foster financial inclusion of migrants',
+    'relevance_score': 0.1,
+    'reasoning': 'The excerpts note that the project originally considered remittances as a focus area before pivoting to border management, but remittances are not analyzed in the evaluated project. No findings, conclusions, or recommendations address remittance transfer systems or financial inclusion. Not relevant for a synthesis on GCM Objective 20.'},
+   {'theme_id': '21',
+    'theme_title': 'Cooperate in facilitating safe and dignified return and readmission, as well as sustainable reintegration',
+    'relevance_score': 0.08,
+    'reasoning': 'No substantive discussion of return, readmission, or reintegration appears in the excerpts. The report focuses on entry management and border control capacity rather than return processes. Not relevant for a synthesis on GCM Objective 21.'},
+   {'theme_id': '22',
+    'theme_title': 'Establish mechanisms for the portability of social security entitlements and earned benefits',
+    'relevance_score': 0.03,
+    'reasoning': 'No discussion of social security portability or related mechanisms appears in the excerpts. Entirely outside the scope of this report. Not relevant for a synthesis on GCM Objective 22.'},
+   {'theme_id': '23',
+    'theme_title': 'Strengthen international cooperation and global partnerships for safe, orderly and regular migration',
+    'relevance_score': 0.14,
+    'reasoning': "The excerpts describe IOM's technical assistance to the Government of Sudan and reference the AU Migration Governance Framework as context, but this is standard operational language describing how the project was delivered rather than substantive examination of international cooperation mechanisms as an object of inquiry. The project is a bilateral technical assistance initiative, not an evaluation of multilateral governance architecture. Applying the test recommended for Objective 23: the cooperation language here describes operational context, not the governance mechanisms themselves. Not relevant for a synthesis on GCM Objective 23."}],
+  'outs': [{'theme_id': '1b24',
+    'theme_title': 'Immigration and border authorities are trained on gender- and protection-sensitive humanitarian border management to address vulnerabilities and protection needs in crisis affected situations.',
+    'relevance_score': 0.38,
+    'reasoning': "The excerpts reviewed suggest some peripheral relevance for a synthesis on Output 1b24. The project does involve training of frontline border and immigration officers, and the broader context mentions Sudan's mixed migration flows including asylum seekers and vulnerable populations susceptible to trafficking and smuggling. The introduction references Sudan's international commitments to protection of vulnerable persons. However, based on the sections reviewed, the training delivered appears to have focused primarily on document examination and fraud detection rather than gender- and protection-sensitive humanitarian border management as this Output specifically requires. There is no substantive analysis visible in the excerpts of protection-sensitive approaches, gender mainstreaming in border management training, or humanitarian border management frameworks. The protection dimension appears as contextual framing rather than a core analytical theme. A synthesis specialist might note the brief references to vulnerability protection in the introduction and the training component, but would likely find limited directly usable evidence for this Output's specific focus. It is possible the full report contains more on protection-sensitive training than the excerpts reveal, but this cannot be assumed."},
+   {'theme_id': '3b32',
+    'theme_title': 'Immigration and border officials have knowledge and skills on document security, identity management, biometric solutions, data management and data protection.',
+    'relevance_score': 0.88,
+    'reasoning': 'Based on the excerpts reviewed, this report would likely be essential evidence for a synthesis on Output 3b32. Document security and fraud detection training for immigration and border officials appears to be one of the two central pillars of the evaluated project, explicitly named in the project title and evaluation questions. The excerpts suggest multiple substantive findings directly address the training of frontline staff on document examination and fraud detection, including the certification of master trainers — all core deliverables of this Output. The executive summary dedicates considerable space to the training component, noting that a pool of frontline staff were trained on basic and advanced document examination and fraud detection, and that master trainers were certified to cascade training beyond the project lifecycle. The effectiveness section assesses whether trained officials applied acquired knowledge and skills. The sustainability section specifically examines whether trained master trainers continued their work post-project. Recommendations 2, 3, 4, and 6 all directly address strengthening document examination training capacity and institutional frameworks. For a synthesis specialist, the effectiveness analysis of training delivery and uptake, the sustainability discussion of master trainer retention, and the recommendations on institutionalizing training through the Immigration Training Centre would appear particularly valuable starting points for deeper review. The full report likely contains additional detail on training methodologies and outcomes beyond what the excerpts reveal.'},
+   {'theme_id': '3b41',
+    'theme_title': 'Governments have the knowledge and skills to develop inclusive immigration and border management policies, in line with international standards.',
+    'relevance_score': 0.8,
+    'reasoning': "Based on the excerpts reviewed, this report would likely contribute meaningful evidence to a synthesis on Output 3b41. The visa system reform component — including stakeholder consultations, recommendations, and a roadmap for e-visa reform — appears to be the second central pillar of the evaluated project, directly relating to government capacity to develop immigration management policies. The excerpts suggest substantive analysis of the GoS's capacity to rationalize its immigration and border management system, including the absence of an overarching national migration policy framework as a key gap. The effectiveness section discusses government-validated recommendations and roadmaps produced through stakeholder consultations. The impact section references the long-term goal of opening Sudan to trade and investment through improved migration governance. Recommendation 5 explicitly calls for follow-up funding to implement visa reform recommendations and engage the government on developing a national migration policy. However, the policy development focus competes with the document security training theme for analytical depth in the excerpts, and the policy outcomes appear to have remained largely at the output level without evidence of government action on implementation. Synthesis specialists would particularly want to review the relevance and effectiveness sections, as well as Recommendation 5, as starting points for evidence on government capacity for IBM policy development."},
+   {'theme_id': '3b42',
+    'theme_title': 'Immigration and border management authorities have adequate infrastructure and equipment for safe, integrated and coordinated border management in air, on land and at sea.',
+    'relevance_score': 0.42,
+    'reasoning': 'The excerpts reviewed contain some peripheral content relevant to a synthesis on Output 3b42. The needs assessment that informed the project explicitly identified infrastructure and equipment upgrade as one of three priority intervention areas at Khartoum International Airport. However, based on the sections reviewed, infrastructure and equipment do not appear to have been a primary focus of the implemented project activities — the project appears to have concentrated on training and visa system reform rather than physical infrastructure. The mention of infrastructure needs appears mainly in the contextual framing of the needs assessment rather than as a substantive analytical theme in the evaluation itself. No dedicated findings, conclusions, or recommendations on infrastructure or equipment provision are visible in the excerpts. A synthesis specialist might note the brief reference to infrastructure gaps in the introduction, but would likely find limited directly usable evidence for this Output. It is possible the full report addresses infrastructure more substantively than the excerpts suggest.'},
+   {'theme_id': '3b43',
+    'theme_title': 'Immigration and border management officials, frontline and transit facility staff are able to take adequate protection measures, facilitate and support persons with protection concerns, such as victims of trafficking and smuggling, unaccompanied and separated migrant children, and survivors of Gender-Based Violence including sexual exploitation and abuse.',
+    'relevance_score': 0.35,
+    'reasoning': "The excerpts reviewed show limited peripheral relevance for a synthesis on Output 3b43. The project context references Sudan's vulnerability to trafficking and smuggling due to weak document examination capacity, and Recommendation 6 briefly mentions counter-trafficking as a topic for future training. However, based on the sections reviewed, protection measures for trafficking victims, unaccompanied children, or GBV survivors do not appear to be a substantive analytical focus of the evaluation. The training delivered appears centered on document fraud detection rather than protection response protocols. These protection themes surface as contextual motivation for the project rather than as evaluated deliverables. A synthesis specialist would likely find only thin, contextual references to this Output's themes and would probably prioritize other sources with more direct treatment of protection capacity at borders. It is possible the full report contains more on this topic than the excerpts suggest, but this cannot be assumed."},
+   {'theme_id': '3b46',
+    'theme_title': 'Border management officials and frontline workers have the knowledge and skills to prevent family separation and promote family reunification.',
+    'relevance_score': 0.05,
+    'reasoning': "No substantive discussion of family separation prevention or family reunification is visible in the excerpts reviewed. The report's apparent focus — based on the sections accessed — is on document security training and visa system reform. Family separation and reunification do not appear in the project objectives, evaluation questions, findings, conclusions, or recommendations. Recommend not reviewing this report for a synthesis on Output 3b46."}]},
+ 'timestamp': '2026-05-09T01:20:26.808858'}</code></pre>
+</div>
+</div>
+<p>I’d like to fix all .json files in <code>(DATA_PATH / 'results')</code> in the following ways:</p>
+<ul>
+<li>‘Regions Covered’: ‘RO for East Horn and Southern Africa’ is now a string possibly with comma-separated values</li>
+<li>I’d like to modify them in-place to an array [region1, region2], as for ‘Countries Covered’</li>
+</ul>
+<section id="reply" class="level5">
+<h5 class="anchored" data-anchor-id="reply">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<p>Let’s first check the range of values for <code>Regions Covered</code> across all files to make sure we understand what we’re dealing with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>rpts <span class="op">=</span> (DATA_PATH <span class="op">/</span> <span class="st">'results'</span>).ls()</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>Counter(r.read_json()[<span class="st">'meta'</span>].get(<span class="st">'Regions Covered'</span>) <span class="cf">for</span> r <span class="kw">in</span> rpts).most_common(<span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="token-usage-details">
+<summary>
+$0.1118
+</summary>
+<p><code>total=21,599 | in=21,482 | out=117 | cached=0.0% | cache_new=11,142 | searches=0 | $0.1118</code></p>
+</details>
+<div id="7302caa7" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>rpts <span class="op">=</span> (DATA_PATH <span class="op">/</span> <span class="st">'results'</span>).ls()</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>Counter(r.read_json()[<span class="st">'meta'</span>].get(<span class="st">'Regions Covered'</span>) <span class="cf">for</span> r <span class="kw">in</span> rpts).most_common(<span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[('RO for East Horn and Southern Africa', 105),
+ ('RO for Latin America and the Caribbean', 101),
+ ('RO for Europe and Central Asia', 82),
+ ('RO for Asia and the Pacific', 72),
+ ('RO for West and Central Africa', 66),
+ ('Global', 65),
+ ('RO for Middle East and North Africa', 43),
+ ('', 5),
+ ('RO for Middle East and North Africa, RO for West and Central Africa', 4),
+ ('RO for Middle East and North Africa, RO for East Horn and Southern Africa',
+  4),
+ ('RO for Middle East and North Africa, RO for West and Central Africa, RO for East Horn and Southern Africa',
+  2),
+ ('RO for West and Central Africa, RO for Europe and Central Asia', 2),
+ ('RO for East Horn and Southern Africa, RO for Asia and the Pacific', 2),
+ ('RO for East Horn and Southern Africa, RO for Latin America and the Caribbean',
+  2),
+ ('RO for Middle East and North Africa, RO for Europe and Central Asia', 2),
+ ('RO for East Horn and Southern Africa, RO for Middle East and North Africa',
+  2),
+ ('RO for Asia and the Pacific, RO for Middle East and North Africa, RO for West and Central Africa, RO for East Horn and Southern Africa',
+  1),
+ ('RO for Europe and Central Asia, RO for Latin America and the Caribbean', 1),
+ ('RO for East Horn and Southern Africa, RO for Europe and Central Asia', 1),
+ ('RO for Asia and the Pacific, RO for Latin America and the Caribbean', 1)]</code></pre>
+</div>
+</div>
+<p>Maybe we can check how many regions we do have (once the string splitted by ‘,’)?</p>
+</section>
+<section id="reply-1" class="level5">
+<h5 class="anchored" data-anchor-id="reply-1">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>Counter(r.strip() <span class="cf">for</span> rpt <span class="kw">in</span> rpts <span class="cf">for</span> r <span class="kw">in</span> rpt.read_json()[<span class="st">'meta'</span>].get(<span class="st">'Regions Covered'</span>, <span class="st">''</span>).split(<span class="st">','</span>) <span class="cf">if</span> r.strip())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="token-usage-details">
+<summary>
+$0.0676
+</summary>
+<p><code>total=22,185 | in=22,112 | out=73 | cached=50.4% | cache_new=10,298 | searches=0 | $0.0676</code></p>
+</details>
+<div id="a0add9b9" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>Counter(r.strip() <span class="cf">for</span> rpt <span class="kw">in</span> rpts <span class="cf">for</span> r <span class="kw">in</span> rpt.read_json()[<span class="st">'meta'</span>].get(<span class="st">'Regions Covered'</span>, <span class="st">''</span>).split(<span class="st">','</span>) <span class="cf">if</span> r.strip())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>Counter({'RO for East Horn and Southern Africa': 122,
+         'RO for Latin America and the Caribbean': 108,
+         'RO for Europe and Central Asia': 91,
+         'RO for Asia and the Pacific': 80,
+         'RO for West and Central Africa': 79,
+         'Global': 66,
+         'RO for Middle East and North Africa': 62,
+         'HQ Geneva': 1})</code></pre>
+</div>
+</div>
+<div id="22be28cb" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fix_regions(path):</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> path.read_json()</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    regions <span class="op">=</span> d[<span class="st">'meta'</span>].get(<span class="st">'Regions Covered'</span>, <span class="st">''</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(regions, <span class="bu">list</span>): <span class="cf">return</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    d[<span class="st">'meta'</span>][<span class="st">'Regions Covered'</span>] <span class="op">=</span> [r.strip() <span class="cf">for</span> r <span class="kw">in</span> regions.split(<span class="st">','</span>) <span class="cf">if</span> r.strip()]</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    path.write_text(json.dumps(d, indent<span class="op">=</span><span class="dv">2</span>, ensure_ascii<span class="op">=</span><span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="1722c0c0" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>fix_regions(rpt)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rpt.read_text()[:<span class="dv">300</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{
+  "id": "4e876fcb0154da174141c7fc7440cfee",
+  "report_url": "https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/25_%2010_2020_SD10%20TC.0970_Final%20Evaluation%20Report_0.pdf",
+  "meta": {
+    "Title": "EX– POST EVALUATION OF THE PROJECT “PROVIDING TECHNICAL SUPPORT TO IMPROVE</code></pre>
+</div>
+</div>
+<div id="90dd2af4" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fix_folder(path):</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> p <span class="kw">in</span> path.ls(file_exts<span class="op">=</span>[<span class="st">'.json'</span>]): fix_regions(p)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="6f246721" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>fix_folder(DATA_PATH <span class="op">/</span> <span class="st">'results'</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>Counter(<span class="bu">type</span>(r.read_json()[<span class="st">'meta'</span>].get(<span class="st">'Regions Covered'</span>)).<span class="va">__name__</span> <span class="cf">for</span> r <span class="kw">in</span> rpts)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>Counter({'list': 570})</code></pre>
+</div>
+</div>
+<div id="396f679d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>fix_folder(Path(<span class="st">'../../../tagapp/tagapp/data'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="3063d71f" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To fix indentation</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#import json</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">#rpt.write_text(json.dumps(rpt.read_json(), indent=2, ensure_ascii=False))</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co">#print(rpt.read_text()[:300])</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{
+  "id": "4e876fcb0154da174141c7fc7440cfee",
+  "report_url": "https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/25_%2010_2020_SD10%20TC.0970_Final%20Evaluation%20Report_0.pdf",
+  "meta": {
+    "Title": "EX– POST EVALUATION OF THE PROJECT “PROVIDING TECHNICAL SUPPORT TO IMPROVE</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/franckalbinet\.github\.io\/iomeval");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

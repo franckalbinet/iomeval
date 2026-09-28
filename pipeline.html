@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Take IOM evaluation reports from PDF to SRF and GCM mappings, saving the state at each stage">
+
+<title>Pipeline – iomeval</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-f2788e636de456f6409e966386820849.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Pipeline – iomeval">
+<meta property="og:description" content="Take IOM evaluation reports from PDF to SRF and GCM mappings, saving the state at each stage">
+<meta property="og:site_name" content="iomeval">
+<meta name="twitter:title" content="Pipeline – iomeval">
+<meta name="twitter:description" content="Take IOM evaluation reports from PDF to SRF and GCM mappings, saving the state at each stage">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">iomeval</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./core.html">API</a></li><li class="breadcrumb-item"><a href="./pipeline.html">Pipeline</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOMEval</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analysis/eval_metadata_eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOM Reports Exploration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">API</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./core.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Core</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./readers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Readers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./downloaders.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Downloaders</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./extract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extract</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./themes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Themes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mapper.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapper</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./curator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curator</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pipeline.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#report-class" id="toc-report-class" class="nav-link active" data-scroll-target="#report-class">Report class</a></li>
+  <li><a href="#persistence" id="toc-persistence" class="nav-link" data-scroll-target="#persistence">Persistence</a></li>
+  <li><a href="#pipeline-methods" id="toc-pipeline-methods" class="nav-link" data-scroll-target="#pipeline-methods">Pipeline methods</a>
+  <ul class="collapse">
+  <li><a href="#download" id="toc-download" class="nav-link" data-scroll-target="#download">Download</a></li>
+  <li><a href="#ocr" id="toc-ocr" class="nav-link" data-scroll-target="#ocr">OCR</a></li>
+  <li><a href="#curate" id="toc-curate" class="nav-link" data-scroll-target="#curate">Curate</a></li>
+  </ul></li>
+  <li><a href="#thematic-mapping" id="toc-thematic-mapping" class="nav-link" data-scroll-target="#thematic-mapping">Thematic mapping</a>
+  <ul class="collapse">
+  <li><a href="#map-enablers" id="toc-map-enablers" class="nav-link" data-scroll-target="#map-enablers">Map enablers</a></li>
+  <li><a href="#map-cross-cutting-priorities" id="toc-map-cross-cutting-priorities" class="nav-link" data-scroll-target="#map-cross-cutting-priorities">Map cross-cutting priorities</a></li>
+  <li><a href="#map-gcm-objectives" id="toc-map-gcm-objectives" class="nav-link" data-scroll-target="#map-gcm-objectives">Map GCM objectives</a></li>
+  <li><a href="#map-outputs" id="toc-map-outputs" class="nav-link" data-scroll-target="#map-outputs">Map outputs</a></li>
+  <li><a href="#map-all-themes" id="toc-map-all-themes" class="nav-link" data-scroll-target="#map-all-themes">Map all themes</a></li>
+  </ul></li>
+  <li><a href="#run-the-full-pipeline" id="toc-run-the-full-pipeline" class="nav-link" data-scroll-target="#run-the-full-pipeline">Run the full pipeline</a></li>
+  <li><a href="#batch" id="toc-batch" class="nav-link" data-scroll-target="#batch">Batch</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="pipeline.html.md"><i class="bi bi-file-code"></i>Markdown</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./core.html">API</a></li><li class="breadcrumb-item"><a href="./pipeline.html">Pipeline</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Pipeline</h1>
+</div>
+
+<div>
+  <div class="description">
+    Take IOM evaluation reports from PDF to SRF and GCM mappings, saving the state at each stage
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<p>A <a href="https://franckalbinet.github.io/iomeval/pipeline.html#report"><code>Report</code></a> takes an evaluation through four stages:</p>
+<ol type="1">
+<li>Download. <code>download</code> fetches the evaluation’s documents from the IOM repository.</li>
+<li>OCR. <code>ocr</code> converts the report PDF to Markdown pages, with fixed heading levels.</li>
+<li>Curation. A person selects the report’s core sections in the curator app (<code>06_curator.ipynb</code>).</li>
+<li>Mapping. The <code>map_*</code> methods score the core sections against the themes of the <a href="https://srf.iom.int">Strategic Results Framework (SRF)</a> and the <a href="https://docs.un.org/en/A/RES/73/195">Global Compact for Migration (GCM)</a>.</li>
+</ol>
+<p><a href="https://franckalbinet.github.io/iomeval/pipeline.html#run_pipeline"><code>run_pipeline</code></a> runs the stages for one evaluation, and <a href="https://franckalbinet.github.io/iomeval/pipeline.html#batch_run"><code>batch_run</code></a> for many.</p>
+<div id="6390924e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.016516+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.017536+00:00&quot;,&quot;total&quot;:0.001022207999994862}}" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cachy <span class="im">import</span> enable_cachy</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>enable_cachy()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="report-class" class="level2">
+<h2 class="anchored" data-anchor-id="report-class">Report class</h2>
+<p>A <a href="https://franckalbinet.github.io/iomeval/pipeline.html#report"><code>Report</code></a> wraps an <a href="https://franckalbinet.github.io/iomeval/readers.html#evaluation"><code>Evaluation</code></a>, with the state of each stage: <code>pdf_path</code>, <code>md_path</code>, <code>curation_status</code>, <code>selected_headings</code> and <code>mappings</code>. Creating a <a href="https://franckalbinet.github.io/iomeval/pipeline.html#report"><code>Report</code></a> loads the saved state from <code>results_path</code>, when there is one.</p>
+<div id="0b879d89" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.019501+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.030571+00:00&quot;,&quot;total&quot;:0.011075462000007974}}" data-execution_count="5">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L34" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="report" class="level3">
+<h3 class="anchored" data-anchor-id="report">Report</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Report(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    ev:iomeval.readers.Evaluation, <span class="co"># The evaluation</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    pdf_url:<span class="bu">str</span><span class="op">=</span><span class="va">None</span>, <span class="co"># URL of the report PDF</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    results_path:<span class="bu">str</span><span class="op">=</span><span class="st">'data/results'</span>, <span class="co"># Folder of the saved report JSON files</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>):</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>An evaluation report and its pipeline state</em></p>
+</section>
+</div>
+<div id="73009447" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.018538+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.019416+00:00&quot;,&quot;total&quot;:0.0008816170000045531}}" data-exports="true" data-execution_count="4">
+<details open="" class="code-fold">
+<summary>Exported source</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Report:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"An evaluation report and its pipeline state"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        ev:Evaluation,                   <span class="co"># The evaluation</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        pdf_url:<span class="bu">str</span><span class="op">=</span><span class="va">None</span>,                <span class="co"># URL of the report PDF</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        results_path:<span class="bu">str</span><span class="op">=</span><span class="st">'data/results'</span>  <span class="co"># Folder of the saved report JSON files</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        ):</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        store_attr()</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> ev.<span class="bu">id</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.pdf_path,<span class="va">self</span>.md_path <span class="op">=</span> <span class="va">None</span>,<span class="va">None</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.mappings,<span class="va">self</span>.selected_headings <span class="op">=</span> {},[]</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.curation_status <span class="op">=</span> <span class="st">'pending'</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._load_existing()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div id="88fc0fb3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.033587+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.037872+00:00&quot;,&quot;total&quot;:0.004289643999982218}}" data-execution_count="8">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L63" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="report.from_url" class="level3">
+<h3 class="anchored" data-anchor-id="report.from_url">Report.from_url</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> from_url(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    url:<span class="bu">str</span>, <span class="co"># URL of the report PDF, one of the evaluation's documents</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    evals:<span class="bu">list</span>, <span class="co"># Evaluations to search</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    results_path:<span class="bu">str</span><span class="op">=</span><span class="st">'data/results'</span>, <span class="co"># Folder of the saved report JSON files</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>__main__.Report: <span class="co"># Report with `pdf_url` set to `url`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Create a report for the evaluation that has a document at <code>url</code></em></p>
+</section>
+</div>
+<div id="1e857d7e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.039616+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.044058+00:00&quot;,&quot;total&quot;:0.004445725000010725}}" data-execution_count="10">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L74" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="report.from_title" class="level3">
+<h3 class="anchored" data-anchor-id="report.from_title">Report.from_title</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> from_title(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    title:<span class="bu">str</span>, <span class="co"># Evaluation title</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    evals:<span class="bu">list</span>, <span class="co"># Evaluations to search</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    results_path:<span class="bu">str</span><span class="op">=</span><span class="st">'data/results'</span>, <span class="co"># Folder of the saved report JSON files</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>__main__.Report: <span class="co"># Report with `pdf_url` from `eval_url`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Create a report for the evaluation titled <code>title</code></em></p>
+</section>
+</div>
+<div id="d109e034" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.045782+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.050065+00:00&quot;,&quot;total&quot;:0.0042863580000016555}}" data-execution_count="12">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L88" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="report.from_id" class="level3">
+<h3 class="anchored" data-anchor-id="report.from_id">Report.from_id</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> from_id(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span>:<span class="bu">str</span>, <span class="co"># Evaluation ID</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    evals:<span class="bu">list</span>, <span class="co"># Evaluations to search</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    results_path:<span class="bu">str</span><span class="op">=</span><span class="st">'data/results'</span>, <span class="co"># Folder of the saved report JSON files</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>__main__.Report: <span class="co"># Report with `pdf_url` from `eval_url`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Create a report for the evaluation with ID <code>id</code></em></p>
+</section>
+</div>
+<section id="creating-reports" class="level4">
+<h4 class="anchored">Creating reports</h4>
+<p>Create a report from the URL of its PDF:</p>
+<div id="e2552f2b" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>evals <span class="op">=</span> load_evals(<span class="st">'files/test/evaluations.json'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/AAP</span><span class="sc">%20E</span><span class="st">valuation%20Report_final_.pdf"</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>report <span class="op">=</span> Report.from_url(url, evals, results_path<span class="op">=</span><span class="st">'files/test/results'</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>report</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="report-evaluation-of-iom-accountability-to-affected-populations" class="level2 cell-output cell-output-display cell-output-markdown">
+<h2 class="anchored" data-anchor-id="report-evaluation-of-iom-accountability-to-affected-populations">Report: Evaluation of IOM Accountability to Affected Populations</h2>
+<p><strong>Year:</strong> 2025 | <strong>Organization:</strong> IOM<br>
+<strong>ID:</strong> <code>6c3c2cf3fa479112967612b0baddab72</code></p>
+<p><strong>Pipeline:</strong> ✓ Curated (1 headings) | ✓ Mappings (enbs, ccps, gcms, outs)<br>
+<strong>Curation:</strong> sections_selected</p>
+<p><strong>Report:</strong> <a href="https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/AAP%20Evaluation%20Report_final_.pdf">View Evaluation Report</a></p>
+</section>
+</div>
+<p>Or from a title:</p>
+<div id="10dc8393" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> <span class="st">'Final Evaluation of the EU-IOM Joint Initiative for migrant protection and reintegration in the horn of Africa'</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>report <span class="op">=</span> Report.from_title(title, evals, results_path<span class="op">=</span><span class="st">'files/test/results'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>report</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa" class="level2 cell-output cell-output-display cell-output-markdown">
+<h2 class="anchored" data-anchor-id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa">Report: Final Evaluation of the EU-IOM Joint Initiative for migrant protection and reintegration in the horn of Africa</h2>
+<p><strong>Year:</strong> 2023 | <strong>Organization:</strong> IOM<br>
+<strong>ID:</strong> <code>49d2fba781b6a7c0d94577479636ee6f</code></p>
+<p><strong>Pipeline:</strong> ✓ Curated (5 headings) | ✓ Mappings (enbs, ccps, gcms, outs)<br>
+<strong>Curation:</strong> sections_selected</p>
+<p><strong>Report:</strong> <a href="https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Final%20Evaluation%20Report%20Final_Olta%20NDOJA.pdf">View Evaluation Report</a></p>
+</section>
+</div>
+<p>Or from its ID:</p>
+<div id="1759142b" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span> <span class="op">=</span> <span class="st">'49d2fba781b6a7c0d94577479636ee6f'</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>report <span class="op">=</span> Report.from_id(<span class="bu">id</span>, evals, results_path<span class="op">=</span><span class="st">'files/test/results'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>report</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa-1" class="level2 cell-output cell-output-display cell-output-markdown">
+<h2 class="anchored" data-anchor-id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa-1">Report: Final Evaluation of the EU-IOM Joint Initiative for migrant protection and reintegration in the horn of Africa</h2>
+<p><strong>Year:</strong> 2023 | <strong>Organization:</strong> IOM<br>
+<strong>ID:</strong> <code>49d2fba781b6a7c0d94577479636ee6f</code></p>
+<p><strong>Pipeline:</strong> ✓ Curated (5 headings) | ✓ Mappings (enbs, ccps, gcms, outs)<br>
+<strong>Curation:</strong> sections_selected</p>
+<p><strong>Report:</strong> <a href="https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Abridged%20Evaluation%20Report_%20Final_Olta%20NDOJA.pdf">View Evaluation Report</a></p>
+</section>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>from_title</code> and <code>from_id</code> find the report among the evaluation’s documents with <a href="https://franckalbinet.github.io/iomeval/readers.html#eval_url"><code>eval_url</code></a>. An evaluation’s documents can also include a brief, annexes and a management response. They raise <code>ValueError</code> when <a href="https://franckalbinet.github.io/iomeval/readers.html#eval_url"><code>eval_url</code></a> finds no report.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="persistence" class="level2">
+<h2 class="anchored" data-anchor-id="persistence">Persistence</h2>
+<p><code>save</code> writes a report’s state to <code>results_path/&lt;id&gt;.json</code>. The file holds the evaluation, the report URL, the curation status, the selected headings, the mappings and a timestamp. <code>ocr</code>, each <code>map_*</code> method and <a href="https://franckalbinet.github.io/iomeval/pipeline.html#run_pipeline"><code>run_pipeline</code></a> save the report after they run. <code>download</code> does not. <a href="https://franckalbinet.github.io/iomeval/pipeline.html#load_report"><code>load_report</code></a> reads the state back from a base folder, which holds the <code>pdf/</code>, <code>md/</code> and <code>results/</code> folders. It sets <code>pdf_path</code> and <code>md_path</code> to the report’s folders under <code>pdf/</code> and <code>md/</code>, when they exist.</p>
+<div id="d4e04b46" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.054758+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.059310+00:00&quot;,&quot;total&quot;:0.0045551700000032724}}" data-execution_count="15">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L129" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="report.save" class="level3">
+<h3 class="anchored" data-anchor-id="report.save">Report.save</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> save(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    path:<span class="bu">str</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Folder to write to; `None` uses `results_path`</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>__main__.Report: <span class="co"># The report, for chaining</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Save the report’s state to <code>&lt;id&gt;.json</code></em></p>
+</section>
+</div>
+<div id="cc423430" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.061952+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.066877+00:00&quot;,&quot;total&quot;:0.004929820000000973}}" data-execution_count="17">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L149" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="load_report" class="level3">
+<h3 class="anchored" data-anchor-id="load_report">load_report</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_report(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span>:<span class="bu">str</span>, <span class="co"># Evaluation ID</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    base_path:<span class="bu">str</span><span class="op">=</span><span class="st">'data'</span>, <span class="co"># Folder holding `pdf/`, `md/` and `results/`</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>__main__.Report: <span class="co"># The report, with its saved state</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Load the report <code>id</code> saved under <code>base_path</code></em></p>
+</section>
+</div>
+<section id="resuming-from-a-saved-state" class="level4">
+<h4 class="anchored">Resuming from a saved state</h4>
+<div id="61b09dae" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>report <span class="op">=</span> load_report(<span class="st">'49d2fba781b6a7c0d94577479636ee6f'</span>, base_path<span class="op">=</span><span class="st">'files/test'</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>report</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa-2" class="level2 cell-output cell-output-display cell-output-markdown">
+<h2 class="anchored" data-anchor-id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa-2">Report: Final Evaluation of the EU-IOM Joint Initiative for migrant protection and reintegration in the horn of Africa</h2>
+<p><strong>Year:</strong> 2023 | <strong>Organization:</strong> IOM<br>
+<strong>ID:</strong> <code>49d2fba781b6a7c0d94577479636ee6f</code></p>
+<p><strong>Pipeline:</strong> ✓ OCR | ✓ Curated (5 headings) | ✓ Mappings (enbs, ccps, gcms, outs)<br>
+<strong>Curation:</strong> sections_selected</p>
+<p><strong>Report:</strong> <a href="https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Abridged%20Evaluation%20Report_%20Final_Olta%20NDOJA.pdf">View Evaluation Report</a></p>
+</section>
+</div>
+</section>
+</section>
+<section id="pipeline-methods" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline-methods">Pipeline methods</h2>
+<p>Run the methods in stage order. <code>download</code> comes first, then <code>ocr</code>, then the <code>map_*</code> methods once the report is curated.</p>
+<section id="download" class="level3">
+<h3 class="anchored" data-anchor-id="download">Download</h3>
+<p><code>download</code> saves every document of the evaluation in <code>dst/&lt;id&gt;/</code> with <a href="https://franckalbinet.github.io/iomeval/downloaders.html#download_eval"><code>download_eval</code></a>, and sets <code>pdf_path</code> to that folder. It does nothing when <code>pdf_path</code> is already set, unless <code>force</code> is true.</p>
+<div id="53890356" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.068450+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.072444+00:00&quot;,&quot;total&quot;:0.003997416999993675}}" data-execution_count="19">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L172" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="report.download" class="level3">
+<h3 class="anchored" data-anchor-id="report.download">Report.download</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    dst:<span class="bu">str</span><span class="op">=</span><span class="st">'data/pdf'</span>, <span class="co"># Folder to create the report's folder in</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    force:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># Download again when `pdf_path` is set</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>__main__.Report: <span class="co"># The report, for chaining</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Download the evaluation’s documents to <code>dst/&lt;id&gt;/</code></em></p>
+</section>
+</div>
+<div id="20c91516" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Abridged</span><span class="sc">%20E</span><span class="st">valuation%20Report_</span><span class="sc">%20F</span><span class="st">inal_Olta%20NDOJA.pdf"</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>report <span class="op">=</span> Report.from_url(url, evals, results_path<span class="op">=</span><span class="st">'files/test/results'</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> report.download(dst<span class="op">=</span><span class="st">'files/test/pdf'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="ac7cc05e" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Path(<span class="st">'files/test/pdf/49d2fba781b6a7c0d94577479636ee6f'</span>).ls()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[Path('files/test/pdf/49d2fba781b6a7c0d94577479636ee6f/Abridged%20Evaluation%20Report_%20Final_Olta%20NDOJA.pdf'), Path('files/test/pdf/49d2fba781b6a7c0d94577479636ee6f/Final%20Evaluation%20Report%20Final_Olta%20NDOJA.pdf'), Path('files/test/pdf/49d2fba781b6a7c0d94577479636ee6f/HoA%20EU%20JI%20Final%20Eval%20-%20Management%20Response%20Matrix%20-%20Final.pdf'), Path('files/test/pdf/49d2fba781b6a7c0d94577479636ee6f/ISP_IOM_Case-Management-Return-Reintegr-JI-Review_final.pdf'), Path('files/test/pdf/49d2fba781b6a7c0d94577479636ee6f/Evaluation%20Learning%20Brief_Final_Olta%20NDOJA.pdf')]</code></pre>
+</div>
+</div>
+</section>
+<section id="ocr" class="level3">
+<h3 class="anchored">OCR</h3>
+<p><code>ocr</code> converts the report PDF to Markdown pages in <code>dst/&lt;id&gt;/</code> with mistocr’s <code>pdf_to_md</code>. mistocr OCRs the PDF with Mistral and fixes the heading levels with an LLM. With <code>add_img_desc</code>, it also adds a description of each image. The PDF is the file named after <code>pdf_url</code> in <code>pdf_path</code>, or the first PDF there when <code>pdf_url</code> is not set. <code>ocr</code> does nothing when <code>dst/&lt;id&gt;/</code> exists, unless <code>force</code> is true.</p>
+<div id="8db49b73" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.075103+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.080217+00:00&quot;,&quot;total&quot;:0.00511808200002406}}" data-execution_count="21">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L183" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="report.ocr" class="level3">
+<h3 class="anchored" data-anchor-id="report.ocr">Report.ocr</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> ocr(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    dst:<span class="bu">str</span><span class="op">=</span><span class="st">'data/md'</span>, <span class="co"># Folder to create the report's Markdown folder in</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    add_img_desc:<span class="bu">bool</span><span class="op">=</span><span class="va">True</span>, <span class="co"># Add a description of each image, written by an LLM</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    force:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># OCR again when `dst/&lt;id&gt;/` exists</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    progress:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># Log mistocr's progress</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    fix_kwargs:<span class="bu">dict</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Passed to mistocr's `fix_hdgs`</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    desc_kwargs:<span class="bu">dict</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Passed to mistocr's `add_img_descs`</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>__main__.Report: <span class="co"># The report, for chaining</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>OCR the report PDF into Markdown pages in <code>dst/&lt;id&gt;/</code>, and save the report</em></p>
+</section>
+</div>
+<div id="8c40cff7" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> report.ocr(dst<span class="op">=</span><span class="st">'files/test/md'</span>, add_img_desc<span class="op">=</span><span class="va">False</span>, force<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa-3" class="level2 cell-output cell-output-display cell-output-markdown">
+<h2 class="anchored" data-anchor-id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa-3">Report: Final Evaluation of the EU-IOM Joint Initiative for migrant protection and reintegration in the horn of Africa</h2>
+<p><strong>Year:</strong> 2023 | <strong>Organization:</strong> IOM<br>
+<strong>ID:</strong> <code>49d2fba781b6a7c0d94577479636ee6f</code></p>
+<p><strong>Pipeline:</strong> ✓ OCR | ✓ Curated (5 headings) | ✓ Mappings (enbs, ccps, gcms, outs)<br>
+<strong>Curation:</strong> sections_selected</p>
+<p><strong>Report:</strong> <a href="https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Abridged%20Evaluation%20Report_%20Final_Olta%20NDOJA.pdf">View Evaluation Report</a></p>
+</section>
+</div>
+<div id="0fe840cd" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>report.md_path</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>Path('files/test/md/49d2fba781b6a7c0d94577479636ee6f')</code></pre>
+</div>
+</div>
+<div id="d6835ae0" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>report.md_path.ls()[:<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[Path('files/test/md/49d2fba781b6a7c0d94577479636ee6f/page_21.md'), Path('files/test/md/49d2fba781b6a7c0d94577479636ee6f/page_15.md')]</code></pre>
+</div>
+</div>
+</section>
+<section id="curate" class="level3">
+<h3 class="anchored" data-anchor-id="curate">Curate</h3>
+<p>A person reviews the OCR’d headings and selects the core sections in the curator app (<code>06_curator.ipynb</code>). The app then sets <code>curation_status</code> to <code>'sections_selected'</code> and saves the headings in <code>selected_headings</code>.</p>
+<div id="d8cc7ea1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.081990+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.085895+00:00&quot;,&quot;total&quot;:0.003909374000016896}}" data-execution_count="23">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L203" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="report.get_sections" class="level3">
+<h3 class="anchored" data-anchor-id="report.get_sections">Report.get_sections</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_sections()<span class="op">-&gt;</span><span class="bu">str</span>: <span class="co"># Report title and the text of each selected section</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Extract the sections under <code>selected_headings</code> from the OCR’d pages</em></p>
+</section>
+</div>
+<section id="extracting-sections" class="level4">
+<h4 class="anchored" data-anchor-id="extracting-sections">Extracting sections</h4>
+<p><code>get_sections</code> extracts the selected sections of a curated report. It raises <code>ValueError</code> when the report is not OCR’d, is not curated, or has no selected headings. For the curated test report:</p>
+<div id="d9e9461f" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>report <span class="op">=</span> load_report(<span class="st">'49d2fba781b6a7c0d94577479636ee6f'</span>, base_path<span class="op">=</span><span class="st">'files/test'</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>report.selected_headings</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>['## 1. Introduction ... page 4',
+ '## 2. Background of the JI-HoA ... page 5',
+ '## 3. Methodology ... page 8',
+ '### 4.3. Effectiveness ... page 16',
+ '## 5. Conclusions and Recommendations ... page 27']</code></pre>
+</div>
+</div>
+<div id="641b0ede" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(report.get_sections()[:<span class="dv">500</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Final Evaluation of the EU-IOM Joint Initiative for migrant protection and reintegration in the horn of Africa ... page 1
+## 1. Introduction ... page 4
+
+In 2016, the EU and IOM launched the EU-IOM Joint Initiative for Migrant Protection and Reintegration, with as overall objective “To contribute to facilitating orderly, safe, regular and rights-based migration through the facilitation of dignified voluntary return and the implementation of development-focused and sustainable reintegration poli</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="thematic-mapping" class="level2">
+<h2 class="anchored" data-anchor-id="thematic-mapping">Thematic mapping</h2>
+<p>Each <code>map_*</code> method maps the selected sections against one theme set, and saves the report. You can run each one on its own after curation. A method skips a theme set that is already in <code>mappings</code>, unless <code>force</code> is true. <code>ensure_sp</code> builds the report system prompt from the selected sections once, and the later mappings reuse it.</p>
+<div id="8b8fbfb5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.087301+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.091041+00:00&quot;,&quot;total&quot;:0.0037447560000032354}}" data-execution_count="25">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L212" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="report.ensure_sp" class="level3">
+<h3 class="anchored" data-anchor-id="report.ensure_sp">Report.ensure_sp</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ensure_sp()<span class="op">-&gt;</span><span class="va">None</span>:</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Build the report system prompt from the selected sections, unless the report already has one</em></p>
+</section>
+</div>
+<div id="2370c882" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.093812+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.100456+00:00&quot;,&quot;total&quot;:0.006647829000002048}}" data-execution_count="27">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L218" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="map_single" class="level3">
+<h3 class="anchored" data-anchor-id="map_single">map_single</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> map_single(</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    sp, <span class="co"># Report system prompt from `mk_system_prompt`</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    theme_type, <span class="co"># `'enbs'`, `'ccps'`, `'gcms'` or `'outs'`</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    path:NoneType<span class="op">=</span><span class="va">None</span>, <span class="co"># Folder of theme files; `None` uses the files shipped with the package</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    model:<span class="bu">str</span><span class="op">=</span><span class="st">'claude-haiku-4-5'</span>, <span class="co"># LLM to use</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    gcm_ids:NoneType<span class="op">=</span><span class="va">None</span>, <span class="co"># GCM objective IDs whose linked outputs to map, for `'outs'`</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>,</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    response_format:pydantic._internal._model_construction.ModelMetaclass<span class="op">=</span>ThemeScores, <span class="co"># Pydantic model the reply must follow</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    temperature:<span class="bu">float</span><span class="op">=</span><span class="dv">0</span>, <span class="co"># Sampling temperature</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    reasoning_effort:<span class="bu">str</span><span class="op">=</span><span class="va">None</span>, <span class="co"># `'low'`, `'medium'` or `'high'`; `None` for no extended thinking</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span><span class="bu">list</span>[<span class="bu">dict</span>]: <span class="co"># Score dicts from `parse_res`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Map the report in <code>sp</code> against one theme set, with its prompt and formatting</em></p>
+</section>
+</div>
+<section id="map-enablers" class="level3">
+<h3 class="anchored">Map enablers</h3>
+<p>The SRF enablers are IOM’s organizational capabilities.</p>
+<div id="293ede93" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.102178+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.106408+00:00&quot;,&quot;total&quot;:0.004232967000007193}}" data-execution_count="29">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L237" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="report.map_enbs" class="level3">
+<h3 class="anchored" data-anchor-id="report.map_enbs">Report.map_enbs</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> map_enbs(</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    force:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># Map again when the theme set is in `mappings`</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>kwargs</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>__main__.Report: <span class="co"># The report, for chaining</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Map the selected sections against the SRF enablers, and save the report</em></p>
+</section>
+</div>
+<p>Load the curated test report and map it against the enablers:</p>
+<div id="09a11127" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>report <span class="op">=</span> load_report(<span class="st">'49d2fba781b6a7c0d94577479636ee6f'</span>, base_path<span class="op">=</span><span class="st">'files/test'</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> report.map_enbs(model<span class="op">=</span><span class="st">'claude-haiku-4-5'</span>, force<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa-4" class="level2 cell-output cell-output-display cell-output-markdown">
+<h2 class="anchored" data-anchor-id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa-4">Report: Final Evaluation of the EU-IOM Joint Initiative for migrant protection and reintegration in the horn of Africa</h2>
+<p><strong>Year:</strong> 2023 | <strong>Organization:</strong> IOM<br>
+<strong>ID:</strong> <code>49d2fba781b6a7c0d94577479636ee6f</code></p>
+<p><strong>Pipeline:</strong> ✓ OCR | ✓ Curated (5 headings) | ✓ Mappings (enbs, ccps, gcms, outs)<br>
+<strong>Curation:</strong> sections_selected</p>
+<p><strong>Report:</strong> <a href="https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Abridged%20Evaluation%20Report_%20Final_Olta%20NDOJA.pdf">View Evaluation Report</a></p>
+</section>
+</div>
+<div id="e14b5845" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sort_by_relevance(report.mappings[<span class="st">'enbs'</span>])[:<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[{'theme_id': '4',
+  'theme_title': 'Data and evidence',
+  'relevance_score': 0.87,
+  'reasoning': "This report would likely be essential for a synthesis on Enabler 4 (Data and Evidence). The evaluation explicitly examines IOM's data and evidence systems as a primary focus, with data availability and use appearing prominently in the program objectives, evaluation questions, and findings. Specific Objective 1 directly addresses 'Partner countries and relevant stakeholders developed or strengthened evidence-based return and reintegration procedures,' with substantial analysis of IOM's data production, data management systems, and evidence use. Key relevant sections include: the detailed findings on 'Data availability' (4.3.1.1) documenting that 'the JI exceeded the targets set for the number of field studies, surveys and other research conducted' and the 'increased availability of migration data...achieved mainly through the production and publication of migration data and research outputs by the Regional Data Hub'; the discussion of M&amp;E systems (4.3.3.1) noting that 'a total of 36 planning, monitoring, learning, data collection and analysis tools were set up, implemented and/or strengthened'; and the analysis of evidence use in policymaking, with findings that '136 stakeholders reported that data produced has supported evidence-based policies, procedures, and programme design.' The report also discusses the development of the MiMOSA database, the Reintegration Sustainability Index (RSI) and RSS+ methodology, and capacity building on data collection and management. Recommendations 4 and 7 specifically address continuing support for the Regional Data Hub and building on impact evaluation methodologies. For a synthesis specialist, the detailed analysis of IOM's data systems, data production capacity, and evidence-based decision-making would be particularly valuable, especially sections 4.3.1 on data availability and capacity building, and the discussion of M&amp;E systems implementation."},
+ {'theme_id': '2',
+  'theme_title': 'Partnership',
+  'relevance_score': 0.79,
+  'reasoning': "This report would likely contribute meaningful evidence to a synthesis on Enabler 2 (Partnership). The evaluation explicitly examines IOM's partnership model and effectiveness across the program, with substantive analysis of partnership development, coordination mechanisms, and sustainability of partnerships with national and local actors. Key relevant sections include: the discussion of the 'Regional MRC strategy with 40 partner organisations' as an important achievement; findings on the increase in 'number of stakeholders (state and non-state) involved in return and reintegration assistance...from 25 (baseline in 2017) to 180 by the end of the project in 2022'; and extensive analysis of partnerships with government entities, NGOs, and service providers. The recommendations explicitly address partnership strengthening, particularly Recommendation 1 on 'enhancing ownership and commitment of stakeholders' and Recommendation 3 on 'building partnerships with service providers who can function without (significant) funding channelled by IOM.' However, partnership is one of several operational themes covered; the report also examines program effectiveness, data systems, and reintegration outcomes with comparable depth. The content on partnership models, coordination challenges, and the analysis of how partnerships functioned across different contexts would add value to a synthesis, particularly the findings section discussing the increase in partner organizations and the recommendations on equitable partnership development."}]</code></pre>
+</div>
+</div>
+</section>
+<section id="map-cross-cutting-priorities" class="level3">
+<h3 class="anchored">Map cross-cutting priorities</h3>
+<div id="7a3f6467" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.108302+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.112555+00:00&quot;,&quot;total&quot;:0.004257604000002857}}" data-execution_count="31">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L250" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="report.map_ccps" class="level3">
+<h3 class="anchored" data-anchor-id="report.map_ccps">Report.map_ccps</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> map_ccps(</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    force:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># Map again when the theme set is in `mappings`</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>kwargs</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>__main__.Report: <span class="co"># The report, for chaining</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Map the selected sections against the SRF cross-cutting priorities, and save the report</em></p>
+</section>
+</div>
+<div id="02e85b47" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> report.map_ccps(model<span class="op">=</span><span class="st">'claude-haiku-4-5'</span>, force<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa-5" class="level2 cell-output cell-output-display cell-output-markdown">
+<h2 class="anchored" data-anchor-id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa-5">Report: Final Evaluation of the EU-IOM Joint Initiative for migrant protection and reintegration in the horn of Africa</h2>
+<p><strong>Year:</strong> 2023 | <strong>Organization:</strong> IOM<br>
+<strong>ID:</strong> <code>49d2fba781b6a7c0d94577479636ee6f</code></p>
+<p><strong>Pipeline:</strong> ✓ OCR | ✓ Curated (5 headings) | ✓ Mappings (enbs, ccps, gcms, outs)<br>
+<strong>Curation:</strong> sections_selected</p>
+<p><strong>Report:</strong> <a href="https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Abridged%20Evaluation%20Report_%20Final_Olta%20NDOJA.pdf">View Evaluation Report</a></p>
+</section>
+</div>
+<div id="b6214d5d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sort_by_relevance(report.mappings[<span class="st">'ccps'</span>])[:<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[{'theme_id': '3',
+  'theme_title': 'Protection-centred',
+  'relevance_score': 0.79,
+  'reasoning': "This report would likely contribute meaningful evidence to a synthesis on Cross-cutting Priority 3 (Protection-centred). The evaluation explicitly examines protection-related outcomes and approaches as core components of the program. The program's overarching objective directly references 'migrant protection' and 'rights-based migration,' and the evaluation assesses 'protection and voluntary assisted return' as one of five pillars of action. Multiple findings substantively address protection-centred commitments: Section 4.3.2 ('Safe, humane, dignified voluntary return processes') evaluates IOM's effectiveness in providing protection to stranded migrants, with findings showing 95% of assisted migrants satisfied with travel arrangements and 99.6% reporting safe, well-organized travel. The report documents extensive evidence of 'life-saving benefits for beneficiaries' and notes that returnees 'faced dire situations (including abuse, violence, and exploitation)' that IOM addressed. Section 4.3.3.1 discusses psychosocial support and vulnerability assessments, with evidence that 'continuous contact between IOM and returnees ensured that returnees' needs were identified and monitored from the moment of their identification.' The conclusions emphasize that 'the EU-IOM Joint Initiative has been of crucial importance to address the needs of migrants and returnees facing dire situations.' Recommendations 4 and 6 specifically address continuation of 'direct and specialized assistance in transit' and 'safe, humane, and orderly migration pathways,' directly supporting protection commitments. However, protection-centred approaches are one of several program quality themes evaluated alongside effectiveness, efficiency, and sustainability; the report does not systematically analyze PSEAH measures, child safeguarding, or meaningful participation of affected populations in decision-making as distinct protection-centred themes. For a synthesis on protection-centred programming, specialists should pay particular attention to Section 4.3.2 on AVR processes, the findings on vulnerability identification and psychosocial support, and Recommendations 4 and 6 on continuation of protection-focused activities."},
+ {'theme_id': '2',
+  'theme_title': 'Equality, Diversity &amp; Inclusion',
+  'relevance_score': 0.62,
+  'reasoning': "This report contains some relevant content on equality and inclusion, though these are not central evaluation themes. The report explicitly mentions gender mainstreaming efforts: Section 4.3.2.1 notes that 'IOM Ethiopia organised awareness raising on sexual and gender-based violence to migrant returnees and host community members as part of the programme's gender mainstreaming effort within the reintegration process.' The integrated approach framework (Figure 1) addresses 'individual level' initiatives responding to 'specific needs and vulnerabilities of returnees,' which implicitly encompasses attention to diverse populations. The evaluation methodology section indicates that focus group discussions included beneficiaries, suggesting some attention to participation of affected populations. However, the report does not systematically analyze IOM's performance on gender equality, disability inclusion, age-appropriate programming, or meaningful participation of marginalized groups as distinct themes. Gender appears primarily as one aspect of vulnerability assessment and awareness-raising rather than as a cross-cutting institutional commitment. The report lacks dedicated findings on gender-responsive program design, representation of women and persons with disabilities in decision-making, or analysis of how the program addressed unequal outcomes based on sex, gender, age, or disability. A synthesis specialist focused on IOM's equality, diversity, and inclusion implementation would find this report has limited substantive content, though the brief mention of gender mainstreaming and the focus on vulnerable populations could provide supplementary context. Recommend prioritizing reports with more explicit gender and inclusion analysis."}]</code></pre>
+</div>
+</div>
+</section>
+<section id="map-gcm-objectives" class="level3">
+<h3 class="anchored">Map GCM objectives</h3>
+<div id="755b25e5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.114385+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.118605+00:00&quot;,&quot;total&quot;:0.004224241999992273}}" data-execution_count="33">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L263" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="report.map_gcms" class="level3">
+<h3 class="anchored" data-anchor-id="report.map_gcms">Report.map_gcms</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> map_gcms(</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    force:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># Map again when the theme set is in `mappings`</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>kwargs</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>__main__.Report: <span class="co"># The report, for chaining</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Map the selected sections against the GCM objectives, and save the report</em></p>
+</section>
+</div>
+<div id="d6a24dcc" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> report.map_gcms(model<span class="op">=</span><span class="st">'claude-haiku-4-5'</span>, force<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa-6" class="level2 cell-output cell-output-display cell-output-markdown">
+<h2 class="anchored" data-anchor-id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa-6">Report: Final Evaluation of the EU-IOM Joint Initiative for migrant protection and reintegration in the horn of Africa</h2>
+<p><strong>Year:</strong> 2023 | <strong>Organization:</strong> IOM<br>
+<strong>ID:</strong> <code>49d2fba781b6a7c0d94577479636ee6f</code></p>
+<p><strong>Pipeline:</strong> ✓ OCR | ✓ Curated (5 headings) | ✓ Mappings (enbs, ccps, gcms, outs)<br>
+<strong>Curation:</strong> sections_selected</p>
+<p><strong>Report:</strong> <a href="https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Abridged%20Evaluation%20Report_%20Final_Olta%20NDOJA.pdf">View Evaluation Report</a></p>
+</section>
+</div>
+<div id="0a901b69" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sort_by_relevance(report.mappings[<span class="st">'gcms'</span>])[:<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[{'theme_id': '21',
+  'theme_title': 'Cooperate In Facilitating Safe And Dignified Return And Readmission, As Well As Sustainable Reintegration',
+  'relevance_score': 0.92,
+  'reasoning': "FUNDAMENTAL. This report would be essential evidence for a synthesis on GCM Objective 21. Safe, dignified return and sustainable reintegration are the core themes of the entire evaluation. The programme's overarching objective is 'To contribute to facilitating orderly, safe, regular and rights-based migration through the facilitation of dignified voluntary return and the implementation of development-focused and sustainable reintegration policies and processes' (page 4). The evaluation explicitly examines Specific Objective 2 ('Safe, humane, dignified voluntary return processes are enhanced along main migration routes,' pages 18-20) and Specific Objective 3 ('Returnees are sustainably integrated in host communities,' pages 20-23). Key findings show that the JI supported 9,025 migrants to return voluntarily (exceeding the target of 8,450), with 95% of assisted migrants satisfied with travel arrangements and 99.6% feeling travel was well-organized and safe (page 19). The evaluation provides extensive analysis of reintegration outcomes, including economic, social, and psychosocial dimensions, with findings that 93% of returnees reported sufficient levels of economic self-sufficiency, social stability, and psychosocial wellbeing (page 22). The report discusses the integrated approach to reintegration (individual support, community-based projects, structural-level interventions) and measures of reintegration sustainability using the Reintegration Sustainability Index (RSS+). Recommendations 4 and 5 specifically address continuation of AVR support and expansion of reintegration programming. For a synthesis specialist, the entire report would be valuable, with particular attention to: Specific Objective 2 findings (pages 18-20) on AVR effectiveness and safety; Specific Objective 3 findings (pages 20-23) on reintegration outcomes and sustainability; the discussion of the integrated approach (pages 23-24); and Recommendations 4-5 (pages 29-30) on continuation and expansion of return and reintegration support. This report provides direct evidence on implementation challenges (external factors, economic constraints, sustainability barriers) and effectiveness factors for return and reintegration programming."},
+ {'theme_id': '1',
+  'theme_title': 'Collect and utilize accurate and disaggregated data as a basis for evidence-based policies',
+  'relevance_score': 0.88,
+  'reasoning': "FUNDAMENTAL. This report would be essential evidence for a synthesis on GCM Objective 1. Data collection and utilization is a dominant theme throughout the evaluation. The report explicitly examines the Regional Data Hub's work on migration data production, capacity building, and harmonization of methodologies (Actions 1a, 1c, 1f). Key findings show the JI exceeded targets for field studies and surveys (20 vs. 19 target), with substantial analysis of data availability improvements and stakeholder capacity building on data use. The evaluation dedicates Section 4.3.1 entirely to 'Specific Objective 1: Partner countries and relevant stakeholders developed or strengthened evidence-based return and reintegration procedures,' with detailed findings on data availability, capacity of stakeholders, and use of data in policymaking. Notably, 136 stakeholders reported that data produced supported evidence-based policies (exceeding the target of 42). The report also discusses the establishment of 36 M&amp;E tools and strengthening of 29 institutions for data collection. For a synthesis specialist, the sections on 'Data availability' (page 16), 'Capacity of stakeholders' (page 17), and findings on the Regional Data Hub's role would be particularly valuable. The report provides direct evidence on implementation challenges (staff turnover, competing priorities) and effectiveness factors for data-driven migration governance."}]</code></pre>
+</div>
+</div>
+</section>
+<section id="map-outputs" class="level3">
+<h3 class="anchored">Map outputs</h3>
+<p><code>map_outs</code> maps the SRF outputs linked to <code>gcm_ids</code>. By default, it uses the top GCM objective from <code>map_gcms</code>. When no GCM objective reaches the <a href="https://franckalbinet.github.io/iomeval/mapper.html#get_top_ids"><code>get_top_ids</code></a> threshold, it maps nothing and leaves <code>outs</code> out of <code>mappings</code>.</p>
+<div id="ede724e0" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.121500+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.126306+00:00&quot;,&quot;total&quot;:0.004810336999980791}}" data-execution_count="35">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L276" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="report.map_outs" class="level3">
+<h3 class="anchored" data-anchor-id="report.map_outs">Report.map_outs</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> map_outs(</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    gcm_ids:NoneType<span class="op">=</span><span class="va">None</span>, <span class="co"># GCM objective IDs whose linked outputs to map; `None` uses the top GCM objective</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    force:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># Map again when the outputs are in `mappings`</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>kwargs</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>__main__.Report: <span class="co"># The report, for chaining</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Map the selected sections against the SRF outputs linked to <code>gcm_ids</code>, and save the report</em></p>
+</section>
+</div>
+<div id="56e8b104" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="cf">await</span> report.map_outs(model<span class="op">=</span><span class="st">'claude-haiku-4-5'</span>, force<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa-7" class="level2 cell-output cell-output-display cell-output-markdown">
+<h2 class="anchored" data-anchor-id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa-7">Report: Final Evaluation of the EU-IOM Joint Initiative for migrant protection and reintegration in the horn of Africa</h2>
+<p><strong>Year:</strong> 2023 | <strong>Organization:</strong> IOM<br>
+<strong>ID:</strong> <code>49d2fba781b6a7c0d94577479636ee6f</code></p>
+<p><strong>Pipeline:</strong> ✓ OCR | ✓ Curated (5 headings) | ✓ Mappings (enbs, ccps, gcms, outs)<br>
+<strong>Curation:</strong> sections_selected</p>
+<p><strong>Report:</strong> <a href="https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Abridged%20Evaluation%20Report_%20Final_Olta%20NDOJA.pdf">View Evaluation Report</a></p>
+</section>
+</div>
+<div id="b73071e8" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>sort_by_relevance(report.mappings[<span class="st">'outs'</span>])[:<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[{'theme_id': '2b63',
+  'theme_title': 'Returning migrants and returning, relocated and locally integrating displaced persons receive reintegration assistance in line with their needs and those of broader community members.',
+  'relevance_score': 0.89,
+  'reasoning': "This report would likely be essential for a synthesis on Output 2b63 (reintegration assistance for returning migrants and displaced persons). The evaluation explicitly examines IOM's reintegration programming across the Horn of Africa, with reintegration assistance appearing prominently in the program title, evaluation objectives, and throughout the report's structure. The report dedicates substantial analysis to individual and community-based reintegration across three dimensions (economic, social, psychosocial), directly addressing this Output's core deliverables. Key findings in Section 4.3.3 provide extensive evidence on reintegration assistance delivery: 15,161 beneficiaries received reintegration support (exceeding targets), with detailed analysis of satisfaction levels (55% average), economic support effectiveness, and community-based reintegration projects (54 projects supporting 76,348 beneficiaries). The report explicitly examines how assistance aligns with beneficiary needs through focus group discussions and monitoring surveys. Particularly valuable sections include: (1) Section 4.3.3.1 on achievement of outputs and results, detailing individual and community-based reintegration with specific findings on satisfaction drivers and dissatisfaction factors; (2) the integrated approach discussion (Section 4.3.4) explaining how economic, social, and psychosocial dimensions interconnect; (3) conclusions in Section 5.1 emphasizing the importance of individualized support and community-level approaches; and (4) Recommendation 2 on strengthening community-based reintegration efforts. The report provides direct evidence on reintegration assistance effectiveness, implementation challenges, and factors affecting beneficiary outcomes—all critical for understanding this Output's delivery."},
+ {'theme_id': '3a43',
+  'theme_title': 'Migrants of all genders, ages, abilities and other diversities are able to cover their immediate needs upon return to their countries of origin.',
+  'relevance_score': 0.85,
+  'reasoning': "This report would likely be essential for a synthesis on Output 3a43 (migrants' ability to cover immediate needs upon return). The evaluation provides extensive evidence on immediate assistance provided to returning migrants, which directly addresses this Output's deliverable. Key findings demonstrate: the JI provided reintegration assistance to 15,161 beneficiaries, with 95% of assisted migrants satisfied with travel arrangements and 99.6% reporting safe, well-organized travel; emergency support on arrival (cash, medical services, mental health and psychosocial support) was deemed 'highly relevant, important, and effective' (Section 5.1); and focus group discussions confirm returnees received crucial economic support, medical assistance, and psychosocial support upon return. The report explicitly examines the adequacy of immediate assistance: returnees noted economic support was 'crucial' as they returned 'with nothing,' helping them start businesses or search for employment. However, the report also identifies a critical gap—many returnees deemed the economic support insufficient to achieve sustainable reintegration, indicating that while immediate needs were addressed, the level of support was often inadequate for longer-term stability. Particularly valuable sections include: (1) Section 4.3.2.1 on assistance to stranded migrants, detailing AVR support and satisfaction metrics; (2) Section 4.3.3.1 on individual reintegration assistance, with findings on the types and adequacy of support provided; (3) Section 5.1 conclusions emphasizing the 'life-saving benefits' of immediate assistance; and (4) Recommendation 5 on extending support scope with focus on longer-term integration. The report provides direct evidence on immediate assistance delivery, beneficiary satisfaction, and gaps in adequacy—all critical for understanding this Output's effectiveness."}]</code></pre>
+</div>
+</div>
+</section>
+<section id="map-all-themes" class="level3">
+<h3 class="anchored" data-anchor-id="map-all-themes">Map all themes</h3>
+<p><a href="https://franckalbinet.github.io/iomeval/pipeline.html#report.map_all"><code>Report.map_all</code></a> runs the four <code>map_*</code> methods in order.</p>
+<div id="5bec0fde" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.127848+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.131742+00:00&quot;,&quot;total&quot;:0.0038984730000208856}}" data-execution_count="37">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L294" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="report.map_all" class="level3">
+<h3 class="anchored" data-anchor-id="report.map_all">Report.map_all</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> map_all(</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>kwargs</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>__main__.Report: <span class="co"># The report, for chaining</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Run <code>map_enbs</code>, <code>map_ccps</code>, <code>map_gcms</code> and <code>map_outs</code> in order</em></p>
+</section>
+</div>
+</section>
+</section>
+<section id="run-the-full-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="run-the-full-pipeline">Run the full pipeline</h2>
+<p><a href="https://franckalbinet.github.io/iomeval/pipeline.html#run_pipeline"><code>run_pipeline</code></a> takes one evaluation, found by <code>url</code>, <code>id</code> or <code>title</code>, as far through the stages as it can. It first loads the report’s saved state from <code>base_path</code>, and it skips the stages already done. It returns a <a href="https://franckalbinet.github.io/iomeval/pipeline.html#pipelineresult"><code>PipelineResult</code></a> with one of three statuses:</p>
+<ul>
+<li><code>'awaiting_curation'</code> when the report still needs curation. Curate it in the curator app, then run the same call again.</li>
+<li><code>'completed'</code> after the four mappings.</li>
+<li><code>'failed'</code> when a stage raises an error. <a href="https://franckalbinet.github.io/iomeval/pipeline.html#run_pipeline"><code>run_pipeline</code></a> logs the error, and the result holds its message in <code>error</code> and the stage in <code>step</code>.</li>
+</ul>
+<p>Errors raised while creating the report, such as a missing report URL, are not caught. <code>force</code> runs stages again. Pass <code>True</code> for every stage, or a set of step names such as <code>{'ocr', 'gcms'}</code>. The step names are <code>'download'</code>, <code>'ocr'</code>, <code>'enbs'</code>, <code>'ccps'</code>, <code>'gcms'</code> and <code>'outs'</code>. By default, <a href="https://franckalbinet.github.io/iomeval/pipeline.html#run_pipeline"><code>run_pipeline</code></a> deletes the PDF folder after OCR.</p>
+<div id="5ce825c3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.138570+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.142437+00:00&quot;,&quot;total&quot;:0.0038715720000084275}}" data-execution_count="40">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L302" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="should_force" class="level3">
+<h3 class="anchored" data-anchor-id="should_force">should_force</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> should_force(</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    force, <span class="co"># `True` or `False` for every step, or a set of step names</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    step, <span class="co"># Step name, such as `'ocr'`</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span><span class="bu">bool</span>: <span class="co"># Whether to run `step` again</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Check whether <code>force</code> applies to <code>step</code></em></p>
+</section>
+</div>
+<div id="96447a1c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.143723+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.149445+00:00&quot;,&quot;total&quot;:0.0057265379999762445}}" data-execution_count="42">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L310" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="pipelineresult" class="level3">
+<h3 class="anchored" data-anchor-id="pipelineresult">PipelineResult</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> PipelineResult(</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    report, <span class="co"># The report, in its final state</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    status, <span class="co"># `'completed'`, `'awaiting_curation'` or `'failed'`</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    error:NoneType<span class="op">=</span><span class="va">None</span>, <span class="co"># Error message, when `status` is `'failed'`</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    step:NoneType<span class="op">=</span><span class="va">None</span>, <span class="co"># Stage the run stopped at, when it did not complete</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>):</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Outcome of <a href="https://franckalbinet.github.io/iomeval/pipeline.html#run_pipeline"><code>run_pipeline</code></a> for one report</em></p>
+</section>
+</div>
+<div id="dfbc0ea5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.150705+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.154441+00:00&quot;,&quot;total&quot;:0.0037400269999920965}}" data-execution_count="44">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L321" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="get_current_step" class="level3">
+<h3 class="anchored" data-anchor-id="get_current_step">get_current_step</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_current_step(</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    report, <span class="co"># Report to check</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span><span class="bu">str</span>: <span class="co"># `'ocr'`, `'curation'` or `'mapping'`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Infer the stage <code>report</code> is at from its state</em></p>
+</section>
+</div>
+<div id="6d815941" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.160934+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.170342+00:00&quot;,&quot;total&quot;:0.009412655000005543}}" data-execution_count="46">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L329" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="run_pipeline" class="level3">
+<h3 class="anchored" data-anchor-id="run_pipeline">run_pipeline</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> run_pipeline(</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    evals:<span class="bu">list</span>, <span class="co"># Evaluations to search</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    url:<span class="bu">str</span><span class="op">=</span><span class="va">None</span>, <span class="co"># URL of the report PDF</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span>:<span class="bu">str</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Evaluation ID</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    title:<span class="bu">str</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Evaluation title</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    base_path:<span class="bu">str</span><span class="op">=</span><span class="st">'data'</span>, <span class="co"># Folder holding `pdf/`, `md/` and `results/`</span></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>    add_img_desc:<span class="bu">bool</span><span class="op">=</span><span class="va">True</span>, <span class="co"># Add image descriptions during OCR</span></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>    fix_kwargs:<span class="bu">dict</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Passed to mistocr's `fix_hdgs`</span></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>    desc_kwargs:<span class="bu">dict</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Passed to mistocr's `add_img_descs`</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>    force:<span class="bu">bool</span> <span class="op">|</span> <span class="bu">set</span><span class="op">=</span><span class="va">False</span>, <span class="co"># `True` to run every step again, or a set of step names</span></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>    delete_pdf:<span class="bu">bool</span><span class="op">=</span><span class="va">True</span>, <span class="co"># Delete the PDF folder after OCR</span></span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>    verbose:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># Log each step</span></span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>kwargs</span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>__main__.PipelineResult: <span class="co"># The report and how far the run got</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Run the pipeline on one evaluation as far as it can go</em></p>
+</section>
+</div>
+<div id="01397bee" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>evals <span class="op">=</span> load_evals(<span class="st">'files/test/evaluations.json'</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span> <span class="op">=</span> <span class="st">'49d2fba781b6a7c0d94577479636ee6f'</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="cf">await</span> run_pipeline(evals, <span class="bu">id</span><span class="op">=</span><span class="bu">id</span>, base_path<span class="op">=</span><span class="st">'files/test'</span>, add_img_desc<span class="op">=</span><span class="va">False</span>, </span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>                            force<span class="op">=</span><span class="va">False</span>, verbose<span class="op">=</span><span class="va">True</span>, model<span class="op">=</span><span class="st">'claude-haiku-4-5'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>__main__ - INFO - Mapping enablers...
+__main__ - INFO - Mapping CCPs...
+__main__ - INFO - Mapping GCM objectives...
+__main__ - INFO - Mapping outputs...
+__main__ - INFO - Pipeline complete!</code></pre>
+</div>
+</div>
+<div id="214c46f0" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>result.status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>'completed'</code></pre>
+</div>
+</div>
+<div id="5b774c73" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>result.report</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa-8" class="level2 cell-output cell-output-display cell-output-markdown">
+<h2 class="anchored" data-anchor-id="report-final-evaluation-of-the-eu-iom-joint-initiative-for-migrant-protection-and-reintegration-in-the-horn-of-africa-8">Report: Final Evaluation of the EU-IOM Joint Initiative for migrant protection and reintegration in the horn of Africa</h2>
+<p><strong>Year:</strong> 2023 | <strong>Organization:</strong> IOM<br>
+<strong>ID:</strong> <code>49d2fba781b6a7c0d94577479636ee6f</code></p>
+<p><strong>Pipeline:</strong> ✓ OCR | ✓ Curated (5 headings) | ✓ Mappings (enbs, ccps, gcms, outs)<br>
+<strong>Curation:</strong> sections_selected</p>
+<p><strong>Report:</strong> <a href="https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Abridged%20Evaluation%20Report_%20Final_Olta%20NDOJA.pdf">View Evaluation Report</a></p>
+</section>
+</div>
+</section>
+<section id="batch" class="level2">
+<h2 class="anchored" data-anchor-id="batch">Batch</h2>
+<p>The IOM repository export, from <a href="https://evaluation.iom.int/evaluation-search-pdf">evaluation-search-pdf</a>, lists each evaluation’s documents with their type, such as brief, annex or final report. The types and URLs do not always match. A URL labelled “Evaluation Report” can point to an annex or a brief. IOM knows about this bug and is fixing it.</p>
+<p>As a workaround, <a href="https://franckalbinet.github.io/iomeval/readers.html#iomreporeader.to_json"><code>IOMRepoReader.to_json</code></a> gets each evaluation’s report URL from IOM’s UNEG API, <code>/json/api/evaluation-uneg</code>. It adds that URL as the evaluation’s first document, with subtype <code>'Evaluation report (UNEG)'</code>, and <a href="https://franckalbinet.github.io/iomeval/readers.html#eval_url"><code>eval_url</code></a> prefers it. The UNEG API has less metadata than the export.</p>
+<div id="1734cbd1" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>evals[<span class="dv">0</span>].docs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[{'subtype': 'Evaluation report',
+  'url': 'https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Annex%20VI%20Case%20Study%20-%20RDH%20East%2C%20Horn%20and%20Southern%20Africa.pdf',
+  'desc': 'Evaluation Report'},
+ {'subtype': 'Evaluation brief',
+  'url': 'https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Annex%20VII%20Case%20Study%20-%20RDH%20Asia-Pacific.pdf',
+  'desc': 'Evaluation Brief'},
+ {'subtype': 'Annexes',
+  'url': 'https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Annex%20VIII%20-%20Inception%20Report.pdf',
+  'desc': 'Annex VI Case Study - RDH East'},
+ {'subtype': 'Annexes',
+  'url': 'https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Evaluation%20Brief.pdf',
+  'desc': 'Horn and Southern Africa'},
+ {'subtype': 'Annexes',
+  'url': 'https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/IOM%20MDS%20Evaluation%20Report%20-%20clean_0.pdf',
+  'desc': 'Annex VII Case Study - RDH Asia-Pacific'},
+ {'subtype': 'Special related reports/documents',
+  'url': 'https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Migration%20Data%20Evaluation%20infographics.pdf',
+  'desc': 'Annex VIII - Inception Report'}]</code></pre>
+</div>
+</div>
+<p><a href="https://franckalbinet.github.io/iomeval/pipeline.html#batchresult"><code>BatchResult</code></a> groups the evaluation IDs of a batch run by outcome.</p>
+<div id="2fe997af" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.173771+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.178090+00:00&quot;,&quot;total&quot;:0.004323076999980913}}" data-execution_count="48">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L396" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="batchresult" class="level3">
+<h3 class="anchored" data-anchor-id="batchresult">BatchResult</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> BatchResult(</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    completed:NoneType<span class="op">=</span><span class="va">None</span>, <span class="co"># IDs of the reports that completed</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    awaiting_curation:NoneType<span class="op">=</span><span class="va">None</span>, <span class="co"># IDs of the reports that wait for curation</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>    failed:NoneType<span class="op">=</span><span class="va">None</span>, <span class="co"># One dict per failure, with `id`, `step` and `error`</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>    skipped:NoneType<span class="op">=</span><span class="va">None</span>, <span class="co"># IDs of the reports skipped because they were already complete</span></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>):</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Result of running pipeline on a batch of evaluations</em></p>
+</section>
+</div>
+<div id="a6813a18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.179632+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.183861+00:00&quot;,&quot;total&quot;:0.004233868999989454}}" data-execution_count="50">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L418" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="filter_evals" class="level3">
+<h3 class="anchored" data-anchor-id="filter_evals">filter_evals</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> filter_evals(</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>    evals, <span class="co"># Evaluations to filter</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>    year:NoneType<span class="op">=</span><span class="va">None</span>, <span class="co"># Keep the evaluations of this `Year`, such as `'2023'`</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>    ids:NoneType<span class="op">=</span><span class="va">None</span>, <span class="co"># Keep the evaluations with these IDs; takes precedence over `year`</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span><span class="bu">list</span>: <span class="co"># The kept evaluations, or `evals` when neither filter is set</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Keep the evaluations in <code>ids</code>, or else those of <code>year</code></em></p>
+</section>
+</div>
+<div id="27f94e1e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.185142+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.188997+00:00&quot;,&quot;total&quot;:0.003859779999999091}}" data-execution_count="52">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L429" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="is_completed" class="level3">
+<h3 class="anchored" data-anchor-id="is_completed">is_completed</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_completed(</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    report, <span class="co"># Report to check</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span><span class="bu">bool</span>: <span class="co"># Whether `mappings` has all four theme sets</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Check whether <code>report</code> has been mapped against every theme set</em></p>
+</section>
+</div>
+<p><a href="https://franckalbinet.github.io/iomeval/pipeline.html#batch_run"><code>batch_run</code></a> runs <a href="https://franckalbinet.github.io/iomeval/pipeline.html#run_pipeline"><code>run_pipeline</code></a> on each evaluation in <code>evals</code>, after <a href="https://franckalbinet.github.io/iomeval/pipeline.html#filter_evals"><code>filter_evals</code></a>. It skips the reports that have all four mappings, unless <code>force</code> is set. It counts an evaluation without a report URL as failed, at step <code>'url_lookup'</code>. At the end, it saves the <a href="https://franckalbinet.github.io/iomeval/pipeline.html#batchresult"><code>BatchResult</code></a> to <code>base_path/batch_runs/&lt;timestamp&gt;.json</code>.</p>
+<div id="558920ec" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2026-09-28T16:02:06.193828+00:00&quot;,&quot;shell.execute_reply&quot;:&quot;2026-09-28T16:02:06.201395+00:00&quot;,&quot;total&quot;:0.007572035999999116}}" data-execution_count="54">
+<hr>
+<p><a href="https://github.com/franckalbinet/iomeval/blob/main/iomeval/pipeline.py#L436" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="batch_run" class="level3">
+<h3 class="anchored" data-anchor-id="batch_run">batch_run</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> batch_run(</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>    evals, <span class="co"># Evaluations to run</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>    base_path:<span class="bu">str</span><span class="op">=</span><span class="st">'../../data'</span>, <span class="co"># Folder holding `pdf/`, `md/` and `results/`</span></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    year:<span class="bu">str</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Keep the evaluations of this year, such as `'2023'`</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>    ids:<span class="bu">list</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Keep the evaluations with these IDs; takes precedence over `year`</span></span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>    force:<span class="bu">bool</span> <span class="op">|</span> <span class="bu">set</span><span class="op">=</span><span class="va">False</span>, <span class="co"># `True` to run every step again, or a set of step names</span></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>    stop_after:<span class="bu">int</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Stop after N reports; not implemented yet</span></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>    delete_pdf:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># Delete each report's PDF folder after OCR</span></span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>    add_img_desc:<span class="bu">bool</span><span class="op">=</span><span class="va">True</span>, <span class="co"># Add image descriptions during OCR</span></span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a>    fix_kwargs:<span class="bu">dict</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Passed to mistocr's `fix_hdgs`</span></span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a>    desc_kwargs:<span class="bu">dict</span><span class="op">=</span><span class="va">None</span>, <span class="co"># Passed to mistocr's `add_img_descs`</span></span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>kwargs</span>
+<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a>)<span class="op">-&gt;</span>__main__.BatchResult: <span class="co"># IDs of the evaluations, grouped by outcome</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Run the pipeline on each evaluation, and save a summary of the run</em></p>
+</section>
+</div>
+<div id="830d6319" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>test_ids <span class="op">=</span> [<span class="st">'4341695461234eee3deb51ac68871109'</span>, <span class="st">'6c3c2cf3fa479112967612b0baddab72'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="5584d135" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="cf">await</span> batch_run(evals, base_path<span class="op">=</span><span class="st">'files/test'</span>, ids<span class="op">=</span>test_ids,</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>                         add_img_desc<span class="op">=</span><span class="va">False</span>, verbose<span class="op">=</span><span class="va">False</span>, model<span class="op">=</span><span class="st">'claude-haiku-4-5'</span>)</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>__main__ - INFO - 43416954... awaiting_curation
+__main__ - INFO - 6c3c2cf3... skipped (already completed)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;__main__.BatchResult&gt;</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/franckalbinet\.github\.io\/iomeval");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

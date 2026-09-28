@@ -1,0 +1,69 @@
+
+
+programme achievements. The transition to BMM Phase IV presents both an
+opportunity to reinforce sustainability measures and a risk of losing
+progress if gaps in funding and staffing are not addressed.
+
+Efforts to institutionalize migration management have been a key
+component of BMM Phase III, with policies and frameworks being embedded
+into national strategies. Several governments, including Kenya and
+Somalia, have demonstrated commitment to sustaining these reforms. One
+government representative noted: “We knew that after this program, we
+will be taking actions and doing a good job with IOM.” Similarly, an
+official from another country stated: “We are exploring the possibility
+of getting government funding for the directorate activities… we can
+continue supporting the objectives of BMM.”
+
+To ensure sustainability, IOM has invested in training government
+personnel and institutions, equipping them with the skills needed to
+manage migration independently. However, while capacity has improved,
+many governments lack the financial resources to maintain these efforts
+without continued external support. As one national stakeholder stated:
+“For the national partners, it would be really difficult to continue
+carrying and supporting activities related to life-saving assistance or
+migration management overall.” This raises concerns about long-term
+sustainability, particularly in resource-constrained countries like
+Somalia, South Sudan, and Djibouti.
+
+Hence, the reliance of national actors on project-based funding poses a
+risk to sustainability. In some cases, government officials depend on
+BMM funds for salaries, which is not viable in the long run. As one
+stakeholder observed: “BMM has been a huge source of support for these
+national governments… but they were wondering how the gap that is being
+left will be filled.” The programme’s sustainability would be
+strengthened by fostering greater government financial commitment and
+introducing co-funding principles. This is also understood by several
+interviewed government officials. As one national government respondent
+summarized: “For sustainability, we are in a good track, but the next
+phase of BMM should focus on government ownership and resource
+allocation.” One interviewee proposed a “two-thirds principle” after
+three years of funding for the same project, suggesting that governments
+could assume the majority of the programme’s budget after this period.
+
+The evaluation team identifies a significant risk to sustainability due
+to the gap between the end of IOM activities under BMM Phase III (March
+2025) and the anticipated start of Phase IV in late 2025. While Phase IV
+is expected to enhance the sustainability of achieved objectives,
+interviewees emphasized that its focus will be on implementing and
+strengthening existing policies rather than developing new ones.
+However, past transitions between BMM phases have led to staff turnover
+and implementation delays, disrupting continuity. Several stakeholders
+expressed concerns that the funding gap between Phase III and Phase IV
+could result in staff lay-offs, posing a major risk to sustainability by
+leading to the loss of institutional memory and weakening
+well-established relationships and partnerships built by current IOM
+staff.
+
+Furthermore, the evaluation team highlights a significant risk to
+sustainability due to the gap between the end of IOM activities under
+BMM Phase III (March 2025) and the anticipated start of Phase IV in late
+2025. The planned Phase IV will likely contribute to increased
+sustainability of achieved objectives. As some interviewees noted, the
+focus for Phase IV will be on implementing and building on existing
+policies rather than developing new ones to ensure the sustainability of
+already established achievements. However, past transitions between BMM
+phases have led to staff turnover and implementation delays, disrupting
+continuity. In turn, several stakeholders expressed concerns that the
+funding gap between Phase III and Phase IV could result in staff
+lay-offs, posing a major risk to sustainability by leading to the loss
+of institutional memory and

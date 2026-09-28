@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Change Analysis – iomeval</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f2788e636de456f6409e966386820849.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Change Analysis – iomeval">
+<meta property="og:description" content="Streamline evaluation evidence mapping at scale with LLMs">
+<meta property="og:image" content="https://franckalbinet.github.io/iomeval/processing/changes/changes-analysis-pip-130426_files/figure-html/cell-7-output-1.png">
+<meta property="og:site_name" content="iomeval">
+<meta property="og:image:height" content="454">
+<meta property="og:image:width" content="916">
+<meta name="twitter:title" content="Change Analysis – iomeval">
+<meta name="twitter:description" content="Streamline evaluation evidence mapping at scale with LLMs">
+<meta name="twitter:image" content="https://franckalbinet.github.io/iomeval/processing/changes/changes-analysis-pip-130426_files/figure-html/cell-7-output-1.png">
+<meta name="twitter:image-height" content="454">
+<meta name="twitter:image-width" content="916">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">iomeval</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Change Analysis</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOMEval</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../analysis/eval_metadata_eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOM Reports Exploration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">API</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../core.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Core</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../readers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Readers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../downloaders.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Downloaders</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../extract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extract</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../themes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Themes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../mapper.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapper</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../curator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curator</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-we-have-changed" id="toc-what-we-have-changed" class="nav-link active" data-scroll-target="#what-we-have-changed">What we have changed?</a></li>
+  <li><a href="#score-changes-overview" id="toc-score-changes-overview" class="nav-link" data-scroll-target="#score-changes-overview">Score changes overview</a>
+  <ul class="collapse">
+  <li><a href="#gcm-objectives" id="toc-gcm-objectives" class="nav-link" data-scroll-target="#gcm-objectives">GCM objectives</a></li>
+  <li><a href="#srf-enablers" id="toc-srf-enablers" class="nav-link" data-scroll-target="#srf-enablers">SRF Enablers</a></li>
+  <li><a href="#srf-cross-cutting-priorities" id="toc-srf-cross-cutting-priorities" class="nav-link" data-scroll-target="#srf-cross-cutting-priorities">SRF Cross-Cutting Priorities</a></li>
+  </ul></li>
+  <li><a href="#rank-changes-overview" id="toc-rank-changes-overview" class="nav-link" data-scroll-target="#rank-changes-overview">Rank changes overview</a></li>
+  <li><a href="#our-interpretation" id="toc-our-interpretation" class="nav-link" data-scroll-target="#our-interpretation">Our interpretation</a></li>
+  <li><a href="#inputs-we-need-from-you" id="toc-inputs-we-need-from-you" class="nav-link" data-scroll-target="#inputs-we-need-from-you">Inputs we need from you</a></li>
+  <li><a href="#per-evaluation-report" id="toc-per-evaluation-report" class="nav-link" data-scroll-target="#per-evaluation-report">Per evaluation report</a>
+  <ul class="collapse">
+  <li><a href="#evaluation-of-ioms-migration-data-strategy" id="toc-evaluation-of-ioms-migration-data-strategy" class="nav-link" data-scroll-target="#evaluation-of-ioms-migration-data-strategy">EVALUATION OF IOM’S MIGRATION DATA STRATEGY</a></li>
+  <li><a href="#inter-agency-humanitarian-evaluation-of-the-response-to-the-humanitarian-crisis-in-somalia" id="toc-inter-agency-humanitarian-evaluation-of-the-response-to-the-humanitarian-crisis-in-somalia" class="nav-link" data-scroll-target="#inter-agency-humanitarian-evaluation-of-the-response-to-the-humanitarian-crisis-in-somalia">INTER-AGENCY HUMANITARIAN EVALUATION OF THE RESPONSE TO THE HUMANITARIAN CRISIS IN SOMALIA</a></li>
+  <li><a href="#fifth-evaluation-of-the-iom-development-fund" id="toc-fifth-evaluation-of-the-iom-development-fund" class="nav-link" data-scroll-target="#fifth-evaluation-of-the-iom-development-fund">Fifth Evaluation of the IOM Development Fund</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="changes-analysis-pip-130426.html.md"><i class="bi bi-file-code"></i>Markdown</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Change Analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<p><a href="https://iom-tagapp-beta.pla.sh">Click here</a> to access the <strong>IOM TAGGING (BETA) PLATFORM</strong></p>
+<div id="492d63aa" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> iomeval.llm_eval.changes <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> iomeval.readers <span class="im">import</span> load_evals</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="fce83606" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> Path().home() <span class="op">/</span> <span class="st">'iomeval/data/requester_by_report_id.json'</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>lut <span class="op">=</span> p.read_json()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>evls_test <span class="op">=</span> L(lut.keys())</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ROOT_PATH <span class="op">=</span> Path.home() <span class="op">/</span> <span class="st">'iomeval'</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>DATA_PATH <span class="op">=</span> ROOT_PATH <span class="op">/</span> <span class="st">'data'</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>RESULTS_PATH <span class="op">=</span> DATA_PATH<span class="op">/</span> <span class="st">'results'</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>EVALS_PATH <span class="op">=</span> ROOT_PATH <span class="op">/</span> <span class="st">'nbs/files/test/evaluations.json'</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Contains latest backed up data before new deployment</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>LATEST_TAG_PATH <span class="op">=</span> Path.home() <span class="op">/</span> <span class="st">'tagapp/backups/20260311_115159/data'</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>evals <span class="op">=</span> load_evals(EVALS_PATH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="57bae748" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> all_deltas(evls_test, RESULTS_PATH, LATEST_TAG_PATH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="9381beb4" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>who <span class="op">=</span> <span class="bu">set</span>(lut.values())</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>who</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>{'Andres', 'Davide', 'elma', 'ljeoma', 'pip', 'rogers'}</code></pre>
+</div>
+</div>
+<div id="7942c63e" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Automatically generate changes report cells for all reports</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>rpts <span class="op">=</span> [k <span class="cf">for</span> k,v <span class="kw">in</span> lut.items() <span class="cf">if</span> v<span class="op">==</span><span class="st">'pip'</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> rpt <span class="kw">in</span> rpts: <span class="cf">await</span> gen_report_cells(rpt, dfs, LATEST_TAG_PATH, RESULTS_PATH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="what-we-have-changed" class="level2">
+<h2 class="anchored" data-anchor-id="what-we-have-changed">What we have changed?</h2>
+<ol type="1">
+<li>First of all, we <strong>improved the consistency of what section of an evaluation report the model reads</strong>. A “curation” step was added to the process in which a human selects the sections of the report that are more relevant to the tagging. This step used to be automatic (it was based on the “parsing” prompt that you reviewed) but we realized that several mistakes were being made by the model (probably because of the diversity in formatting and structure of evaluation reports, which not always follow a precise template). This is a major change with likely general consequences on the tagging. <em>Feedback from testers on which sections of the report should be fed to the model was considered</em>.</li>
+</ol>
+<p>Secondly, we made changes to the tagging prompts based on your feedback. Here are the main modifications (minor ones are not listed here but are available in the files used for the review):</p>
+<ol start="2" type="1">
+<li><p><strong>Excerpt-based analysis clarification</strong>: Following the point above on the new report “curation” step, we asked the model to be explicit on the fact that only specific section are accessed (executive summary, introduction, background, evaluation scope, conclusions, recommendations, lessons learnt) in order not to give a false impression that the full report was being fed to the model. Hedged language is required throughout (e.g., “the excerpts suggest …”, “based on the sections reviewed …”). <em>This follows up on comments from several testers - some asking more precise quotation outputs (something not possible at this stage - sorry!). The reasoning now is more transparent on the fact that the model is not reading the whole report (like a human would do when tagging; remember also that in earlier experiments, feeding the whole report to the model was inflating scores throughout and making the model unusable)</em>.</p></li>
+<li><p><strong>GCM 23 downgrading</strong>: Added an important note on GCM Objective 23 clarifying its revised scoring treatment. <em>This follows up on feedback from different testers suggesting that relevance with respect to this objective may have been exaggerated by the model</em>.</p></li>
+<li><p><strong>SRF enablers reframing</strong>: Introduced a critical distinction between enablers as institutional capacity versus programmatic tools. <em>This follows up on a point raised by Pip</em>.</p></li>
+<li><p><strong>Relevance score range relabelling</strong>: Tags now use “Not Relevant”, “Peripheral” (formerly “Supplementary”), “Relevant”, and “Fundamental”. <em>This follows up on suggestion from Andres</em>.</p></li>
+<li><p><strong>Terminology warning on “Findings”</strong> — Analysts must not use “finding(s)” in their own analytical language, as this term carries a specific formal meaning in IOM evaluation reports. It may only be referenced when it appears in report excerpts themselves. <em>This clarification stems from Andres flagging overly broad or imprecise uses of “findings” generated by the LLM</em>.</p></li>
+<li><p><strong>GCM descriptions added</strong>: The description of the GCM objective used by the model is now fully in line with the GCM UN resolution document. <em>This is something we realized upon auditing the script</em>. For instance:</p></li>
+</ol>
+<pre><code># Objective 1
+## Title: Collect and utilize accurate and disaggregated data as a basis for evidence-based policies
+We commit to strengthen the global evidence base on international migration by improving and investing in the collection, analysis and dissemination of accurate , ...
+To realize this commitment, we will draw from the following actions:
+## Associated actions
+- a. Elaborate and implement ...
+- b. ...
+...</code></pre>
+<p>Here are links to <a href="https://github.com/franckalbinet/iomeval/tree/main/nbs/files/prompts">new</a> and <a href="https://github.com/franckalbinet/iomeval/tree/main/nbs/files/prompts/legacy">previous</a> versions of the prompts.</p>
+<p>How did these changes affect tagging?</p>
+</section>
+<section id="score-changes-overview" class="level2">
+<h2 class="anchored" data-anchor-id="score-changes-overview">Score changes overview</h2>
+<p><strong>Based on all reports tagged so far (20)</strong>. This is to give you a general sense of how the behavior of the model changed.</p>
+<section id="gcm-objectives" class="level3">
+<h3 class="anchored" data-anchor-id="gcm-objectives">GCM objectives</h3>
+<p><em>Note: You might be unfamiliar with this type of visualization. It’s called a <a href="https://en.wikipedia.org/wiki/Violin_plot">violin plot</a>. A violin plot combines a box plot with a smoothed estimate of the score distribution, making it easier to spot not just the median and spread, but also whether scores cluster around one or several values, something a box plot alone would miss.</em></p>
+<div id="798c523f" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plot_score_diffs(dfs, <span class="st">'gcms'</span>, <span class="st">'GCM objective'</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>), dpi<span class="op">=</span><span class="dv">77</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="changes-analysis-pip-130426_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="srf-enablers" class="level3">
+<h3 class="anchored" data-anchor-id="srf-enablers">SRF Enablers</h3>
+<div id="25972750" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_score_diffs(dfs, <span class="st">'enbs'</span>, <span class="st">'SRF Enablers'</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">3</span>), dpi<span class="op">=</span><span class="dv">77</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="changes-analysis-pip-130426_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="srf-cross-cutting-priorities" class="level3">
+<h3 class="anchored" data-anchor-id="srf-cross-cutting-priorities">SRF Cross-Cutting Priorities</h3>
+<div id="6566cf2d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plot_score_diffs(dfs, <span class="st">'ccps'</span>, <span class="st">'SRF Cross-Cutting Priorities'</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">3</span>), dpi<span class="op">=</span><span class="dv">77</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="changes-analysis-pip-130426_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="rank-changes-overview" class="level2">
+<h2 class="anchored" data-anchor-id="rank-changes-overview">Rank changes overview</h2>
+<p>Among all themes where previous relevance score was <code>&gt; 0.83</code> (<strong>FUNDAMENTAL</strong>), what percentage of them have undergone a change in rank (<code>rank_diff != 0</code>)</p>
+<div id="e5a29b47" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dfs[dfs.score_old <span class="op">&gt;</span> <span class="fl">0.83</span>].groupby(<span class="st">'mapping_type'</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">100</span> <span class="op">*</span> (x.rank_diff <span class="op">!=</span> <span class="dv">0</span>).<span class="bu">sum</span>() <span class="op">/</span> <span class="bu">len</span>(x)).<span class="bu">round</span>(<span class="dv">1</span>).sort_values()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>mapping_type
+ccps    16.7
+gcms    34.3
+outs    40.7
+enbs    44.4
+dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="our-interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="our-interpretation">Our interpretation</h2>
+<p>The score changes overview charts show a general decrease of the scores. In other words, the <strong>model became more conservative</strong> following the various changes made to the prompts.</p>
+<p>The reduction in scores is more pronounced and generalized for GCM objectives, possibly due to the additional details on <strong>GCM objectives</strong> (change 7 above) that now the model has access to. However, the reductions yet remain moderate in magnitude, suggesting the prompt revisions recalibrated the model’s behaviour without disrupting it fundamentally. The dramatic average score reduction for GCM objective 23 is something intended. <em>It means that the changes to the prompt worked, although your feedback will say if further calibration is needed</em>.</p>
+<p><strong>SRF Enablers</strong> showed the highest rank instability (44.4%). This is also expected due to their reframing in the prompt (change 4).</p>
+<p><strong>CCPs</strong> were relatively unaffected by the changes in terms of average scores and ranking, which is consistent with the fact that none of the changes specifically targeted CCP scoring logic.</p>
+<p><strong>Caveat</strong>: the current general analysis is based on 20 reports only. Patterns, especially for the objectives less covered by our sample of reports, should be interpreted with caution.</p>
+</section>
+<section id="inputs-we-need-from-you" class="level2">
+<h2 class="anchored" data-anchor-id="inputs-we-need-from-you">Inputs we need from you</h2>
+<ul>
+<li>Do you agree with the overall interpretation of the changes?</li>
+<li>Do you find the new behaviour to be improved?</li>
+<li>Please check, in the reports you asked us to tag, how the new behaviour has changed the items classified as fundamental. Do you find that accuracy and sensitivity have improved? Do you find the new reasonings better?</li>
+</ul>
+</section>
+<section id="per-evaluation-report" class="level2">
+<h2 class="anchored" data-anchor-id="per-evaluation-report">Per evaluation report</h2>
+<p><strong>REMINDER</strong>, our “RELEVANCE SCORE FRAMEWORK” is as follows: - score &gt;= 0.84: <strong>FUNDAMENTAL</strong> - 0.66 &lt;= score &lt; 0.83: <strong>RELEVANT</strong> - 0.34 &lt;= score &lt; 0.66: <strong>PERIPHERAL</strong> - score &lt; 0.34: <strong>NOT RELEVANT</strong></p>
+<section id="evaluation-of-ioms-migration-data-strategy" class="level3">
+<h3 class="anchored" data-anchor-id="evaluation-of-ioms-migration-data-strategy">EVALUATION OF IOM’S MIGRATION DATA STRATEGY</h3>
+<div id="0cf79e51" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plot_band_changes(dfs[dfs.evl_id <span class="op">==</span> <span class="st">'9992310969aa2f428bc8aba29f865cf3'</span>], figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>), dpi<span class="op">=</span><span class="dv">77</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="changes-analysis-pip-130426_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Fundamental Themes</strong> | | Mapping | Theme | Score | |—|—|—|—| | old | ccps | 1: Integrity, Transparency and Accountability | 0.88 | | old | enbs | 3: Funding | 0.88 | | old | enbs | 4: Data and evidence | 0.96 | | old | gcms | 1: Collect and utilize accurate and disaggregated data as a basis for evidence-based policies | 0.96 | | new | enbs | 4: Data and evidence | 0.92 | | new | gcms | 1: Collect and utilize accurate and disaggregated data as a basis for evidence-based policies | 0.95 |</p>
+<p><strong>⬇️ No Longer Fundamental</strong></p>
+<section id="ccps-1-integrity-transparency-and-accountability" class="level4">
+<h4 class="anchored" data-anchor-id="ccps-1-integrity-transparency-and-accountability">CCPS 1: Integrity, Transparency and Accountability</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>score_old</th>
+<th>score_new</th>
+<th>rank_old</th>
+<th>rank_new</th>
+<th>rank_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.88</td>
+<td>0.72</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+Reasoning (old)
+</summary>
+This report would likely be essential for a synthesis on Cross-cutting Priority 1 (Integrity, Transparency and Accountability). The evaluation explicitly examines IOM’s Migration Data Strategy implementation, with accountability mechanisms—or their absence—as a central finding. Multiple findings directly address the lack of monitoring systems, unclear responsibilities, and absence of progress tracking for the MDS (Findings 4, 8). The report dedicates substantial analysis to governance gaps, noting ‘no robust system to track MDS progress or enforce its use’ and ‘no single point of accountability.’ Key conclusions (5, 6) emphasize that the MDS ‘was never actively managed or championed’ and lacked ‘unified data governance.’ Recommendations 2 and 7 specifically call for establishing ‘clear internal leadership and governance’ and ‘concrete implementation road map with assigned responsibilities and monitoring indicators’—directly addressing accountability system strengthening. For a synthesis specialist, the detailed analysis of governance failures in Findings 4 and 8, Conclusions 5-6, and the accountability-focused Recommendations 2 and 7 would be particularly valuable. This provides direct evidence on IOM’s organizational accountability challenges in strategic implementation and offers insights into systemic transparency and monitoring gaps across the institution.
+</details>
+<hr>
+<details>
+<summary>
+Reasoning (new)
+</summary>
+Based on the excerpts reviewed, this report would likely contribute meaningful evidence to a synthesis on Cross-cutting Priority 1 (Integrity, Transparency and Accountability). The evaluation of the IOM Migration Data Strategy 2020–2025 appears to substantively examine accountability and transparency mechanisms — or more precisely, their absence — as a recurring analytical thread throughout the report. The excerpts suggest that the lack of monitoring systems, unclear lines of responsibility, and absence of performance indicators are treated as core implementation failures of the MDS, not merely contextual observations. Conclusions 5 and 7 explicitly address the absence of accountability structures and the lack of active management of the strategy, while Recommendation 7 directly calls for concrete implementation roadmaps with assigned responsibilities and monitoring indicators. The executive summary also highlights that the MDS ‘lacked any monitoring or accountability system’ as a key effectiveness concern. These elements appear to engage directly with IOM’s institutional commitment to measuring progress against clearly defined goals, facilitating transparent discussions about results, and taking corrective actions — all central to Cross-cutting Priority 1. However, the report’s primary focus is on data governance and migration data strategy implementation rather than on organizational integrity or accountability systems as standalone institutional commitments. The accountability dimension surfaces as an explanatory factor for strategic underperformance rather than as the central evaluand. A synthesis specialist would likely want to review the Conclusions section (particularly Conclusions 5, 7, and 16) and Recommendations 2 and 7, which appear most directly relevant to accountability and transparency practices. The excerpts I accessed suggest this is a secondary but substantive theme, making it a useful — if not essential — source for a synthesis on this Priority.
+</details>
+</section>
+<section id="enbs-3-funding" class="level4">
+<h4 class="anchored" data-anchor-id="enbs-3-funding">ENBS 3: Funding</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>score_old</th>
+<th>score_new</th>
+<th>rank_old</th>
+<th>rank_new</th>
+<th>rank_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.88</td>
+<td>0.78</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+Reasoning (old)
+</summary>
+This report would likely be essential for a synthesis on Funding. The evaluation explicitly examines IOM’s funding model for data initiatives as a primary constraint on strategy implementation, with funding challenges appearing prominently throughout findings, conclusions, and recommendations. Conclusion 9 directly states that ‘inadequate and fragmented funding seriously constrained the implementation of the MDS,’ analyzing how reliance on short-term project funds proved incompatible with strategic goals. Finding 13 and Conclusion 11 provide detailed analysis of sustainability risks stemming from the funding model, noting that ‘IOM’s key data programs are typically financed by specific donors on fixed-term grants’ with ‘minimal core budget commitment.’ The report examines resource mobilization challenges, the absence of pooled funding mechanisms, and member state funding patterns (Conclusion 12). Recommendation 4 explicitly addresses securing dedicated and sustainable funding through core budget allocation, pooled funds, or donor trust funds. For a synthesis specialist, the analysis of funding constraints in Findings 13 and 15, the sustainability discussion in Conclusions 11-12, and the detailed funding recommendations would provide direct evidence on IOM’s organizational funding capacities and structural financial challenges. The executive summary’s identification of ‘funding and capacity gaps’ as a key conclusion further underscores this theme’s centrality.
+</details>
+<hr>
+<details>
+<summary>
+Reasoning (new)
+</summary>
+Based on the excerpts reviewed, this report would likely contribute meaningful evidence to a synthesis on Enabler 3 (Funding). The evaluation appears to examine IOM’s funding model as an organizational capacity constraint — not merely as contextual background for a specific programme. The excerpts suggest substantive institutional-level analysis of how IOM’s reliance on short-term, fragmented project funding undermined the implementation of a strategic initiative. Conclusion 9 explicitly addresses how ‘inadequate and fragmented funding seriously constrained the implementation of the MDS,’ and Conclusions 11 and 12 examine the sustainability risks posed by the absence of multi-year funding mechanisms and member state financial commitments. Recommendation 4 calls for creating ‘dedicated budget lines or pooled donor funding mechanisms’ — framing this as an organization-wide structural challenge. The lessons learned section similarly identifies the absence of a dedicated budget and reliance on short-term grants as key barriers. This analysis appears to go beyond mentioning funding as context: it examines IOM’s funding architecture as an institutional capacity that either enables or constrains strategic implementation. A synthesis specialist focused on IOM’s Funding Enabler would likely want to review Conclusions 9, 11, and 12, Recommendation 4, and the efficiency and sustainability sections. The excerpts suggest this report could contribute evidence on IOM’s challenges in securing flexible, multi-year funding and the institutional consequences of projectized financing — though the full report may contain additional relevant content beyond what the excerpts reveal.
+</details>
+</section>
+</section>
+<section id="inter-agency-humanitarian-evaluation-of-the-response-to-the-humanitarian-crisis-in-somalia" class="level3">
+<h3 class="anchored" data-anchor-id="inter-agency-humanitarian-evaluation-of-the-response-to-the-humanitarian-crisis-in-somalia">INTER-AGENCY HUMANITARIAN EVALUATION OF THE RESPONSE TO THE HUMANITARIAN CRISIS IN SOMALIA</h3>
+<div id="f8344b69" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plot_band_changes(dfs[dfs.evl_id <span class="op">==</span> <span class="st">'e21305a89aeb76fafa8f4270392d463a'</span>], figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>), dpi<span class="op">=</span><span class="dv">77</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="changes-analysis-pip-130426_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Fundamental Themes</strong> | | Mapping | Theme | Score | |—|—|—|—| | old | ccps | 1: Integrity, Transparency and Accountability | 0.88 | | old | enbs | 2: Partnership | 0.88 | | old | gcms | 15: Provide access to basic services for migrants | 0.88 | | old | gcms | 23: Strengthen international cooperation and global partnerships for safe, orderly and regular migration | 0.92 |</p>
+<p><strong>⬇️ No Longer Fundamental</strong></p>
+<section id="ccps-1-integrity-transparency-and-accountability-1" class="level4">
+<h4 class="anchored" data-anchor-id="ccps-1-integrity-transparency-and-accountability-1">CCPS 1: Integrity, Transparency and Accountability</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>score_old</th>
+<th>score_new</th>
+<th>rank_old</th>
+<th>rank_new</th>
+<th>rank_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.88</td>
+<td>0.72</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+Reasoning (old)
+</summary>
+This report would likely be essential for a synthesis on Cross-cutting Priority 1 (Integrity, Transparency and Accountability). The evaluation explicitly examines accountability mechanisms in Somalia’s humanitarian response, with accountability to affected people (AAP) appearing as a primary evaluation question (EQ 1.3) and a dedicated major finding. The report provides substantial analysis of feedback mechanisms, transparency in coordination, data reliability, and follow-up to recommendations—all directly addressing accountability commitments. Key findings reveal critical gaps: 65% of people who provided feedback received no response, limited transparency in resource allocation (with ‘UN-confidential’ as the second largest funding recipient), and lack of systematic follow-up to recurring evaluation recommendations. The executive summary explicitly states ‘The response lacked accountability’ as a major conclusion. Recommendation 4 is entirely dedicated to strengthening accountability through transparency, engagement of affected people, and systematic follow-up mechanisms. For a synthesis specialist, the detailed analysis of feedback mechanism effectiveness (Section 3.1.3, Finding 16), the assessment of coordination transparency and data reliability (Section 4.2), and the comprehensive accountability recommendation would be particularly valuable. This report provides direct evidence on humanitarian system accountability gaps and proposes concrete reform measures, making it core evidence for understanding accountability implementation challenges in complex humanitarian contexts.
+</details>
+<hr>
+<details>
+<summary>
+Reasoning (new)
+</summary>
+Based on the excerpts reviewed, this report would likely contribute meaningful evidence to a synthesis on Cross-cutting Priority 1 (Integrity, Transparency and Accountability). The evaluation appears to dedicate substantive analysis to accountability mechanisms, transparency of the humanitarian response, and systemic follow-up to recurring recommendations — themes that map closely onto this institutional commitment area. The excerpts suggest that accountability to affected people (AAP) is one of the evaluation’s explicit sub-questions (EQ 1.3), and the executive summary and conclusions sections devote considerable space to the inadequacy of feedback mechanisms, the lack of transparency in decision-making, and the absence of systematic follow-up to prior evaluation recommendations. Recommendation 4 explicitly calls for ‘making the humanitarian response more accountable’ through increased transparency, streamlined feedback mechanisms, and systematic follow-up — all of which touch on accountability and transparency practices. The aid diversion reform process (Recommendation 6 and EQ 5) also engages with integrity-related themes, including risk management, beneficiary registration integrity, and data-sharing transparency. However, it is important to note that this is not an IOM-specific evaluation — it covers the collective IASC response in Somalia — so the evidence it provides on IOM’s own institutional implementation of accountability and transparency commitments may be limited or indirect. A synthesis specialist would likely want to review the sections on AAP (Section 2.3 equivalent), the conclusions on lack of accountability (para. 259), and Recommendation 4, while keeping in mind that the institutional actor is the broader humanitarian system rather than IOM specifically. The excerpts I accessed suggest this is a relevant but not fundamental source for this Priority.
+</details>
+</section>
+<section id="enbs-2-partnership" class="level4">
+<h4 class="anchored" data-anchor-id="enbs-2-partnership">ENBS 2: Partnership</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>score_old</th>
+<th>score_new</th>
+<th>rank_old</th>
+<th>rank_new</th>
+<th>rank_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.88</td>
+<td>0.55</td>
+<td>1</td>
+<td>3</td>
+<td>-2</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+Reasoning (old)
+</summary>
+This report would likely be essential for a synthesis on Partnership. The evaluation explicitly examines partnership dynamics in humanitarian response, with substantial analysis of relationships between international organizations, national/local NGOs, government entities, and affected communities—directly addressing organizational partnership capacities. Multiple findings assess partnership quality: the report analyzes localization efforts (noting local/national NGOs received 60-70% of Somalia Humanitarian Fund allocations), challenges in direct funding to local partners, trust dynamics between international and local actors, and the role of national organizations in reaching hard-to-reach areas. The executive summary dedicates significant space to partnership outcomes, noting progress in strengthening local organizations’ roles in coordination bodies while acknowledging persistent challenges in securing direct funding. Key recommendations explicitly address partnership equity and localization (Recommendation 5). For a synthesis specialist, the analysis of localization challenges in Section 3.4.6, findings on trust between international and local actors (Figure 1 shows affected people’s trust preferences), and the discussion of multi-stakeholder task forces for reform (Recommendation 6) would be particularly valuable. This provides direct evidence on humanitarian partnership models and organizational capacity for equitable partnership development.
+</details>
+<hr>
+<details>
+<summary>
+Reasoning (new)
+</summary>
+The excerpts reviewed contain content that is partially relevant to the Partnership Enabler, though it requires careful interpretation. The evaluation addresses localisation — the role of national and local organizations in the humanitarian response — with some substantive analysis. The excerpts note that local and national organizations have strengthened their roles in coordination and decision-making bodies, face challenges in securing direct funding, and played key roles in hard-to-reach areas. Recommendation 5 explicitly addresses continuing and expanding support for local organizations. However, this is an evaluation of the collective inter-agency humanitarian response in Somalia, not an evaluation of IOM’s partnership frameworks as an organizational capacity. The partnership-related content describes the broader humanitarian system’s approach to localisation rather than IOM’s institutional partnership practices, equity frameworks, or network-building capacities. A synthesis specialist focused on IOM’s Partnership Enabler might find some peripheral evidence here — particularly around localisation dynamics and the tensions between international and local actors — but should note that the institutional framing is absent and IOM is not the primary subject. This is a case of scraping the barrel if evidence on localisation and partnership equity is scarce from other sources.
+</details>
+</section>
+<section id="gcms-15-provide-access-to-basic-services-for-migrants" class="level4">
+<h4 class="anchored" data-anchor-id="gcms-15-provide-access-to-basic-services-for-migrants">GCMS 15: Provide access to basic services for migrants</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>score_old</th>
+<th>score_new</th>
+<th>rank_old</th>
+<th>rank_new</th>
+<th>rank_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.88</td>
+<td>0.58</td>
+<td>2</td>
+<td>3</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+Reasoning (old)
+</summary>
+This report would likely be essential evidence for a synthesis on GCM Objective 15. Access to basic services is a central theme throughout the evaluation. The report extensively analyzes the delivery of prioritized services (food security, health, nutrition, WASH) to affected populations, with detailed findings on sectoral coverage and gaps. Finding 12-14 document critical gaps in WASH services despite prioritization, noting that ‘the WASH cluster lagged behind the other priority sectors throughout 2022’ with demonstrable health impacts. The evaluation presents data showing differential reach across sectors (Figure 2) and discusses integrated service delivery (Finding 24). Finding 15 addresses service provision to people in hard-to-reach areas. The report also examines inclusion and non-discrimination in service access (Findings 17-19), relating to Action 15a. While the context is humanitarian emergency response rather than routine service provision to migrants, the analysis of service delivery challenges, coordination mechanisms, sectoral gaps, and inclusion barriers would be highly valuable for a synthesis on basic service access. For synthesis specialists, the sections on sectoral priorities and gaps (paras 12-14, Figure 2), integrated response (para 24), and inclusion (paras 17-19) would be particularly relevant, along with Recommendation 5 on addressing sectoral gaps.
+</details>
+<hr>
+<details>
+<summary>
+Reasoning (new)
+</summary>
+The excerpts reviewed contain content with some relevance to GCM Objective 15, particularly regarding access to basic services for internally displaced persons. The report discusses critical gaps in WASH services (paragraphs 12-14), health services, nutrition, and food security for displaced populations. Paragraph 14 explicitly links inadequate WASH services to child mortality among IDPs. The report notes that ‘the delivery of protection services to internally displaced people was also well below target’ (paragraph 10). The discussion of minority clan exclusion from assistance (paragraphs 17-19) touches on non-discriminatory access to services (Action 15a). The report also discusses how IDPs in informal camps had ‘little access to livelihoods and essential infrastructure.’ These themes connect to Actions 15a (non-discriminatory service delivery), 15c (accessible service points), and 15e (health needs of migrants). However, the report addresses these issues in a humanitarian response context rather than as a migration governance or service delivery policy framework. The ‘migrants’ in question are IDPs within Somalia, which may or may not align with the GCM’s focus on international migrants depending on the synthesis scope. A synthesis specialist might find the WASH gap analysis and the discussion of service access for marginalised groups useful, particularly in paragraphs 12-14 and the inclusion sections, but should note the humanitarian framing and internal displacement context.
+</details>
+</section>
+<section id="gcms-23-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration" class="level4">
+<h4 class="anchored" data-anchor-id="gcms-23-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration">GCMS 23: Strengthen international cooperation and global partnerships for safe, orderly and regular migration</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>score_old</th>
+<th>score_new</th>
+<th>rank_old</th>
+<th>rank_new</th>
+<th>rank_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.92</td>
+<td>0.12</td>
+<td>1</td>
+<td>9</td>
+<td>-8</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+Reasoning (old)
+</summary>
+This report would likely be essential evidence for a synthesis on GCM Objective 23. International cooperation and coordination are central analytical themes throughout the evaluation. The report extensively examines coordination mechanisms, with Finding 22 dedicated to ‘Coordination and Leadership’ noting both innovations and shortcomings. The evaluation documents ‘important new approaches developed or piloted’ in Somalia including ‘risk management mechanisms,’ ‘third-party monitoring,’ and ‘joint reform process to address aid diversion’—examples of international cooperation and capacity building (relating to Action 23d). However, Finding 22 also identifies that ‘coordination structures are very complex and involve some parallel and duplicative structures,’ with ‘too many coordination meetings’ having ‘low attendance and no systematic documentation.’ Recommendation 3 proposes streamlining coordination by ‘reducing the number of coordination forums and meetings by at least half.’ The report analyzes multi-stakeholder cooperation through the HCT reform process (Finding 27-28), donor coordination, and partnerships between UN agencies, NGOs, and local actors. Finding 26 addresses localization and partnerships with national actors. The evaluation also examines resource mobilization (Finding 4) and funding mechanisms including pooled funds. For a synthesis specialist, the entire section on coordination (paras 22-26, Findings 22-26), the analysis of the reform process (paras 27-28, Finding 27-28), Recommendation 3 on coordination, and Recommendation 6 on multi-stakeholder reform approaches would be particularly valuable for understanding both effective practices and persistent challenges in international cooperation for migration governance.
+</details>
+<hr>
+<details>
+<summary>
+Reasoning (new)
+</summary>
+The excerpts reviewed contain extensive discussion of international cooperation and coordination in the humanitarian response context — IASC coordination, inter-agency mechanisms, donor coordination, and UN system cooperation. However, applying the test outlined in the guidance: this language describes the operational context of a humanitarian response, not an evaluation of international cooperation mechanisms for migration governance as envisioned by GCM Objective 23. The report evaluates the collective humanitarian response of IASC member agencies to a drought/famine emergency, not multilateral migration governance frameworks or GCM implementation mechanisms. The coordination discussed is humanitarian coordination (clusters, HCT, OCHA), not migration governance cooperation. The connections to Actions 23a-23e are ambient and operational rather than substantive. Recommend not reviewing this report for a synthesis on GCM Objective 23.
+</details>
+</section>
+</section>
+<section id="fifth-evaluation-of-the-iom-development-fund" class="level3">
+<h3 class="anchored" data-anchor-id="fifth-evaluation-of-the-iom-development-fund">Fifth Evaluation of the IOM Development Fund</h3>
+<div id="b77853cb" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plot_band_changes(dfs[dfs.evl_id <span class="op">==</span> <span class="st">'0d4309b702e00faac631be8d609934ce'</span>], figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>), dpi<span class="op">=</span><span class="dv">77</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="changes-analysis-pip-130426_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Fundamental Themes</strong> | | Mapping | Theme | Score | |—|—|—|—| | old | enbs | 3: Funding | 0.88 | | old | gcms | 23: Strengthen international cooperation and global partnerships for safe, orderly and regular migration | 0.88 |</p>
+<p><strong>⬇️ No Longer Fundamental</strong></p>
+<section id="enbs-3-funding-1" class="level4">
+<h4 class="anchored" data-anchor-id="enbs-3-funding-1">ENBS 3: Funding</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>score_old</th>
+<th>score_new</th>
+<th>rank_old</th>
+<th>rank_new</th>
+<th>rank_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.88</td>
+<td>0.78</td>
+<td>1</td>
+<td>2</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+Reasoning (old)
+</summary>
+This report would likely be essential for a synthesis on Funding. The evaluation explicitly examines the IOM Development Fund as a funding mechanism, with the Fund’s financing model, budget allocation, and resource mobilization appearing as primary evaluation subjects. The report title itself identifies this as an evaluation of a ‘Development Fund,’ and multiple evaluation questions directly address funding adequacy, allocation efficiency, and financial sustainability. Substantive findings assess the Fund’s budget scope (declining from 0.98% to 0.44% of IOM total budget), budget ceilings, the 30% staff cost cap, burn rates (90%), and co-financing perspectives. The Efficiency section provides detailed analysis of financial resource allocation and utilization. Multiple recommendations explicitly address funding mechanisms: increasing the Fund budget to $20 million (Recommendation 1.1), raising project ceilings (1.1), creating a contingency fund (1.2), and changing budget rules (5.2-5.3). The Sustainability findings discuss funding dependency as a key challenge. For a synthesis specialist, the analysis of internal funding mechanisms, seed funding effectiveness, budget constraints, and the relationship between funding flexibility and project outcomes would be particularly valuable. Pay close attention to the Efficiency section, Sustainability findings, and Recommendations 1.1-1.4 and 5.2-5.3.
+</details>
+<hr>
+<details>
+<summary>
+Reasoning (new)
+</summary>
+Based on the excerpts reviewed, this report would likely contribute meaningful evidence to a synthesis on Enabler 3 (Funding). Critically, the IOM Development Fund is itself a funding mechanism — the evaluation’s primary object is an internal IOM financing instrument designed to provide seed funding for migration initiatives. This means the evaluation is examining IOM’s funding capacity at an organizational level, not merely referencing funding as project context. The excerpts suggest substantive analysis of funding architecture: budget ceilings, allocation models, co-financing perspectives, burn rates, budget caps (the 30 percent staff cost ceiling), no-cost extensions, and the Fund’s overall budget trajectory (from USD 1.4 million to USD 16.5 million). Recommendation 1 directly addresses funding structure — proposing increases to the overall budget, revised ceilings, contingency funds, and extended timelines — indicating that funding mechanisms are treated as an institutional capacity issue. The evaluation also examines the Fund’s financing model in relation to sustainability and impact, and considers co-financing perspectives for stronger outcomes. However, the Fund is a specific internal mechanism rather than IOM’s broader resource mobilization or innovative financing capacity, which somewhat limits its direct applicability to the full scope of the Funding Enabler. A synthesis specialist would likely find the Efficiency and Sustainability findings sections, along with Recommendation 1, most relevant as starting points for deeper review.
+</details>
+</section>
+<section id="gcms-23-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration-1" class="level4">
+<h4 class="anchored" data-anchor-id="gcms-23-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration-1">GCMS 23: Strengthen international cooperation and global partnerships for safe, orderly and regular migration</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>score_old</th>
+<th>score_new</th>
+<th>rank_old</th>
+<th>rank_new</th>
+<th>rank_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.88</td>
+<td>0.38</td>
+<td>1</td>
+<td>3</td>
+<td>-2</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+Reasoning (old)
+</summary>
+This report would likely be essential for a synthesis on international cooperation and capacity-building for migration management. The Fund’s core purpose is to ‘provide accountable and effective seed funding for innovative migration-focused initiatives to address the capacity development needs of eligible Member States’ (page 5), which directly relates to Actions 23a (technical assistance) and 23d (capacity-building mechanism). The evaluation explicitly examines how the Fund strengthened MS capacity through ‘policy development, institutional strengthening, capacity development and training’ (page 5), aligning with Action 23a on supporting States to implement migration commitments. Key findings indicate the Fund ‘bolstered IOM institutional capacity by enhancing staff capacity in project management and piloting initiatives such as SRF alignment’ (page 7), demonstrating organizational capacity development. The report notes the Fund ‘served as a source of seed funding for innovative migration-focused initiatives’ (page 7) and was ‘recognized as critical for funding migration-related areas where other donors were less willing to’ (page 6), which relates to Action 23b on innovative partnerships and financing. The evaluation assesses cooperation between IOM headquarters, regional offices, and country offices in delivering capacity support, examining coordination mechanisms and technical assistance modalities. Substantial analysis addresses the Fund’s financing model, resource allocation, and effectiveness in building national migration management capacity. For a synthesis specialist, the findings on capacity-building effectiveness (pages 9-49), the discussion of the Fund’s role in strengthening MS institutional capacity (pages 5-7), and the recommendations on improving technical assistance delivery (pages 49-53) would be particularly valuable. The evaluation provides direct evidence on implementation challenges and effectiveness factors for capacity-building and technical cooperation in migration management. Synthesis specialists should pay close attention to: the findings on institutional strengthening and capacity development outcomes; the analysis of the Fund’s seed funding model and its effectiveness; the discussion of cooperation mechanisms between IOM units; and the recommendations on enhancing capacity-building support (Recommendations 1-7, pages 50-53).
+</details>
+<hr>
+<details>
+<summary>
+Reasoning (new)
+</summary>
+The excerpts reviewed contain substantial language about international cooperation, partnerships, and IOM’s institutional role — but applying the test outlined in the guidance, this language largely describes the operational context of Fund projects rather than examining international cooperation mechanisms as a primary object of inquiry. The report does, however, contain some content that goes slightly beyond ambient operational language: it evaluates the Fund as a mechanism for strengthening Member State capacities across multiple countries, examines co-financing and partnership models, and assesses the Fund’s contribution to IOM’s global institutional capacity and strategic positioning. The Fund itself functions as a multilateral capacity-building mechanism supporting GCM implementation across eligible Member States, which connects to Action 23d (capacity-building mechanisms). The evaluation’s assessment of the Fund’s coherence with other migration initiatives and its role in fostering inter-agency cooperation touches peripherally on Action 23e. However, the report does not examine global governance architecture or multilateral cooperation frameworks as its primary analytical focus. A synthesis specialist might find the sections on Fund coherence, partnership models, and institutional capacity contributions marginally relevant, but should note that this is not a report primarily about international cooperation governance.
+</details>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/franckalbinet\.github\.io\/iomeval");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

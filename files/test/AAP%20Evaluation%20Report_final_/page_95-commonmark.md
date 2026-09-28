@@ -1,0 +1,17 @@
+
+
+- United Nations (2024). Country-level checklist on the minimum actions
+  required on the protection from sexual exploitation and abuse. 9 June.
+- United Nations Children’s Fund (UNICEF) (2020). Accountability to
+  Affected Populations: A Handbook for UNICEF and Partners. UNICEF,
+  Geneva.
+- United Nations Evaluation Group (UNEG) (2020). UNEG ethical guidelines
+  for evaluation. Guidance document, revised.
+- United Nations Office for the Coordination of Humanitarian Affairs
+  (OCHA) (2005). Humanitarian response review. August.
+- OCHA (2023). Putting people first: Accountability in action snapshot,
+  August 2023. Infographic.
+- OCHA (n.d.). Flagship Initiative. Web page (accessed 22 December
+  2024).
+- United Nations Population Fund (UNFPA) (2020). Accountability to
+  affected populations (AAP): Operational guidelines. September.

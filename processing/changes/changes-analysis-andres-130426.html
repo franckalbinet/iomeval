@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Change Analysis – iomeval</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f2788e636de456f6409e966386820849.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Change Analysis – iomeval">
+<meta property="og:description" content="Streamline evaluation evidence mapping at scale with LLMs">
+<meta property="og:image" content="https://franckalbinet.github.io/iomeval/processing/changes/changes-analysis-andres-130426_files/figure-html/cell-7-output-1.png">
+<meta property="og:site_name" content="iomeval">
+<meta property="og:image:height" content="454">
+<meta property="og:image:width" content="916">
+<meta name="twitter:title" content="Change Analysis – iomeval">
+<meta name="twitter:description" content="Streamline evaluation evidence mapping at scale with LLMs">
+<meta name="twitter:image" content="https://franckalbinet.github.io/iomeval/processing/changes/changes-analysis-andres-130426_files/figure-html/cell-7-output-1.png">
+<meta name="twitter:image-height" content="454">
+<meta name="twitter:image-width" content="916">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">iomeval</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Change Analysis</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOMEval</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../analysis/eval_metadata_eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOM Reports Exploration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">API</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../core.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Core</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../readers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Readers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../downloaders.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Downloaders</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../extract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extract</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../themes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Themes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../mapper.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapper</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../curator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curator</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-we-have-changed" id="toc-what-we-have-changed" class="nav-link active" data-scroll-target="#what-we-have-changed">What we have changed?</a></li>
+  <li><a href="#score-changes-overview" id="toc-score-changes-overview" class="nav-link" data-scroll-target="#score-changes-overview">Score changes overview</a>
+  <ul class="collapse">
+  <li><a href="#gcm-objectives" id="toc-gcm-objectives" class="nav-link" data-scroll-target="#gcm-objectives">GCM objectives</a></li>
+  <li><a href="#srf-enablers" id="toc-srf-enablers" class="nav-link" data-scroll-target="#srf-enablers">SRF Enablers</a></li>
+  <li><a href="#srf-cross-cutting-priorities" id="toc-srf-cross-cutting-priorities" class="nav-link" data-scroll-target="#srf-cross-cutting-priorities">SRF Cross-Cutting Priorities</a></li>
+  </ul></li>
+  <li><a href="#rank-changes-overview" id="toc-rank-changes-overview" class="nav-link" data-scroll-target="#rank-changes-overview">Rank changes overview</a></li>
+  <li><a href="#our-interpretation" id="toc-our-interpretation" class="nav-link" data-scroll-target="#our-interpretation">Our interpretation</a></li>
+  <li><a href="#inputs-we-need-from-you" id="toc-inputs-we-need-from-you" class="nav-link" data-scroll-target="#inputs-we-need-from-you">Inputs we need from you</a></li>
+  <li><a href="#per-evaluation-report" id="toc-per-evaluation-report" class="nav-link" data-scroll-target="#per-evaluation-report">Per evaluation report</a>
+  <ul class="collapse">
+  <li><a href="#evaluation-of-the-project-regional-migration-policy-and-knowledge-management-hub-in-south-america" id="toc-evaluation-of-the-project-regional-migration-policy-and-knowledge-management-hub-in-south-america" class="nav-link" data-scroll-target="#evaluation-of-the-project-regional-migration-policy-and-knowledge-management-hub-in-south-america">Evaluation of the project “Regional Migration Policy and Knowledge Management Hub in South America”</a></li>
+  <li><a href="#final-evaluation-of-the-eu-iom-knowledge-management-hub-kmh" id="toc-final-evaluation-of-the-eu-iom-knowledge-management-hub-kmh" class="nav-link" data-scroll-target="#final-evaluation-of-the-eu-iom-knowledge-management-hub-kmh">FINAL EVALUATION OF THE EU-IOM KNOWLEDGE MANAGEMENT HUB (KMH)</a></li>
+  <li><a href="#final-internal-evaluation-for-enhancing-knowledge-on-remittances-and-diaspora-engagement-in-south-sudan" id="toc-final-internal-evaluation-for-enhancing-knowledge-on-remittances-and-diaspora-engagement-in-south-sudan" class="nav-link" data-scroll-target="#final-internal-evaluation-for-enhancing-knowledge-on-remittances-and-diaspora-engagement-in-south-sudan">Final Internal Evaluation for Enhancing Knowledge on Remittances and Diaspora Engagement in South Sudan</a></li>
+  <li><a href="#midterm-evaluation-of-iom-east-and-horn-of-africa-regional-strategy-2020-2024" id="toc-midterm-evaluation-of-iom-east-and-horn-of-africa-regional-strategy-2020-2024" class="nav-link" data-scroll-target="#midterm-evaluation-of-iom-east-and-horn-of-africa-regional-strategy-2020-2024">Midterm Evaluation of IOM East and Horn of Africa Regional Strategy 2020 – 2024</a></li>
+  <li><a href="#thematic-evaluation-of-ioms-labour-migration-and-mobility-strategy-and-initiatives" id="toc-thematic-evaluation-of-ioms-labour-migration-and-mobility-strategy-and-initiatives" class="nav-link" data-scroll-target="#thematic-evaluation-of-ioms-labour-migration-and-mobility-strategy-and-initiatives">THEMATIC EVALUATION OF IOM’S LABOUR MIGRATION AND MOBILITY STRATEGY AND INITIATIVES</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="changes-analysis-andres-130426.html.md"><i class="bi bi-file-code"></i>Markdown</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Change Analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<p><a href="https://iom-tagapp-beta.pla.sh">Click here</a> to access the <strong>IOM TAGGING (BETA) PLATFORM</strong></p>
+<div id="492d63aa" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> iomeval.llm_eval.changes <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> iomeval.readers <span class="im">import</span> load_evals</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="fce83606" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> Path().home() <span class="op">/</span> <span class="st">'iomeval/data/requester_by_report_id.json'</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>lut <span class="op">=</span> p.read_json()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>evls_test <span class="op">=</span> L(lut.keys())</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ROOT_PATH <span class="op">=</span> Path.home() <span class="op">/</span> <span class="st">'iomeval'</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>DATA_PATH <span class="op">=</span> ROOT_PATH <span class="op">/</span> <span class="st">'data'</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>RESULTS_PATH <span class="op">=</span> DATA_PATH<span class="op">/</span> <span class="st">'results'</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>EVALS_PATH <span class="op">=</span> ROOT_PATH <span class="op">/</span> <span class="st">'nbs/files/test/evaluations.json'</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Contains latest backed up data before new deployment</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>LATEST_TAG_PATH <span class="op">=</span> Path.home() <span class="op">/</span> <span class="st">'tagapp/backups/20260311_115159/data'</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>evals <span class="op">=</span> load_evals(EVALS_PATH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="57bae748" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> all_deltas(evls_test, RESULTS_PATH, LATEST_TAG_PATH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="9381beb4" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>who <span class="op">=</span> <span class="bu">set</span>(lut.values())</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>who</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>{'Andres', 'Davide', 'elma', 'ljeoma', 'pip', 'rogers'}</code></pre>
+</div>
+</div>
+<div id="7942c63e" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Automaticall generate changes report cells for all reports</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>rpts <span class="op">=</span> [k <span class="cf">for</span> k,v <span class="kw">in</span> lut.items() <span class="cf">if</span> v<span class="op">==</span><span class="st">'Andres'</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> rpt <span class="kw">in</span> rpts: <span class="cf">await</span> gen_report_cells(rpt, dfs, LATEST_TAG_PATH, RESULTS_PATH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="what-we-have-changed" class="level2">
+<h2 class="anchored" data-anchor-id="what-we-have-changed">What we have changed?</h2>
+<ol type="1">
+<li>First of all, we <strong>improved the consistency of what section of an evaluation report the model reads</strong>. A “curation” step was added to the process in which a human selects the sections of the report that are more relevant to the tagging. This step used to be automatic (it was based on the “parsing” prompt that you reviewed) but we realized that several mistakes were being made by the model (probably because of the diversity in formatting and structure of evaluation reports, which not always follow a precise template). This is a major change with likely general consequences on the tagging. <em>Feedback from testers on which sections of the report should be fed to the model was considered</em>.</li>
+</ol>
+<p>Secondly, we made changes to the tagging prompts based on your feedback. Here are the main modifications (minor ones are not listed here but are available in the files used for the review):</p>
+<ol start="2" type="1">
+<li><p><strong>Excerpt-based analysis clarification</strong>: Following the point above on the new report “curation” step, we asked the model to be explicit on the fact that only specific section are accessed (executive summary, introduction, background, evaluation scope, conclusions, recommendations, lessons learnt) in order not to give a false impression that the full report was being fed to the model. Hedged language is required throughout (e.g., “the excerpts suggest …”, “based on the sections reviewed …”). <em>This follows up on comments from several testers - some asking more precise quotation outputs (something not possible at this stage - sorry!). The reasoning now is more transparent on the fact that the model is not reading the whole report (like a human would do when tagging; remember also that in earlier experiments, feeding the whole report to the model was inflating scores throughout and making the model unusable)</em>.</p></li>
+<li><p><strong>GCM 23 downgrading</strong>: Added an important note on GCM Objective 23 clarifying its revised scoring treatment. <em>This follows up on feedback from different testers suggesting that relevance with respect to this objective may have been exaggerated by the model</em>.</p></li>
+<li><p><strong>SRF enablers reframing</strong>: Introduced a critical distinction between enablers as institutional capacity versus programmatic tools. <em>This follows up on a point raised by Pip</em>.</p></li>
+<li><p><strong>Relevance score range relabelling</strong>: Tags now use “Not Relevant”, “Peripheral” (formerly “Supplementary”), “Relevant”, and “Fundamental”. <em>This follows up on suggestion from Andres</em>.</p></li>
+<li><p><strong>Terminology warning on “Findings”</strong> — Analysts must not use “finding(s)” in their own analytical language, as this term carries a specific formal meaning in IOM evaluation reports. It may only be referenced when it appears in report excerpts themselves. <em>This clarification stems from Andres flagging overly broad or imprecise uses of “findings” generated by the LLM</em>.</p></li>
+<li><p><strong>GCM descriptions added</strong>: The description of the GCM objective used by the model is now fully in line with the GCM UN resolution document. <em>This is something we realized upon auditing the script</em>. For instance:</p></li>
+</ol>
+<pre><code># Objective 1
+## Title: Collect and utilize accurate and disaggregated data as a basis for evidence-based policies
+We commit to strengthen the global evidence base on international migration by improving and investing in the collection, analysis and dissemination of accurate , ...
+To realize this commitment, we will draw from the following actions:
+## Associated actions
+- a. Elaborate and implement ...
+- b. ...
+...</code></pre>
+<p>Here are links to <a href="https://github.com/franckalbinet/iomeval/tree/main/nbs/files/prompts">new</a> and <a href="https://github.com/franckalbinet/iomeval/tree/main/nbs/files/prompts/legacy">previous</a> versions of the prompts.</p>
+<p>How did these changes affect tagging?</p>
+</section>
+<section id="score-changes-overview" class="level2">
+<h2 class="anchored" data-anchor-id="score-changes-overview">Score changes overview</h2>
+<p><strong>Based on all reports tagged so far (20)</strong>. This is to give you a general sense of how the behavior of the model changed.</p>
+<section id="gcm-objectives" class="level3">
+<h3 class="anchored" data-anchor-id="gcm-objectives">GCM objectives</h3>
+<p><em>Note: You might be unfamiliar with this type of visualization. It’s called a <a href="https://en.wikipedia.org/wiki/Violin_plot">violin plot</a>. A violin plot combines a box plot with a smoothed estimate of the score distribution, making it easier to spot not just the median and spread, but also whether scores cluster around one or several values, something a box plot alone would miss.</em></p>
+<div id="798c523f" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plot_score_diffs(dfs, <span class="st">'gcms'</span>, <span class="st">'GCM objective'</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>), dpi<span class="op">=</span><span class="dv">77</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="changes-analysis-andres-130426_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="srf-enablers" class="level3">
+<h3 class="anchored" data-anchor-id="srf-enablers">SRF Enablers</h3>
+<div id="25972750" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot_score_diffs(dfs, <span class="st">'enbs'</span>, <span class="st">'SRF Enablers'</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">3</span>), dpi<span class="op">=</span><span class="dv">77</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="changes-analysis-andres-130426_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="srf-cross-cutting-priorities" class="level3">
+<h3 class="anchored" data-anchor-id="srf-cross-cutting-priorities">SRF Cross-Cutting Priorities</h3>
+<div id="6566cf2d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plot_score_diffs(dfs, <span class="st">'ccps'</span>, <span class="st">'SRF Cross-Cutting Priorities'</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">3</span>), dpi<span class="op">=</span><span class="dv">77</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="changes-analysis-andres-130426_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="rank-changes-overview" class="level2">
+<h2 class="anchored" data-anchor-id="rank-changes-overview">Rank changes overview</h2>
+<p>Among all themes where previous relevance score was <code>&gt; 0.83</code> (<strong>FUNDAMENTAL</strong>), what percentage of them have undergone a change in rank (<code>rank_diff != 0</code>)</p>
+<div id="e5a29b47" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dfs[dfs.score_old <span class="op">&gt;</span> <span class="fl">0.83</span>].groupby(<span class="st">'mapping_type'</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">100</span> <span class="op">*</span> (x.rank_diff <span class="op">!=</span> <span class="dv">0</span>).<span class="bu">sum</span>() <span class="op">/</span> <span class="bu">len</span>(x)).<span class="bu">round</span>(<span class="dv">1</span>).sort_values()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>mapping_type
+ccps    16.7
+gcms    34.3
+outs    40.7
+enbs    44.4
+dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="our-interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="our-interpretation">Our interpretation</h2>
+<p>The score changes overview charts show a general decrease of the scores. In other words, the <strong>model became more conservative</strong> following the various changes made to the prompts.</p>
+<p>The reduction in scores is more pronounced and generalized for GCM objectives, possibly due to the additional details on <strong>GCM objectives</strong> (change 7 above) that now the model has access to. However, the reductions yet remain moderate in magnitude, suggesting the prompt revisions recalibrated the model’s behaviour without disrupting it fundamentally. The dramatic average score reduction for GCM objective 23 is something intended. <em>It means that the changes to the prompt worked, although your feedback will say if further calibration is needed</em>.</p>
+<p><strong>SRF Enablers</strong> showed the highest rank instability (44.4%). This is also expected due to their reframing in the prompt (change 4).</p>
+<p><strong>CCPs</strong> were relatively unaffected by the changes in terms of average scores and ranking, which is consistent with the fact that none of the changes specifically targeted CCP scoring logic.</p>
+<p><strong>Caveat</strong>: the current general analysis is based on 20 reports only. Patterns, especially for the objectives less covered by our sample of reports, should be interpreted with caution.</p>
+</section>
+<section id="inputs-we-need-from-you" class="level2">
+<h2 class="anchored" data-anchor-id="inputs-we-need-from-you">Inputs we need from you</h2>
+<ul>
+<li>Do you agree with the overall interpretation of the changes?</li>
+<li>Do you find the new behaviour to be improved?</li>
+<li>Please check, in the reports you asked us to tag, how the new behaviour has changed the items classified as fundamental. Do you find that accuracy and sensitivity have improved? Do you find the new reasonings better?</li>
+</ul>
+</section>
+<section id="per-evaluation-report" class="level2">
+<h2 class="anchored" data-anchor-id="per-evaluation-report">Per evaluation report</h2>
+<p><strong>REMINDER</strong>, our “RELEVANCE SCORE FRAMEWORK” is as follows: - score &gt;= 0.84: <strong>FUNDAMENTAL</strong> - 0.66 &lt;= score &lt; 0.83: <strong>RELEVANT</strong> - 0.34 &lt;= score &lt; 0.66: <strong>PERIPHERAL</strong> - score &lt; 0.34: <strong>NOT RELEVANT</strong></p>
+<section id="evaluation-of-the-project-regional-migration-policy-and-knowledge-management-hub-in-south-america" class="level3">
+<h3 class="anchored" data-anchor-id="evaluation-of-the-project-regional-migration-policy-and-knowledge-management-hub-in-south-america">Evaluation of the project “Regional Migration Policy and Knowledge Management Hub in South America”</h3>
+<div id="8c9d20f2" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plot_band_changes(dfs[dfs.evl_id <span class="op">==</span> <span class="st">'4c04ec0d3e651f7616190c6fc2dcfc18'</span>], figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>), dpi<span class="op">=</span><span class="dv">77</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="changes-analysis-andres-130426_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Fundamental Themes</strong> | | Mapping | Theme | Score | |—|—|—|—| | old | enbs | 5: Learning and Innovation | 0.92 | | old | gcms | 23: Strengthen International Cooperation And Global Partnerships For Safe, Orderly And Regular Migration | 0.85 | | new | enbs | 5: Learning and Innovation | 0.92 |</p>
+<p><strong>⬇️ No Longer Fundamental</strong></p>
+<section id="gcms-23-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration" class="level4">
+<h4 class="anchored" data-anchor-id="gcms-23-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration">GCMS 23: Strengthen international cooperation and global partnerships for safe, orderly and regular migration</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>score_old</th>
+<th>score_new</th>
+<th>rank_old</th>
+<th>rank_new</th>
+<th>rank_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.85</td>
+<td>0.72</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+Reasoning (old)
+</summary>
+This report would likely be essential for a synthesis on GCM Objective 23. The evaluation explicitly examines a regional cooperation mechanism (KM Hub) designed to strengthen coordination among migration actors in South America. The project aligns with UN Network on Migration, Global Compact on Migration, and IOM global mechanisms. Key findings address regional cooperation mechanisms, multi-stakeholder partnerships, technical assistance provision, and capacity building for migration governance. The strategy’s seven pillars include ‘Belonging to a valuable and growing system’ emphasizing interconnected regional practice. Particularly valuable are: the findings on leveraging existing platforms for regional cooperation (Section 7 context); conclusions on coherence with global KM efforts (Conclusion 2); recommendations on strengthening regional coordination (Recommendations 3-4); and lessons learned on systems-level change for KM governance (Lessons 1-2). The report provides direct evidence on implementation of regional capacity building mechanisms. Actions 23a (technical assistance), 23c (local authority involvement), and 23e (bilateral/regional partnerships) are most relevant. The Executive Summary, Conclusions 1-3, and Recommendations sections would be particularly valuable for synthesis work.
+</details>
+<hr>
+<details>
+<summary>
+Reasoning (new)
+</summary>
+Based on the excerpts reviewed, this report would likely contribute meaningful evidence to a synthesis on GCM Objective 23, particularly regarding institutional capacity-building for migration governance and knowledge management as a foundation for coordinated international action. The project explicitly positions itself within IOM’s governance pillar and is aligned with the UN Network on Migration, the Global Compact on Migration, the IOM Policy Hub, and IOM’s Global Migration Data Analysis Centre — all mechanisms central to GCM Objective 23’s vision of strengthened international cooperation architecture. The KM Hub is designed to support coordination across migration actors and to position IOM South America as a regional knowledge referent, which relates to actions 23a (technical assistance for GCM implementation) and 23d (capacity-building mechanisms). The Regional KM Strategy 2022-2027 appears to be an institutional mechanism for building the organizational infrastructure needed to support coherent, evidence-based migration governance across a multi-country region — directly relevant to the spirit of Objective 23. Conclusions 1, 2, and 8-10 in the excerpts address the strategy’s alignment with global frameworks, its sustainability, and its role in strengthening IOM’s regional coordination capacity. Recommendations 1-4 on governance, capacity development, and indicator frameworks would likely be of interest to synthesis specialists examining how international organizations build institutional capacity to support GCM implementation. Specialists should particularly review the sections on coherence (Conclusions 1-2), the Theory of Change discussion, and the sustainability conclusions (Conclusion 10), as these appear most directly relevant to Objective 23’s focus on international cooperation architecture. It should be noted that this is a borderline case: the report primarily evaluates an internal IOM organizational initiative rather than an inter-state cooperation mechanism per se, and the international cooperation dimension is more contextual than analytical in places. Human reviewers should assess whether the institutional capacity-building focus provides sufficient evidence for a synthesis on Objective 23.
+</details>
+</section>
+</section>
+<section id="final-evaluation-of-the-eu-iom-knowledge-management-hub-kmh" class="level3">
+<h3 class="anchored" data-anchor-id="final-evaluation-of-the-eu-iom-knowledge-management-hub-kmh">FINAL EVALUATION OF THE EU-IOM KNOWLEDGE MANAGEMENT HUB (KMH)</h3>
+<div id="30390e97" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plot_band_changes(dfs[dfs.evl_id <span class="op">==</span> <span class="st">'891448b7a4bf12763ea0579dd67e289d'</span>], figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>), dpi<span class="op">=</span><span class="dv">77</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="changes-analysis-andres-130426_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Fundamental Themes</strong> | | Mapping | Theme | Score | |—|—|—|—| | old | enbs | 4: Data and evidence | 0.87 | | old | enbs | 5: Learning and Innovation | 0.91 | | old | gcms | 21: Cooperate In Facilitating Safe And Dignified Return And Readmission, As Well As Sustainable Reintegration | 0.95 | | new | enbs | 5: Learning and Innovation | 0.84 | | new | gcms | 21: Cooperate In Facilitating Safe And Dignified Return And Readmission, As Well As Sustainable Reintegration | 0.95 |</p>
+<p><strong>⬇️ No Longer Fundamental</strong></p>
+<section id="enbs-4-data-and-evidence" class="level4">
+<h4 class="anchored" data-anchor-id="enbs-4-data-and-evidence">ENBS 4: Data and evidence</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>score_old</th>
+<th>score_new</th>
+<th>rank_old</th>
+<th>rank_new</th>
+<th>rank_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.87</td>
+<td>0.78</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+Reasoning (old)
+</summary>
+This report would likely be essential for a synthesis on Enabler 4 (Data and Evidence). The KMH’s core mandate includes ‘cross-regional harmonisation of M&amp;E activities’ to ensure ‘reliable data for evidence-based programming’ and ‘comparative analysis across regions.’ The evaluation explicitly assesses the M&amp;E Package development, harmonized indicators, data collection systems, and evidence generation. Multiple findings directly address IOM’s organizational capacity in data systems: Conclusion 6 notes contributions to ‘more comparable data and more harmonised approaches,’ while Recommendations 3 and 8 specifically address M&amp;E Package revision and standardization. The evaluation questions include ‘Quality of internal monitoring system and reporting’ (Green). The report provides direct evidence on how IOM is building institutional capacity for data collection, management, and evidence use across reintegration operations. For synthesis specialists, the findings on M&amp;E Package development, Conclusion 6 on harmonization achievements, and Recommendations 3 and 8 on future M&amp;E institutionalization would be particularly valuable.
+</details>
+<hr>
+<details>
+<summary>
+Reasoning (new)
+</summary>
+Based on the excerpts reviewed, this report would likely contribute meaningful evidence to a synthesis on Enabler 4 (Data and Evidence), and importantly, the evidence appears to concern IOM’s organizational capacity rather than merely data collection as a programmatic tool. The KMH’s M&amp;E Package and knowledge management functions are evaluated as institutional capacity-building efforts — the evaluation explicitly examines how IOM is developing systems for harmonized data collection, comparable data across operations, and evidence-based monitoring of reintegration outcomes at an organizational level. Evaluation question 3.2.3 (‘Quality of internal monitoring system and reporting’) and the associated conclusions (C2, C6) directly address IOM’s data and evidence systems. The recommendations on completing a Roadmap for revising the institutional M&amp;E Package, requiring standardized data collection across reintegration operations, and institutionalizing KM and M&amp;E functions (C11) suggest substantive analysis of IOM’s organizational data capacities. The lessons learned section also addresses the importance of outcome measurement and evidence generation at a systemic level. Synthesis specialists would likely want to prioritize the effectiveness section (3.5), the quality of design/monitoring section (3.2), and conclusions C2, C6, and C11, which appear to contain the most substantive institutional-level analysis of IOM’s data and evidence capacities. The full report likely contains additional relevant evidence beyond what the excerpts reveal.
+</details>
+</section>
+</section>
+<section id="final-internal-evaluation-for-enhancing-knowledge-on-remittances-and-diaspora-engagement-in-south-sudan" class="level3">
+<h3 class="anchored" data-anchor-id="final-internal-evaluation-for-enhancing-knowledge-on-remittances-and-diaspora-engagement-in-south-sudan">Final Internal Evaluation for Enhancing Knowledge on Remittances and Diaspora Engagement in South Sudan</h3>
+<div id="0bcb8ee4" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plot_band_changes(dfs[dfs.evl_id <span class="op">==</span> <span class="st">'75bad4665ed458cce78740e3d86f72d0'</span>], figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>), dpi<span class="op">=</span><span class="dv">77</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="changes-analysis-andres-130426_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Fundamental Themes</strong> | | Mapping | Theme | Score | |—|—|—|—| | old | gcms | 1: Collect and utilize accurate and disaggregated data as a basis for evidence-based policies | 0.88 | | old | gcms | 19: Create Conditions For Migrants And Diasporas To Fully Contribute To Sustainable Development In All Countries | 0.91 | | old | gcms | 20: Promote faster, safer and cheaper transfer of remittances and foster financial inclusion of migrants | 0.92 | | new | gcms | 19: Create Conditions For Migrants And Diasporas To Fully Contribute To Sustainable Development In All Countries | 0.90 | | new | gcms | 20: Promote faster, safer and cheaper transfer of remittances and foster financial inclusion of migrants | 0.92 |</p>
+<p><strong>⬇️ No Longer Fundamental</strong></p>
+<section id="gcms-1-collect-and-utilize-accurate-and-disaggregated-data-as-a-basis-for-evidence-based-policies" class="level4">
+<h4 class="anchored" data-anchor-id="gcms-1-collect-and-utilize-accurate-and-disaggregated-data-as-a-basis-for-evidence-based-policies">GCMS 1: Collect and utilize accurate and disaggregated data as a basis for evidence-based policies</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>score_old</th>
+<th>score_new</th>
+<th>rank_old</th>
+<th>rank_new</th>
+<th>rank_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.88</td>
+<td>0.82</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+Reasoning (old)
+</summary>
+This report appears to be essential evidence for a synthesis on GCM Objective 1. The project’s core focus is on conducting research to generate migration data - specifically a holistic survey on diaspora engagement and remittances in South Sudan. This directly aligns with Action 1d (collect and analyze data on contributions of migrants and diasporas to sustainable development) and Action 1j (develop country-specific migration profiles). The evaluation examines the effectiveness of a research study commissioned to address a significant data gap - since 2013, the Bank of South Sudan has not issued disaggregated data on overseas development assistance and there was no tracking mechanism for remittances. Key findings include: the remittances study successfully produced evidence-based resources, though the survey ‘did not reach as many participants as initially anticipated’ (lesson learned). The impact section notes an unexpected positive outcome - implementation of a ‘transactional system to systematically capture inflows and outflows of all remittances’ by the Bank of South Sudan, inspired by the study results. The recommendations section emphasizes conducting ‘research feasibility assessments before commissioning large research projects.’ For synthesis specialists, the Executive Summary, Findings on Effectiveness, Impact conclusions, and Lessons Learned sections would be particularly valuable for understanding challenges and successes in migration data collection in fragile contexts.
+</details>
+<hr>
+<details>
+<summary>
+Reasoning (new)
+</summary>
+Based on the excerpts reviewed, this report would likely contribute meaningful evidence to a synthesis on GCM Objective 1. The project’s core activity was commissioning a remittances study to address a significant data gap — the Bank of South Sudan had not issued disaggregated data on overseas development assistance since 2013, and there was no tracking mechanism for remittance flows. The evaluation appears to substantively assess the quality, reach, and impact of this data collection effort, including disaggregation by gender and demographic characteristics. The excerpts suggest direct relevance to Action 1d (collecting data on effects and benefits of migration and diaspora contributions to sustainable development) and Action 1j (developing country-specific migration profiles including remittance transfer costs). The unexpected outcome of the Bank of South Sudan implementing a transactional system to capture remittance inflows/outflows — reportedly inspired by the study — is also directly relevant to Action 1i (enhancing collaboration between state units and statistical offices). The evaluation’s findings on barriers to data collection (distrust among diaspora, low survey participation), lessons learned on feasibility assessment, and recommendations on communication plans would likely add value to a synthesis on evidence-based migration policymaking. Reviewers should prioritize the Effectiveness section (output 1.1 indicators), the Impact section on unintended effects, and the Lessons Learned section. Note that data collection is a means to an end in this project rather than the primary programmatic focus, which slightly limits depth on the mechanics of data systems.
+</details>
+</section>
+</section>
+<section id="midterm-evaluation-of-iom-east-and-horn-of-africa-regional-strategy-2020-2024" class="level3">
+<h3 class="anchored" data-anchor-id="midterm-evaluation-of-iom-east-and-horn-of-africa-regional-strategy-2020-2024">Midterm Evaluation of IOM East and Horn of Africa Regional Strategy 2020 – 2024</h3>
+<div id="f95c2765" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>plot_band_changes(dfs[dfs.evl_id <span class="op">==</span> <span class="st">'f409b3f9a0671ec69a8591c425a45c1d'</span>], figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>), dpi<span class="op">=</span><span class="dv">77</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="changes-analysis-andres-130426_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Fundamental Themes</strong> | | Mapping | Theme | Score | |—|—|—|—| | old | gcms | 23: Strengthen International Cooperation And Global Partnerships For Safe, Orderly And Regular Migration | 0.85 |</p>
+<p><strong>⬇️ No Longer Fundamental</strong></p>
+<section id="gcms-23-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration-1" class="level4">
+<h4 class="anchored" data-anchor-id="gcms-23-strengthen-international-cooperation-and-global-partnerships-for-safe-orderly-and-regular-migration-1">GCMS 23: Strengthen international cooperation and global partnerships for safe, orderly and regular migration</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>score_old</th>
+<th>score_new</th>
+<th>rank_old</th>
+<th>rank_new</th>
+<th>rank_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.85</td>
+<td>0.72</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+Reasoning (old)
+</summary>
+This report would likely be essential for a synthesis on GCM Objective 23. Regional cooperation and partnerships are central themes throughout the evaluation. The Regional Strategy explicitly addresses ‘improving policy capacity and regional cooperation’ as an institutional development priority. Key findings highlight IOM’s partnerships with IGAD and EAC (Action 4), the Kampala Ministerial Declaration, and engagement with Member States, African Union, and Regional Economic Communities. The evaluation assesses IOM’s ‘regional leadership’ role and ‘whole-of-government structures, coherent policies and normative frameworks’ (Priority 6). Recommendations emphasize consolidating partnerships with RECs, establishing consultation mechanisms, and maintaining coherence with international frameworks (GCM, SDGs). The analysis of regional coordination mechanisms, MoUs with regional bodies, and multi-stakeholder partnerships directly addresses Actions 23a, 23c, and 23e. For synthesis specialists, the findings on regional partnership effectiveness, the case studies on REC engagement, and recommendations on cooperation mechanisms would be particularly valuable - especially the analysis of how regional strategies facilitate coherent migration governance across the EHoA region.
+</details>
+<hr>
+<details>
+<summary>
+Reasoning (new)
+</summary>
+Based on the excerpts reviewed, this report would likely contribute meaningful evidence to a synthesis on GCM Objective 23, though with important caveats. The evaluation’s primary subject — the IOM EHoA Regional Strategy 2020-2024 — is itself a regional governance and cooperation instrument, and the evaluation explicitly examines how IOM positions itself as a strategic actor within multilateral migration governance frameworks. This goes beyond ambient operational language: the evaluation assesses IOM’s institutional role in shaping regional migration governance, its partnerships with RECs (IGAD, EAC, African Union), its alignment with global frameworks (GCM, SDGs, Kampala Declaration), and its capacity to influence migration policy at regional and national levels. These themes relate substantively to actions 23a (supporting collective GCM implementation), 23b (regional cooperation to address structural migration drivers), and 23e (bilateral/regional partnerships on migration policy). The excerpts suggest that the evaluation examines the Regional Strategy as a mechanism for operationalizing international cooperation — including MoUs with IGAD and EAC, joint regional programmes, and IOM’s role within UNCTs and with Member States. The conclusions and recommendations sections appear particularly relevant, discussing IOM’s leadership role, partnership consolidation, and alignment with international frameworks. A synthesis specialist would want to review the conclusions on IOM’s regional governance role and the recommendations on partnership consolidation and framework coherence, while noting that the report’s primary focus is on IOM’s internal strategic planning effectiveness rather than on inter-state cooperation architecture per se. The full report likely contains more on this topic than the excerpts reveal.
+</details>
+</section>
+</section>
+<section id="thematic-evaluation-of-ioms-labour-migration-and-mobility-strategy-and-initiatives" class="level3">
+<h3 class="anchored" data-anchor-id="thematic-evaluation-of-ioms-labour-migration-and-mobility-strategy-and-initiatives">THEMATIC EVALUATION OF IOM’S LABOUR MIGRATION AND MOBILITY STRATEGY AND INITIATIVES</h3>
+<div id="ad62e174" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plot_band_changes(dfs[dfs.evl_id <span class="op">==</span> <span class="st">'760568a15e144bcfb88dbbd50247dc51'</span>], figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>), dpi<span class="op">=</span><span class="dv">77</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="changes-analysis-andres-130426_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Fundamental Themes</strong> | | Mapping | Theme | Score | |—|—|—|—| | old | enbs | 2: Partnership | 0.84 | | old | gcms | 16: Empower Migrants And Societies To Realize Full Inclusion And Social Cohesion | 0.91 | | old | gcms | 19: Create Conditions For Migrants And Diasporas To Fully Contribute To Sustainable Development In All Countries | 0.85 | | old | gcms | 6: Facilitate Fair And Ethical Recruitment And Safeguard Conditions That Ensure Decent Work | 0.88 | | new | gcms | 19: Create Conditions For Migrants And Diasporas To Fully Contribute To Sustainable Development In All Countries | 0.88 | | new | gcms | 6: Facilitate Fair And Ethical Recruitment And Safeguard Conditions That Ensure Decent Work | 0.85 |</p>
+<p><strong>⬇️ No Longer Fundamental</strong></p>
+<section id="enbs-2-partnership" class="level4">
+<h4 class="anchored" data-anchor-id="enbs-2-partnership">ENBS 2: Partnership</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>score_old</th>
+<th>score_new</th>
+<th>rank_old</th>
+<th>rank_new</th>
+<th>rank_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.84</td>
+<td>0.76</td>
+<td>1</td>
+<td>2</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+Reasoning (old)
+</summary>
+This report would likely be essential for a synthesis on Enabler 2 (Partnership). Partnership is explicitly identified as one of the evaluation’s key themes, with ‘Partnerships building’ listed as a major finding area in the executive summary. The evaluation examines IOM’s collaborative work with governments, UN agencies (particularly ILO), civil society organizations, private sector actors, and diaspora communities. Key findings address partnership quality, the 2022 retreat as ‘a milestone in securing stronger inclusion and collaboration,’ and external partnerships with ‘a wide variety of external partners.’ The coherence section provides substantive analysis of partnership effectiveness, noting ‘successful engagement with a wide variety of external partners’ and ‘increasing engagement with new partner types, in particular the private sector.’ Multiple recommendations directly address partnership strengthening: Recommendation 3 (‘Nurture relationships and maximise complementarity’), Recommendation 7 (staff awareness of partnership guidance), and Recommendation 2 (systematic approach to partnerships). The report specifically notes the need to ‘delineate each agency’s remits and added value’ with ILO and discusses IOM’s role as ‘convener’ in the migration space. For synthesis specialists, the coherence findings, the analysis of IOM’s convening role, and recommendations 2, 3, and 7 would be particularly valuable for understanding IOM’s partnership capacities and areas for organizational development.
+</details>
+<hr>
+<details>
+<summary>
+Reasoning (new)
+</summary>
+Based on the excerpts reviewed, this report would likely contribute meaningful evidence to a synthesis on Enabler 2 (Partnership). The evaluation appears to examine IOM’s partnership practices at an organizational level — assessing how the LMI division builds and sustains relationships with external actors including UN agencies, governments, civil society, and the private sector — rather than evaluating partnerships merely as a delivery mechanism for a single project. The excerpts suggest that partnership is one of the explicit evaluation dimensions: the Coherence criterion in the OECD-DAC framework is applied to assess IOM’s engagement with external partners, and the conclusions note ‘successful engagement with a wide variety of external partners’ alongside areas for improvement such as creating ‘a more systematic approach to collaboration.’ Overarching Recommendation 3 specifically addresses maximizing complementarity with ILO, UNDP, and the World Bank, and strengthening private sector engagement. Recommendation 2 calls for a ‘centralised, systematic and cohesive approach to programming’ to address silos and improve institutional cohesion. The evaluation also highlights IOM’s convening role — including organizing the Global Diaspora Summit — as an institutional partnership capacity. However, partnership is one of several themes covered alongside funding, workforce, and internal systems. For a synthesis specialist, the Coherence section findings, Overarching Recommendations 2 and 3, and the discussion of private sector engagement and UN agency coordination would appear to be the most relevant sections to prioritize.
+</details>
+</section>
+<section id="gcms-16-empower-migrants-and-societies-to-realize-full-inclusion-and-social-cohesion" class="level4">
+<h4 class="anchored" data-anchor-id="gcms-16-empower-migrants-and-societies-to-realize-full-inclusion-and-social-cohesion">GCMS 16: Empower migrants and societies to realize full inclusion and social cohesion</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>score_old</th>
+<th>score_new</th>
+<th>rank_old</th>
+<th>rank_new</th>
+<th>rank_diff</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.91</td>
+<td>0.82</td>
+<td>1</td>
+<td>3</td>
+<td>-2</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+Reasoning (old)
+</summary>
+This report would likely be essential for a synthesis on GCM Objective 16. Social inclusion is explicitly part of the evaluated division’s name and mandate (‘Labour Mobility and Social Inclusion Division’). The evaluation’s primary purpose includes assessing IOM’s strategic approach to ‘social inclusion.’ The report identifies ‘Integration, Social Inclusion and Cohesion’ as one of six focus areas, aiming to ‘develop migrants, communities and governments capacities to achieve full inclusion and social cohesion across the migration continuum.’ Multiple findings address migrant integration, social cohesion outcomes, and inclusion programming. Actions 16a (integration best practices), 16c (inclusion policy goals), and 16f (community centres and migrant participation) are directly relevant. For a synthesis specialist, the effectiveness findings on migrant inclusion/integration, the analysis of IOM’s role in empowering migrants and communities as development agents, and recommendations on enhancing IOM’s connection with local communities (Recommendation 14) would be particularly valuable. The conclusions table explicitly identifies achievements and areas for improvement related to inclusion programming.
+</details>
+<hr>
+<details>
+<summary>
+Reasoning (new)
+</summary>
+Based on the excerpts reviewed, this report would likely contribute meaningful evidence to a synthesis on GCM Objective 16. Social inclusion and cohesion appear as explicit strategic focus areas of the LMI division (‘Integration, Social Inclusion and Cohesion: Aiming to develop migrants, communities and governments capacities to achieve full inclusion and social cohesion across the migration continuum’). The report discusses IOM’s efforts to empower migrants as development agents, amplify migrants’ voices, and foster social cohesion — aligning with actions 16a, 16c, 16d, and 16f. The evaluation assesses IOM’s effectiveness in migrant inclusion and integration, with the conclusions table identifying ‘migrant inclusion/integration’ as an area of strong impact. The Theory of Change includes outputs on ‘protection-focused, social programming’ and ‘fiscal inclusion of diversity.’ For a synthesis specialist, the sections on LMI strategic focus areas, the conclusions on effectiveness and impact in inclusion/integration, and the recommendations on cross-cutting themes and community engagement would appear particularly valuable. The full report likely contains more programmatic detail on social inclusion initiatives beyond what the excerpts reveal.
+</details>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/franckalbinet\.github\.io\/iomeval");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>tagging – iomeval</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f2788e636de456f6409e966386820849.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="iomeval">
+<meta property="og:description" content="Streamline evaluation evidence mapping at scale with LLMs">
+<meta property="og:site_name" content="iomeval">
+<meta name="twitter:title" content="iomeval">
+<meta name="twitter:description" content="Streamline evaluation evidence mapping at scale with LLMs">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">iomeval</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOMEval</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/eval_metadata_eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IOM Reports Exploration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">API</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../core.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Core</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../readers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Readers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../downloaders.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Downloaders</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../extract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extract</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../themes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Themes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../mapper.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapper</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../curator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Curator</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#pending-reports-to-be-tagged" id="toc-pending-reports-to-be-tagged" class="nav-link active" data-scroll-target="#pending-reports-to-be-tagged">Pending reports to be tagged</a></li>
+  <li><a href="#tagging" id="toc-tagging" class="nav-link" data-scroll-target="#tagging">Tagging</a></li>
+  <li><a href="#copy-to-new" id="toc-copy-to-new" class="nav-link" data-scroll-target="#copy-to-new">Copy to <code>/new</code></a></li>
+  <li><a href="#legacy" id="toc-legacy" class="nav-link" data-scroll-target="#legacy">Legacy</a></li>
+  <li><a href="#debug" id="toc-debug" class="nav-link" data-scroll-target="#debug">Debug</a></li>
+  <li><a href="#tagging-1" id="toc-tagging-1" class="nav-link" data-scroll-target="#tagging-1">Tagging</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tagging.html.md"><i class="bi bi-file-code"></i>Markdown</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<div id="c5568472" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> iomeval.readers <span class="im">import</span> find_eval, load_evals, eval_url, get_report_urls</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mistocr.core <span class="im">import</span> read_pgs</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> iomeval.pipeline <span class="im">import</span> run_pipeline, batch_run</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.max_colwidth'</span>, <span class="va">None</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="eb5403f8" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>models <span class="op">=</span> [</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'claude-sonnet-4-5'</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'claude-sonnet-4-6'</span>, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'claude-opus-4-5-20251101'</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="f498989b" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#DATA_PATH = Path('../../data')</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="cd3e2226" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>DATA_PATH <span class="op">=</span> Path().home() <span class="op">/</span> <span class="st">'iomeval/data'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="5bcf4e75" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>EVALS_PATH <span class="op">=</span> Path().home() <span class="op">/</span> <span class="st">'iomeval/nbs/files/test/evaluations.json'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="fb987575" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>evals <span class="op">=</span> load_evals(EVALS_PATH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="78e1d025" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>((DATA_PATH <span class="op">/</span> <span class="st">'results'</span>).ls())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>570</code></pre>
+</div>
+</div>
+<div id="83990243" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>rpt <span class="op">=</span> (DATA_PATH <span class="op">/</span> <span class="st">'results'</span>).ls()[<span class="dv">0</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>rpt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>Path('/app/data/iomeval/data/results/bf162f9ddcf7f69f64ab4933054e57c5.json')</code></pre>
+</div>
+</div>
+<div id="4468c60e" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_mapped(o): <span class="cf">return</span> <span class="bu">bool</span>(o.read_json().get(<span class="st">'mappings'</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_ready(o): <span class="cf">return</span> o.read_json().get(<span class="st">'curation_status'</span>) <span class="op">==</span> <span class="st">'sections_selected'</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_rpts(rpts_path, filt<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    rpts <span class="op">=</span> rpts_path.ls()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> filt: rpts <span class="op">=</span> L(o <span class="cf">for</span> o <span class="kw">in</span> rpts <span class="cf">if</span> filt(o))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> rpts.<span class="bu">sorted</span>(key<span class="op">=</span><span class="kw">lambda</span> x: x.read_json()[<span class="st">'meta'</span>].get(<span class="st">'Date of Publication'</span>, <span class="st">''</span>), reverse<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="423910ac" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> DATA_PATH <span class="op">/</span> <span class="st">'results'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="9c744d37" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reports already tagged</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(get_rpts(path, is_mapped))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>526</code></pre>
+</div>
+</div>
+<div id="9d1115bc" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reports not yet tagged</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(get_rpts(path, <span class="kw">lambda</span> o: <span class="kw">not</span> is_mapped(o)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>44</code></pre>
+</div>
+</div>
+<div id="b13627af" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ready to be tagged</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(get_rpts(path, <span class="kw">lambda</span> o: <span class="kw">not</span> is_mapped(o) <span class="kw">and</span> is_ready(o)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>4</code></pre>
+</div>
+</div>
+<div id="1dd92f29" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tagged but also ready (for re-tagging?)</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(get_rpts(path, <span class="kw">lambda</span> o: is_mapped(o) <span class="kw">and</span> is_ready(o)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>526</code></pre>
+</div>
+</div>
+<div id="e75d1bfb" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_result(eval_id, base_path):</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Load a result JSON by eval_id from base_path"</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (Path(base_path)<span class="op">/</span><span class="ss">f'</span><span class="sc">{</span>eval_id<span class="sc">}</span><span class="ss">.json'</span>).read_json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="9d592aa3" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#rpt.read_json()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="pending-reports-to-be-tagged" class="level2">
+<h2 class="anchored" data-anchor-id="pending-reports-to-be-tagged">Pending reports to be tagged</h2>
+<div id="10d7e625" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pending <span class="op">=</span> <span class="kw">lambda</span> o: <span class="kw">not</span> is_mapped(o) <span class="kw">and</span> is_ready(o)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>pending_ids <span class="op">=</span> get_rpts(path, pending).attrgot(<span class="st">'stem'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="8872582d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ids_to_be_further_invest <span class="op">=</span> [</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'1700c8dbadc3d87d6911a8ccc6d18b63'</span>, </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'50ae07f4997dfefcf7cb5f27b9a681b5'</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'67198e6af9cb7368a68ce9ca5d77ddb9'</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'67606e99aaa89670f447141ea92f5bf8'</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="d1ea257c" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pending_ids <span class="op">=</span> [o <span class="cf">for</span> o <span class="kw">in</span> pending_ids <span class="cf">if</span> o <span class="kw">not</span> <span class="kw">in</span> ids_to_be_further_invest]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(pending_ids), pending_ids[:<span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>(0, [])</code></pre>
+</div>
+</div>
+<div id="ce84ad59" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>pending_ids[:<span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[]</code></pre>
+</div>
+</div>
+</section>
+<section id="tagging" class="level2">
+<h2 class="anchored" data-anchor-id="tagging">Tagging</h2>
+<div id="c29a22e4" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="cf">await</span> batch_run(evals, ids<span class="op">=</span>pending_ids, base_path<span class="op">=</span><span class="bu">str</span>(DATA_PATH), </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                         force<span class="op">=</span>{<span class="st">'enbs'</span>,<span class="st">'ccps'</span>,<span class="st">'gcms'</span>,<span class="st">'outs'</span>}, verbose<span class="op">=</span><span class="va">False</span>, model<span class="op">=</span><span class="st">'claude-sonnet-4-6'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>iomeval.pipeline - INFO - 0b0dacaa... completed
+iomeval.pipeline - INFO - 88992884... completed
+iomeval.pipeline - INFO - 11b4ac88... completed
+iomeval.pipeline - INFO - 17b13ee8... completed
+iomeval.pipeline - INFO - ab2c64b5... completed
+iomeval.pipeline - INFO - c9b6a913... completed
+iomeval.pipeline - INFO - c1953d5b... completed
+iomeval.pipeline - INFO - 4645f07f... completed
+iomeval.pipeline - INFO - f2b7e221... completed
+iomeval.pipeline - INFO - 853fe2b3... completed
+iomeval.pipeline - INFO - 166c5fb6... completed
+iomeval.pipeline - INFO - 916ef12c... completed
+iomeval.pipeline - INFO - 678db554... completed
+iomeval.pipeline - INFO - c87bcfcc... completed
+iomeval.pipeline - INFO - bcfd073b... completed
+iomeval.pipeline - INFO - 2acbd175... completed
+iomeval.pipeline - INFO - 6b73c477... completed
+iomeval.pipeline - INFO - 19b8bb65... completed
+iomeval.pipeline - INFO - 9f5fee7f... completed
+iomeval.pipeline - INFO - 66398986... completed
+iomeval.pipeline - INFO - 442f8455... completed
+iomeval.pipeline - INFO - c9cacbb7... completed
+iomeval.pipeline - INFO - f16f67fe... completed
+iomeval.pipeline - INFO - fbf87b36... completed
+iomeval.pipeline - INFO - eec493d6... completed
+iomeval.pipeline - INFO - 7f516cd5... completed
+iomeval.pipeline - INFO - fcf10635... completed
+iomeval.pipeline - INFO - 4d8eb2b2... completed
+iomeval.pipeline - INFO - 3e78aa4a... completed
+iomeval.pipeline - INFO - 5fc6d130... completed
+iomeval.pipeline - INFO - bb530cca... completed
+iomeval.pipeline - INFO - 2c0d4c68... completed
+iomeval.pipeline - INFO - a61bcf10... completed
+iomeval.pipeline - INFO - 173fa0e2... completed
+iomeval.pipeline - INFO - 0503c73d... completed
+iomeval.pipeline - INFO - ce8925c2... completed
+iomeval.pipeline - INFO - 911c0521... completed
+iomeval.pipeline - INFO - b1f220cc... completed
+iomeval.pipeline - INFO - d1f0fa0e... completed
+iomeval.pipeline - INFO - 8465a7d0... completed
+iomeval.pipeline - INFO - 601201a5... completed
+iomeval.pipeline - INFO - 563318ea... completed
+iomeval.pipeline - INFO - adc75882... completed
+iomeval.pipeline - INFO - fe5ce40f... completed
+iomeval.pipeline - INFO - b78220a3... completed
+iomeval.pipeline - INFO - 1cf4f8c3... completed
+iomeval.pipeline - INFO - 30a74ba0... completed
+iomeval.pipeline - INFO - b3a10ae1... completed
+iomeval.pipeline - INFO - b8f1be2f... completed
+iomeval.pipeline - INFO - 43aba06f... completed
+iomeval.pipeline - INFO - f3b8dde7... completed
+iomeval.pipeline - INFO - 13481ef8... completed
+iomeval.pipeline - INFO - 521c1df1... completed
+iomeval.pipeline - INFO - bb49e89e... completed
+iomeval.pipeline - INFO - b67d76fe... completed
+iomeval.pipeline - INFO - e0bb57fa... completed
+iomeval.pipeline - INFO - b3f66dc5... completed
+iomeval.pipeline - INFO - 2ef6ebdd... completed
+iomeval.pipeline - INFO - a0742e9c... completed
+iomeval.pipeline - INFO - a3d8c90f... completed
+iomeval.pipeline - INFO - eb8b8240... completed
+iomeval.pipeline - INFO - 8d6171c5... completed
+iomeval.pipeline - INFO - a16da74f... completed
+iomeval.pipeline - INFO - 4ebec379... completed
+iomeval.pipeline - INFO - 4fff8682... completed
+iomeval.pipeline - INFO - 902db40a... completed
+iomeval.pipeline - INFO - 4b3881d8... completed
+iomeval.pipeline - INFO - 20aa7f76... completed
+iomeval.pipeline - INFO - 5410c3f2... completed
+iomeval.pipeline - INFO - efafe540... completed
+iomeval.pipeline - INFO - 8ca34b51... completed
+iomeval.pipeline - INFO - 45fe5c20... completed
+iomeval.pipeline - INFO - 6fdae9c3... completed
+iomeval.pipeline - INFO - 9693f422... completed
+iomeval.pipeline - INFO - d87a0054... completed
+iomeval.pipeline - INFO - 0e79e6e6... completed
+iomeval.pipeline - INFO - 66e80429... completed
+iomeval.pipeline - INFO - 96ea0dbf... completed
+iomeval.pipeline - INFO - 50a2d211... completed
+iomeval.pipeline - INFO - b8349a06... completed
+iomeval.pipeline - INFO - 35fca5dd... completed
+iomeval.pipeline - INFO - 6c6a6eff... completed
+iomeval.pipeline - INFO - a2b15829... completed
+iomeval.pipeline - INFO - b6d25402... completed
+iomeval.pipeline - INFO - 23ca8149... completed
+iomeval.pipeline - INFO - 1fe6d304... completed
+iomeval.pipeline - INFO - 2935af89... completed
+iomeval.pipeline - INFO - 3512c1ca... completed
+iomeval.pipeline - INFO - 15cf0e8a... completed
+iomeval.pipeline - INFO - 4f27fc0f... completed
+iomeval.pipeline - INFO - 217241bc... completed
+iomeval.pipeline - INFO - a891b8fe... completed
+iomeval.pipeline - INFO - f4ed13ce... completed
+iomeval.pipeline - INFO - 54ddcce5... completed
+iomeval.pipeline - INFO - 2629fb46... completed
+iomeval.pipeline - INFO - af938106... completed
+iomeval.pipeline - INFO - dd39ffef... completed
+iomeval.pipeline - INFO - 09e713c9... completed
+iomeval.pipeline - INFO - d7cbe071... completed
+iomeval.pipeline - INFO - d06faca8... completed
+iomeval.pipeline - INFO - 342f80c7... completed
+iomeval.pipeline - INFO - dd6ac567... completed
+iomeval.pipeline - INFO - 9f3bfd64... completed
+iomeval.pipeline - INFO - 597e3343... completed
+iomeval.pipeline - INFO - 8af7c442... completed
+iomeval.pipeline - INFO - f71daffb... completed
+iomeval.pipeline - INFO - 8bdd3d29... completed
+iomeval.pipeline - INFO - 971f88e8... completed
+iomeval.pipeline - INFO - 92329044... completed
+iomeval.pipeline - INFO - 1eafa00d... completed
+iomeval.pipeline - INFO - b9938754... completed
+iomeval.pipeline - INFO - cfd2e6ba... completed
+iomeval.pipeline - INFO - cae1e099... completed
+iomeval.pipeline - INFO - 7a7167d1... completed
+iomeval.pipeline - INFO - a4c9401d... completed
+iomeval.pipeline - INFO - 53eff206... completed
+iomeval.pipeline - INFO - 8f4d749b... completed
+iomeval.pipeline - INFO - 0527558f... completed
+iomeval.pipeline - INFO - 6bb4ac29... completed
+iomeval.pipeline - INFO - 027d61ec... completed
+iomeval.pipeline - INFO - 148b0e12... completed
+iomeval.pipeline - INFO - d22640fa... completed
+iomeval.pipeline - INFO - f358fd51... completed
+iomeval.pipeline - INFO - b4a31b2a... completed
+iomeval.pipeline - INFO - 6f957c79... completed
+iomeval.pipeline - INFO - 10c51488... completed
+iomeval.pipeline - INFO - d81eee98... completed
+iomeval.pipeline - INFO - a73ca797... completed
+iomeval.pipeline - INFO - 8d540a1e... completed</code></pre>
+</div>
+</div>
+</section>
+<section id="copy-to-new" class="level2">
+<h2 class="anchored" data-anchor-id="copy-to-new">Copy to <code>/new</code></h2>
+<div id="54d727ea" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_batch_run(base_path, n<span class="op">=</span><span class="dv">1</span>, timestamp<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Load a batch run log by timestamp, or the n latest if None (1 returns single item, n&gt;1 returns list)"</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> timestamp <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>        p <span class="op">=</span> base_path <span class="op">/</span> <span class="st">'batch_runs'</span> <span class="op">/</span> <span class="ss">f'</span><span class="sc">{</span>timestamp<span class="sc">}</span><span class="ss">.json'</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> p.stem, p.read_json()</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    runs <span class="op">=</span> <span class="bu">sorted</span>((base_path <span class="op">/</span> <span class="st">'batch_runs'</span>).ls())</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">1</span>: <span class="cf">return</span> runs[<span class="op">-</span><span class="dv">1</span>].stem, runs[<span class="op">-</span><span class="dv">1</span>].read_json()</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [(p.stem, p.read_json()) <span class="cf">for</span> p <span class="kw">in</span> runs[<span class="op">-</span>n:]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="b6f41d06" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_completed_ids(batch, date<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Get IDs of completed reports from batch, optionally filtered by date"</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L(o[<span class="dv">1</span>].get(<span class="st">'completed'</span>, []) <span class="cf">for</span> o <span class="kw">in</span> batch <span class="cf">if</span> <span class="kw">not</span> date <span class="kw">or</span> o[<span class="dv">0</span>][:<span class="dv">10</span>]<span class="op">==</span>date).concat()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="d07f4d97" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming batch is the result of load_batch_run</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> load_batch_run(DATA_PATH, n<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>completed <span class="op">=</span> get_completed_ids(batch)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="5ed8e7f5" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To get completed reports for a specific date:</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>completed_today <span class="op">=</span> get_completed_ids(batch, <span class="st">'2026-05-11'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="140b78fa" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>completed_today</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>['0b0dacaae980d3404a15577b1f6de656', '889928844315a65d0791e77df6c5d437', '11b4ac884a5fcbfa3b7bc9ea8949d13c', '17b13ee8a57f498857af6026509bcf7f', 'ab2c64b5d03136c92543447f4de99705', 'c9b6a9133180f54922ee5bbcdaa8f52a', 'c1953d5b6e6f8dbd26a96a27440e5d87', '4645f07ff20f868470074ab0cd522d5f', 'f2b7e221d91fd7d21bb80f65d085a8b3', '853fe2b36f309051488647a08067fd54', '166c5fb6c3c6ab613ab37793957d41ef', '916ef12cf1a2734de9b6761f994d9546', '678db554fcf2f38492b728f877a70d54', 'c87bcfcc1b9750f5939f0f9857a55f10', 'bcfd073b9e09da62bf2bf1afabb31962', '2acbd175fbf7543bc9359ca3770c7fbf', '6b73c4776dc8858cfa76f7d755999516', '19b8bb65e753a0178015c5330e113bd0', '9f5fee7f2387db581cb34b6da468ed9c', '66398986d8aff86c900901920bb61356', '442f8455fbcf56e3dd63ce716899ee0f', 'c9cacbb73cbcba9f3a8758b8fc3f66e0', 'f16f67fe16dfe589c8b326aa50b34259', 'fbf87b36c378e8b39e62e380f4345a9a', 'eec493d697f7018ea1b469815088bb81', '7f516cd52a18cec81d1fdf6adabfdef8', 'fcf10635d0867a42d3505176e3f113de', '4d8eb2b29ffdb8f854a3eb2842198aa5', '3e78aa4ab0488a6d1179c7504b9f4d89', '5fc6d1308b4c1a7d82e29a104e2e2613', 'bb530cca927b9faf4a57686ee6982304', '2c0d4c6819cebc044b91062af73ffdac', 'a61bcf10a02495e017eadaf45d175ab9', '173fa0e2c3b86b4dcdd29785146eb74b', '0503c73d45ca942037fa0c4b9b227200', 'ce8925c23ba9331e0ec63d3214a93532', '911c05215351e47775cf93466dc1b422', 'b1f220cc12464c9599ebb536bd5dbc3f', 'd1f0fa0e0e928a08bd6c1d4068b44bfb', '8465a7d0d78d151751e6f1351418749b', '601201a52b39508b709aeca99f2e2bf3', '563318eaa28ae1ead5adc571d2e0be2b', 'adc75882c63f29b1b5a4df4beafa5759', 'fe5ce40fa79b5d6da832acee12545baf', 'b78220a32e717d641ad9b86b0405625b', '1cf4f8c37107a77960fa63d685ba4515', '30a74ba0dcc5ea7772724e0a648f4d8d', 'b3a10ae193bed0d669aa1eafce86e2d0', 'b8f1be2f14704243b87d94353bcfa9a3', '43aba06fba609c52ca154f746240ca64', 'f3b8dde7309f047dae7d77a3af9db93a', '13481ef826ec816b56998da381f3156e', '521c1df1c75b72c536380d808cd339d3', 'bb49e89ef88b5f90802069945ed6b4ff', 'b67d76fecccbf1eec459bc2439bb0869', 'e0bb57fad7aa90a04755765846fb4295', 'b3f66dc5511e51956bc735f73c9eb9b9', '2ef6ebdd02cffe5e89312db8ec805844', 'a0742e9cf894d4a69bb992f75d4b516a', 'a3d8c90fda23cd819df13b2554c7bb67', 'eb8b82409ae2b8d1569ecd31c7b5ceab', '8d6171c5252c8b5f537c8f22d6df7b61', 'a16da74f5d7a3cb1ebf451d02a0f528b', '4ebec379e65ea54f88700d9871cd6a72', '4fff86823caa51985468f57efe8e4499', '902db40af7a9f34fd8cebeb2e1250398', '4b3881d84bfdeb3eea954431222bca41', '20aa7f76a230fc4962887297a318444c', '5410c3f2c6b372b82c625c54c3dcf118', 'efafe540c420e433b2748a6dbb98f18c', '8ca34b514e2a1b247ce56133a5a19c89', '45fe5c2087fad4ba89493c396fea97fe', '6fdae9c3b49f087ace6573b3f7a7f084', '9693f422c27e562e630e2d530b2b7a40', 'd87a0054eb571129f694327ee6807bb0', '0e79e6e660aadad280d5898c512f25f1', '66e804298e1cdf9d849db3e4596a5dde', '96ea0dbfd195f4972132444e16da07cb', '50a2d2117d3c9ecfa790819e284386a2', 'b8349a06316cfe7f12139a770deb9e6f', '35fca5ddccbfd5b4d5ac16bde3be2d4a', '6c6a6effff55923ceb2e7992580a6402', 'a2b15829b53e898c48fffb91896cac43', 'b6d25402c249be3fcd9fcfb73f9c178a', '23ca81498dfbebbb99db0dc4472fc380', '1fe6d304c662122e62c1c82f6458a2c6', '2935af89a4278b6a0b8f3e90f097c390', '3512c1cae03441287ca4b5e7b04b6f76', '15cf0e8ae6671955df573587fb6169b3', '4f27fc0f9bcf5ffe6c43098701d429da', '217241bc56e20d1660b10944e6c0db1b', 'a891b8fe97155703f3531e8489401398', 'f4ed13ce259dc4902971771c13f519df', '54ddcce50a1a32cd264cb9144a072485', '2629fb469c178f51a91bbd96dad5d3d1', 'af938106bc4f392b47ddbe5227736562', 'dd39ffef772891042023099443f53118', '09e713c93f977e6febf4440f20953569', 'd7cbe071e69433c041857eec27054bba', 'd06faca8c5839f32b0ff4d88a8028589', '342f80c7f6fd08ee783df1efd67f7c45', 'dd6ac567bf0dd7d01dfbbd1484cad1f6', '9f3bfd6439dda68b6115e73318a604df', '597e3343dd872dc43921b79df3e3e77f', '8af7c442a29f6593a009f75ef48fb428', 'f71daffb310988e6b4f5a962d2ae727d', '8bdd3d29bc586261bcebec68152cc007', '971f88e8b8d5492cfb695123c1580132', '923290448acecdba099275bb8cebd4dd', '1eafa00d143cec4b2067c938cd0665ad', 'b993875431de8c426edaa31397ab0598', 'cfd2e6ba2f4c73f84117b9f4a42b0757', 'cae1e099857e20f8e1286c53def1ef38', '7a7167d1524048a3ae905714cc20fc80', 'a4c9401df9584fcd571200e10526a5a2', '53eff2065a4185fb3255160061179a72', '8f4d749ba17d1c304e469969883a7e43', '0527558fe829850287a6a8eba26675af', '6bb4ac298da9a2e13fd85836bfa70a18', '027d61ecc20487bc65040f7d5949b8c7', '148b0e12f569a11759c84d5f7599c3fe', 'd22640fa803faf8e2ea79f439dbdb8da', 'f358fd51fea91104370ee5f98a13971c', 'b4a31b2a0eec60aa3638a222ce0dbf35', '6f957c7943847c23b13d51534f59e818', '10c51488033c7a179c31dff57b321fd5', 'd81eee98f6e8b7ba7e65a058332750d6', 'a73ca797a52883bde194a6c74b111519', '8d540a1e9f09c2cbf0c62d10955d5623']</code></pre>
+</div>
+</div>
+<div id="c07b5bf3" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(completed_today)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>129</code></pre>
+</div>
+</div>
+<div id="e3936aba" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shutil <span class="im">import</span> copy2</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>src, dest <span class="op">=</span> DATA_PATH<span class="op">/</span><span class="st">'results'</span>, DATA_PATH<span class="op">/</span><span class="st">'results_new'</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>dest.mkdir(exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> o <span class="kw">in</span> completed_today:</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> src<span class="op">/</span><span class="ss">f'</span><span class="sc">{</span>o<span class="sc">}</span><span class="ss">.json'</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> f.exists(): copy2(f, dest)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="legacy" class="level2">
+<h2 class="anchored" data-anchor-id="legacy">Legacy</h2>
+<div id="396cf504" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_completed_ids(batch, date<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Get IDs of completed reports from batch, optionally filtered by date"</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    is_done <span class="op">=</span> <span class="kw">lambda</span> o: <span class="bu">bool</span>(o.get(<span class="st">'mappings'</span>))</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    matches_date <span class="op">=</span> <span class="kw">lambda</span> o: <span class="bu">str</span>(o.get(<span class="st">'timestamp'</span>,<span class="st">''</span>))[:<span class="dv">10</span>]<span class="op">==</span>date <span class="cf">if</span> date <span class="cf">else</span> <span class="va">True</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L(o[<span class="st">'id'</span>] <span class="cf">for</span> o <span class="kw">in</span> batch <span class="cf">if</span> is_done(o) <span class="kw">and</span> matches_date(o))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Can you help me to write a function retrieving all ids of completed files in retrieved “load_batch_run(DATA_PATH, n=5)”? or even best, retrieve all completed on a particular day “2026-05-07” for instance?</p>
+<section id="reply" class="level5">
+<h5 class="anchored" data-anchor-id="reply">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_completed_ids(batch, date<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Get IDs of completed reports from batch, optionally filtered by date"</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    is_done <span class="op">=</span> <span class="kw">lambda</span> o: <span class="bu">bool</span>(o.get(<span class="st">'mappings'</span>))</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    matches_date <span class="op">=</span> <span class="kw">lambda</span> o: <span class="bu">str</span>(o.get(<span class="st">'timestamp'</span>,<span class="st">''</span>))[:<span class="dv">10</span>]<span class="op">==</span>date <span class="cf">if</span> date <span class="cf">else</span> <span class="va">True</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L(o[<span class="st">'id'</span>] <span class="cf">for</span> o <span class="kw">in</span> batch <span class="cf">if</span> is_done(o) <span class="kw">and</span> matches_date(o))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="token-usage-details">
+<summary>
+$0.0173
+</summary>
+<p><code>total=16,998 | in=15,783 | out=1,215 | cached=0.0% | reasoning=1,074 | searches=0 | $0.0173</code></p>
+</details>
+<div id="1360aff2" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>load_batch_run(DATA_PATH, n<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[('2026-05-07_11-02',
+  {'completed': ['2b297bc904ed1e542fbe67f62a8ea7cf',
+    '227dbf5b243f3973312b7de3be53105d',
+    '7a6f58a2fa72c3290ceae54f0924ea18',
+    'f9ff95796dd18443fcc94fd6b795acf6',
+    '8faad6edb0414cfc8f35415a93726e36',
+    '3d2c35aec5bde93fc1db65884af3daa8',
+    '9591f983c436297929b9e240a3c28df6',
+    '7c89660d359efcf0f8bba26f79ae8071',
+    '4f578e46c1e5d12f86172bba1b96eb64'],
+   'awaiting_curation': [],
+   'failed': [{'id': '1700c8dbadc3d87d6911a8ccc6d18b63',
+     'step': 'url_lookup',
+     'error': 'Report URL not found'}],
+   'skipped': []}),
+ ('2026-05-07_13-03',
+  {'completed': ['99b614cfeb34acd1eae8964ae3c93eb0',
+    'd68a6f7f510ab6104bb2fcde51de1dc2',
+    '68fb4700d5cc22b655d202ba310dac60',
+    '520b24ab88bebd67a534796fd3b6ceca',
+    '5641b454ff68b94119938cd4e3014024',
+    '99088dbe6e81a38af6dab8499fa57463',
+    '5eeab35646099364f9f676bd79150cd5',
+    'a1df1fcfe0e056a896dd0671d7a675d2',
+    'ca72ad8607870852b14c9cc76961a4d4',
+    '05e79e26c55262a761b22c0689ea42cd'],
+   'awaiting_curation': [],
+   'failed': [],
+   'skipped': []}),
+ ('2026-05-07_13-35',
+  {'completed': ['162cb7492199e3be5ae17afa9c58d2be',
+    'c55e1e07ac5df5c8060a084cd811de6e',
+    '382763d830da81737caaa9aed9a17b1a',
+    '8044d6df2b70eb49de18978a8ed30045',
+    'db2a446ee2bf1566c1264769e4aa9dff',
+    'f254cc8d8ed169ab7b7fd11fad6d936e',
+    'be58de37a0f5d78299f542ecaadd08a8',
+    'e4cc1f9d938aa24966e7f1e8de790a05',
+    'e208c67542e6ff9e02f49599bb0b127b',
+    '149308aa166dd79bfa3ef04b6c7b1f74'],
+   'awaiting_curation': [],
+   'failed': [],
+   'skipped': []}),
+ ('2026-05-07_14-11',
+  {'completed': ['af04aae904bafb85949fc3c9d84c4f90',
+    '7ac1b169fd2c594e5f3411f1fca1fdb1',
+    '231001cdfad75231a6ee6a68dadbe2ac',
+    'b00abee5849be373ec567ef5e09032fb',
+    '58197a22fa56c40128dbda1ffca25c61',
+    '2ffecb818f3b24bda69c24da68524bbf',
+    '86784f69c04474def48029644d5039e1',
+    'a4e7b40c5818539493cbf705ebc082ed',
+    '8579dbefab619193e28e4975d7c8a884',
+    '855ca10090c95f1ba17555c7ca2ace65'],
+   'awaiting_curation': [],
+   'failed': [],
+   'skipped': []}),
+ ('2026-05-07_16-09',
+  {'completed': ['48fb10f3895036743cb8811daac46bcd',
+    '0e812bc6946e1dada75db935ff4f57b7',
+    '1d57797a87cfcc419146ad546945fa92',
+    'd65ed11dd200fca6216af40f18d8c190',
+    'c352e1bdfac83b00b53d7fe420b2135c',
+    '645fd84a07744de4acc076016768d654',
+    '7eb413021009f18b1d7f62c896cdf841',
+    'e9e1c75dfab81073d2d7f0a04190d344',
+    '34b11afa846de3bd7df009fa30a4d847',
+    '00adef76065e408395a65c9a162037e1',
+    'fc71c41bead65af73ba2f86db3a808e8',
+    '2af8683730af0c8fe704a48b3040527d',
+    '9558482be1b049827f630c1760025c0f',
+    '00a7bb8b91704acad9a7127016a14404',
+    '84be65a7b7c671a3ff0ada8678ed69c7',
+    '1896e29ade1e9a98b43316a446acb295',
+    '155ced3cb214d66c6c1803ccc213c5bc',
+    '8b846b0820a1122f7984b8bfecdb233d',
+    '68a24be2dce04ce1ff31f03e1f7a3eb9',
+    '1a57974ab89d7280988aa6b706147ce1',
+    'e5287e244baa3e1fa7f2a6e72f9d1fc4',
+    '002673527ea7ecd54b8f1b99c42a66a8',
+    'd6cc6a5aadb321aff0ff993a15b0f122',
+    'd9a4f862e120eea65466ce0612254b12',
+    'a0ac79f7126465063a6678a434d45903',
+    'b1089282146717912f61e3f7a9c05e19',
+    '03a49c3a600b3f4af16b9067643ebd30',
+    'e5a55f0235e0a312dcf2f09ba3c385a1',
+    '16b8975171a68a257025887a81940b6a',
+    '091f52fee51e6b07bf11fa49fcfffa15',
+    'a25b7c619be8945fcbf1da8911c298c6',
+    '8f27e97343fa61f470180e15fc12aa11',
+    '8e6d1ed85f67b6ef6f27d7826cd28eba',
+    '9fec9ba7a298c9dd11ae2204403409d2',
+    '6b30198a6f8b83c8cbf36ef7d9e8cb29',
+    'c660e774d14854e20dc74457712b50ec',
+    '5416c48dc6d986f08d438cb15d697d7a',
+    '18d02982f0a3b346ddd612bdc8993693',
+    '8cf2c9b020b1d01d27cfd2bd8c86a29a'],
+   'awaiting_curation': [],
+   'failed': [{'id': '50ae07f4997dfefcf7cb5f27b9a681b5',
+     'step': 'url_lookup',
+     'error': 'Report URL not found'}],
+   'skipped': []})]</code></pre>
+</div>
+</div>
+<p>Then?</p>
+</section>
+<section id="reply-1" class="level5">
+<h5 class="anchored" data-anchor-id="reply-1">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<details class="tool-usage-details">
+<summary>
+<code>read_url(url='first(batch)', as_md=True)→'—————————————-…'</code>
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"call_f9ae048a288d48f5ba04ce48"</span><span class="fu">,</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"call"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"function"</span><span class="fu">:</span> <span class="st">"read_url"</span><span class="fu">,</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"arguments"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"url"</span><span class="fu">:</span> <span class="st">"first(batch)"</span><span class="fu">,</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"as_md"</span><span class="fu">:</span> <span class="st">"True"</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"result"</span><span class="fu">:</span> <span class="st">"&lt;TRUNCATED&gt;</span><span class="ch">\u2026</span><span class="st">-----------------------------------------------------------------</span><span class="ch">\n</span><span class="st">MissingSchema                             Traceback (most recent call last)</span><span class="ch">\n</span><span class="st">Cell In[119], line 1</span><span class="ch">\n</span><span class="st">----&gt; 1 await call_tool(read_url, {'url': 'first(batch)', 'as_md': True})</span><span class="ch">\n\n</span><span class="st">File /usr/local/lib/python3.12/site-packages/ipykernel_helper/core.py:362, in call_tool(func, kw)</span><span class="ch">\n</span><span class="st">    360 async def call_tool(func, kw):</span><span class="ch">\n</span><span class="st">    361     </span><span class="ch">\"</span><span class="st">Call `func(**kw)` with `coerce_inputs`</span><span class="ch">\"\n</span><span class="st">--&gt; 362     return await maybe_await(func(**coerce_inputs(func, kw)))</span><span class="ch">\n\n</span><span class="st">File /usr/local/lib/python3.12/site-packages/ipykernel_helper/core.py:315, in read_url(url, as_md, extract_section, selector, ai_img)</span><span class="ch">\n</span><span class="st">    313     if gh['typ']=='blob': url = gh_blob_to_raw(url)</span><span class="ch">\n</span><span class="st">    314     elif gh['typ'] in (None, 'tree'): return read_gh_repo(gh['owner'], gh['repo'], gh['ref'], gh['path'])</span><span class="ch">\n</span><span class="st">--&gt; 315 o = scrape_url(url)</span><span class="ch">\n</span><span class="st">    316 ctype = (o.headers.get('content-type') or 'text/plain').split(';')[0]</span><span class="ch">\n</span><span class="st">    317 res = o.text</span><span class="ch">\n\n</span><span class="st">File /usr/local/lib/python3.12/site-packages/ipykernel_helper/core.py:235, in scrape_url(url)</span><span class="ch">\n</span><span class="st">    234 def scrape_url(url): </span><span class="ch">\n</span><span class="st">--&gt; 235     o = create_scraper().get(url)</span><span class="ch">\n</span><span class="st">    236     if not o.encoding or o.encoding == 'ISO-8859-1': o.encoding = 'utf-8'</span><span class="ch">\n</span><span class="st">    237     return o</span><span class="ch">\n\n</span><span class="st">File /usr/local/lib/python3.12/site-packages/requests/sessions.py:605, in Session.get(self, url, **kwargs)</span><span class="ch">\n</span><span class="st">    597 r</span><span class="ch">\"\"\"</span><span class="st">Sends a GET request. Returns :class:`Response` object.</span><span class="ch">\n</span><span class="st">    598 </span><span class="ch">\n</span><span class="st">    599 :param url: URL for the new :class:`Request` object.</span><span class="ch">\n</span><span class="st">    600 :param </span><span class="ch">\\</span><span class="st">*</span><span class="ch">\\</span><span class="st">*kwargs: Optional arguments that ``request`` takes.</span><span class="ch">\n</span><span class="st">    601 :rtype: requests.Response</span><span class="ch">\n</span><span class="st">    602 </span><span class="ch">\"\"\"\n</span><span class="st">    604 kwargs.setdefault(</span><span class="ch">\"</span><span class="st">allow_redirects</span><span class="ch">\"</span><span class="st">, True)</span><span class="ch">\n</span><span class="st">--&gt; 605 return self.request(</span><span class="ch">\"</span><span class="st">GET</span><span class="ch">\"</span><span class="st">, url, **kwargs)</span><span class="ch">\n\n</span><span class="st">File /usr/local/lib/python3.12/site-packages/cloudscraper/__init__.py:259, in CloudScraper.request(self, method, url, *args, **kwargs)</span><span class="ch">\n</span><span class="st">    246     (method, url, args, kwargs) = self.requestPreHook(</span><span class="ch">\n</span><span class="st">    247         self,</span><span class="ch">\n</span><span class="st">    248         method,</span><span class="ch">\n</span><span class="st">   (...)    251         **kwargs</span><span class="ch">\n</span><span class="st">    252     )</span><span class="ch">\n</span><span class="st">    254 # ------------------------------------------------------------------------------- #</span><span class="ch">\n</span><span class="st">    255 # Make the request via requests.</span><span class="ch">\n</span><span class="st">    256 # ------------------------------------------------------------------------------- #</span><span class="ch">\n</span><span class="st">    258 response = self.decodeBrotli(</span><span class="ch">\n</span><span class="st">--&gt; 259     self.perform_request(method, url, *args, **kwargs)</span><span class="ch">\n</span><span class="st">    260 )</span><span class="ch">\n</span><span class="st">    262 # ------------------------------------------------------------------------------- #</span><span class="ch">\n</span><span class="st">    263 # Debug the request via the Response object.</span><span class="ch">\n</span><span class="st">    264 # ------------------------------------------------------------------------------- #</span><span class="ch">\n</span><span class="st">    266 if self.debug:</span><span class="ch">\n\n</span><span class="st">File /usr/local/lib/python3.12/site-packages/cloudscraper/__init__.py:192, in CloudScraper.perform_request(self, method, url, *args, **kwargs)</span><span class="ch">\n</span><span class="st">    191 def perform_request(self, method, url, *args, **kwargs):</span><span class="ch">\n</span><span class="st">--&gt; 192     return super(CloudScraper, self).request(method, url, *args, **kwargs)</span><span class="ch">\n\n</span><span class="st">File /usr/local/lib/python3.12/site-packages/requests/sessions.py:578, in Session.request(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span><span class="ch">\n</span><span class="st">    565 # Create the Request.</span><span class="ch">\n</span><span class="st">    566 req = Request(</span><span class="ch">\n</span><span class="st">    567     method=method.upper(),</span><span class="ch">\n</span><span class="st">    568     url=url,</span><span class="ch">\n</span><span class="st">   (...)    576     hooks=hooks,</span><span class="ch">\n</span><span class="st">    577 )</span><span class="ch">\n</span><span class="st">--&gt; 578 prep = self.prepare_request(req)</span><span class="ch">\n</span><span class="st">    580 proxies = proxies or {}</span><span class="ch">\n</span><span class="st">    582 settings = self.merge_environment_settings(</span><span class="ch">\n</span><span class="st">    583     prep.url, proxies, stream, verify, cert</span><span class="ch">\n</span><span class="st">    584 )</span><span class="ch">\n\n</span><span class="st">File /usr/local/lib/python3.12/site-packages/requests/sessions.py:487, in Session.prepare_request(self, request)</span><span class="ch">\n</span><span class="st">    484     auth = get_netrc_auth(request.url)</span><span class="ch">\n</span><span class="st">    486 p = PreparedRequest()</span><span class="ch">\n</span><span class="st">--&gt; 487 p.prepare(</span><span class="ch">\n</span><span class="st">    488     method=request.method.upper(),</span><span class="ch">\n</span><span class="st">    489     url=request.url,</span><span class="ch">\n</span><span class="st">    490     files=request.files,</span><span class="ch">\n</span><span class="st">    491     data=request.data,</span><span class="ch">\n</span><span class="st">    492     json=request.json,</span><span class="ch">\n</span><span class="st">    493     headers=merge_setting(</span><span class="ch">\n</span><span class="st">    494         request.headers, self.headers, dict_class=CaseInsensitiveDict</span><span class="ch">\n</span><span class="st">    495     ),</span><span class="ch">\n</span><span class="st">    496     params=merge_setting(request.params, self.params),</span><span class="ch">\n</span><span class="st">    497     auth=merge_setting(auth, self.auth),</span><span class="ch">\n</span><span class="st">    498     cookies=merged_cookies,</span><span class="ch">\n</span><span class="st">    499     hooks=merge_hooks(request.hooks, self.hooks),</span><span class="ch">\n</span><span class="st">    500 )</span><span class="ch">\n</span><span class="st">    501 return p</span><span class="ch">\n\n</span><span class="st">File /usr/local/lib/python3.12/site-packages/requests/models.py:369, in PreparedRequest.prepare(self, method, url, headers, files, data, params, auth, cookies, hooks, json)</span><span class="ch">\n</span><span class="st">    366 </span><span class="ch">\"\"\"</span><span class="st">Prepares the entire request with the given parameters.</span><span class="ch">\"\"\"\n</span><span class="st">    368 self.prepare_method(method)</span><span class="ch">\n</span><span class="st">--&gt; 369 self.prepare_url(url, params)</span><span class="ch">\n</span><span class="st">    370 self.prepare_headers(headers)</span><span class="ch">\n</span><span class="st">    371 self.prepare_cookies(cookies)</span><span class="ch">\n\n</span><span class="st">File /usr/local/lib/python3.12/site-packages/requests/models.py:440, in PreparedRequest.prepare_url(self, url, params)</span><span class="ch">\n</span><span class="st">    437     raise InvalidURL(*e.args)</span><span class="ch">\n</span><span class="st">    439 if not scheme:</span><span class="ch">\n</span><span class="st">--&gt; 440     raise MissingSchema(</span><span class="ch">\n</span><span class="st">    441         f</span><span class="ch">\"</span><span class="st">Invalid URL {url!r}: No scheme supplied. </span><span class="ch">\"\n</span><span class="st">    442         f</span><span class="ch">\"</span><span class="st">Perhaps you meant https://{url}?</span><span class="ch">\"\n</span><span class="st">    443     )</span><span class="ch">\n</span><span class="st">    445 if not host:</span><span class="ch">\n</span><span class="st">    446     raise InvalidURL(f</span><span class="ch">\"</span><span class="st">Invalid URL {url!r}: No host supplied</span><span class="ch">\"</span><span class="st">)</span><span class="ch">\n\n</span><span class="st">Missi</span><span class="ch">\u2026</span><span class="st">&lt;/TRUNCATED&gt;"</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<p>Let’s look at how the batch was loaded to find where the timestamp lives:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>batch.source <span class="cf">if</span> <span class="bu">hasattr</span>(batch, <span class="st">'source'</span>) <span class="cf">else</span> batch</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="token-usage-details">
+<summary>
+$0.0162
+</summary>
+<p><code>total=40,757 | in=38,759 | out=1,998 | cached=94.0% | reasoning=1,779 | searches=0 | $0.0162</code></p>
+</details>
+<div id="68501c1f" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>batch.source <span class="cf">if</span> <span class="bu">hasattr</span>(batch, <span class="st">'source'</span>) <span class="cf">else</span> batch</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[('2026-05-07_11-02',
+  {'completed': ['2b297bc904ed1e542fbe67f62a8ea7cf',
+    '227dbf5b243f3973312b7de3be53105d',
+    '7a6f58a2fa72c3290ceae54f0924ea18',
+    'f9ff95796dd18443fcc94fd6b795acf6',
+    '8faad6edb0414cfc8f35415a93726e36',
+    '3d2c35aec5bde93fc1db65884af3daa8',
+    '9591f983c436297929b9e240a3c28df6',
+    '7c89660d359efcf0f8bba26f79ae8071',
+    '4f578e46c1e5d12f86172bba1b96eb64'],
+   'awaiting_curation': [],
+   'failed': [{'id': '1700c8dbadc3d87d6911a8ccc6d18b63',
+     'step': 'url_lookup',
+     'error': 'Report URL not found'}],
+   'skipped': []}),
+ ('2026-05-07_13-03',
+  {'completed': ['99b614cfeb34acd1eae8964ae3c93eb0',
+    'd68a6f7f510ab6104bb2fcde51de1dc2',
+    '68fb4700d5cc22b655d202ba310dac60',
+    '520b24ab88bebd67a534796fd3b6ceca',
+    '5641b454ff68b94119938cd4e3014024',
+    '99088dbe6e81a38af6dab8499fa57463',
+    '5eeab35646099364f9f676bd79150cd5',
+    'a1df1fcfe0e056a896dd0671d7a675d2',
+    'ca72ad8607870852b14c9cc76961a4d4',
+    '05e79e26c55262a761b22c0689ea42cd'],
+   'awaiting_curation': [],
+   'failed': [],
+   'skipped': []}),
+ ('2026-05-07_13-35',
+  {'completed': ['162cb7492199e3be5ae17afa9c58d2be',
+    'c55e1e07ac5df5c8060a084cd811de6e',
+    '382763d830da81737caaa9aed9a17b1a',
+    '8044d6df2b70eb49de18978a8ed30045',
+    'db2a446ee2bf1566c1264769e4aa9dff',
+    'f254cc8d8ed169ab7b7fd11fad6d936e',
+    'be58de37a0f5d78299f542ecaadd08a8',
+    'e4cc1f9d938aa24966e7f1e8de790a05',
+    'e208c67542e6ff9e02f49599bb0b127b',
+    '149308aa166dd79bfa3ef04b6c7b1f74'],
+   'awaiting_curation': [],
+   'failed': [],
+   'skipped': []}),
+ ('2026-05-07_14-11',
+  {'completed': ['af04aae904bafb85949fc3c9d84c4f90',
+    '7ac1b169fd2c594e5f3411f1fca1fdb1',
+    '231001cdfad75231a6ee6a68dadbe2ac',
+    'b00abee5849be373ec567ef5e09032fb',
+    '58197a22fa56c40128dbda1ffca25c61',
+    '2ffecb818f3b24bda69c24da68524bbf',
+    '86784f69c04474def48029644d5039e1',
+    'a4e7b40c5818539493cbf705ebc082ed',
+    '8579dbefab619193e28e4975d7c8a884',
+    '855ca10090c95f1ba17555c7ca2ace65'],
+   'awaiting_curation': [],
+   'failed': [],
+   'skipped': []}),
+ ('2026-05-07_16-09',
+  {'completed': ['48fb10f3895036743cb8811daac46bcd',
+    '0e812bc6946e1dada75db935ff4f57b7',
+    '1d57797a87cfcc419146ad546945fa92',
+    'd65ed11dd200fca6216af40f18d8c190',
+    'c352e1bdfac83b00b53d7fe420b2135c',
+    '645fd84a07744de4acc076016768d654',
+    '7eb413021009f18b1d7f62c896cdf841',
+    'e9e1c75dfab81073d2d7f0a04190d344',
+    '34b11afa846de3bd7df009fa30a4d847',
+    '00adef76065e408395a65c9a162037e1',
+    'fc71c41bead65af73ba2f86db3a808e8',
+    '2af8683730af0c8fe704a48b3040527d',
+    '9558482be1b049827f630c1760025c0f',
+    '00a7bb8b91704acad9a7127016a14404',
+    '84be65a7b7c671a3ff0ada8678ed69c7',
+    '1896e29ade1e9a98b43316a446acb295',
+    '155ced3cb214d66c6c1803ccc213c5bc',
+    '8b846b0820a1122f7984b8bfecdb233d',
+    '68a24be2dce04ce1ff31f03e1f7a3eb9',
+    '1a57974ab89d7280988aa6b706147ce1',
+    'e5287e244baa3e1fa7f2a6e72f9d1fc4',
+    '002673527ea7ecd54b8f1b99c42a66a8',
+    'd6cc6a5aadb321aff0ff993a15b0f122',
+    'd9a4f862e120eea65466ce0612254b12',
+    'a0ac79f7126465063a6678a434d45903',
+    'b1089282146717912f61e3f7a9c05e19',
+    '03a49c3a600b3f4af16b9067643ebd30',
+    'e5a55f0235e0a312dcf2f09ba3c385a1',
+    '16b8975171a68a257025887a81940b6a',
+    '091f52fee51e6b07bf11fa49fcfffa15',
+    'a25b7c619be8945fcbf1da8911c298c6',
+    '8f27e97343fa61f470180e15fc12aa11',
+    '8e6d1ed85f67b6ef6f27d7826cd28eba',
+    '9fec9ba7a298c9dd11ae2204403409d2',
+    '6b30198a6f8b83c8cbf36ef7d9e8cb29',
+    'c660e774d14854e20dc74457712b50ec',
+    '5416c48dc6d986f08d438cb15d697d7a',
+    '18d02982f0a3b346ddd612bdc8993693',
+    '8cf2c9b020b1d01d27cfd2bd8c86a29a'],
+   'awaiting_curation': [],
+   'failed': [{'id': '50ae07f4997dfefcf7cb5f27b9a681b5',
+     'step': 'url_lookup',
+     'error': 'Report URL not found'}],
+   'skipped': []})]</code></pre>
+</div>
+</div>
+<p>Ok, then?</p>
+</section>
+<section id="reply-2" class="level5">
+<h5 class="anchored" data-anchor-id="reply-2">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_completed_ids(batch, date<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Get IDs of completed reports from batch, optionally filtered by date"</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L(o[<span class="dv">1</span>].get(<span class="st">'completed'</span>, []) <span class="cf">for</span> o <span class="kw">in</span> batch <span class="cf">if</span> <span class="kw">not</span> date <span class="kw">or</span> o[<span class="dv">0</span>][:<span class="dv">10</span>]<span class="op">==</span>date).concat()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="token-usage-details">
+<summary>
+$0.0174
+</summary>
+<p><code>total=25,401 | in=22,971 | out=2,430 | cached=78.2% | reasoning=2,241 | searches=0 | $0.0174</code></p>
+</details>
+<div id="b6c44e69" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_completed_ids(batch, date<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Get IDs of completed reports from batch, optionally filtered by date"</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> <span class="kw">lambda</span> o: o[<span class="dv">1</span>] <span class="cf">if</span> <span class="bu">isinstance</span>(o, <span class="bu">tuple</span>) <span class="cf">else</span> o</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    filt <span class="op">=</span> <span class="kw">lambda</span> o: <span class="bu">bool</span>(d(o).get(<span class="st">'mappings'</span>)) <span class="kw">and</span> (<span class="bu">str</span>(d(o).get(<span class="st">'timestamp'</span>,<span class="st">''</span>))[:<span class="dv">10</span>]<span class="op">==</span>date <span class="cf">if</span> date <span class="cf">else</span> <span class="va">True</span>)</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L(d(o)[<span class="st">'id'</span>] <span class="cf">for</span> o <span class="kw">in</span> batch <span class="cf">if</span> filt(o))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="b4c30601" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>completed_today <span class="op">=</span> get_completed_ids(batch, <span class="st">'2026-05-07'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="6c138b70" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>completed_today</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[]</code></pre>
+</div>
+</div>
+<p>See error above?</p>
+</section>
+<section id="reply-3" class="level5">
+<h5 class="anchored" data-anchor-id="reply-3">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<p>The <code>load_batch_run</code> function returns tuples instead of dicts, so we need to extract the dict first. Here’s the corrected version:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_completed_ids(batch, date<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Get IDs of completed reports from batch, optionally filtered by date"</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> <span class="kw">lambda</span> o: o[<span class="dv">1</span>] <span class="cf">if</span> <span class="bu">isinstance</span>(o, <span class="bu">tuple</span>) <span class="cf">else</span> o</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    filt <span class="op">=</span> <span class="kw">lambda</span> o: <span class="bu">bool</span>(d(o).get(<span class="st">'mappings'</span>)) <span class="kw">and</span> (<span class="bu">str</span>(d(o).get(<span class="st">'timestamp'</span>,<span class="st">''</span>))[:<span class="dv">10</span>]<span class="op">==</span>date <span class="cf">if</span> date <span class="cf">else</span> <span class="va">True</span>)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L(d(o)[<span class="st">'id'</span>] <span class="cf">for</span> o <span class="kw">in</span> batch <span class="cf">if</span> filt(o))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="token-usage-details">
+<summary>
+$0.0217
+</summary>
+<p><code>total=19,055 | in=17,074 | out=1,981 | cached=0.0% | reasoning=1,779 | searches=0 | $0.0217</code></p>
+</details>
+<div id="1cacfc1e" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_completed_ids(batch, date<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Get IDs of completed reports from batch, optionally filtered by date"</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    is_done <span class="op">=</span> <span class="kw">lambda</span> o: <span class="bu">bool</span>(o.get(<span class="st">'mappings'</span>))</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    matches_date <span class="op">=</span> <span class="kw">lambda</span> o: <span class="bu">str</span>(o.get(<span class="st">'timestamp'</span>,<span class="st">''</span>))[:<span class="dv">10</span>]<span class="op">==</span>date <span class="cf">if</span> date <span class="cf">else</span> <span class="va">True</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L(o[<span class="st">'id'</span>] <span class="cf">for</span> o <span class="kw">in</span> batch <span class="cf">if</span> is_done(o) <span class="kw">and</span> matches_date(o))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="9e262f72" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All completed IDs</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>completed <span class="op">=</span> get_completed_ids(batch)</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Completed on a specific date</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>completed_today <span class="op">=</span> get_completed_ids(batch, <span class="st">'2026-05-08'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[41]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> <span style="font-style:italic;color:rgb(95,135,135)"># All completed IDs</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> completed = get_completed_ids(batch)
+<span class="ansi-green-fg">      3</span> 
+<span class="ansi-green-fg">      4</span> <span style="font-style:italic;color:rgb(95,135,135)"># Completed on a specific date</span>
+<span class="ansi-green-fg">      5</span> completed_today = get_completed_ids(batch, <span class="ansi-yellow-fg">'2026-05-08'</span>)
+
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[40]</span><span class="ansi-green-fg">, line 5</span>, in <span class="ansi-cyan-fg">get_completed_ids</span><span class="ansi-blue-fg">(batch, date)</span>
+<span class="ansi-green-fg">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> get_completed_ids(batch, date=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>):
+<span class="ansi-green-fg">      2</span>     <span class="ansi-yellow-fg">"Get IDs of completed reports from batch, optionally filtered by date"</span>
+<span class="ansi-green-fg">      3</span>     is_done = <span style="font-weight:bold;color:rgb(0,135,0)">lambda</span> o: bool(o.get(<span class="ansi-yellow-fg">'mappings'</span>))
+<span class="ansi-green-fg">      4</span>     matches_date = <span style="font-weight:bold;color:rgb(0,135,0)">lambda</span> o: str(o.get(<span class="ansi-yellow-fg">'timestamp'</span>,<span class="ansi-yellow-fg">''</span>))[:<span class="ansi-green-fg">10</span>]==date <span style="font-weight:bold;color:rgb(0,135,0)">if</span> date <span style="font-weight:bold;color:rgb(0,135,0)">else</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">5</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> L(o[<span class="ansi-yellow-fg">'id'</span>] <span style="font-weight:bold;color:rgb(0,135,0)">for</span> o <span style="font-weight:bold;color:rgb(0,135,0)">in</span> batch <span style="font-weight:bold;color:rgb(0,135,0)">if</span> is_done(o) <span style="font-weight:bold;color:rgb(0,135,0)">and</span> matches_date(o))
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/usr/local/lib/python3.12/site-packages/fastcore/foundation.py:114</span>, in <span class="ansi-cyan-fg">_L_Meta.__call__</span><span class="ansi-blue-fg">(cls, x, *args, **kwargs)</span>
+<span class="ansi-green-fg">    112</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg">__call__</span>(<span style="color:rgb(0,135,0)">cls</span>, x=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>, *args, **kwargs):
+<span class="ansi-green-fg">    113</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> args <span style="font-weight:bold;color:rgb(175,0,255)">and</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> kwargs <span style="font-weight:bold;color:rgb(175,0,255)">and</span> x <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span> <span style="font-weight:bold;color:rgb(175,0,255)">and</span> <span style="color:rgb(0,135,0)">isinstance</span>(x,<span style="color:rgb(0,135,0)">cls</span>): <span style="font-weight:bold;color:rgb(0,135,0)">return</span> x
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">114</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-black-fg ansi-yellow-bg">super</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">)</span><span class="ansi-black-fg ansi-yellow-bg">.</span><span class="ansi-black-fg ansi-yellow-bg">__call__</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">x</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">args</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">kwargs</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/usr/local/lib/python3.12/site-packages/fastcore/foundation.py:122</span>, in <span class="ansi-cyan-fg">L.__init__</span><span class="ansi-blue-fg">(self, items, use_list, match, *rest)</span>
+<span class="ansi-green-fg">    120</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg">__init__</span>(<span style="color:rgb(0,135,0)">self</span>, items=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>, *rest, use_list=<span style="font-weight:bold;color:rgb(0,135,0)">False</span>, match=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>):
+<span class="ansi-green-fg">    121</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> (use_list <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>) <span style="font-weight:bold;color:rgb(175,0,255)">or</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> is_array(items):
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">122</span>         items = <span class="ansi-black-fg ansi-yellow-bg">listify</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">items</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">rest</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">use_list</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">use_list</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">match</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">match</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    123</span>     <span style="color:rgb(0,135,0)">super</span>().<span class="ansi-blue-fg">__init__</span>(items)
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/usr/local/lib/python3.12/site-packages/fastcore/basics.py:81</span>, in <span class="ansi-cyan-fg">listify</span><span class="ansi-blue-fg">(o, use_list, match, *rest)</span>
+<span class="ansi-green-fg">     79</span> <span style="font-weight:bold;color:rgb(0,135,0)">elif</span> <span style="color:rgb(0,135,0)">isinstance</span>(o, <span style="color:rgb(0,135,0)">list</span>): res = o
+<span class="ansi-green-fg">     80</span> <span style="font-weight:bold;color:rgb(0,135,0)">elif</span> <span style="color:rgb(0,135,0)">isinstance</span>(o, <span style="color:rgb(0,135,0)">str</span>) <span style="font-weight:bold;color:rgb(175,0,255)">or</span> <span style="color:rgb(0,135,0)">isinstance</span>(o, <span style="color:rgb(0,135,0)">bytes</span>) <span style="font-weight:bold;color:rgb(175,0,255)">or</span> is_array(o) <span style="font-weight:bold;color:rgb(175,0,255)">or</span> <span style="color:rgb(0,135,0)">isinstance</span>(o, abc.Mapping): res = [o]
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">81</span> <span style="font-weight:bold;color:rgb(0,135,0)">elif</span> is_iter(o): res = <span class="ansi-black-fg ansi-yellow-bg">list</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">o</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">     82</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>: res = [o]
+<span class="ansi-green-fg">     83</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> match <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
+
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[40]</span><span class="ansi-green-fg">, line 5</span>, in <span class="ansi-cyan-fg">get_completed_ids.&lt;locals&gt;.&lt;genexpr&gt;</span><span class="ansi-blue-fg">(.0)</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">5</span>     matches_date = <span style="font-weight:bold;color:rgb(0,135,0)">lambda</span> o: str(o.get(<span class="ansi-yellow-fg">'timestamp'</span>,<span class="ansi-yellow-fg">''</span>))[:<span class="ansi-green-fg">10</span>]==date <span style="font-weight:bold;color:rgb(0,135,0)">if</span> date <span style="font-weight:bold;color:rgb(0,135,0)">else</span> <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
+
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[40]</span><span class="ansi-green-fg">, line 3</span>, in <span class="ansi-cyan-fg">get_completed_ids.&lt;locals&gt;.&lt;lambda&gt;</span><span class="ansi-blue-fg">(o)</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span>     is_done = <span style="font-weight:bold;color:rgb(0,135,0)">lambda</span> o: bool(o.get(<span class="ansi-yellow-fg">'mappings'</span>))
+
+<span class="ansi-red-fg">AttributeError</span>: 'tuple' object has no attribute 'get'</pre>
+</div>
+</div>
+</div>
+<div id="072d1834" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(completed_today)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>94</code></pre>
+</div>
+</div>
+<div id="55eede28" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>completed_today[:<span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>['2b297bc904ed1e542fbe67f62a8ea7cf', '227dbf5b243f3973312b7de3be53105d', '7a6f58a2fa72c3290ceae54f0924ea18', 'f9ff95796dd18443fcc94fd6b795acf6', '8faad6edb0414cfc8f35415a93726e36', '3d2c35aec5bde93fc1db65884af3daa8', '9591f983c436297929b9e240a3c28df6', '7c89660d359efcf0f8bba26f79ae8071', '4f578e46c1e5d12f86172bba1b96eb64', '99b614cfeb34acd1eae8964ae3c93eb0']</code></pre>
+</div>
+</div>
+<div id="394fc8e6" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">#from shutil import copy2</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co">#for eid in ids_rogers:</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co">#    src = base_path / 'results' / f'{eid}.json'</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co">#    dst = base_path / 'results_new' / f'{eid}.json'</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co">#    copy2(src, dst)</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="co">#    print(f"Copied {eid}")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="4e721f80" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls ..<span class="op">/</span>..<span class="op">/</span>data<span class="op">/</span>results_new</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>How can I copy all the files with id in “completed_today” into the “results_new” folder?</p>
+</section>
+<section id="reply-4" class="level5">
+<h5 class="anchored" data-anchor-id="reply-4">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shutil <span class="im">import</span> copy2</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>src, dest <span class="op">=</span> DATA_PATH<span class="op">/</span><span class="st">'results'</span>, DATA_PATH<span class="op">/</span><span class="st">'results_new'</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>dest.mkdir(exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> o <span class="kw">in</span> completed_today:</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> src<span class="op">/</span><span class="ss">f'</span><span class="sc">{</span>o<span class="sc">}</span><span class="ss">.json'</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> f.exists(): copy2(f, dest)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="token-usage-details">
+<summary>
+$0.0241
+</summary>
+<p><code>total=25,248 | in=23,863 | out=1,385 | cached=0.0% | reasoning=1,229 | searches=0 | $0.0241</code></p>
+</details>
+<div id="f1c5d341" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> shutil <span class="im">import</span> copy2</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>src, dest <span class="op">=</span> DATA_PATH<span class="op">/</span><span class="st">'results'</span>, DATA_PATH<span class="op">/</span><span class="st">'results_new'</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>dest.mkdir(exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> o <span class="kw">in</span> completed_today:</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>    f <span class="op">=</span> src<span class="op">/</span><span class="ss">f'</span><span class="sc">{</span>o<span class="sc">}</span><span class="ss">.json'</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> f.exists(): copy2(f, dest)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="debug" class="level2">
+<h2 class="anchored" data-anchor-id="debug">Debug</h2>
+<p>Can you check if all .json file in the <code>results_new</code> folder have an “outs” key as a subkey of “mappings”?</p>
+<section id="reply-5" class="level5">
+<h5 class="anchored" data-anchor-id="reply-5">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> (DATA_PATH <span class="op">/</span> <span class="st">'results_new'</span>).ls().<span class="bu">filter</span>(<span class="st">'.json'</span>)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>L(<span class="st">'outs'</span> <span class="kw">in</span> o.read_json().get(<span class="st">'mappings'</span>, {}) <span class="cf">for</span> o <span class="kw">in</span> f).value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="token-usage-details">
+<summary>
+$0.0191
+</summary>
+<p><code>total=24,431 | in=24,215 | out=216 | cached=0.0% | reasoning=158 | searches=0 | $0.0191</code></p>
+</details>
+<div id="681f9259" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> (DATA_PATH <span class="op">/</span> <span class="st">'results_new'</span>).ls().<span class="bu">filter</span>(<span class="st">'.json'</span>)</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>L(<span class="st">'outs'</span> <span class="kw">in</span> o.read_json().get(<span class="st">'mappings'</span>, {}) <span class="cf">for</span> o <span class="kw">in</span> f).value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[136]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> f = (DATA_PATH / <span class="ansi-yellow-fg">'results_new'</span>).ls().filter(<span class="ansi-yellow-fg">'.json'</span>)
+<span class="ansi-green-fg">      2</span> L(<span class="ansi-yellow-fg">'outs'</span> <span style="font-weight:bold;color:rgb(0,135,0)">in</span> o.read_json().get(<span class="ansi-yellow-fg">'mappings'</span>, {}) <span style="font-weight:bold;color:rgb(0,135,0)">for</span> o <span style="font-weight:bold;color:rgb(0,135,0)">in</span> f).value_counts()
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/usr/local/lib/python3.12/site-packages/fastcore/foundation.py:225</span>, in <span class="ansi-cyan-fg">curryable.&lt;locals&gt;.wrapper</span><span class="ansi-blue-fg">(self, *args, **kwargs)</span>
+<span class="ansi-green-fg">    222</span> <span style="color:rgb(175,0,255)">@wraps</span>(f)
+<span class="ansi-green-fg">    223</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg">wrapper</span>(<span style="color:rgb(0,135,0)">self</span>, *args, **kwargs):
+<span class="ansi-green-fg">    224</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="color:rgb(0,135,0)">isinstance</span>(<span style="color:rgb(0,135,0)">self</span>, L): <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="font-weight:bold;color:rgb(0,135,0)">lambda</span> items: f(L(items), <span style="color:rgb(0,135,0)">self</span>, *args, **kwargs)
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">225</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-black-fg ansi-yellow-bg">f</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">L</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">)</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">args</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">kwargs</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/usr/local/lib/python3.12/site-packages/fastcore/foundation.py:301</span>, in <span class="ansi-cyan-fg">filter</span><span class="ansi-blue-fg">(self, f, negate, **kwargs)</span>
+<span class="ansi-green-fg">    297</span> <span style="color:rgb(175,0,255)">@patch</span>
+<span class="ansi-green-fg">    298</span> <span style="color:rgb(175,0,255)">@curryable</span>
+<span class="ansi-green-fg">    299</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg">filter</span>(<span style="color:rgb(0,135,0)">self</span>:L, f=noop, negate=<span style="font-weight:bold;color:rgb(0,135,0)">False</span>, **kwargs):
+<span class="ansi-green-fg">    300</span>     <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Create new `L` filtered by predicate `f`, passing `args` and `kwargs` to `f`</span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">301</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">self</span>._new(<span class="ansi-black-fg ansi-yellow-bg">filter_ex</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">self</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">f</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">f</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">negate</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg">negate</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">gen</span><span class="ansi-black-fg ansi-yellow-bg">=</span><span class="ansi-black-fg ansi-yellow-bg ansi-bold">False</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg"> </span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">*</span><span class="ansi-black-fg ansi-yellow-bg">kwargs</span><span class="ansi-black-fg ansi-yellow-bg">)</span>)
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/usr/local/lib/python3.12/site-packages/fastcore/basics.py:744</span>, in <span class="ansi-cyan-fg">filter_ex</span><span class="ansi-blue-fg">(iterable, f, negate, gen, **kwargs)</span>
+<span class="ansi-green-fg">    742</span> res = <span style="color:rgb(0,135,0)">filter</span>(f, iterable)
+<span class="ansi-green-fg">    743</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> gen: <span style="font-weight:bold;color:rgb(0,135,0)">return</span> res
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">744</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-black-fg ansi-yellow-bg">list</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">res</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+
+<span class="ansi-red-fg">TypeError</span>: 'str' object is not callable</pre>
+</div>
+</div>
+</div>
+<p>See error above</p>
+</section>
+<section id="reply-6" class="level5">
+<h5 class="anchored" data-anchor-id="reply-6">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> L(o <span class="cf">for</span> o <span class="kw">in</span> (DATA_PATH<span class="op">/</span><span class="st">'results_new'</span>).ls() <span class="cf">if</span> o.suffix<span class="op">==</span><span class="st">'.json'</span>)</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>L(<span class="st">'outs'</span> <span class="kw">in</span> o.read_json().get(<span class="st">'mappings'</span>, {}) <span class="cf">for</span> o <span class="kw">in</span> f).value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="token-usage-details">
+<summary>
+$0.0152
+</summary>
+<p><code>total=27,249 | in=24,846 | out=2,403 | cached=95.6% | reasoning=2,259 | searches=0 | $0.0152</code></p>
+</details>
+<div id="8dcb4f46" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> L(o <span class="cf">for</span> o <span class="kw">in</span> (DATA_PATH<span class="op">/</span><span class="st">'results_new'</span>).ls() <span class="cf">if</span> o.suffix<span class="op">==</span><span class="st">'.json'</span>)</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>L(<span class="st">'outs'</span> <span class="kw">in</span> o.read_json().get(<span class="st">'mappings'</span>, {}) <span class="cf">for</span> o <span class="kw">in</span> f).value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[137]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> f = L(o <span style="font-weight:bold;color:rgb(0,135,0)">for</span> o <span style="font-weight:bold;color:rgb(0,135,0)">in</span> (DATA_PATH/<span class="ansi-yellow-fg">'results_new'</span>).ls() <span style="font-weight:bold;color:rgb(0,135,0)">if</span> o.suffix==<span class="ansi-yellow-fg">'.json'</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> L(<span class="ansi-yellow-fg">'outs'</span> <span style="font-weight:bold;color:rgb(0,135,0)">in</span> o.read_json().get(<span class="ansi-yellow-fg">'mappings'</span>, {}) <span style="font-weight:bold;color:rgb(0,135,0)">for</span> o <span style="font-weight:bold;color:rgb(0,135,0)">in</span> f).value_counts()
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/usr/local/lib/python3.12/site-packages/fastcore/basics.py:573</span>, in <span class="ansi-cyan-fg">GetAttr.__getattr__</span><span class="ansi-blue-fg">(self, k)</span>
+<span class="ansi-green-fg">    571</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">self</span>._component_attr_filter(k):
+<span class="ansi-green-fg">    572</span>     attr = <span style="color:rgb(0,135,0)">getattr</span>(<span style="color:rgb(0,135,0)">self</span>,<span style="color:rgb(0,135,0)">self</span>._default,<span style="font-weight:bold;color:rgb(0,135,0)">None</span>)
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">573</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> attr <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>: <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-black-fg ansi-yellow-bg">getattr</span><span class="ansi-black-fg ansi-yellow-bg">(</span><span class="ansi-black-fg ansi-yellow-bg">attr</span><span class="ansi-black-fg ansi-yellow-bg">,</span><span class="ansi-black-fg ansi-yellow-bg">k</span><span class="ansi-black-fg ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    574</span> <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">AttributeError</span>(k)
+
+<span class="ansi-red-fg">AttributeError</span>: 'list' object has no attribute 'value_counts'</pre>
+</div>
+</div>
+</div>
+<p>See error above!</p>
+</section>
+<section id="reply-7" class="level5">
+<h5 class="anchored" data-anchor-id="reply-7">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>Counter(<span class="st">'outs'</span> <span class="kw">in</span> o.read_json().get(<span class="st">'mappings'</span>, {}) <span class="cf">for</span> o <span class="kw">in</span> f)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="token-usage-details">
+<summary>
+$0.0349
+</summary>
+<p><code>total=28,816 | in=25,276 | out=3,540 | cached=0.0% | reasoning=3,344 | searches=0 | $0.0349</code></p>
+</details>
+<div id="34088280" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>Counter(<span class="st">'outs'</span> <span class="kw">in</span> o.read_json().get(<span class="st">'mappings'</span>, {}) <span class="cf">for</span> o <span class="kw">in</span> f)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>Counter({True: 71, False: 7})</code></pre>
+</div>
+</div>
+<p>Can you show the ones where false?</p>
+</section>
+<section id="reply-8" class="level5">
+<h5 class="anchored">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<details class="tool-usage-details">
+<summary>
+<code>code()→'Tool not defined in tool_schemas: code'</code>
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb71"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"call_2b16de7347b24bfe96e43e40"</span><span class="fu">,</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"call"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"function"</span><span class="fu">:</span> <span class="st">"code"</span><span class="fu">,</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"arguments"</span><span class="fu">:</span> <span class="fu">{}</span></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"result"</span><span class="fu">:</span> <span class="st">"Tool not defined in tool_schemas: code"</span></span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>[o.stem <span class="cf">for</span> o <span class="kw">in</span> f <span class="cf">if</span> <span class="st">'outs'</span> <span class="kw">not</span> <span class="kw">in</span> o.read_json().get(<span class="st">'mappings'</span>, {})]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<details class="token-usage-details">
+<summary>
+$0.0102
+</summary>
+<p><code>total=51,304 | in=51,066 | out=238 | cached=95.1% | reasoning=159 | searches=0 | $0.0102</code></p>
+</details>
+<div id="2cf16c04" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>[o.stem <span class="cf">for</span> o <span class="kw">in</span> f <span class="cf">if</span> <span class="st">'outs'</span> <span class="kw">not</span> <span class="kw">in</span> o.read_json().get(<span class="st">'mappings'</span>, {})]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>['99b614cfeb34acd1eae8964ae3c93eb0',
+ 'a0ac79f7126465063a6678a434d45903',
+ 'a1df1fcfe0e056a896dd0671d7a675d2',
+ '2b297bc904ed1e542fbe67f62a8ea7cf',
+ 'b00abee5849be373ec567ef5e09032fb',
+ '091f52fee51e6b07bf11fa49fcfffa15',
+ '5641b454ff68b94119938cd4e3014024']</code></pre>
+</div>
+</div>
+<div id="3ffbd2f9" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> iomeval.readers <span class="im">import</span> load_evals, find_eval, Evaluation, eval_url</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="09e86d38" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>ev <span class="op">=</span> find_eval(evals, <span class="st">'1700c8dbadc3d87d6911a8ccc6d18b63'</span>, by<span class="op">=</span><span class="st">'id'</span>)</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>ev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="review-of-the-use-and-follow-up-of-evaluation-management-response-in-iom" class="level3 cell-output cell-output-display cell-output-markdown">
+<h3 class="anchored" data-anchor-id="review-of-the-use-and-follow-up-of-evaluation-management-response-in-iom">REVIEW OF THE USE AND FOLLOW-UP OF (EVALUATION) MANAGEMENT RESPONSE IN IOM</h3>
+<p><strong>Year:</strong> 2025 | <strong>Organization:</strong> IOM | <strong>Countries:</strong> Worldwide</p>
+<p><strong>Documents:</strong> 3 available<br>
+<strong>ID:</strong> <code>1700c8dbadc3d87d6911a8ccc6d18b63</code></p>
+</section>
+</div>
+<div id="d036e3c6" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ev.docs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[{'subtype': 'Special related reports/documents', 'url': 'https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/MR%20Review%20Infographics.pdf', 'desc': 'Review Report'}, {'subtype': 'Management response', 'url': 'https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Management%20Response_Review%20of%20MR%20Use%20and%20Follow-up.docx', 'desc': 'Management Response'}, {'subtype': 'Special related reports/documents', 'url': 'https://evaluation.iom.int/sites/g/files/tmzbdl151/files/docs/resources/Review%20of%20MR%20Use%20and%20Follow-up_final%20report.pdf', 'desc': 'Inforgraphics'}]</code></pre>
+</div>
+</div>
+<div id="48c0631d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>eval_url??</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> eval_url(ev: Evaluation):</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Get evaluation report URL, preferring UNEG source"</span></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> first(ev.docs, f<span class="op">=</span><span class="kw">lambda</span> d: d[<span class="st">'subtype'</span>].lower() <span class="op">==</span> <span class="st">'evaluation report (uneg)'</span>)</span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> d: d <span class="op">=</span> first(ev.docs, f<span class="op">=</span><span class="kw">lambda</span> d: <span class="st">'evaluation report'</span> <span class="kw">in</span> d[<span class="st">'subtype'</span>].lower())</span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> d: logger.warning(<span class="ss">f"</span><span class="sc">{</span>ev<span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss">: No evaluation report found"</span>)<span class="op">;</span> <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> d[<span class="st">'url'</span>].lower().endswith(<span class="st">'.pdf'</span>): logger.warning(<span class="ss">f"</span><span class="sc">{</span>ev<span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss">: Report is not a PDF: </span><span class="sc">{</span>d[<span class="st">'url'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> d[<span class="st">'url'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>File:</strong> <code>~/iomeval/iomeval/readers.py</code></p>
+</div>
+</div>
+<div id="7c6c3b09" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>eval_url(ev)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>iomeval.readers - WARNING - 1700c8dbadc3d87d6911a8ccc6d18b63: No evaluation report found</code></pre>
+</div>
+</div>
+<div id="ec1df156" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>Path(<span class="st">'/app/data/iomeval/data/results/4f578e46c1e5d12f86172bba1b96eb64.json'</span>).stem</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>'4f578e46c1e5d12f86172bba1b96eb64'</code></pre>
+</div>
+</div>
+<div id="c4ac6bca" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>ls ..<span class="op">/</span>..<span class="op">/</span>..<span class="op">/</span>tagapp<span class="op">/</span>backups<span class="op">/</span><span class="dv">20260311_115159</span><span class="op">/</span>data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>06fd0949dc874f388686461c19d2669c.json  760568a15e144bcfb88dbbd50247dc51.json
+0d4309b702e00faac631be8d609934ce.json  891448b7a4bf12763ea0579dd67e289d.json
+1d7e6d2d445145d1d350b48b72b36681.json  8dd2261100ff5d714e73b411eed043d5.json
+22cac1c000836253adc445993e101560.json  9992310969aa2f428bc8aba29f865cf3.json
+316c47c9dc19c820f3217434d4b93b28.json  a493c447cff3e03ca94024335d5c5c7a.json
+4341695461234eee3deb51ac68871109.json  dba9eb1220368d28682d8531108e767d.json
+49d2fba781b6a7c0d94577479636ee6f.json  e21305a89aeb76fafa8f4270392d463a.json
+4c04ec0d3e651f7616190c6fc2dcfc18.json  e8d9427f4a9094f68e17307faa567d8b.json
+56e6f2bc9f55a0c6d07341ddde1283db.json  f409b3f9a0671ec69a8591c425a45c1d.json
+6c3c2cf3fa479112967612b0baddab72.json  legacy
+75bad4665ed458cce78740e3d86f72d0.json  tagapp.db</code></pre>
+</div>
+</div>
+<div id="74f9d323" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co">#LATEST_TAG_PATH = Path('../../../tagapp/backups/20260311_115159/data')</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="cf618c26" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>LATEST_TAG_PATH <span class="op">=</span> Path.home() <span class="op">/</span> <span class="st">'tagapp/backups/20260311_115159/data'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Above we retrieve the id of the reports that are currently “tagged”. I have new versions of the prompts, and would like: - to re-run on this subset using the new version of the prompts - to create a new dialog where we want to monitor what changed by report themes, … maybe collecting statistics as percentage of increase/decrease score per theme id, theme, reports, …</p>
+<p>Can we discuss the approach, steps we have to go through?</p>
+</section>
+<section id="reply-9" class="level5">
+<h5 class="anchored" data-anchor-id="reply-9">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<p>🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠</p>
+<p>Great idea! Here’s how I’d break this down:</p>
+<p><strong>Phase 1: Re-run mappings with new prompts</strong></p>
+<ol type="1">
+<li><strong>Backup current results</strong> — copy the 20 result JSONs from <code>data/results/</code> somewhere safe (you already have the tagapp backup, but having the pipeline-side results too is useful)</li>
+<li><strong>Re-run mappings only</strong> — use <a href="https://franckalbinet.github.io/iomeval/pipeline.html#run_pipeline"><code>run_pipeline</code></a> or <a href="https://franckalbinet.github.io/iomeval/pipeline.html#batch_run"><code>batch_run</code></a> with <code>force={'enbs','ccps','gcms','outs'}</code> on just those 20 IDs, so it skips download/OCR/curation but re-does all LLM mapping steps</li>
+<li><strong>Save new results</strong> — they’ll overwrite in <code>data/results/</code> as usual</li>
+</ol>
+<p><strong>Phase 2: Compare old vs new (new dialog)</strong></p>
+<ol type="1">
+<li><strong>Load both result sets</strong> — old from the tagapp backup, new from <code>data/results/</code></li>
+<li><strong>Per-mapping-type comparison</strong> — for each of <code>enbs</code>, <code>ccps</code>, <code>gcms</code>, <code>outs</code>:
+<ul>
+<li>Match by <code>theme_id</code> within each report</li>
+<li>Compute score deltas (<code>new - old</code>)</li>
+</ul></li>
+<li><strong>Aggregate statistics</strong> — e.g.&nbsp;mean/median score change per theme_id, per report, per mapping type; % of scores that increased/decreased/stayed same</li>
+<li><strong>Visualize</strong> — heatmaps or tables showing which themes/reports shifted most</li>
+</ol>
+<p>A few questions before we start:</p>
+<ul>
+<li>For Phase 1, do you want to re-run <strong>all four</strong> mapping types, or only specific ones (e.g.&nbsp;just GCMs)?</li>
+<li>For comparison, should we use the tagapp backup (<code>20260311_115159</code>) as the “old” baseline, or do you also have the corresponding files in <code>data/results/</code> from before the prompt change?</li>
+</ul>
+<div id="00e52504" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_deployed_ids(backup_path):</span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"List of report IDs currently deployed (from tagapp backup)"</span></span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Path(backup_path).ls(file_exts<span class="op">=</span><span class="st">'.json'</span>).<span class="bu">map</span>(<span class="kw">lambda</span> p: p.stem)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="391b09a0" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>current_res <span class="op">=</span> get_deployed_ids(LATEST_TAG_PATH)</span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>current_res</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>['8dd2261100ff5d714e73b411eed043d5', '1d7e6d2d445145d1d350b48b72b36681', '760568a15e144bcfb88dbbd50247dc51', '22cac1c000836253adc445993e101560', '4341695461234eee3deb51ac68871109', '9992310969aa2f428bc8aba29f865cf3', '316c47c9dc19c820f3217434d4b93b28', '0d4309b702e00faac631be8d609934ce', 'e8d9427f4a9094f68e17307faa567d8b', '75bad4665ed458cce78740e3d86f72d0', 'f409b3f9a0671ec69a8591c425a45c1d', 'dba9eb1220368d28682d8531108e767d', '56e6f2bc9f55a0c6d07341ddde1283db', '49d2fba781b6a7c0d94577479636ee6f', 'a493c447cff3e03ca94024335d5c5c7a', '06fd0949dc874f388686461c19d2669c', '6c3c2cf3fa479112967612b0baddab72', '891448b7a4bf12763ea0579dd67e289d', '4c04ec0d3e651f7616190c6fc2dcfc18', 'e21305a89aeb76fafa8f4270392d463a']</code></pre>
+</div>
+</div>
+<div id="e4dc7f12" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_result(eval_id, base_path):</span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Load a result JSON by eval_id from base_path"</span></span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (Path(base_path)<span class="op">/</span><span class="ss">f'</span><span class="sc">{</span>eval_id<span class="sc">}</span><span class="ss">.json'</span>).read_json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="a5458c5b" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>load_result(<span class="st">'8dd2261100ff5d714e73b411eed043d5'</span>, DATA_PATH <span class="op">/</span> <span class="st">'results'</span>).keys()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>dict_keys(['id', 'report_url', 'meta', 'docs', 'curation_status', 'selected_headings', 'mappings', 'timestamp'])</code></pre>
+</div>
+</div>
+<div id="627a3f5d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_remapped(eval_id, base_path, backup_path):</span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Check if report mappings differ between current results and deployed backup"</span></span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>    current <span class="op">=</span> load_result(eval_id, base_path)</span>
+<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a>    deployed <span class="op">=</span> load_result(eval_id, backup_path)</span>
+<span id="cb95-5"><a href="#cb95-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> current.get(<span class="st">'mappings'</span>) <span class="op">!=</span> deployed.get(<span class="st">'mappings'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="1058baac" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>is_remapped(<span class="st">'8dd2261100ff5d714e73b411eed043d5'</span>, DATA_PATH<span class="op">/</span><span class="st">'results'</span>, LATEST_TAG_PATH)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div id="95e1019e" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>test_id <span class="op">=</span> current_res[<span class="dv">0</span>]</span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>test_id</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>'8dd2261100ff5d714e73b411eed043d5'</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="tagging-1" class="level2">
+<h2 class="anchored" data-anchor-id="tagging-1">Tagging</h2>
+<div id="ffc1e9cf" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co">#result = await batch_run(evals, ids=[test_id], base_path=str(DATA_PATH), force={'enbs','ccps','gcms','outs'})</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>iomeval.pipeline - INFO - 8dd22611... completed</code></pre>
+</div>
+</div>
+<div id="480b71a1" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="cf">await</span> batch_run(evals, ids<span class="op">=</span>[test_id], base_path<span class="op">=</span><span class="bu">str</span>(DATA_PATH), </span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>                         force<span class="op">=</span>{<span class="st">'enbs'</span>,<span class="st">'ccps'</span>,<span class="st">'gcms'</span>,<span class="st">'outs'</span>}, verbose<span class="op">=</span><span class="va">True</span>, model<span class="op">=</span>models[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>iomeval.pipeline - INFO - Mapping enablers...
+iomeval.pipeline - INFO - Mapping CCPs...
+iomeval.pipeline - INFO - Mapping GCM objectives...
+iomeval.pipeline - INFO - Mapping outputs...
+iomeval.pipeline - INFO - Pipeline complete!
+iomeval.pipeline - INFO - 8dd22611... completed</code></pre>
+</div>
+</div>
+<div id="897db0ad" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>[d <span class="cf">for</span> d <span class="kw">in</span> current_res <span class="cf">if</span> <span class="kw">not</span> is_remapped(d, DATA_PATH<span class="op">/</span><span class="st">'results'</span>, LATEST_TAG_PATH)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>['1d7e6d2d445145d1d350b48b72b36681',
+ '9992310969aa2f428bc8aba29f865cf3',
+ '316c47c9dc19c820f3217434d4b93b28',
+ '0d4309b702e00faac631be8d609934ce',
+ 'dba9eb1220368d28682d8531108e767d',
+ '56e6f2bc9f55a0c6d07341ddde1283db',
+ 'e21305a89aeb76fafa8f4270392d463a']</code></pre>
+</div>
+</div>
+<div id="9e7ee595" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_batch_run(base_path, n<span class="op">=</span><span class="dv">1</span>, timestamp<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"Load a batch run log by timestamp, or the n latest if None (1 returns single item, n&gt;1 returns list)"</span></span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> timestamp <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a>        p <span class="op">=</span> base_path <span class="op">/</span> <span class="st">'batch_runs'</span> <span class="op">/</span> <span class="ss">f'</span><span class="sc">{</span>timestamp<span class="sc">}</span><span class="ss">.json'</span></span>
+<span id="cb106-5"><a href="#cb106-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> p.stem, p.read_json()</span>
+<span id="cb106-6"><a href="#cb106-6" aria-hidden="true" tabindex="-1"></a>    runs <span class="op">=</span> <span class="bu">sorted</span>((base_path <span class="op">/</span> <span class="st">'batch_runs'</span>).ls())</span>
+<span id="cb106-7"><a href="#cb106-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">1</span>: <span class="cf">return</span> runs[<span class="op">-</span><span class="dv">1</span>].stem, runs[<span class="op">-</span><span class="dv">1</span>].read_json()</span>
+<span id="cb106-8"><a href="#cb106-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [(p.stem, p.read_json()) <span class="cf">for</span> p <span class="kw">in</span> runs[<span class="op">-</span>n:]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="6c230fa4" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>load_batch_run(DATA_PATH, n<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[('2026-03-30_07-55',
+  {'completed': [],
+   'awaiting_curation': ['e44d4da3db4b05546ab895646ea887f7',
+    '451307f75ec691f785aae3fc561cb2c2',
+    '0b30d5ad03936002105b06b00fde286a',
+    'dcfe1190de68baba8c8159c0d21d4c83',
+    'e8c73b7846f7f67bb9c2d832965b099a',
+    '7bea93435fa1f151fa50a7a13d78164c',
+    '02f98b11fa245d4ce287abb546219143',
+    '4d81bab783f4d905bd1ed69311f07ba3',
+    'c74ce783caa0cef2b5edf412210d7da1',
+    'a21c76f7ab4d088e0566a918ef338a30'],
+   'failed': [],
+   'skipped': []}),
+ ('2026-03-30_08-06',
+  {'completed': [],
+   'awaiting_curation': ['56cb2ae8cc6d4189929489eac1dd04ec',
+    'e0c42c400c7d9f73c764093cf49b9981',
+    '5619ac682e7d1d3c352b7ac06f85659c',
+    '9b57ca02a1ec0a59e588bb42d92d2c1f',
+    '0c83986d12b9d8a2aa0d7063a7823d4b',
+    '1faa0e0900f51b1204eb9d817c8fbf62',
+    '48af58ec756a347647ea362998185c83',
+    '2218e649cb281bbff45e44a540f950a4'],
+   'failed': [],
+   'skipped': []})]</code></pre>
+</div>
+</div>
+<div id="2ab31925" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>current_res[<span class="dv">1</span>:]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>['1d7e6d2d445145d1d350b48b72b36681', '760568a15e144bcfb88dbbd50247dc51', '22cac1c000836253adc445993e101560', '4341695461234eee3deb51ac68871109', '9992310969aa2f428bc8aba29f865cf3', '316c47c9dc19c820f3217434d4b93b28', '0d4309b702e00faac631be8d609934ce', 'e8d9427f4a9094f68e17307faa567d8b', '75bad4665ed458cce78740e3d86f72d0', 'f409b3f9a0671ec69a8591c425a45c1d', 'dba9eb1220368d28682d8531108e767d', '56e6f2bc9f55a0c6d07341ddde1283db', '49d2fba781b6a7c0d94577479636ee6f', 'a493c447cff3e03ca94024335d5c5c7a', '06fd0949dc874f388686461c19d2669c', '6c3c2cf3fa479112967612b0baddab72', '891448b7a4bf12763ea0579dd67e289d', '4c04ec0d3e651f7616190c6fc2dcfc18', 'e21305a89aeb76fafa8f4270392d463a']</code></pre>
+</div>
+</div>
+<div id="6b111854" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="cf">await</span> batch_run(evals, ids<span class="op">=</span>current_res[<span class="dv">1</span>:], base_path<span class="op">=</span><span class="bu">str</span>(DATA_PATH), </span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>                         force<span class="op">=</span>{<span class="st">'enbs'</span>,<span class="st">'ccps'</span>,<span class="st">'gcms'</span>,<span class="st">'outs'</span>}, verbose<span class="op">=</span><span class="va">False</span>, model<span class="op">=</span><span class="st">'claude-sonnet-4-6'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>iomeval.pipeline - INFO - 99923109... completed
+iomeval.pipeline - INFO - 316c47c9... completed
+iomeval.pipeline - INFO - e21305a8... completed
+iomeval.pipeline - INFO - 43416954... completed
+iomeval.pipeline - INFO - 0d4309b7... completed
+iomeval.pipeline - INFO - 6c3c2cf3... completed
+iomeval.pipeline - INFO - 06fd0949... completed
+iomeval.pipeline - INFO - a493c447... completed
+iomeval.pipeline - INFO - 22cac1c0... completed
+iomeval.pipeline - INFO - e8d9427f... completed
+iomeval.pipeline - INFO - dba9eb12... completed
+iomeval.pipeline - INFO - f409b3f9... completed
+iomeval.pipeline - INFO - 760568a1... completed
+iomeval.pipeline - INFO - 49d2fba7... completed
+iomeval.pipeline - INFO - 56e6f2bc... completed
+iomeval.pipeline - INFO - 4c04ec0d... completed
+iomeval.pipeline - INFO - 891448b7... completed
+iomeval.pipeline - INFO - 75bad466... completed
+iomeval.pipeline - INFO - 1d7e6d2d... completed</code></pre>
+</div>
+</div>
+<div id="ed57e5ab" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>current_res</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>['8dd2261100ff5d714e73b411eed043d5', '1d7e6d2d445145d1d350b48b72b36681', '760568a15e144bcfb88dbbd50247dc51', '22cac1c000836253adc445993e101560', '4341695461234eee3deb51ac68871109', '9992310969aa2f428bc8aba29f865cf3', '316c47c9dc19c820f3217434d4b93b28', '0d4309b702e00faac631be8d609934ce', 'e8d9427f4a9094f68e17307faa567d8b', '75bad4665ed458cce78740e3d86f72d0', 'f409b3f9a0671ec69a8591c425a45c1d', 'dba9eb1220368d28682d8531108e767d', '56e6f2bc9f55a0c6d07341ddde1283db', '49d2fba781b6a7c0d94577479636ee6f', 'a493c447cff3e03ca94024335d5c5c7a', '06fd0949dc874f388686461c19d2669c', '6c3c2cf3fa479112967612b0baddab72', '891448b7a4bf12763ea0579dd67e289d', '4c04ec0d3e651f7616190c6fc2dcfc18', 'e21305a89aeb76fafa8f4270392d463a']</code></pre>
+</div>
+</div>
+<div id="3509f93b" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>DATA_PATH <span class="op">/</span><span class="st">'results'</span><span class="op">/</span><span class="ss">f'</span><span class="sc">{</span>current_res[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">.json'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>Path('../../data/results/8dd2261100ff5d714e73b411eed043d5.json')</code></pre>
+</div>
+</div>
+<div id="45269355" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>dest_dir <span class="op">=</span> Path(<span class="st">'../../../tagapp/tagapp/data'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<pre><code>[Path('../../../tagapp/tagapp/data/8dd2261100ff5d714e73b411eed043d5.json'), Path('../../../tagapp/tagapp/data/1d7e6d2d445145d1d350b48b72b36681.json'), Path('../../../tagapp/tagapp/data/760568a15e144bcfb88dbbd50247dc51.json'), Path('../../../tagapp/tagapp/data/22cac1c000836253adc445993e101560.json'), Path('../../../tagapp/tagapp/data/legacy'), Path('../../../tagapp/tagapp/data/4341695461234eee3deb51ac68871109.json'), Path('../../../tagapp/tagapp/data/tagapp.db-wal'), Path('../../../tagapp/tagapp/data/tagapp.db'), Path('../../../tagapp/tagapp/data/9992310969aa2f428bc8aba29f865cf3.json'), Path('../../../tagapp/tagapp/data/316c47c9dc19c820f3217434d4b93b28.json'), Path('../../../tagapp/tagapp/data/0d4309b702e00faac631be8d609934ce.json'), Path('../../../tagapp/tagapp/data/e8d9427f4a9094f68e17307faa567d8b.json'), Path('../../../tagapp/tagapp/data/75bad4665ed458cce78740e3d86f72d0.json'), Path('../../../tagapp/tagapp/data/f409b3f9a0671ec69a8591c425a45c1d.json'), Path('../../../tagapp/tagapp/data/dba9eb1220368d28682d8531108e767d.json'), Path('../../../tagapp/tagapp/data/56e6f2bc9f55a0c6d07341ddde1283db.json'), Path('../../../tagapp/tagapp/data/49d2fba781b6a7c0d94577479636ee6f.json'), Path('../../../tagapp/tagapp/data/a493c447cff3e03ca94024335d5c5c7a.json'), Path('../../../tagapp/tagapp/data/06fd0949dc874f388686461c19d2669c.json'), Path('../../../tagapp/tagapp/data/6c3c2cf3fa479112967612b0baddab72.json'), Path('../../../tagapp/tagapp/data/891448b7a4bf12763ea0579dd67e289d.json'), Path('../../../tagapp/tagapp/data/4c04ec0d3e651f7616190c6fc2dcfc18.json'), Path('../../../tagapp/tagapp/data/tagapp.db-shm'), Path('../../../tagapp/tagapp/data/e21305a89aeb76fafa8f4270392d463a.json')]</code></pre>
+</div>
+</div>
+<p>Write a small function to copy a list of ids that happends to be the stem of a {ids}.json file in a given directory to another directory?</p>
+<section id="reply-10" class="level5">
+<h5 class="anchored" data-anchor-id="reply-10">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<p>🧠🧠🧠🧠🧠</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> copy_results(ids, src, dest):</span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="bu">id</span> <span class="kw">in</span> ids: shutil.copy(src<span class="op">/</span><span class="ss">f'</span><span class="sc">{</span><span class="bu">id</span><span class="sc">}</span><span class="ss">.json'</span>, dest<span class="op">/</span><span class="ss">f'</span><span class="sc">{</span><span class="bu">id</span><span class="sc">}</span><span class="ss">.json'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You’ll need <code>import shutil</code> if not already imported.</p>
+<div id="e0bbf37f" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shutil</span>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cp_results(ids, src, dest):</span>
+<span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="bu">id</span> <span class="kw">in</span> ids: shutil.copy(src<span class="op">/</span><span class="ss">f'</span><span class="sc">{</span><span class="bu">id</span><span class="sc">}</span><span class="ss">.json'</span>, dest<span class="op">/</span><span class="ss">f'</span><span class="sc">{</span><span class="bu">id</span><span class="sc">}</span><span class="ss">.json'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="aefad0a3" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>TAGAPP_DATA <span class="op">=</span> Path(<span class="st">'../../../tagapp/tagapp/data'</span>)</span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a>cp_results(current_res, DATA_PATH<span class="op">/</span><span class="st">'results'</span>, TAGAPP_DATA)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/franckalbinet\.github\.io\/iomeval");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/franckalbinet/iomeval/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

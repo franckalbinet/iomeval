@@ -1,0 +1,71 @@
+
+
+through regular meetings and follow-ups. In Uganda, engaging trade
+unions, the private sector, and faith-based organizations with divergent
+migration governance interests required inclusive consultations to
+ensure the National Migration Strategy reflected diverse perspectives.
+In Kenya, as IOM interim report (2023) documented, the change in
+government in 2022 and related structural changes in the different
+ministries “caused delays in the implementation of activities as
+decision-making processes changed and there was uncertainty regarding
+the direction of certain Ministries”. Also, structural changes in border
+management institutions delayed IOM’s coordination efforts for a study
+tour for the Mogadishu IBMC. Furthermore, some activities in the Annual
+Work Plans (AWPs) required governmental approvals. As noted in the 2023
+interim IOM report, this led to delays in the approval of 2023 AWPs in
+Djibouti, Ethiopia, and Uganda, affecting Components 1 (migration
+governance) and 2 (integrated border governance).³³
+
+In other cases, delays occurred due to changing government priorities
+which was mentioned by the IOM staff as one of the key challenges to
+ensure effectiveness. Although interviewed government respondents did
+not highlight this challenge, the evaluation team confirmed its
+prevalence. In Djibouti, for instance, the implementation of MIDAS was
+halted due to government decisions. In Ethiopia, plans to renovate the
+Galafi BCP shifted in May 2023 when the government requested IOM’s
+assistance in Tog Wajaale BCP instead, requiring a new assessment and
+timeline adjustment. Hence, although government engagement was assessed
+by interviewees as high, reliance on national authorities sometimes
+caused delays in implementation.
+
+In relation to this, legal and policy-related bottlenecks at the
+national level affected progress, particularly in Ethiopia and Somalia.
+In Ethiopia, despite advocacy efforts, the NMP remained pending Cabinet
+approval due to competing government priorities, leading IOM to shift
+its focus toward foundational migration governance activities.
+Similarly, in Somalia, delays in codifying immigration regulations into
+law necessitated timeline adjustments and ongoing engagement with
+policymakers to maintain momentum.
+
+### Contractual constraints … page 33
+
+The delayed signing of the BMM III contract between IOM and GIZ in April
+2023 meant that activity implementation could not start from the project
+start date during October 2022. Once signed, this required the
+development of a catch-up plan to prioritize the delayed activities at
+both regional and country levels. In turn, the delay slowed down the
+roll out of planned activities at the beginning of Phase III and had
+implication on budgetary burn rates at later stages (see Section 4.1.1.
+for more details on budgetary implications of this delay and further
+financial efficiency). A similar contractual issue was also reported by
+other implementing partners.
+
+### Procurement challenges … page 33
+
+Various disruptions in procurement processes caused delays in the roll
+out of activities in different countries. This was mentioned as a
+challenge by all interviewee groups – IOM staff, government respondents,
+and civil society organizations. Some of these procurement challenges
+related to internal IOM procurement processes, while others were
+external, including challenges with procuring items on the local market:
+
+- In December 2024, a planned internal IOM system change (to WAVE)
+  experienced technical issues, thereby creating some procurement delays
+  in early 2025: “We had to freeze all procurement for a month… then
+  start quickly again, which caused delays.”
+- In Kenya, “delays in procuring equipment and materials and the need to
+  comply with specific guidelines” impacted “the timely execution of
+  several activities” (IOM interim report 2024).
+
+³³ However, approvals for the 2024 and 2025 AWPs did not face this
+challenge.
