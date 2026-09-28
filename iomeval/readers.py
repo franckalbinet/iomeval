@@ -1,4 +1,4 @@
-"""This module provides a unified interface for loading evaluation data from organizational repositories (IOM, UNHCR, etc.) and transforming it into standardized JSON format.
+"""Read IOM evaluation CSV exports into `Evaluation` records, save them as JSON, and find an evaluation and its report URL
 
 Docs: https://franckalbinet.github.io/iomeval/readers.html.md"""
 
@@ -24,6 +24,7 @@ logger = logging.getLogger(__name__)
 
 # %% ../nbs/01_readers.ipynb #881941fe
 class EvalReader:
+    "Interface for a reader that turns a repository export into `Evaluation`s"
     def __init__(self, 
                  cfg:dict # Configuration dict with field mappings and processing rules
                 ): store_attr()
@@ -36,6 +37,7 @@ class EvalReader:
 
 # %% ../nbs/01_readers.ipynb #7c96ea85
 def iom_input_cfg():
+    "Config for reading IOM CSV exports"
     return {
         'date_cols': ['Date of Publication', 'Evaluation Period From Date', 'Evaluation Period To Date'],
         'string_cols': ['Year'],
@@ -57,10 +59,10 @@ def iom_input_cfg():
 # %% ../nbs/01_readers.ipynb #e58dc1d4
 @dataclass
 class Evaluation:
-    "An evaluation with rich notebook display"
-    id:str
-    docs:list
-    meta:dict
+    "An evaluation and its documents, displayed as a summary card in notebooks"
+    id:str    # MD5 hash of the evaluation's `Title`, `Year` and `Project Code`
+    docs:list # Documents, each a dict with `subtype`, `url` and `desc`
+    meta:dict # The other CSV columns, such as `Title`, `Year` and `Countries Covered`
         
     def _repr_markdown_(self):
         title = self.meta.get('Title', 'Untitled')
@@ -80,6 +82,7 @@ class Evaluation:
 
 # %% ../nbs/01_readers.ipynb #d2d065a3
 class IOMRepoReader(EvalReader):
+    "Read an IOM evaluation CSV export into `Evaluation`s"
     def __init__(self, 
                  fname:Path # Path to the CSV export file
                  ): 
@@ -90,13 +93,16 @@ class IOMRepoReader(EvalReader):
 
 # %% ../nbs/01_readers.ipynb #153e5d50
 @patch
-def read(self:IOMRepoReader): return pd.read_csv(self.fname)
+def read(self:IOMRepoReader):
+    "Read the CSV export into a DataFrame"
+    return pd.read_csv(self.fname)
 
 # %% ../nbs/01_readers.ipynb #a5219bc3
 @patch
 def _mk_id(self:IOMRepoReader, 
            row # DataFrame row containing evaluation metadata
           ):
+    "MD5 hash of the `id_gen` fields of `row`"
     id_str = ''.join(str(row[f]) for f in self.cfg['id_gen']['fields'])
     return hashlib.md5(id_str.encode('utf-8')).hexdigest()
 
@@ -105,7 +111,7 @@ def _mk_id(self:IOMRepoReader,
 def _mk_docs(self:IOMRepoReader, 
              row # DataFrame row with document fields
             ):
-    "Parse document fields into structured records"
+    "Pair the document columns of `row` into records"
     stypes = [s.strip() for s in str(row['Document Subtype']).split(', ')]
     urls = [u.strip() for u in str(row['File URL']).split(', ')]
     descs = [d.strip() for d in str(row['File description']).split(', ')]
@@ -114,12 +120,14 @@ def _mk_docs(self:IOMRepoReader,
 # %% ../nbs/01_readers.ipynb #353b7b27
 @patch
 def _proc_dates(self:IOMRepoReader, df):
+    "Store the `date_cols` of `df` as strings"
     df[self.cfg['date_cols']] = df[self.cfg['date_cols']].astype(str)
     return df
 
 # %% ../nbs/01_readers.ipynb #e56fce47
 @patch
 def _proc_lists(self:IOMRepoReader, df):
+    "Split each of the `list_fields` of `df` into a list of trimmed, non-empty values"
     for fname,fcfg in self.cfg['list_fields'].items():
         vals = df[fname].fillna('').astype(str).str.split(fcfg['separator'])
         df[fname] = vals.apply(lambda x: [item.strip() for item in x if item.strip()])
@@ -143,7 +151,7 @@ def _to_eval(self:IOMRepoReader, row):
 # %% ../nbs/01_readers.ipynb #59b4e801
 @patch
 def tfm(self:IOMRepoReader, df:pd.DataFrame):
-    "Transform raw dataframe to evaluation objects"
+    "Turn the raw DataFrame into a list of `Evaluation`s"
     df_proc = self._proc_lists(self._proc_dates(df.copy()))
     df_proc['id'] = df_proc.apply(self._mk_id, axis=1)
     df_proc['docs'] = df_proc.apply(self._mk_docs, axis=1)
@@ -151,7 +159,7 @@ def tfm(self:IOMRepoReader, df:pd.DataFrame):
 
 # %% ../nbs/01_readers.ipynb #10556136
 def get_report_urls():
-    "Get title->URL lookup dict from IOM UNEG Evaluation API"
+    "Map each evaluation title to its report URL, from IOM's UNEG evaluation API"
     data = httpx.get('https://evaluation.iom.int/json/api/evaluation-uneg').json()
     res = {}
     for d in data['Evaluations']:
@@ -162,7 +170,10 @@ def get_report_urls():
 
 # %% ../nbs/01_readers.ipynb #cb347fab
 @patch
-def to_json(self:IOMRepoReader, out_path:Path):
+def to_json(self:IOMRepoReader,
+            out_path:Path # JSON file to write
+           ):
+    "Save the evaluations as JSON at `out_path`, with their UNEG report URLs"
     evals = self()
     report_urls = get_report_urls()
     for e in evals:
@@ -176,43 +187,45 @@ def to_json(self:IOMRepoReader, out_path:Path):
 default_config = AttrDict(id='id', docs='docs', url='url')
 
 # %% ../nbs/01_readers.ipynb #65f3843d
-def load_evals(json_file):
-    "Load evaluations from JSON file"
+def load_evals(json_file # JSON file written by `IOMRepoReader.to_json`
+              ) -> L:    # The evaluations, as `Evaluation`s
+    "Load the evaluations saved in `json_file`"
     return L([Evaluation(**o) for o in json.loads(Path(json_file).read_text())])
 
 # %% ../nbs/01_readers.ipynb #c98ec8b6
 def in_docs(
-    ev:Evaluation, # Evaluation object
-    url:str # URL of an evaluation report 
-    ):
-    "Check if a URL is in the documents of an evaluation" 
+    ev:Evaluation, # Evaluation to search
+    url:str        # Document URL
+    ) -> bool:     # Whether any document of `ev` has this URL
+    "Check whether `url` is one of the documents of `ev`"
     return any(L(ev.docs).filter(lambda x: x['url'] == url))
 
 # %% ../nbs/01_readers.ipynb #d27a51c1
 def find_eval(
-    evals:list, # List of evaluations
-    query:str, # Title or URL of evaluation
-    by:str='title' # 'title', 'url' or 'id'
-    ): 
-    "Find evaluation by title, URL or id"
+    evals:list,    # Evaluations to search
+    query:str,     # Title, document URL or ID to look for
+    by:str='title' # What `query` is: `'title'`, `'url'` or `'id'`
+    ) -> Evaluation: # The first matching evaluation, or `None`
+    "Find an evaluation by title, document URL or ID"
     if by == 'title': return first([o for o in evals if o.meta['Title'] == query])
     if by == 'url': return first([o for o in evals if in_docs(o, query)])
     if by == 'id': return first([o for o in evals if o.id == query])
 
 # %% ../nbs/01_readers.ipynb #d27a51c1
 def find_eval(
-    evals:list, # List of evaluations
-    query:str, # Title or URL of evaluation
-    by:str='title' # 'title', 'url' or 'id'
-    ): 
-    "Find evaluation by title, URL or id"
+    evals:list,    # Evaluations to search
+    query:str,     # Title, document URL or ID to look for
+    by:str='title' # What `query` is: `'title'`, `'url'` or `'id'`
+    ) -> Evaluation: # The first matching evaluation, or `None`
+    "Find an evaluation by title, document URL or ID"
     if by == 'title': return first([o for o in evals if o.meta['Title'] == query])
     if by == 'url': return first([o for o in evals if in_docs(o, query)])
     if by == 'id': return first([o for o in evals if o.id == query])
 
 # %% ../nbs/01_readers.ipynb #6e046890
-def eval_url(ev: Evaluation):
-    "Get evaluation report URL, preferring UNEG source"
+def eval_url(ev:Evaluation # Evaluation whose report to find
+            ) -> str:      # Report URL, or `None` when there is no report
+    "URL of the evaluation report of `ev`, preferring the UNEG report"
     d = first(ev.docs, f=lambda d: d['subtype'].lower() == 'evaluation report (uneg)')
     if not d: d = first(ev.docs, f=lambda d: 'evaluation report' in d['subtype'].lower())
     if not d: logger.warning(f"{ev.id}: No evaluation report found"); return None
