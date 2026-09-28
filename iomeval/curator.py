@@ -1,4 +1,4 @@
-"""FastHTML app for curating markdown headings and selecting sections for tagging
+"""Local FastHTML app to review each report's OCR headings and select the sections to map
 
 Docs: https://franckalbinet.github.io/iomeval/curator.html.md"""
 
@@ -42,7 +42,10 @@ app, rt = fast_app(
 BASE_PATH = '../data'
 
 # %% ../nbs/06_curator.ipynb #21d952fe
-def get_reports(base_path=BASE_PATH, status=None):
+def get_reports(base_path=BASE_PATH, # Folder holding `md/` and `results/`
+                status=None          # `curation_status` to keep; `None` or `'all'` keeps every report
+               ) -> list:            # Reports, most recent `Year` first
+    "Load every report saved in `base_path`"
     results_dir = Path(base_path)/'results'
     reports = [load_report(p.stem, base_path) for p in results_dir.glob('*.json')]
     if status and status != 'all':
@@ -51,21 +54,30 @@ def get_reports(base_path=BASE_PATH, status=None):
     return reports
 
 # %% ../nbs/06_curator.ipynb #64052a19
-def fmt_status(status): return status.replace('_', ' ').title()
+def fmt_status(status): # A `curation_status`, such as `'headings_reviewed'`
+    "Display label for `status`, such as `'Headings Reviewed'`"
+    return status.replace('_', ' ').title()
 
 # %% ../nbs/06_curator.ipynb #3c1f74bf
-def count_selected_tokens(r, selected_hdgs):
+def count_selected_tokens(r:Report,     # Report to measure
+                          selected_hdgs # Raw headings like `"## 1. Introduction ... page 4"`
+                         ) -> int:      # Tokens in the text `extract_selected` returns; 0 if nothing is selected
+    "Count the tokens in the sections under `selected_hdgs`"
     if not selected_hdgs: return 0
     md = read_pgs(r.md_path)
     return n_tokens(extract_selected(md, selected_hdgs))
 
 # %% ../nbs/06_curator.ipynb #c2875879
-def get_progress(reports):
+def get_progress(reports    # Reports to count
+                ) -> tuple: # `(done, total)`, where `done` counts reports with status `'sections_selected'`
+    "Count the curated reports in `reports`"
     done = sum(1 for r in reports if r.curation_status == 'sections_selected')
     return done, len(reports)
 
 # %% ../nbs/06_curator.ipynb #2445e37c
-def get_headings(md_path):
+def get_headings(md_path    # Folder of a report's OCR'd `page_*.md` files
+                ) -> list:  # Heading lines, `#` prefix and page suffix included, in page order
+    "List every Markdown heading in the report at `md_path`"
     md = read_pgs(md_path)
     return re.findall(r'^#+\s+.*$', md, re.MULTILINE)
 
@@ -73,7 +85,11 @@ def get_headings(md_path):
 status_colors = dict(pending='amber', headings_reviewed='blue', sections_selected='emerald')
 
 # %% ../nbs/06_curator.ipynb #9dda5bbe
-def ReportCard(r:Report, selected:bool=False, status:str='all'):
+def ReportCard(r:Report,            # Report to show
+               selected:bool=False, # Highlight the card as the report open in the editor
+               status:str='all'     # Current status filter, passed to the editor route to keep the list filtered
+              ):
+    "Card with a report's title, status, year, short ID, PDF link and Curate button"
     title = r.ev.meta.get('Title', 'Untitled')
     title_short = title[:40] + '...' if len(title) > 40 else title
     year = r.ev.meta.get('Year', 'n/a')
@@ -107,7 +123,12 @@ def ReportCard(r:Report, selected:bool=False, status:str='all'):
     )
 
 # %% ../nbs/06_curator.ipynb #a0b83b3b
-def ReportList(reports, selected_id=None, status='all', oob=False):
+def ReportList(reports,          # Reports to list
+               selected_id=None, # ID of the report open in the editor
+               status='all',     # Current status filter
+               oob=False         # Return it for an out-of-band swap, alongside the editor
+              ):
+    "Scrollable list of `ReportCard`s, with element id `report-list`"
     return Div(
         *[ReportCard(r, selected=(r.id == selected_id), status=status) for r in reports],
         id='report-list',
@@ -118,7 +139,8 @@ def ReportList(reports, selected_id=None, status='all', oob=False):
     )
 
 # %% ../nbs/06_curator.ipynb #6628a7c7
-def StatusSteps(status):
+def StatusSteps(status): # The report's `curation_status`
+    "Steps bar with 'Clean Headings' and 'Select Sections', marking the steps already done"
     steps = ['pending', 'headings_reviewed', 'sections_selected']
     labels = ['Clean Headings', 'Select Sections']
     current_idx = steps.index(status)
@@ -129,7 +151,8 @@ def StatusSteps(status):
     ], cls='mb-2 w-full')
 
 # %% ../nbs/06_curator.ipynb #b5fab25f
-def HeadingsEditor(r:Report):
+def HeadingsEditor(r:Report): # Report to edit
+    "Form with one text input per heading of `r`, posted to `/report/{id}/save-headings`"
     headings = get_headings(r.md_path)
     title = r.ev.meta.get('Title', 'Untitled')
     return Div(
@@ -150,7 +173,10 @@ def HeadingsEditor(r:Report):
     )
 
 # %% ../nbs/06_curator.ipynb #867c1689
-def token_display(tokens, budget=15000):
+def token_display(tokens,      # Tokens in the selected sections
+                  budget=15000 # Token budget for the selection
+                 ):
+    "Token count, green below 80% of `budget`, amber below `budget`, and red from `budget` up"
     color = 'green' if tokens < budget * 0.8 else 'amber' if tokens < budget else 'red'
     return Span(
         Strong(f"{tokens:,}"), " tokens",
@@ -159,7 +185,8 @@ def token_display(tokens, budget=15000):
     )
 
 # %% ../nbs/06_curator.ipynb #69dd61e4
-def SectionsSelector(r:Report):
+def SectionsSelector(r:Report): # Report whose sections to select
+    "Form with a checkbox per heading of `r`, ticked for `selected_headings`, and a live token count"
     headings = get_headings(r.md_path)
     title = r.ev.meta.get('Title', 'Untitled')
     return Div(
@@ -205,7 +232,10 @@ def SectionsSelector(r:Report):
     )
 
 # %% ../nbs/06_curator.ipynb #1fc71726
-def ProgressBar(reports, oob=False):
+def ProgressBar(reports,  # Reports to count
+                oob=False # Return it for an out-of-band swap
+               ):
+    "Progress bar of the reports with status `'sections_selected'`"
     done, total = get_progress(reports)
     pct = int(done / total * 100) if total else 0
     return Div(
@@ -219,7 +249,8 @@ def ProgressBar(reports, oob=False):
     )
 
 # %% ../nbs/06_curator.ipynb #8079c57a
-def StatusFilter(current='all'):
+def StatusFilter(current='all'): # Selected tab: `'all'` or a `curation_status`
+    "Tabs that filter the report list by `curation_status`"
     statuses = [('all', 'All'), ('pending', 'Pending'), ('headings_reviewed', 'Reviewed'), ('sections_selected', 'Selected')]
     return TabContainer(*[
         Li(A(label, hx_get=f'/filter?status={key}', hx_target='#report-list', hx_swap='outerHTML'),
@@ -230,6 +261,7 @@ def StatusFilter(current='all'):
 # %% ../nbs/06_curator.ipynb #c46674d4
 @rt('/')
 def get():
+    "Page with the report list and an empty editor"
     reports = get_reports()
     return Container(
         H2("IOMEVAL | Reports Curator", cls="text-2xl font-bold mb-6"),
@@ -237,7 +269,7 @@ def get():
             Card(
                 DivFullySpaced(
                     H4("Reports"), 
-                    Div(ProgressBar(reports), cls='w-4/5'),  # or w-64, w-56 etc.
+                    Div(ProgressBar(reports), cls='w-4/5'),
                     cls='items-center'
                 ),
                 DivCentered(Div(StatusFilter(), id='status-filter'), cls='w-2/3 mx-auto'),
@@ -258,6 +290,7 @@ def get():
 # %% ../nbs/06_curator.ipynb #efbe5fe6
 @rt('/report/{id}')
 def get(id:str, status:str='all'):
+    "Open a report in `HeadingsEditor` while it is `'pending'`, and in `SectionsSelector` otherwise"
     r = load_report(id, BASE_PATH)
     reports = get_reports(status=status)
     
@@ -271,37 +304,35 @@ def get(id:str, status:str='all'):
 # %% ../nbs/06_curator.ipynb #b6f8aaf8
 @rt('/report/{id}/save-headings')
 async def post(id:str, req:Request):
+    "Apply the heading edits to every page of the report and set its status to `'headings_reviewed'`"
     form = await req.form()
     r = load_report(id, BASE_PATH)
     original_headings = get_headings(r.md_path)
     
-    # Build lookup table: {original: edited}
     lut_fixes = {}
     for i, orig in enumerate(original_headings):
         edited = form.get(f'heading_{i}', orig)
         if edited != orig: lut_fixes[orig] = edited
     
-    # Apply fixes to each page if there are changes
     if lut_fixes:
         for pg_path in sorted(r.md_path.glob('page_*.md')):
             content = pg_path.read_text()
             fixed = apply_hdg_fixes(content, lut_fixes)
             pg_path.write_text(fixed)
     
-    # Update status and save
     r.curation_status = 'headings_reviewed'
     r.save()
     
-    # Refresh both panels
     reports = get_reports()
     return (
         ReportList(reports, selected_id=id, oob=True),
-        SectionsSelector(r)  # Next step UI
+        SectionsSelector(r)
     )  
 
 # %% ../nbs/06_curator.ipynb #41a6c237
 @rt('/report/{id}/reset-to-pending')
 def post(id:str):
+    "Send the report back to the headings step, keeping its saved selection"
     r = load_report(id, BASE_PATH)
     r.curation_status = 'pending'
     r.save()
@@ -318,6 +349,7 @@ def post(id:str):
 # %% ../nbs/06_curator.ipynb #612a2387
 @rt('/report/{id}/token-count')
 async def post(id:str, req:Request):
+    "Token count of the ticked headings, recomputed on each checkbox change"
     form = await req.form()
     r = load_report(id, BASE_PATH)
     
@@ -332,6 +364,7 @@ async def post(id:str, req:Request):
 # %% ../nbs/06_curator.ipynb #16d5e887
 @rt('/report/{id}/save-sections')
 async def post(id:str, req:Request):
+    "Save the ticked headings as `selected_headings` and set the status to `'sections_selected'`"
     form = await req.form()
     r = load_report(id, BASE_PATH)
     headings = get_headings(r.md_path)
@@ -352,6 +385,7 @@ async def post(id:str, req:Request):
 # %% ../nbs/06_curator.ipynb #36769369
 @rt('/filter')
 def get(status:str='all'):
+    "Filter the report list by `status` and close the editor"
     reports = get_reports(status=status)
     return (
         #Div(*[ReportCard(r, status=status) for r in reports], id='report-list'),
@@ -366,6 +400,7 @@ def get(status:str='all'):
 # %% ../nbs/06_curator.ipynb #d75c586f
 @rt('/editor-reset')
 def get():
+    "Close the editor. The Escape key calls this route."
     reports = get_reports()
     return (
         ReportList(reports, oob=True),
@@ -374,6 +409,8 @@ def get():
 
 # %% ../nbs/06_curator.ipynb #6343bba3
 @call_parse
-def main(host:str='0.0.0.0', port:int=5001):
+def main(host:str='0.0.0.0', # Network interface to listen on
+         port:int=5001       # Port to listen on
+        ):
     "Serve the curator app, reading reports from `BASE_PATH`"
     serve(appname="iomeval.curator", host=host, port=port)
