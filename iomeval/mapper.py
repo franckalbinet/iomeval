@@ -1,4 +1,4 @@
-"""Maps IOM evaluation report against evaluation frameworks
+"""Score how relevant an evaluation report is to each SRF and GCM theme, with an LLM
 
 Docs: https://franckalbinet.github.io/iomeval/mapper.html.md"""
 
@@ -25,10 +25,10 @@ logger.setLevel(logging.DEBUG)
 # %% ../nbs/05_mapper.ipynb #fcef7312
 class ThemeScore(BaseModel):
     "Single theme's relevance assessment with score, reasoning, and confidence"
-    theme_id: str       # Unique identifier for the theme
-    theme_title: str    # Human-readable theme name
-    relevance_score: float  # 0-1 score indicating how relevant theme is to report
-    reasoning: str      # LLM's explanation for the score
+    theme_id: str           # Theme ID, such as `'7'` or `'1a11'`
+    theme_title: str        # Theme title
+    relevance_score: float  # Relevance of the theme to the report, from 0 to 1
+    reasoning: str          # The LLM's explanation of the score
 
 # %% ../nbs/05_mapper.ipynb #80bd5b66
 class ThemeScores(BaseModel):
@@ -37,61 +37,61 @@ class ThemeScores(BaseModel):
 
 # %% ../nbs/05_mapper.ipynb #2f4c1d06
 def parse_res(res:ThemeScores  # Structured LLM reply from `map_themes`
-             ) -> list[dict]:  # list of score dicts
+             ) -> list[dict]:  # One dict per theme, with the `ThemeScore` fields
     "Convert the scores in an LLM reply to a list of dicts"
     return [o.model_dump() for o in res.scores]
 
 # %% ../nbs/05_mapper.ipynb #87fe9898
-def sort_by_relevance(scores           # list of score dicts with 'relevance_score' key
-                     ) -> list[dict]:  # list sorted by relevance descending
-    "Sort themes by relevance score descending"
+def sort_by_relevance(scores           # Score dicts from `parse_res`
+                     ) -> list[dict]:  # The scores, most relevant first
+    "Sort `scores` by `relevance_score`, highest first"
     return sorted(scores, key=lambda x: x['relevance_score'], reverse=True)
 
 # %% ../nbs/05_mapper.ipynb #2d37167e
-def get_top_ids(scores,             # list of score dicts with 'theme_id' and 'relevance_score'
-                min_score=0.66      # minimum relevance threshold
-               ) -> list[str]:      # list of theme IDs above threshold
-    "Get IDs of themes with relevance score >= min_score, sorted by relevance"
+def get_top_ids(scores,             # Score dicts from `parse_res`
+                min_score=0.66      # Lowest `relevance_score` to keep
+               ) -> list[str]:      # Theme IDs, most relevant first
+    "Get the IDs of the themes that score at least `min_score`"
     return [o['theme_id'] for o in sort_by_relevance(scores) if o['relevance_score'] >= min_score]
 
 # %% ../nbs/05_mapper.ipynb #c1dd3661
-def mk_system_prompt(report:str  # Full report text to analyze
+def mk_system_prompt(report:str  # Report text, usually the extracted core sections
                     ) -> str:    # System prompt holding the report
-    "Create the system prompt shared, and cached, across theme mappings of a report"
+    "Create the system prompt that every theme mapping of `report` shares"
     return f"## Report to Analyze\n\n{report}"
 
 # %% ../nbs/05_mapper.ipynb #76603e54
 async def map_themes(sp:str,                         # Report system prompt from `mk_system_prompt`
-                     themes:str,                     # Formatted themes text to score against
-                     prompt:str,                     # Mapping instruction prompt
-                     model:str='claude-haiku-4-5',   # Model to use for completion
-                     response_format=ThemeScores,    # Pydantic model for structured output
-                     temperature:float=0,            # Temperature for completion
-                     reasoning_effort:str=None,      # Reasoning effort for completion (low, medium, high)
-                     **kwargs                        # Additional kwargs for `structured_llm` (e.g. max_tokens)
-                    ) -> ThemeScores:                # Structured LLM reply
-    "Map report against themes, caching the report system prompt"
+                     themes:str,                     # Themes to score, formatted as Markdown
+                     prompt:str,                     # Mapping prompt, such as `load_prompt('gcms')`
+                     model:str='claude-haiku-4-5',   # LLM to use
+                     response_format=ThemeScores,    # Pydantic model the reply must follow
+                     temperature:float=0,            # Sampling temperature
+                     reasoning_effort:str=None,      # `'low'`, `'medium'` or `'high'`; `None` for no extended thinking
+                     **kwargs                        # Passed to `structured_llm`, such as `max_tokens`
+                    ) -> ThemeScores:                # The LLM's scores
+    "Score `themes` against the report in `sp`, with the report cached"
     msg = mk_msg(f"{prompt}\n\n## Themes\n\n{themes}")
     return await structured_llm(model, [msg], response_format, system=sp, cache_idxs=[0],
                                 temperature=temperature, reasoning_effort=reasoning_effort, **kwargs)
 
 # %% ../nbs/05_mapper.ipynb #ecd0df02
 def load_prompts(
-    path:Path|str|None=None # Directory containing prompt files, defaults to 'files/prompts'
-    ) -> AttrDict:          # Dict with srf_enablers, srf_ccps, gcms, srf_outputs prompts
-    "Load all mapping prompts"
+    path:Path|str|None=None # Folder of prompt files; `None` uses the prompts shipped with the package
+    ) -> AttrDict:          # `enbs`, `ccps`, `gcms` and `outs`
+    "Load the four mapping prompts"
     name_map = {'srf_enablers': 'enbs', 'srf_ccps': 'ccps', 'gcms': 'gcms', 'srf_outputs': 'outs'}
     return AttrDict({short: load_prompt(file, path) for file, short in name_map.items()})
 
 # %% ../nbs/05_mapper.ipynb #33c29cf8
 @delegates(map_themes)
-async def map_all(report:str,                      # Full report text to analyze
-                  path:str='files/themes',         # Directory containing theme JSON files
-                  prompt_path:str='files/prompts', # Directory containing prompt files
-                  verbose:bool=True,               # Log progress messages
-                  **kwargs                         # Additional args passed to map_themes (e.g. model)
-                 ) -> AttrDict:                    # Dict with enablers, ccp, gcm, outputs results
-    "Map report against all theme classes: enablers → CCP → GCM → outputs"
+async def map_all(report:str,                      # Report text, usually the extracted core sections
+                  path:str='files/themes',         # Folder of theme files, relative to the working directory
+                  prompt_path:str='files/prompts', # Folder of prompt files, relative to the working directory
+                  verbose:bool=True,               # Log each step
+                  **kwargs                         # Passed to `map_themes`, such as `model`
+                 ) -> AttrDict:                    # Score dicts under `enbs`, `ccps`, `gcms` and `outs`; `outs` is `None` when no GCM objective reaches the threshold
+    "Map `report` against the SRF enablers, cross-cutting priorities, GCM objectives and SRF outputs, in that order"
     themes, prompts = load_all_thms(path), load_prompts(prompt_path)
     sp = mk_system_prompt(report)
     
@@ -104,7 +104,7 @@ async def map_all(report:str,                      # Full report text to analyze
     
     top_gcm_ids = get_top_ids(gcms_res)
     if not top_gcm_ids:
-        if verbose: logger.info("No GCM objectives scored ≥0.7, skipping SRF Outputs")
+        if verbose: logger.info("No GCM objective reached the threshold, skipping SRF Outputs")
         return AttrDict(enbs=enbs_res, ccps=ccps_res, gcms=gcms_res, outs=None)
     
     if verbose: logger.info(f"Top GCM: {top_gcm_ids[0]} (from {len(top_gcm_ids)} candidates)")
